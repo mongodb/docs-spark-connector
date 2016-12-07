@@ -1,22 +1,14 @@
 project:
   name: 'spark-connector'
-  tag: 'spart-connector'
+  tag: 'spark-connector'
   url: 'https://docs.mongodb.org/'
-  title: 'MongoDB Spark Connector Manual'
-  branched: fale
+  title: 'MongoDB Spark Connector'
+  branched: true
   siteroot: false
 version:
-  release: '1.0'
-  branch: 'master'
+  release: '1.1'
+  branch: 'v1.1'
 system:
-  make:
-    generated:
-      - 'meta'
-      - 'integration'
-      - 'sphinx'
-    static:
-      - 'makefile.compatibility'
-      - 'makefile.clean'
   files:
     - 'intersphinx.yaml'
     - 'integration.yaml'
