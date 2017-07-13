@@ -6,7 +6,7 @@ project:
   branched: true
   #siteroot: false
 version:
-  release: 'v2.0'
+  release: '2.0'
   branch: 'v2.0'
 system:
   files:
