@@ -1,11 +1,11 @@
-project: 'docs-spark-connector'
+project: 'spark-connector'
 master_doc: 'index'
 logo: ".static/logo.png"
 paths:
   static: ['source/.static']
 theme:
   name: 'spark-connector'
-  project: 'docs-spark-connector'
+  project: 'spark-connector'
   google_analytics: 'UA-7301842-8'
   jira: 'DOCS'
   sitename: 'MongoDB Spark Connector'
