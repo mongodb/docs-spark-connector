@@ -84,4 +84,4 @@ versions of Apache Spark and MongoDB:
       python-api
       r-api
       faq
-      API docs <https://www.javadoc.io/doc/org.mongodb.spark/mongo-spark-connector_2.11/2.0.0>
+      API Docs <https://www.javadoc.io/doc/org.mongodb.spark/mongo-spark-connector_2.11/2.0.0>
