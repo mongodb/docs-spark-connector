@@ -4,10 +4,22 @@ Release Notes
 
 .. default-domain:: mongodb
 
+MongoDB Connector for Spark `2.2.5`_
+------------------------------------
+
+*Released on October 8, 2018*
+
+- `SPARK-210 <https://jira.mongodb.org/browse/SPARK-210>`_ Added
+  ReadConfig.samplePoolSize to improve the performance of inferring
+  schemas
+- `SPARK-216 <https://jira.mongodb.org/browse/SPARK-216>`_ Updated
+  UDF helpers, don't overwrite JavaScript with no scope and Regex
+  with no options helpers.
+
 MongoDB Connector for Spark `2.2.4`_ 
 ------------------------------------
 
-*Release on July 30, 2018*
+*Released on July 30, 2018*
 
 - `SPARK-198 <https://jira.mongodb.org/browse/SPARK-198>`_ Updated
   MongoDB Java driver to 3.6.4 to support aggregation configuration.
@@ -135,3 +147,4 @@ MongoDB Connector for Spark `2.0.0`_
 .. _2.2.2: https://github.com/mongodb/mongo-spark/compare/r2.2.1...r2.2.2
 .. _2.2.3: https://github.com/mongodb/mongo-spark/compare/r2.2.2...r2.2.3
 .. _2.2.4: https://github.com/mongodb/mongo-spark/compare/r2.2.3...r2.2.4
+.. _2.2.5: https://github.com/mongodb/mongo-spark/compare/r2.2.5...r2.2.5
