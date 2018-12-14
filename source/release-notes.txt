@@ -4,6 +4,14 @@ Release Notes
 
 .. default-domain:: mongodb
 
+MongoDB Connector for Spark `2.2.6`_
+------------------------------------
+
+*Released on December 7, 2018*
+
+- Ensure ``WriteConfig.ordered`` is applied to write operations.
+- Fixed ``MongoSpark.toDF()`` to use the provided ``MongoConnector``.
+
 MongoDB Connector for Spark `2.2.5`_
 ------------------------------------
 
@@ -100,51 +108,10 @@ MongoDB Connector for Spark `2.2.0`_
 - `SPARK-126 <https://jira.mongodb.org/browse/SPARK-126>`_ Support
   Spark 2.2.0. Updated Spark dependency to 2.2.0.
 
-MongoDB Connector for Spark `2.1.0`_
-------------------------------------
-
-*Released on July 12, 2017*
-
-- `SPARK-125 <https://jira.mongodb.org/browse/SPARK-125>`_ Updated
-  Spark dependency to 2.1.1.
-
-- `SPARK-124 <https://jira.mongodb.org/browse/SPARK-124>`_ Made the
-  maximum batch size when performing bulk updates / inserts
-  configurable.
-
-- `SPARK-106 <https://jira.mongodb.org/browse/SPARK-106>`_ Added
-  helpers `MongoSpark.load` helpers for Java users using a SparkSesson.
-
-- `SPARK-100 <https://jira.mongodb.org/browse/SPARK-100>`_ Added
-  ``WriteConfig.replaceDocument`` to configure how Datasets are saved.
-
-- `SPARK-39 <https://jira.mongodb.org/browse/SPARK-39>`_ Added support
-  for Decimal type.
-
-- `SPARK-112 <https://jira.mongodb.org/browse/SPARK-112>`_ Fixed custom
-  partition key bug in ``MongoSamplePartitioner``.
-
-- `SPARK-122 <https://jira.mongodb.org/browse/SPARK-122>`_ Ensure
-  pagination partitioners can use a covered query.
-
-- `SPARK-101 <https://jira.mongodb.org/browse/SPARK-101>`_ Add support
-  for partial collection partitioning for non-sharded partitioners.
-
-- `SPARK-103 <https://jira.mongodb.org/browse/SPARK-103>`_ Ensure
-  partitioners handle empty collections.
-
-MongoDB Connector for Spark `2.0.0`_
-------------------------------------
-
-*Released on November 1, 2016*
-
-- First Spark 2.0.0 release
-
-.. _2.0.0: https://github.com/mongodb/mongo-spark/releases/tag/r2.0.0
-.. _2.1.0: https://github.com/mongodb/mongo-spark/compare/r2.0.0...r2.1.0
 .. _2.2.0: https://github.com/mongodb/mongo-spark/compare/r2.1.0...r2.2.0
 .. _2.2.1: https://github.com/mongodb/mongo-spark/compare/r2.2.0...r2.2.1
 .. _2.2.2: https://github.com/mongodb/mongo-spark/compare/r2.2.1...r2.2.2
 .. _2.2.3: https://github.com/mongodb/mongo-spark/compare/r2.2.2...r2.2.3
 .. _2.2.4: https://github.com/mongodb/mongo-spark/compare/r2.2.3...r2.2.4
-.. _2.2.5: https://github.com/mongodb/mongo-spark/compare/r2.2.5...r2.2.5
+.. _2.2.5: https://github.com/mongodb/mongo-spark/compare/r2.2.4...r2.2.5
+.. _2.2.6: https://github.com/mongodb/mongo-spark/compare/r2.2.5...r2.2.6
