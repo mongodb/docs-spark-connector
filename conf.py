@@ -62,7 +62,7 @@ extlinks = {
 }
 
 source_constants = {
-    'current-version': '2.1.5',
+    'current-version': '2.1.6',
     'spark-core-version': '2.1.3',
     'spark-sql-version': '2.1.3'
 }
