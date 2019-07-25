@@ -5,6 +5,7 @@ Release Notes
 .. default-domain:: mongodb
 
 MongoDB Connector for Spark `2.3.3`_
+------------------------------------
 
 *Released on June 6, 2019*
 
