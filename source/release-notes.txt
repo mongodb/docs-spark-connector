@@ -12,9 +12,7 @@ MongoDB Connector for Spark 2.4.2
 - Updated `MongoDB Java Driver
   <http://mongodb.github.io/mongo-java-driver/3.12/>`__
   to 3.12.5.
-- Don't use `Java SPI
-  <https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html>`__
-  for the data source internally.
+- Don't use Java SPI for the data source internally.
 - Fix ``BsonOrdering`` bug for strings of different lengths.
 
 MongoDB Connector for Spark `2.4.1`_
