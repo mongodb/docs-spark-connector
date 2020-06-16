@@ -28,15 +28,15 @@ versions of Apache Spark and MongoDB:
      - **2.4.x**
      - **2.6 or later**
 
-   * - 2.3.2
+   * - 2.3.4
      - 2.3.x
      - 2.6 or later
 
-   * - 2.2.6
+   * - 2.2.8
      - 2.2.x
      - 2.6 or later
 
-   * - 2.1.5
+   * - 2.1.7
      - 2.1.x
      - 2.6 or later
 
