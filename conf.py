@@ -107,6 +107,7 @@ html_theme_options = {
     'version': version,
     'version_selector':  get_versions(conf),
     'active_branches': conf.version.active,
+    'eol': True
 }
 
 html_sidebars = sconf.sidebars
