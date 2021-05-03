@@ -34,7 +34,7 @@ Write to MongoDB
        JavaSparkContext jsc = new JavaSparkContext(spark.sparkContext());
          
        // Create a RDD of 10 documents
-       JavaRDD<Document> documents = jsc.parallelize(asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)).map
+       JavaRDD<Document> sparkDocuments = jsc.parallelize(asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)).map
                (new Function<Integer, Document>() {
          public Document call(final Integer i) throws Exception {
              return Document.parse("{test: " + i + "}");
