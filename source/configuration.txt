@@ -291,8 +291,7 @@ Partitioner Configuration
 
        .. important:: 
 
-          ``MongoShardedPartitioner`` is not compatible with hashed
-          shard keys.
+          This property is not compatible with hashed shard keys.
 
 .. _conf-mongosplitvectorpartitioner:
 
