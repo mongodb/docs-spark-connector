@@ -69,8 +69,8 @@ The following properties for reading from MongoDB are available:
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.input.``.
+   If you are using ``SparkConf``, prefix ``spark.mongodb.input.`` to
+   each property.
 
 .. list-table::
    :header-rows: 1
@@ -84,7 +84,7 @@ The following properties for reading from MongoDB are available:
      - Required. The connection string of the form
        ``mongodb://host:port/``. The ``host`` can be a hostname, IP
        address, or UNIX domain socket. If the connection string doesn't
-       specify a ``:port``, it uses the default MongoDB port ``27017``.
+       specify a ``port``, it uses the default MongoDB port, ``27017``.
 
        You can append the other remaining input options to the ``uri``
        setting. See :ref:`configure-input-uri`.
@@ -255,8 +255,8 @@ Partitioner Configuration
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.input.partitionerOptions.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.input.partitionerOptions.`` to each property.
 
 .. list-table::
    :header-rows: 1
@@ -291,8 +291,8 @@ Partitioner Configuration
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.input.partitionerOptions.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.input.partitionerOptions.`` to each property.
 
 .. list-table::
    :header-rows: 1
@@ -319,8 +319,8 @@ Partitioner Configuration
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.input.partitionerOptions.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.input.partitionerOptions.`` to each property.
 
 .. list-table::
    :header-rows: 1
@@ -349,8 +349,8 @@ Partitioner Configuration
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.input.partitionerOptions.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.input.partitionerOptions.`` to each property.
 
 .. list-table::
    :header-rows: 1
@@ -379,8 +379,8 @@ Partitioner Configuration
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.input.partitionerOptions.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.input.partitionerOptions.`` to each property.
 
 .. list-table::
    :header-rows: 1
@@ -414,8 +414,8 @@ For example, consider the following example which sets the input
 
 .. note::
 
-   If you are using ``SparkConf``, prefix the setting with
-   ``spark.mongodb.input.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.input.`` to the setting.
 
 .. code:: cfg
 
@@ -450,8 +450,8 @@ The following options for writing to MongoDB are available:
 
 .. note::
 
-   If you are using ``SparkConf``, prefix each property with
-   ``spark.mongodb.output.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.output.`` to each property.
 
 .. list-table::
    :header-rows: 1
@@ -549,8 +549,8 @@ For example, consider the following example which sets the input
 
 .. note::
 
-   If you are using ``SparkConf``, prefix the setting with
-   ``spark.mongodb.output.``.
+   If you are using ``SparkConf``, prefix
+   ``spark.mongodb.output.`` to the setting.
 
 .. code:: cfg
 
