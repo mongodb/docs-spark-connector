@@ -65,23 +65,25 @@ configured via the System Property. See :ref:`cache-configuration`.
 Input Configuration
 --------------------
 
-The following properties for reading from MongoDB are available:
+You can configure the following properties to read from MongoDB:
 
 .. note::
 
-   If you are using ``SparkConf``, prefix ``spark.mongodb.input.`` to
-   each property.
+   If you use ``SparkConf`` to set the connector's input configurations, 
+   prefix ``spark.mongodb.input.`` to each property.
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 20 50
 
    * - Property name
+     - Default
      - Description
 
    * - ``uri``
-
-     - Required. The connection string of the form
+     -
+     - **Required.**
+       The connection string in the form
        ``mongodb://host:port/``. The ``host`` can be a hostname, IP
        address, or UNIX domain socket. If the connection string doesn't
        specify a ``port``, it uses the default MongoDB port, ``27017``.
@@ -90,49 +92,43 @@ The following properties for reading from MongoDB are available:
        setting. See :ref:`configure-input-uri`.
 
    * - ``database``
-
-     - Required. The database name to read data from.
+     -
+     - **Required.**
+       The database name to read data from.
 
    * - ``collection``
-
-     - Required. The collection name to read data from.
+     -
+     - **Required.**
+       The collection name to read data from.
 
    * - ``localThreshold``
-
-     - The number of milliseconds to take when choosing among multiple
-       MongoDB servers to send a request.
-
-       *Default*: 15 ms
+     - ``15``
+     - The time in milliseconds to choose among multiple MongoDB servers
+       to send a request.
 
    * - ``readPreference.name``
-
-     - The name of the :ref:`ReadPreference
-       <replica-set-read-preference-modes>` to use.
-
-       *Default*: Primary
+     - Primary
+     - The name of the :ref:`Read Preference
+       <replica-set-read-preference-modes>` mode to use.
 
    * - ``readPreference.tagSets``
-
+     -
      - The ``ReadPreference`` TagSets to use.
 
    * - ``readConcern.level``
-
-     - The :manual:`ReadConcern </reference/read-concern>` level to use.
+     -
+     - The :manual:`Read Concern </reference/read-concern>` level to use.
 
    * - ``sampleSize``
-
-     - The sample size to use when inferring the schema.
-
-       *Default*: 1000
+     - ``1000``
+     - The sample size to use when analyzing the schema.
 
    * - ``samplePoolSize``
-
-     - The pool size to sample from when inferring the schema.
-
-       *Default*: 10000
+     - ``10000``
+     - The size of the pool to sample from when analyzing the schema.
 
    * - ``partitioner``
-
+     - ``MongoDefaultPartitioner``
      - The name of the partitioner to use to partition the data.
        The connector provides the following partitioners:
 
@@ -180,67 +176,59 @@ The following properties for reading from MongoDB are available:
 
        You can also specify a custom partitioner implementation. For
        custom implementations of the ``MongoPartitioner`` trait, provide
-       the full class name. If you don't provide package names, then the
-       this property uses its default package,
+       the full class name. If you don't provide package names, then
+       this property uses the default package,
        ``com.mongodb.spark.rdd.partitioner``.
 
        To configure options for the various partitioners, see
        :ref:`partitioner-conf`.
 
-       *Default*: ``MongoDefaultPartitioner``
-
    * - ``partitionerOptions``
-
+     - 
      - The custom options to configure the partitioner.
 
    * - ``registerSQLHelperFunctions``
-
-     - To register SQL helper functions to allow easy querying of BSON
+     - ``false``
+     - Registers SQL helper functions to allow easy querying of BSON
        types inside SQL queries.
-     
-       *Default*: ``false``
 
    * - ``sql.inferschema.mapTypes.enabled``
-
-     - To enable schema inference of ``MapTypes``.
-
-       *Default*: ``true``
+     - ``true``
+     - Enables you to analyze ``MapType`` and ``StructType`` in the data's schema.
 
    * - ``sql.inferschema.mapTypes.minimumKeys``
-
+     - 250
      - The minimum number of keys a ``StructType`` needs for the
-       connector to infer it as a ``MapType``.
-
-       *Default*: ``250``
+       connector to detect it as a ``MapType``.
 
    * - ``sql.pipeline.includeNullFilters``
-
-     - To include ``null`` filters in the aggregation pipeline.
+     - 
+     - Includes ``null`` filters in the aggregation pipeline.
       
    * - ``sql.pipeline.includeFiltersAndProjections``
-
-     - To include any filters and projections in the aggregation pipeline.
+     - 
+     - Includes any filters and projections in the aggregation pipeline.
 
    * - ``pipeline``
-
-     - To enable custom aggregation pipelines to apply to the collection
+     - 
+     - Enables you to apply custom aggregation pipelines to the collection
        before sending it to Spark.
 
    * - ``hint``
-
-     - The JSON representation of the index to use in the aggregation.
+     - 
+     - The JSON representation of the :manual:`hint </reference/operator/meta/hint/>` to use in the aggregation.
 
    * - ``collation``
-
+     - 
      - The JSON representation of a collation to use in the aggregation.
        The connector creates this with ``Collation.asDocument.toJson``.
 
    * - ``allowDiskUse``
-
-     -  To enable writing to temporary files during aggregation.
+     - 
+     -  Enables writing to temporary files during aggregation.
 
    * - ``batchSize``
-
+     - 
      -  The size of the internal batches within the cursor.
      
 .. _partitioner-conf:
@@ -253,60 +241,48 @@ Partitioner Configuration
 ``MongoSamplePartitioner`` Configuration
 ````````````````````````````````````````
 
-.. note::
-
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.input.partitionerOptions.`` to each property.
+.. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 10 60
 
    * - Property name
+     - Default
      - Description
 
    * - ``partitionKey``
-
+     - ``_id``
      - The field by which to split the collection data. The field
        should be indexed and contain unique values.
 
-       *Default*: ``_id``
-
    * - ``partitionSizeMB``
-
+     - ``64``
      - The size (in MB) for each partition
 
-       *Default*: 64 MB
-
    * - ``samplesPerPartition``
-
+     - ``10``
      - The number of sample documents to take for each partition.
-
-       *Default*: 10
 
 .. _conf-mongoshardedpartitioner:
 
 ``MongoShardedPartitioner`` Configuration
 `````````````````````````````````````````
 
-.. note::
-
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.input.partitionerOptions.`` to each property.
+.. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 10 60
 
    * - Property name
+     - Default
      - Description
 
    * - ``shardkey``
-
+     - ``_id``
      - The field by which to split the collection data. The field
        should be indexed.
-
-       *Default*: ``_id``
 
        .. important:: 
 
@@ -317,90 +293,72 @@ Partitioner Configuration
 ``MongoSplitVectorPartitioner`` Configuration
 `````````````````````````````````````````````
 
-.. note::
-
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.input.partitionerOptions.`` to each property.
+.. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 10 60
 
    * - Property name
+     - Default
      - Description
 
    * - ``partitionKey``
-
+     -  ``_id``
      - The field by which to split the collection data. The field
        should be indexed and contain unique values.
 
-       *Default*: ``_id``
-
    * - ``partitionSizeMB``
-
+     - ``64``
      - The size (in MB) for each partition
-
-       *Default*: 64 MB
 
 .. _conf-mongopaginatebycountpartitioner:
 
 ``MongoPaginateByCountPartitioner`` Configuration
 `````````````````````````````````````````````````
 
-.. note::
-
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.input.partitionerOptions.`` to each property.
+.. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 10 60
 
    * - Property name
+     - Default
      - Description
 
    * - ``partitionKey``
-
+     -  ``_id``
      - The field by which to split the collection data. The field
        should be indexed and contain unique values.
 
-       *Default*: ``_id``
-
    * - ``numberOfPartitions``
-
+     - ``64``
      - The number of partitions to create.
-
-       *Default*: 64
 
 .. _conf-mongopaginatebysizepartitioner:
 
 ``MongoPaginateBySizePartitioner`` Configuration
 ````````````````````````````````````````````````
 
-.. note::
-
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.input.partitionerOptions.`` to each property.
+.. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 10 60
 
    * - Property name
+     - Default
      - Description
 
    * - ``partitionKey``
-
+     -  ``_id``
      - The field by which to split the collection data. The field
        should be indexed and contain unique values.
 
-       *Default*: ``_id``
-
    * - ``partitionSizeMB``
-
+     - ``64``
      - The size (in MB) for each partition
-
-       *Default*: 64 MB
 
 .. _configure-input-uri:
 
@@ -414,8 +372,8 @@ For example, consider the following example which sets the input
 
 .. note::
 
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.input.`` to the setting.
+   If you use ``SparkConf`` to set the connector's input configurations, 
+   prefix ``spark.mongodb.input.`` to the setting.
 
 .. code:: cfg
 
@@ -450,19 +408,21 @@ The following options for writing to MongoDB are available:
 
 .. note::
 
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.output.`` to each property.
+   If you use ``SparkConf`` to set the connector's output configurations,
+   prefix ``spark.mongodb.output.`` to each property.
 
 .. list-table::
    :header-rows: 1
-   :widths: 35 65
+   :widths: 30 20 50
 
    * - Property name
+     - Default
      - Description
 
    * - ``uri``
-
-     - Required. The connection string of the form ``mongodb://host:port/``
+     - 
+     - **Required.** 
+       The connection string of the form ``mongodb://host:port/``
        where ``host`` can be a hostname, IP address, or UNIX domain
        socket. If ``:port`` is unspecified, the connection uses the
        default MongoDB port 27017.
@@ -473,69 +433,57 @@ The following options for writing to MongoDB are available:
           setting. See :ref:`configure-output-uri`.
 
    * - ``database``
-
-     - Required. The database name to write data.
+     - 
+     - **Required.**
+       The database name to write data.
 
    * - ``collection``
-
-     - Required. The collection name to write data to
+     - 
+     - **Required.**
+       The collection name to write data to
 
    * - ``extendedBsonTypes``
-
+     - ``true``
      - Enables extended BSON types when writing data to MongoDB.
 
-       *Default*: ``true``
-
    * - ``localThreshold``
-
+     - ``15``
      - The threshold (milliseconds) for choosing a server from multiple
        MongoDB servers.
 
-       *Default*: 15 ms
-
    * - ``replaceDocument``
-
+     - ``true``
      - Replace the whole document when saving Datasets that contain an ``_id`` field.
        If false it will only update the fields in the document that match the fields in the Dataset.
-
-       *Default*: true
-
+       
    * - ``maxBatchSize``
-
+     - 512
      - The maximum batch size for bulk operations when saving data.
 
-       *Default*: 512
-
    * - ``writeConcern.w``
+     - ``w: 1``
      - The write concern :ref:`w <wc-w>` value.
-
-       *Default* ``w: 1``
    
    * - ``writeConcern.journal``
+     - 
      - The write concern :ref:`journal <wc-j>` value.
 
    * - ``writeConcern.wTimeoutMS``
-
+     - 
      - The write concern :ref:`wTimeout <wc-wtimeout>` value.
 
    * - ``shardKey``
-
+     - ``_id``
      - The field by which to split the collection data. The field
        should be indexed and contain unique values.
 
-       *Default*: ``_id``
-
    * - ``forceInsert``
-
+     - ``false``
      - Forces saves to use inserts, even if a Dataset contains ``_id``.
-       
-       *Default*: ``false``
 
    * - ``ordered``
-
+     - ``true``
      - Sets the bulk operations ordered property.
-       
-       *Default*: ``true``
 
 .. _configure-output-uri:
 
@@ -549,8 +497,8 @@ For example, consider the following example which sets the input
 
 .. note::
 
-   If you are using ``SparkConf``, prefix
-   ``spark.mongodb.output.`` to the setting.
+   If you use ``SparkConf`` to set the connector's output configurations,
+   prefix ``spark.mongodb.output.`` to the setting.
 
 .. code:: cfg
 
@@ -590,12 +538,12 @@ share the MongoClient across threads.
 
 .. list-table::
    :header-rows: 1
-   :widths: 55 45
+   :widths: 40 10 50
 
    * - System Property name
+     - Default
      - Description
 
    * - ``mongodb.keep_alive_ms``
+     - ``5000``
      - The length of time to keep a ``MongoClient`` available for sharing.
-
-       *Default*: 5000
