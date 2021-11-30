@@ -72,7 +72,7 @@ To create a standard Dataset with custom MongoDB data types, use
 
 To create DataFrames with custom MongoDB data types:
 
-- Create RDD[Document]s using custom MongoDB BSON types 
+- Create RDDs using custom MongoDB BSON types 
   (e.g. ``ObjectId``). The MongoDB Spark Connector handles converting 
   those custom types into Spark-compatible data types.
 
