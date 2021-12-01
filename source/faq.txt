@@ -59,8 +59,11 @@ from extended JSON-like representations of those data types that are
 compatible with Spark. See :ref:`<bson-spark-datatypes>` for a list of 
 custom MongoDB types and their Spark counterparts.
 
+Spark Datasets
+~~~~~~~~~~~~~~
+
 To create a standard Dataset with custom MongoDB data types, use 
-``fieldType`` helpers:
+``fieldType`` helpers: 
 
 .. code-block:: scala
    
@@ -69,6 +72,16 @@ To create a standard Dataset with custom MongoDB data types, use
    case class MyData(id: fieldTypes.ObjectId, a: Int)
    val ds = spark.createDataset(Seq(MyData(fieldTypes.ObjectId(new ObjectId()), 99)))
    ds.show()
+
+The example above creates a Dataset where:
+
+- The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
+  using the helper ``fieldTypes.ObjectId``.
+
+- The ``a`` field is an ``Int``, a data type available in Spark.
+
+Spark DataFrames
+~~~~~~~~~~~~~~~~
 
 To create DataFrames with custom MongoDB data types:
 
@@ -93,3 +106,10 @@ To create DataFrames with custom MongoDB data types:
    val schema = StructType(List(StructFields.objectId("id", true), StructField("a", IntegerType, true)))
    val df = spark.createDataFrame(rdd, schema)
    df.show()
+
+The example above creates a DataFrame where:
+
+- The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
+  using ``StructFields.objectId``.
+
+- The ``a`` field is an ``Int``, a data type available in Spark.
