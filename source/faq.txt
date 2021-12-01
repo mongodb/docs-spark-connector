@@ -76,7 +76,7 @@ To create a standard Dataset with custom MongoDB data types, use
 The example above creates a Dataset where:
 
 - The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
-  using the helper ``fieldTypes.ObjectId``.
+  with ``fieldTypes.ObjectId``.
 
 - The ``a`` field is an ``Int``, a data type available in Spark.
 
@@ -110,6 +110,6 @@ To create DataFrames with custom MongoDB data types:
 The example above creates a DataFrame where:
 
 - The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
-  using ``StructFields.objectId``.
+  with ``StructFields.objectId``.
 
 - The ``a`` field is an ``Int``, a data type available in Spark.
