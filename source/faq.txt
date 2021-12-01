@@ -79,8 +79,8 @@ To create DataFrames with custom MongoDB data types:
 - Declare schemas using the ``StructFields`` helpers for data types 
   that are not natively supported by Spark 
   (e.g. ``StructFields.objectId``). Refer to 
-  :ref:`<bson-spark-datatypes>` for the Spark data structure 
-  underlying each custom MongoDB BSON type.
+  :ref:`<bson-spark-datatypes>` for the data structure 
+  underlying each custom MongoDB BSON type in Spark.
 
 .. code-block:: scala
    
