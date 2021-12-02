@@ -85,7 +85,7 @@ Spark DataFrames
 ~~~~~~~~~~~~~~~~
 
 To create a DataFrame with custom MongoDB data types, you must supply 
-those types when your create your RDD and schema:
+those types when you create the RDD and schema:
 
 - Create RDDs using custom MongoDB BSON types 
   (e.g. ``ObjectId``). The Spark Connector handles converting 
