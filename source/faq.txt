@@ -51,7 +51,7 @@ to use and define the Schema when using DataFrames.
 How do I use MongoDB BSON types that are unsupported in Spark?
 --------------------------------------------------------------
 
-Some custom MongoDB BSON types, such as ``ObjectId``\s, are unsupported 
+Some custom MongoDB BSON types, such as ``ObjectId``, are unsupported 
 in Spark.
 
 The MongoDB Spark Connector converts custom MongoDB data types to and 
@@ -63,7 +63,7 @@ Spark Datasets
 ~~~~~~~~~~~~~~
 
 To create a standard Dataset with custom MongoDB data types, use 
-``fieldType`` helpers: 
+``fieldTypes`` helpers:
 
 .. code-block:: scala
    
@@ -73,27 +73,29 @@ To create a standard Dataset with custom MongoDB data types, use
    val ds = spark.createDataset(Seq(MyData(fieldTypes.ObjectId(new ObjectId()), 99)))
    ds.show()
 
-The example above creates a Dataset where:
+The preceding example creates a Dataset containing the following fields 
+and value types:
 
 - The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
-  with ``fieldTypes.ObjectId``.
+  by ``fieldTypes.ObjectId``.
 
 - The ``a`` field is an ``Int``, a data type available in Spark.
 
 Spark DataFrames
 ~~~~~~~~~~~~~~~~
 
-To create DataFrames with custom MongoDB data types:
+To create a DataFrame with custom MongoDB data types, you must supply 
+those types when your create your RDD and schema:
 
 - Create RDDs using custom MongoDB BSON types 
-  (e.g. ``ObjectId``). The MongoDB Spark Connector handles converting 
+  (e.g. ``ObjectId``). The Spark Connector handles converting 
   those custom types into Spark-compatible data types.
 
 - Declare schemas using the ``StructFields`` helpers for data types 
   that are not natively supported by Spark 
   (e.g. ``StructFields.objectId``). Refer to 
-  :ref:`<bson-spark-datatypes>` for the data structure 
-  underlying each custom MongoDB BSON type in Spark.
+  :ref:`<bson-spark-datatypes>` for the mapping between BSON and custom 
+  MongoDB Spark types.
 
 .. code-block:: scala
    
@@ -107,9 +109,10 @@ To create DataFrames with custom MongoDB data types:
    val df = spark.createDataFrame(rdd, schema)
    df.show()
 
-The example above creates a DataFrame where:
+The preceding example creates a DataFrame containing the following 
+fields and value types:
 
 - The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
-  with ``StructFields.objectId``.
+  by ``StructFields.objectId``.
 
 - The ``a`` field is an ``Int``, a data type available in Spark.

@@ -268,8 +268,9 @@ DataTypes
 ---------
 
 Spark supports a limited number of data types to ensure that all BSON
-types can be round tripped in and out of Spark DataFrames/Datasets. For
-any unsupported BSON Types, custom StructTypes are created. 
+types can be round tripped in and out of Spark DataFrames/Datasets. The 
+Spark Connector creates custom StructTypes for any unsupported BSON 
+types.
 
 The following table shows the mapping between the BSON Types and Spark
 Types:
