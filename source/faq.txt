@@ -74,7 +74,7 @@ To create a standard Dataset with custom MongoDB data types, use
    ds.show()
 
 The preceding example creates a Dataset containing the following fields 
-and value types:
+and data types:
 
 - The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
   by ``fieldTypes.ObjectId``.
@@ -110,7 +110,7 @@ those types when you create the RDD and schema:
    df.show()
 
 The preceding example creates a DataFrame containing the following 
-fields and value types:
+fields and data types:
 
 - The ``id`` field is a custom MongoDB BSON type, ``ObjectId``, defined 
   by ``StructFields.objectId``.
