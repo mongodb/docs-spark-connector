@@ -131,43 +131,16 @@ You can configure the following properties to read from MongoDB:
             **Default**. Wraps the MongoSamplePartitioner and provides
             help for users of older versions of MongoDB.
 
-       - ``MongoSamplePartitioner``
-             **Requires MongoDB 3.2**. A general purpose partitioner for
-             all deployments. Uses the average document size and random
-             sampling of the collection to determine suitable
-             partitions for the collection. For configuration settings
-             for the MongoSamplePartitioner, see
-             :ref:`conf-mongosamplepartitioner`.
+       - :ref:`MongoSamplePartitioner <conf-mongosamplepartitioner>` 
+            **Requires MongoDB 3.2**.
 
-       - ``MongoShardedPartitioner``
-             A partitioner for sharded clusters. Partitions the
-             collection based on the data chunks. Requires read access
-             to the ``config`` database. For configuration settings for
-             the MongoShardedPartitioner, see
-             :ref:`conf-mongoshardedpartitioner`.
+       - :ref:`MongoShardedPartitioner <conf-mongoshardedpartitioner>`
 
-       - ``MongoSplitVectorPartitioner``
-             A partitioner for standalone or replica sets. Uses the
-             :dbcommand:`splitVector` command on the standalone or the
-             primary to determine the partitions of the database.
-             Requires privileges to run :dbcommand:`splitVector`
-             command. For configuration settings for the
-             MongoSplitVectorPartitioner, see
-             :ref:`conf-mongosplitvectorpartitioner`.
+       - :ref:`MongoSplitVectorPartitioner <conf-mongosplitvectorpartitioner>`
 
-       - ``MongoPaginateByCountPartitioner``
-             A slow, general purpose partitioner for all deployments.
-             Creates a specific number of partitions. Requires a query
-             for every partition. For configuration settings for the
-             MongoPaginateByCountPartitioner, see
-             :ref:`conf-mongopaginatebycountpartitioner`.
+       - :ref:`MongoPaginateByCountPartitioner <conf-mongopaginatebycountpartitioner>`
 
-       - ``MongoPaginateBySizePartitioner``
-             A slow, general purpose partitioner for all deployments.
-             Creates partitions based on data size. Requires a query
-             for every partition. For configuration settings for the
-             MongoPaginateBySizePartitioner, see
-             :ref:`conf-mongopaginatebysizepartitioner`.
+       - :ref:`MongoPaginateBySizePartitioner <conf-mongopaginatebysizepartitioner>`
 
        You can also specify a custom partitioner implementation. For
        custom implementations of the ``MongoPartitioner`` trait, provide
@@ -233,6 +206,11 @@ Partitioner Configuration
 ``MongoSamplePartitioner`` Configuration
 ````````````````````````````````````````
 
+**Requires MongoDB 3.2**. A general purpose partitioner for
+all deployments. Uses the average document size and random
+sampling of the collection to determine suitable
+partitions for the collection.
+
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
@@ -249,7 +227,7 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``partitionSizeMB``
-     - The size (in MB) for each partition
+     - The size (in MB) for each partition.
 
        **Default:** ``64``
 
@@ -262,6 +240,10 @@ Partitioner Configuration
 
 ``MongoShardedPartitioner`` Configuration
 `````````````````````````````````````````
+
+A partitioner for sharded clusters. Partitions the
+collection based on the data chunks. Requires read access
+to the ``config`` database.
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
@@ -287,6 +269,12 @@ Partitioner Configuration
 ``MongoSplitVectorPartitioner`` Configuration
 `````````````````````````````````````````````
 
+A partitioner for standalone or replica sets. Uses the
+:dbcommand:`splitVector` command on the standalone or the
+primary to determine the partitions of the database.
+Requires privileges to run :dbcommand:`splitVector`
+command.
+
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
@@ -303,7 +291,7 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``partitionSizeMB``
-     - The size (in MB) for each partition
+     - The size (in MB) for each partition.
 
        **Default:** ``64``
 
@@ -311,6 +299,10 @@ Partitioner Configuration
 
 ``MongoPaginateByCountPartitioner`` Configuration
 `````````````````````````````````````````````````
+
+A slow, general purpose partitioner for all deployments.
+Creates a specific number of partitions. Requires a query
+for every partition.
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
@@ -337,6 +329,10 @@ Partitioner Configuration
 ``MongoPaginateBySizePartitioner`` Configuration
 ````````````````````````````````````````````````
 
+A slow, general purpose partitioner for all deployments.
+Creates partitions based on data size. Requires a query
+for every partition.
+
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
 .. list-table::
@@ -353,7 +349,7 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``partitionSizeMB``
-     - The size (in MB) for each partition
+     - The size (in MB) for each partition.
 
        **Default:** ``64``
 
