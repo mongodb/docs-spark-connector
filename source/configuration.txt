@@ -257,7 +257,7 @@ Partitioner Configuration
    * - ``samplesPerPartition``
      - The number of sample documents to take for each partition in 
        order to establish a ``partitionKey`` range for each partition. 
-       A greater number of ``samplesPerPartition` increases the 
+       A greater number of ``samplesPerPartition`` increases the 
        precision of finding partition ranges that match the 
        ``partitionSizeMB`` you specify.
        
