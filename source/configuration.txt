@@ -270,9 +270,9 @@ Partitioner Configuration
    per partition.
 
    The MongoDB Spark Connector samples 7820 documents (the default 10 
-   per intended partition), creates 782 partitions to hold each chunk 
-   of 128, 0.5 MB-documents, and 2 additional partitions to account for 
-   minimum and maximum partition key bounds.
+   per intended partition) and creates approximately 782 partitions to 
+   hold each chunk of 128, 0.5 MB-documents, with 2 additional 
+   partitions to account for minimum and maximum partition key bounds.
 
 .. _conf-mongoshardedpartitioner:
 
