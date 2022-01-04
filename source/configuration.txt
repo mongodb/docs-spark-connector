@@ -249,7 +249,8 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``partitionSizeMB``
-     - The size (in MB) for each partition.
+     - The size (in MB) for each partition. Smaller partition sizes 
+       create more partitions.
 
        **Default:** ``64``
 
@@ -303,7 +304,8 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``partitionSizeMB``
-     - The size (in MB) for each partition.
+     - The size (in MB) for each partition. Smaller partition sizes 
+       create more partitions.
 
        **Default:** ``64``
 
@@ -353,7 +355,8 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``partitionSizeMB``
-     - The size (in MB) for each partition.
+     - The size (in MB) for each partition. Smaller partition sizes 
+       create more partitions.
 
        **Default:** ``64``
 
