@@ -250,14 +250,29 @@ Partitioner Configuration
 
    * - ``partitionSizeMB``
      - The size (in MB) for each partition. Smaller partition sizes 
-       create more partitions.
+       create more partitions containing fewer documents.
 
        **Default:** ``64``
 
    * - ``samplesPerPartition``
-     - The number of sample documents to take for each partition.
+     - The number of sample documents to take for each partition in 
+       order to establish partition boundaries. This number
+       should be fewer than the number of documents within each 
+       of your partitions.
 
        **Default:** ``10``
+
+.. example::
+
+   For a collection with 100,000 documents with an average document 
+   size of 0.5 MB, the default ``MongoSamplePartitioner`` configuration 
+   values will create approximately 784 partitions with 128 documents 
+   per partition.
+
+   The MongoDB Spark Connector samples 7820 documents (the default 10 
+   per intended partition), creates 782 partitions to hold each chunk 
+   of 128, 0.5 MB-documents, and 2 additional partitions to account for 
+   minimum and maximum partition key bounds.
 
 .. _conf-mongoshardedpartitioner:
 
@@ -305,7 +320,7 @@ Partitioner Configuration
 
    * - ``partitionSizeMB``
      - The size (in MB) for each partition. Smaller partition sizes 
-       create more partitions.
+       create more partitions containing fewer documents.
 
        **Default:** ``64``
 
@@ -330,7 +345,8 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``numberOfPartitions``
-     - The number of partitions to create.
+     - The number of partitions to create. A greater number of 
+       partitions means fewer documents per partition.
 
        **Default:** ``64``
 
@@ -356,7 +372,7 @@ Partitioner Configuration
 
    * - ``partitionSizeMB``
      - The size (in MB) for each partition. Smaller partition sizes 
-       create more partitions.
+       create more partitions containing fewer documents.
 
        **Default:** ``64``
 
