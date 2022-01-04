@@ -135,8 +135,8 @@ You can configure the following properties to read from MongoDB:
              **Requires MongoDB 3.2**. A general purpose partitioner for
              all deployments. Uses the average document size and random
              sampling of the collection to determine suitable
-             partitions for the collection. For configuration settings
-             for the MongoSamplePartitioner, see
+             partition ranges for the collection. For configuration 
+             settings for the MongoSamplePartitioner, see
              :ref:`conf-mongosamplepartitioner`.
 
        - ``MongoShardedPartitioner``
@@ -256,23 +256,32 @@ Partitioner Configuration
 
    * - ``samplesPerPartition``
      - The number of sample documents to take for each partition in 
-       order to establish partition boundaries. This number
-       should be fewer than the number of documents within each 
-       of your partitions.
+       order to establish a ``partitionKey`` range for each partition. 
+       A greater number of ``samplesPerPartition` increases the 
+       precision of finding partition ranges that match the 
+       ``partitionSizeMB`` you specify.
+       
+       .. note::
+       
+          For sampling to improve performance, ``samplesPerPartition`` 
+          should be fewer than the number of documents within each of 
+          your partitions.
+
+          You can estimate the number of documents within each of your 
+          partitions by dividing your ``partitionSizeMB`` by the 
+          average document size (in MB) in your collection.
 
        **Default:** ``10``
 
 .. example::
 
-   For a collection with 100,000 documents with an average document 
+   For a collection with 640 documents with an average document 
    size of 0.5 MB, the default ``MongoSamplePartitioner`` configuration 
-   values will create approximately 784 partitions with 128 documents 
-   per partition.
+   values will create 5 partitions with 128 documents per partition.
 
-   The MongoDB Spark Connector samples 7820 documents (the default 10 
-   per intended partition) and creates approximately 782 partitions to 
-   hold each chunk of 128, 0.5 MB-documents, with 2 additional 
-   partitions to account for minimum and maximum partition key bounds.
+   The MongoDB Spark Connector samples 50 documents (the default 10 
+   per intended partition) and creates 5 partitions by sampled 
+   ``partitionKey`` ranges to hold each chunk of 128, 0.5 MB-documents.
 
 .. _conf-mongoshardedpartitioner:
 
