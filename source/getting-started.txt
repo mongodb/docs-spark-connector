@@ -10,39 +10,109 @@ Getting Started
    :mongo-spark:`JavaIntroduction.java
    </blob/master/examples/src/test/java/tour/JavaIntroduction.java>`.
 
+First, choose the language in which you want to work with 
+the Spark Connector:
+
+.. tabs-drivers::
+
+   .. tab:: Scala
+      :tabid: scala
+         
+   .. tab:: Java
+      :tabid: java-sync
+
+   .. tab:: Python
+      :tabid: python
+
+
 Prerequisites
 -------------
 
-.. include:: /includes/list-prerequisites.rst
+.. tabs-drivers::
+   :hidden: true
+
+   .. tab::
+      :tabid: scala
+
+      .. include:: /includes/list-prerequisites.rst
+
+   .. tab::
+      :tabid: java-sync
+
+      .. include:: /includes/list-prerequisites.rst
+
+   .. tab::
+      :tabid: python
+
+      .. include:: /includes/list-prerequisites.rst
 
 - Java 8 or later.
 
-Dependency Management
----------------------
+.. tabs-drivers::
+   :hidden: true
 
-.. include:: /includes/scala-java-dependencies.rst
+   .. tab::
+      :tabid: scala
 
-The following excerpt is from a Maven ``pom.xml`` file:
+      Dependency Management
+      ---------------------
 
-.. code-block:: xml
-   
-   <dependencies>
-     <dependency>
-       <groupId>org.mongodb.spark</groupId>
-       <artifactId>mongo-spark-connector_{+scala-version+}</artifactId>
-       <version>{+current-version+}</version>
-     </dependency>
-     <dependency>
-       <groupId>org.apache.spark</groupId>
-       <artifactId>spark-core_{+scala-version+}</artifactId>
-       <version>{+spark-core-version+}</version>
-     </dependency>
-     <dependency>
-       <groupId>org.apache.spark</groupId>
-       <artifactId>spark-sql_{+scala-version+}</artifactId>
-       <version>{+spark-sql-version+}</version>
-     </dependency>
-   </dependencies>
+      .. include:: /includes/scala-java-dependencies.rst
+
+      The following excerpt is from a Maven ``pom.xml`` file:
+      
+      .. code-block:: xml
+         
+         <dependencies>
+           <dependency>
+             <groupId>org.mongodb.spark</groupId>
+             <artifactId>mongo-spark-connector_{+scala-version+}</artifactId>
+             <version>{+current-version+}</version>
+           </dependency>
+           <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-core_{+scala-version+}</artifactId>
+             <version>{+spark-core-version+}</version>
+           </dependency>
+           <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-sql_{+scala-version+}</artifactId>
+             <version>{+spark-sql-version+}</version>
+           </dependency>
+         </dependencies>
+
+   .. tab::
+      :tabid: java-sync
+
+      Dependency Management
+      ---------------------
+
+      .. include:: /includes/scala-java-dependencies.rst
+
+      The following excerpt is from a Maven ``pom.xml`` file:
+      
+      .. code-block:: xml
+         
+         <dependencies>
+           <dependency>
+             <groupId>org.mongodb.spark</groupId>
+             <artifactId>mongo-spark-connector_{+scala-version+}</artifactId>
+             <version>{+current-version+}</version>
+           </dependency>
+           <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-core_{+scala-version+}</artifactId>
+             <version>{+spark-core-version+}</version>
+           </dependency>
+           <dependency>
+             <groupId>org.apache.spark</groupId>
+             <artifactId>spark-sql_{+scala-version+}</artifactId>
+             <version>{+spark-sql-version+}</version>
+           </dependency>
+         </dependencies>
+
+   .. tab::
+      :tabid: python
 
 Configuration
 -------------
