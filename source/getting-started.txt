@@ -111,9 +111,3 @@ Next Steps
 
 - :doc:`write-to-mongodb`
 - :doc:`read-from-mongodb`
-
-.. toctree::
-   :titlesonly:
-
-   write-to-mongodb
-   read-from-mongodb

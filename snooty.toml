@@ -3,7 +3,7 @@ title = "MongoDB Spark Connector"
 
 intersphinx = ["https://docs.mongodb.com/manual/objects.inv"]
 
-toc_landing_pages = ["/java-api", "/python-api", "/scala-api", "/r-api"]
+toc_landing_pages = ["configuration", "/java-api", "/python-api", "/scala-api", "/r-api"]
 
 [constants]
 current-version = "3.0.1"
