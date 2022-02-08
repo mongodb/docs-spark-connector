@@ -7,11 +7,8 @@ Getting Started
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 1
+   :depth: 2
    :class: singlecol
-
-First, select the language in which you want to work with 
-the Spark Connector:
 
 .. tabs-drivers::
 
@@ -31,23 +28,26 @@ Prerequisites
 
 - Java 8 or later.
 
+Getting Started
+---------------
+
 .. tabs-drivers::
    :hidden: true
 
    .. tab::
       :tabid: java-sync
 
-      .. include:: /includes/java-api.rst
+      .. include:: /java/api.txt
 
    .. tab::
       :tabid: python
 
-      .. include:: /includes/python-api.rst
+      .. include:: /python/api.txt
 
    .. tab::
       :tabid: scala
 
-      .. include:: /includes/scala-api.rst
+      .. include:: /scala/api.txt
 
 Tutorials
 ---------
