@@ -1,9 +1,5 @@
 .. _scala-write:
 
-================
-Write to MongoDB
-================
-
 .. include:: /includes/scala-java-write.rst
 
 .. code-block:: scala

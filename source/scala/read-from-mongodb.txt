@@ -1,10 +1,5 @@
 .. _scala-read:
 
-=================
-Read From MongoDB
-=================
-
-
 Use the ``MongoSpark.load`` method to create an RDD representing
 a collection.
 

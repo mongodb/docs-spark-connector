@@ -10,17 +10,6 @@ Read Configuration Options
    :depth: 2
    :class: singlecol
 
-.. tabs-drivers::
-
-   .. tab:: Java
-      :tabid: java-sync
-
-   .. tab:: Python
-      :tabid: python
-
-   .. tab:: Scala
-      :tabid: scala
-
 .. _spark-input-conf:
 
 Input Configuration
@@ -388,21 +377,3 @@ database for the connection is ``foobar``:
 
    spark.mongodb.input.uri=mongodb://127.0.0.1/foobar
    spark.mongodb.input.database=bar
-
-.. tabs-drivers::
-   :hidden: true
-
-   .. tab::
-      :tabid: java-sync
-
-      .. include:: /includes/java-api.rst
-
-   .. tab::
-      :tabid: python
-
-      .. include:: /includes/python-api.rst
-
-   .. tab::
-      :tabid: scala
-
-      .. include:: /includes/scala-api.rst

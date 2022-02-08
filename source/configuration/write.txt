@@ -10,17 +10,6 @@ Write Configuration Options
    :depth: 2
    :class: singlecol
 
-.. tabs-drivers::
-
-   .. tab:: Java
-      :tabid: java-sync
-
-   .. tab:: Python
-      :tabid: python
-
-   .. tab:: Scala
-      :tabid: scala
-
 .. _spark-output-conf:
 
 Output Configuration
@@ -146,21 +135,3 @@ database for the connection is ``foobar``:
 
    spark.mongodb.output.uri=mongodb://127.0.0.1/foobar
    spark.mongodb.output.database=bar
-
-.. tabs-drivers::
-   :hidden: true
-
-   .. tab::
-      :tabid: java-sync
-
-      .. include:: /java/write-to-mongodb.txt
-
-   .. tab::
-      :tabid: python
-
-      .. include:: /python/write-to-mongodb.txt
-
-   .. tab::
-      :tabid: scala
-
-      .. include:: /scala/write-to-mongodb.txt
