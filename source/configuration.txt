@@ -59,6 +59,31 @@ Via System Property
 
 The connector provides a cache for ``MongoClients`` which can only be
 configured via the System Property. See :ref:`cache-configuration`.
+
+.. _cache-configuration:
+
+Cache Configuration
+-------------------
+
+The MongoConnector includes a cache for MongoClients, so workers can
+share the MongoClient across threads.
+
+.. important::
+
+   As the cache is setup before the Spark Configuration is available,
+   the cache can only be configured via a System Property.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - System Property name
+     - Description
+
+   * - ``mongodb.keep_alive_ms``
+     - The length of time to keep a ``MongoClient`` available for sharing.
+
+       **Default:** ``5000``
        
 .. toctree::
    :titlesonly:

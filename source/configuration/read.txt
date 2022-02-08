@@ -7,9 +7,8 @@ Read Configuration Options
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 1
+   :depth: 2
    :class: singlecol
-
 
 .. _spark-input-conf:
 
@@ -339,3 +338,42 @@ Partitioner Configuration
        create more partitions containing fewer documents.
 
        **Default:** ``64``
+
+.. _configure-input-uri:
+
+``uri`` Configuration Setting
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can set all :ref:`spark-input-conf` via the input ``uri`` setting.
+
+For example, consider the following example which sets the input
+``uri`` setting via ``SparkConf``:
+
+.. note::
+
+   If you use ``SparkConf`` to set the connector's input configurations, 
+   prefix ``spark.mongodb.input.`` to the setting.
+
+.. code:: cfg
+
+   spark.mongodb.input.uri=mongodb://127.0.0.1/databaseName.collectionName?readPreference=primaryPreferred
+
+The configuration corresponds to the following separate configuration
+settings:
+
+.. code:: cfg
+
+   spark.mongodb.input.uri=mongodb://127.0.0.1/
+   spark.mongodb.input.database=databaseName
+   spark.mongodb.input.collection=collectionName
+   spark.mongodb.input.readPreference.name=primaryPreferred
+
+If you specify a setting both in the ``uri`` and in a separate
+configuration, the ``uri`` setting overrides the separate
+setting. For example, given the following configuration, the input
+database for the connection is ``foobar``:
+
+.. code:: cfg
+
+   spark.mongodb.input.uri=mongodb://127.0.0.1/foobar
+   spark.mongodb.input.database=bar
