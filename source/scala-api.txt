@@ -1,9 +1,3 @@
-===========================
-Spark Connector Scala Guide
-===========================
-
-.. default-domain:: mongodb
-
 .. note:: Source Code
 
    For the source code that contains the examples below, see
@@ -129,21 +123,3 @@ If you get a ``java.net.BindException: Can't assign requested address``,
 If you have errors running the examples in this tutorial, you may need
 to clear your local ivy cache (``~/.ivy2/cache/org.mongodb.spark`` and
 ``~/.ivy2/jars``).
-
-Tutorials
----------
-
-- :doc:`/scala/write-to-mongodb`
-- :doc:`/scala/read-from-mongodb`
-- :doc:`/scala/aggregation`
-- :doc:`/scala/datasets-and-sql`
-- :doc:`/scala/streaming`
-
-.. toctree::
-   :titlesonly:
-
-   /scala/write-to-mongodb
-   /scala/read-from-mongodb
-   /scala/aggregation
-   /scala/datasets-and-sql
-   /scala/streaming
