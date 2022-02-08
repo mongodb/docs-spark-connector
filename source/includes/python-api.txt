@@ -1,15 +1,3 @@
-============================
-Spark Connector Python Guide
-============================
-
-.. default-domain:: mongodb
-
-.. contents:: On this page
-   :local:
-   :backlinks: none
-   :depth: 2
-   :class: singlecol
-
 .. note:: Source Code
 
    For the source code that contains the examples below, see
@@ -67,20 +55,3 @@ configuration options.
 
 You can use a ``SparkSession`` object to write data to MongoDB, read
 data from MongoDB, create DataFrames, and perform SQL operations.
-
-Tutorials
----------
-
-- :doc:`/python/write-to-mongodb`
-- :doc:`/python/read-from-mongodb`
-- :doc:`/python/aggregation`
-- :doc:`/python/filters-and-sql`
-
-.. toctree::
-   :titlesonly:
-
-   /python/write-to-mongodb
-   /python/read-from-mongodb
-   /python/aggregation
-   /python/filters-and-sql
-
