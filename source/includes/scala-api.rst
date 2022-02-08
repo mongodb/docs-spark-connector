@@ -4,27 +4,15 @@
    :mongo-spark:`Introduction.scala
    </blob/master/examples/src/test/scala/tour/Introduction.scala>`.
 
-.. _gs-prereq:
-
-Prerequisites
--------------
-
-.. include:: /includes/list-prerequisites.rst
-
-.. _scala-getting-started:
-
-Getting Started
----------------
-
 Spark Shell
-~~~~~~~~~~~
+-----------
 
 When starting the Spark shell, specify:
 
 .. include:: /includes/extracts/command-line-start-spark-shell.rst
 
 Import the MongoDB Connector Package
-````````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enable MongoDB Connector specific functions and implicits for the
 ``SparkSession`` and RDD (Resilient Distributed Dataset) by importing
@@ -35,7 +23,7 @@ the following package in the Spark shell:
    import com.mongodb.spark._
 
 Connect to MongoDB
-``````````````````
+~~~~~~~~~~~~~~~~~~
 
 Connection to MongoDB happens automatically when an RDD action
 requires a :ref:`read <scala-read>` from MongoDB or a
@@ -44,10 +32,10 @@ requires a :ref:`read <scala-read>` from MongoDB or a
 .. _scala-app:
 
 Self-Contained Scala Application
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
 Dependency Management
-`````````````````````
+~~~~~~~~~~~~~~~~~~~~~
 
 .. include:: /includes/scala-java-dependencies.rst
 
@@ -64,7 +52,7 @@ a `SBT <http://www.scala-sbt.org/documentation.html>`_ ``build.scala`` file:
    )
 
 Configuration
-`````````````
+~~~~~~~~~~~~~
 
 .. include:: /includes/scala-java-sparksession-config.rst
 

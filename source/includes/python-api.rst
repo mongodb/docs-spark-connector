@@ -4,18 +4,8 @@
    :mongo-spark:`introduction.py
    </blob/master/examples/src/test/python/introduction.py>`.
 
-Prerequisites
--------------
-
-.. include:: /includes/list-prerequisites.rst
-
-.. _pyspark-shell:
-
-Getting Started
----------------
-
 Python Spark Shell
-~~~~~~~~~~~~~~~~~~
+------------------
 
 This tutorial uses the ``pyspark`` shell, but the code works
 with self-contained Python applications as well.
@@ -27,7 +17,7 @@ When starting the ``pyspark`` shell, you can specify:
 .. _python-basics:
 
 Create a ``SparkSession`` Object
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
 .. note:: 
 

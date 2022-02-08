@@ -4,18 +4,8 @@
    :mongo-spark:`JavaIntroduction.java
    </blob/master/examples/src/test/java/tour/JavaIntroduction.java>`.
 
-Prerequisites
--------------
-
-.. include:: /includes/list-prerequisites.rst
-
-- Java 8 or later.
-
-Getting Started
----------------
-
 Dependency Management
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 .. include:: /includes/scala-java-dependencies.rst
 
@@ -42,7 +32,7 @@ The following excerpt is from a Maven ``pom.xml`` file:
    </dependencies>
 
 Configuration
-~~~~~~~~~~~~~
+-------------
 
 For the configuration classes, use the Java-friendly ``create`` methods
 instead of the native Scala ``apply`` methods.
@@ -97,7 +87,7 @@ You can use a ``SparkSession`` object to write data to MongoDB, read
 data from MongoDB, create Datasets, and perform SQL operations.
 
 ``MongoSpark`` Helper
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 To facilitate interaction between MongoDB and Spark, the MongoDB Spark
 Connector provides the ``com.mongodb.spark.api.java.MongoSpark``
