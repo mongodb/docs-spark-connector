@@ -107,8 +107,6 @@ Alternatively, you can use ``SparkSession`` methods to create DataFrames:
 
    val df6 = sparkSession.read.format("mongo").options(customReadConfig.asOptions).load()
 
-.. _scala-dataset-filters:
-
 Filters
 -------
 
@@ -255,8 +253,6 @@ to MongoDB using the DataFrameWriter directly:
 
    centenarians.write.option("collection", "hundredClub").mode("overwrite").mongo()
    centenarians.write.option("collection", "hundredClub").mode("overwrite").format("mongo").save()
-
-.. _bson-spark-datatypes:
 
 DataTypes
 ---------

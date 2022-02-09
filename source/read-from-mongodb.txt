@@ -12,6 +12,10 @@ Read from MongoDB
    :depth: 1
    :class: singlecol 
 
+.. _scala-read:
+.. _java-read:
+.. _gs-read-config:
+
 Overview
 --------
 
@@ -51,6 +55,9 @@ Aggregation
       :tabid: scala
 
       .. include:: /scala/aggregation.txt
+
+.. _bson-spark-datatypes:
+.. _scala-dataset-filters:
 
 Spark API and SQL
 -----------------

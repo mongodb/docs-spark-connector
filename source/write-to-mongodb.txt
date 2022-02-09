@@ -6,6 +6,10 @@ Write to MongoDB
 
 .. default-domain:: mongodb
 
+.. _scala-write:
+.. _java-write:
+.. _gs-write-config:
+
 .. tabs-drivers::
 
    .. tab::

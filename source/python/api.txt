@@ -14,8 +14,6 @@ When starting the ``pyspark`` shell, you can specify:
 
 .. include:: /includes/extracts/command-line-start-pyspark.rst
 
-.. _python-basics:
-
 Create a ``SparkSession`` Object
 --------------------------------
 

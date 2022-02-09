@@ -19,6 +19,7 @@ Prerequisites
 
 .. _pyspark-shell:
 .. _scala-getting-started:
+.. _python-basics:
 
 Getting Started
 ---------------
