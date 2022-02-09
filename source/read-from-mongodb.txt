@@ -14,56 +14,73 @@ Read from MongoDB
 
 .. tabs-drivers::
 
+   .. tab:: Java
+      :tabid: java-sync
+
+   .. tab:: Python
+      :tabid: python
+
+   .. tab:: Scala
+      :tabid: scala   
+
+
+Overview
+--------
+
+.. tabs-drivers::
+
    .. tab::
       :tabid: java-sync
 
-      Overview
-      --------
-
       .. include:: /java/read-from-mongodb.txt
 
-      Aggregation
-      -----------
+   .. tab::
+      :tabid: python
+
+      .. include:: /python/read-from-mongodb.txt
+
+   .. tab::
+      :tabid: scala
+
+      .. include:: /scala/read-from-mongodb.txt
+
+Aggregation
+-----------
+
+.. tabs-drivers::
+
+   .. tab::
+      :tabid: java-sync
 
       .. include:: /java/aggregation.txt
 
-      Datasets and SQL
-      ----------------
+   .. tab::
+      :tabid: python
+
+      .. include:: /python/aggregation.txt
+
+   .. tab::
+      :tabid: scala
+
+      .. include:: /scala/aggregation.txt
+
+Spark API and SQL
+-----------------
+
+.. tabs-drivers::
+
+   .. tab::
+      :tabid: java-sync
 
       .. include:: /java/datasets-and-sql.txt
 
    .. tab::
       :tabid: python
 
-      Overview
-      --------
-
-      .. include:: /python/read-from-mongodb.txt
-
-      Aggregation
-      -----------
-
-      .. include:: /python/aggregation.txt
-
-      Filters and SQL
-      ---------------
-
       .. include:: /python/filters-and-sql.txt
 
    .. tab::
-      :tabid: scala
-
-      Overview
-      --------
-
-      .. include:: /scala/read-from-mongodb.txt
-
-      Aggregation
-      -----------
-
-      .. include:: /scala/aggregation.txt
-
-      Datasets and SQL
-      ----------------
+      :tabid: scala 
 
       .. include:: /scala/datasets-and-sql.txt
+
