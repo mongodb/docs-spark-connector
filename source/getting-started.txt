@@ -10,17 +10,6 @@ Getting Started
    :depth: 1
    :class: singlecol
 
-.. tabs-drivers::
-
-   .. tab:: Java
-      :tabid: java-sync
-
-   .. tab:: Python
-      :tabid: python
-
-   .. tab:: Scala
-      :tabid: scala
-
 Prerequisites
 -------------
 
@@ -28,11 +17,13 @@ Prerequisites
 
 - Java 8 or later.
 
+.. _pyspark-shell:
+.. _scala-getting-started:
+
 Getting Started
 ---------------
 
 .. tabs-drivers::
-   :hidden: true
 
    .. tab::
       :tabid: java-sync
