@@ -1,9 +1,3 @@
-================
-Datasets and SQL
-================
-
-.. default-domain:: mongodb
-
 .. note:: Source Code
 
    For the source code that contains the examples below, see

@@ -10,19 +10,7 @@ Read from MongoDB
    :local:
    :backlinks: none
    :depth: 1
-   :class: singlecol
-
-.. tabs-drivers::
-
-   .. tab:: Java
-      :tabid: java-sync
-
-   .. tab:: Python
-      :tabid: python
-
-   .. tab:: Scala
-      :tabid: scala   
-
+   :class: singlecol 
 
 Overview
 --------
