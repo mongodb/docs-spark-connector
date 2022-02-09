@@ -17,26 +17,53 @@ Read from MongoDB
    .. tab::
       :tabid: java-sync
 
+      Overview
+      --------
+
       .. include:: /java/read-from-mongodb.txt
 
+      Aggregation
+      -----------
+
       .. include:: /java/aggregation.txt
+
+      Datasets and SQL
+      ----------------
 
       .. include:: /java/datasets-and-sql.txt
 
    .. tab::
       :tabid: python
 
+      Overview
+      --------
+
       .. include:: /python/read-from-mongodb.txt
 
+      Aggregation
+      -----------
+
       .. include:: /python/aggregation.txt
+
+      Filters and SQL
+      ---------------
 
       .. include:: /python/filters-and-sql.txt
 
    .. tab::
       :tabid: scala
 
+      Overview
+      --------
+
       .. include:: /scala/read-from-mongodb.txt
 
+      Aggregation
+      -----------
+
       .. include:: /scala/aggregation.txt
+
+      Datasets and SQL
+      ----------------
 
       .. include:: /scala/datasets-and-sql.txt

@@ -40,7 +40,6 @@ or a :mongo-spark:`WriteConfig
 </blob/master/src/main/scala/com/mongodb/spark/config/WriteConfig.scala>` object.
 ``ReadConfig`` and ``WriteConfig`` settings override any
 corresponding settings in ``SparkConf``.
-
 For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`. For
 more details, refer to the source for these methods.
 
