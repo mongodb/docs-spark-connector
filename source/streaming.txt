@@ -14,13 +14,14 @@ Spark Streaming
 
 .. tabs-drivers::
 
-   .. tab:: Java
-      :tabid: java-sync
+   tabs:
+     - id: java-sync
+       content: |
 
-   .. tab:: Python
-      :tabid: python
+     - id: python
+       content: |
 
-   .. tab:: Scala
-      :tabid: scala
+     - id: scala
+       content: |
 
-      .. include:: /scala/streaming.txt
+         .. include:: /scala/streaming.txt

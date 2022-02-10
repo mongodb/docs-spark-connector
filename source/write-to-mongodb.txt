@@ -12,17 +12,18 @@ Write to MongoDB
 
 .. tabs-drivers::
 
-   .. tab::
-      :tabid: java-sync
+   tabs:
+     - id: java-sync
+       content: |
 
-      .. include:: /java/write-to-mongodb.txt
+         .. include:: /java/write-to-mongodb.txt
 
-   .. tab::
-      :tabid: python
+     - id: python
+       content: |
 
-      .. include:: /python/write-to-mongodb.txt
+         .. include:: /python/write-to-mongodb.txt
 
-   .. tab::
-      :tabid: scala
+     - id: scala
+       content: |
 
-      .. include:: /scala/write-to-mongodb.txt
+         .. include:: /scala/write-to-mongodb.txt

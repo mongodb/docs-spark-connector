@@ -19,42 +19,46 @@ Read from MongoDB
 Overview
 --------
 
+.. tabs-selector:: drivers
+
 .. tabs-drivers::
 
-   .. tab::
-      :tabid: java-sync
+   tabs:
+     - id: java-sync
+       content: |
 
-      .. include:: /java/read-from-mongodb.txt
+         .. include:: /java/read-from-mongodb.txt
 
-   .. tab::
-      :tabid: python
+     - id: python
+       content: |
 
-      .. include:: /python/read-from-mongodb.txt
+         .. include:: /python/read-from-mongodb.txt
 
-   .. tab::
-      :tabid: scala
+     - id: scala
+       content: |
 
-      .. include:: /scala/read-from-mongodb.txt
+         .. include:: /scala/read-from-mongodb.txt
 
 Aggregation
 -----------
 
 .. tabs-drivers::
 
-   .. tab::
-      :tabid: java-sync
+   tabs:
+     - id: java-sync
+       content: |
 
-      .. include:: /java/aggregation.txt
+         .. include:: /java/aggregation.txt
 
-   .. tab::
-      :tabid: python
+     - id: python
+       content: |
 
-      .. include:: /python/aggregation.txt
+         .. include:: /python/aggregation.txt
 
-   .. tab::
-      :tabid: scala
+     - id: scala
+       content: |
 
-      .. include:: /scala/aggregation.txt
+         .. include:: /scala/aggregation.txt
 
 .. _bson-spark-datatypes:
 .. _scala-dataset-filters:
@@ -64,18 +68,19 @@ Spark API and SQL
 
 .. tabs-drivers::
 
-   .. tab::
-      :tabid: java-sync
+   tabs:
+     - id: java-sync
+       content: |
 
-      .. include:: /java/datasets-and-sql.txt
+         .. include:: /java/datasets-and-sql.txt
 
-   .. tab::
-      :tabid: python
+     - id: python
+       content: |
 
-      .. include:: /python/filters-and-sql.txt
+         .. include:: /python/filters-and-sql.txt
 
-   .. tab::
-      :tabid: scala 
+     - id: scala
+       content: |
 
-      .. include:: /scala/datasets-and-sql.txt
+         .. include:: /scala/datasets-and-sql.txt
 
