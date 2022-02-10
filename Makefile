@@ -4,11 +4,23 @@ STAGING_URL="https://docs-mongodborg-staging.corp.mongodb.com"
 PRODUCTION_URL="https://docs.mongodb.com"
 STAGING_BUCKET=docs-mongodb-org-staging
 PRODUCTION_BUCKET=docs-mongodb-org-prod
+PROJECT=spark-connector
 PREFIX=spark-connector
+STGPREFIX=spark-connector
+
+
+ifeq ($(ENV), 'dotcom')
+	STAGING_URL="https://mongodbcom-cdn.website.staging.corp.mongodb.com"
+	STAGING_BUCKET=docs-mongodb-org-dotcomstg
+	PRODUCTION_URL="https://mongodb.com"
+	PRODUCTION_BUCKET=docs-mongodb-org-dotcomprd
+	PREFIX=docs-qa/spark-connector
+	STGPREFIX=docs/spark-connector
+endif
 
 # Parse our published-branches configuration file to get the name of
 # the current "stable" branch. This is weird and dumb, yes.
-STABLE_BRANCH=`grep 'manual' build/docs-tools/data/${PREFIX}-published-branches.yaml | cut -d ':' -f 2 | grep -Eo '[0-9a-z.]+'`
+STABLE_BRANCH=`grep 'manual' build/docs-tools/data/${PROJECT}-published-branches.yaml | cut -d ':' -f 2 | grep -Eo '[0-9a-z.]+'`
 
 # Informs make that these are not file names and that they are a recipe below
 .PHONY: html help stage fake-deploy deploy deploy-search-index check-redirects
@@ -31,12 +43,12 @@ publish: ## Builds this branch's publishable HTML and other artifacts under buil
 	giza make publish
 
 stage: html ## Stages the previously built HTML artifacts to the staging URL with the prefix above, your username, and the git branch appended.
-	mut-publish build/${GIT_BRANCH}/html ${STAGING_BUCKET} --prefix=${PREFIX} --stage ${ARGS}
-	@echo "Hosted at ${STAGING_URL}/${PREFIX}/${USER}/${GIT_BRANCH}/index.html"
+	mut-publish build/${GIT_BRANCH}/html ${STAGING_BUCKET} --prefix=${STGPREFIX} --stage ${ARGS}
+	@echo "Hosted at ${STAGING_URL}/${STGPREFIX}/${USER}/${GIT_BRANCH}/index.html"
 
 fake-deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the staging bucket. Mimics production deployment by using the same arguments as "deploy".
-	mut-publish build/public/${GIT_BRANCH} ${STAGING_BUCKET} --prefix=${PREFIX}/${GIT_BRANCH} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
-	@echo "Hosted at ${STAGING_URL}/${PREFIX}/index.html"
+	mut-publish build/public/${GIT_BRANCH} ${STAGING_BUCKET} --prefix=${STGPREFIX}/${GIT_BRANCH} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
+	@echo "Hosted at ${STAGING_URL}/${STGPREFIX}/index.html"
 
 
 deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the production bucket.
@@ -54,7 +66,7 @@ deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the p
 deploy-search-index: ## Update the search index for this branch
 	@echo "Building search index"
 	if [ ${STABLE_BRANCH} = ${GIT_BRANCH} ]; then \
-		mut-index upload build/public/${GIT_BRANCH} -o ${PREFIX}-${GIT_BRANCH}.json -u ${PRODUCTION_URL}/${PREFIX}/current -g -s; \
+		mut-index upload build/public/${GIT_BRANCH} -o ${PROJECT}-${GIT_BRANCH}.json -u ${PRODUCTION_URL}/${PREFIX}/current -g -s; \
 	else \
-		mut-index upload build/public/${GIT_BRANCH} -o ${PREFIX}-${GIT_BRANCH}.json -u ${PRODUCTION_URL}/${PREFIX}/${GIT_BRANCH} -s; \
+		mut-index upload build/public/${GIT_BRANCH} -o ${PROJECT}-${GIT_BRANCH}.json -u ${PRODUCTION_URL}/${PREFIX}/${GIT_BRANCH} -s; \
 	fi
