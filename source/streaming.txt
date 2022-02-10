@@ -12,6 +12,8 @@ Spark Streaming
    :depth: 1
    :class: singlecol
 
+.. tabs-selector:: drivers
+
 .. tabs-drivers::
 
    tabs:

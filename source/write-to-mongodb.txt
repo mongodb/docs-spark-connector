@@ -10,6 +10,8 @@ Write to MongoDB
 .. _java-write:
 .. _gs-write-config:
 
+.. tabs-selector:: drivers
+
 .. tabs-drivers::
 
    tabs:
