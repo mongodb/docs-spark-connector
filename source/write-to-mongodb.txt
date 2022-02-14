@@ -29,3 +29,4 @@ Write to MongoDB
        content: |
 
          .. include:: /scala/write-to-mongodb.txt
+
