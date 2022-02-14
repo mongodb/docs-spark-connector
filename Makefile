@@ -8,15 +8,12 @@ PROJECT=spark-connector
 PREFIX=spark-connector
 STGPREFIX=spark-connector
 
-
-ifeq ($(ENV), 'dotcom')
-	STAGING_URL="https://mongodbcom-cdn.website.staging.corp.mongodb.com"
-	STAGING_BUCKET=docs-mongodb-org-dotcomstg
-	PRODUCTION_URL="https://mongodb.com"
-	PRODUCTION_BUCKET=docs-mongodb-org-dotcomprd
-	PREFIX=docs-qa/spark-connector
-	STGPREFIX=docs/spark-connector
-endif
+DOTCOM_STAGING_URL="https://mongodbcom-cdn.website.staging.corp.mongodb.com"
+DOTCOM_STAGING_BUCKET=docs-mongodb-org-dotcomstg
+DOTCOM_PRODUCTION_URL="https://mongodb.com"
+DOTCOM_PRODUCTION_BUCKET=docs-mongodb-org-dotcomprd
+DOTCOM_PREFIX=docs-qa/spark-connector
+DOTCOM_STGPREFIX=docs/spark-connector
 
 # Parse our published-branches configuration file to get the name of
 # the current "stable" branch. This is weird and dumb, yes.
@@ -46,9 +43,18 @@ stage: html ## Stages the previously built HTML artifacts to the staging URL wit
 	mut-publish build/${GIT_BRANCH}/html ${STAGING_BUCKET} --prefix=${STGPREFIX} --stage ${ARGS}
 	@echo "Hosted at ${STAGING_URL}/${STGPREFIX}/${USER}/${GIT_BRANCH}/index.html"
 
+	mut-publish build/${GIT_BRANCH}/html ${DOTCOM_STAGING_BUCKET} --prefix=${DOTCOM_STGPREFIX} --stage ${ARGS}
+	@echo "Hosted at ${DOTCOM_STAGING_URL}/${DOTCOM_STGPREFIX}/${USER}/${GIT_BRANCH}/index.html"
+	
+
 fake-deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the staging bucket. Mimics production deployment by using the same arguments as "deploy".
 	mut-publish build/public/${GIT_BRANCH} ${STAGING_BUCKET} --prefix=${STGPREFIX}/${GIT_BRANCH} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
 	@echo "Hosted at ${STAGING_URL}/${STGPREFIX}/index.html"
+
+
+	mut-publish build/public/${GIT_BRANCH} ${DOTCOM_STAGING_BUCKET} --prefix=${DOTCOM_STGPREFIX}/${GIT_BRANCH} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
+	@echo "Hosted at ${DOTCOM_STAGING_URL}/${DOTCOM_STGPREFIX}/index.html"
+	
 
 
 deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the production bucket.
@@ -60,6 +66,15 @@ deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the p
 	mut-publish build/public/ ${PRODUCTION_BUCKET} --prefix=${PREFIX} --deploy --verbose   --redirects build/public/.htaccess  ${ARGS}
 
 	@echo "Hosted at ${PRODUCTION_URL}/${PREFIX}/${GIT_BRANCH}/index.html"
+
+		@echo "Doing a dry-run"
+	mut-publish build/public/ ${DOTCOM_PRODUCTION_BUCKET} --prefix=${DOTCOM_PREFIX} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
+
+	@echo ''
+	read -p "Press any key to perform the previous"
+	mut-publish build/public/ ${DOTCOM_PRODUCTION_BUCKET} --prefix=${DOTCOM_PREFIX} --deploy --verbose   --redirects build/public/.htaccess  ${ARGS}
+
+	@echo "Hosted at ${DOTCOM_PRODUCTION_URL}/${DOTCOM_PREFIX}/${GIT_BRANCH}/index.html"
 
 	$(MAKE) deploy-search-index
 
