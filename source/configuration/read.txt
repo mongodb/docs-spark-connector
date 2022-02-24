@@ -80,46 +80,38 @@ You can configure the following properties to read from MongoDB:
 
        The connector provides the following partitioners:
 
-       - ``MongoSamplePartitioner``
+       - ``SamplePartitioner``
              **Requires MongoDB 3.2**. A general purpose partitioner for
              all deployments. Uses the average document size and random
              sampling of the collection to determine suitable
              partitions for the collection. For configuration 
-             settings for the MongoSamplePartitioner, see
-             :ref:`conf-mongosamplepartitioner`.
+             settings for the SamplePartitioner, see
+             :ref:`conf-samplepartitioner`.
 
-       - ``MongoShardedPartitioner``
+       - ``ShardedPartitioner``
              A partitioner for sharded clusters. Partitions the
              collection based on the data chunks. Requires read access
              to the ``config`` database. For configuration settings for
-             the MongoShardedPartitioner, see
-             :ref:`conf-mongoshardedpartitioner`.
+             the ShardedPartitioner, see :ref:`conf-shardedpartitioner`.
 
-       - ``MongoSplitVectorPartitioner``
-             A partitioner for standalone or replica sets. Uses the
-             :dbcommand:`splitVector` command on the standalone or the
-             primary to determine the partitions of the database.
-             Requires privileges to run :dbcommand:`splitVector`
-             command. For configuration settings for the
-             MongoSplitVectorPartitioner, see
-             :ref:`conf-mongosplitvectorpartitioner`.
-
-       - ``MongoPaginateByCountPartitioner``
-             A slow, general purpose partitioner for all deployments.
-             Creates a specific number of partitions. Requires a query
-             for every partition. For configuration settings for the
-             MongoPaginateByCountPartitioner, see
-             :ref:`conf-mongopaginatebycountpartitioner`.
-
-       - ``MongoPaginateBySizePartitioner``
+       - ``PaginateBySizePartitioner``
              A slow, general purpose partitioner for all deployments.
              Creates partitions based on data size. Requires a query
              for every partition. For configuration settings for the
-             MongoPaginateBySizePartitioner, see
-             :ref:`conf-mongopaginatebysizepartitioner`.
+             PaginateBySizePartitioner, see 
+             :ref:`conf-paginatebysizepartitioner`.
+
+       - ``PaginateIntoPartitionsPartitioner``
+             
+             A partitioner to create the maximum number of partitions 
+             on a collection. Uses the count and the average document 
+             size of a collection to calculate the number of documents 
+             to include in each partition. For configuration settings 
+             for the PaginateIntoPartitionsPartitioner, see
+             :ref:`conf-paginateintopartitionspartitioner`.
 
        You can also specify a custom partitioner implementation. For
-       custom implementations of the ``MongoPartitioner`` trait, provide
+       custom implementations of the ``Partitioner`` trait, provide
        the full class name. If you don't provide package names, then
        this property uses the default package,
        ``com.mongodb.spark.rdd.partitioner``.
@@ -127,7 +119,7 @@ You can configure the following properties to read from MongoDB:
        To configure options for the various partitioners, see
        :ref:`partitioner-conf`.
       
-       **Default:** ``MongoDefaultPartitioner``
+       **Default:** ``SamplePartitioner``
 
    * - ``partitionerOptions``
      - The custom options to configure the partitioner.
@@ -177,10 +169,10 @@ You can configure the following properties to read from MongoDB:
 Partitioner Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _conf-mongosamplepartitioner:
+.. _conf-samplepartitioner:
 
-``MongoSamplePartitioner`` Configuration
-````````````````````````````````````````
+``SamplePartitioner`` Configuration
+```````````````````````````````````
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
@@ -226,17 +218,17 @@ Partitioner Configuration
 .. example::
 
    For a collection with 640 documents with an average document 
-   size of 0.5 MB, the default ``MongoSamplePartitioner`` configuration 
+   size of 0.5 MB, the default ``SamplePartitioner`` configuration 
    values creates 5 partitions with 128 documents per partition.
 
    The MongoDB Spark Connector samples 50 documents (the default 10 
    per intended partition) and defines 5 partitions by selecting 
    ``partitionKey`` ranges from the sampled documents.
 
-.. _conf-mongoshardedpartitioner:
+.. _conf-shardedpartitioner:
 
-``MongoShardedPartitioner`` Configuration
-`````````````````````````````````````````
+``ShardedPartitioner`` Configuration
+````````````````````````````````````
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
@@ -257,62 +249,10 @@ Partitioner Configuration
 
           This property is not compatible with hashed shard keys.
 
-.. _conf-mongosplitvectorpartitioner:
+.. _conf-paginatebysizepartitioner:
 
-``MongoSplitVectorPartitioner`` Configuration
-`````````````````````````````````````````````
-
-.. include:: /includes/sparkconf-partitioner-options-note.rst
-
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - Property name
-     - Description
-
-   * - ``partitionKey``
-     - The field by which to split the collection data. The field
-       should be indexed and contain unique values.
-
-       **Default:** ``_id``
-
-   * - ``partitionSizeMB``
-     - The size (in MB) for each partition. Smaller partition sizes 
-       create more partitions containing fewer documents.
-
-       **Default:** ``64``
-
-.. _conf-mongopaginatebycountpartitioner:
-
-``MongoPaginateByCountPartitioner`` Configuration
-`````````````````````````````````````````````````
-
-.. include:: /includes/sparkconf-partitioner-options-note.rst
-
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - Property name
-     - Description
-
-   * - ``partitionKey``
-     - The field by which to split the collection data. The field
-       should be indexed and contain unique values.
-
-       **Default:** ``_id``
-
-   * - ``numberOfPartitions``
-     - The number of partitions to create. A greater number of 
-       partitions means fewer documents per partition.
-
-       **Default:** ``64``
-
-.. _conf-mongopaginatebysizepartitioner:
-
-``MongoPaginateBySizePartitioner`` Configuration
-````````````````````````````````````````````````
+``PaginateBySizePartitioner`` Configuration
+```````````````````````````````````````````
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
@@ -334,6 +274,27 @@ Partitioner Configuration
        create more partitions containing fewer documents.
 
        **Default:** ``64``
+
+.. _conf-paginateintopartitionspartitioner:
+
+
+``PaginateIntoPartitionsPartitioner`` Configuration
+```````````````````````````````````````````````````
+
+.. include:: /includes/sparkconf-partitioner-options-note.rst
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - Property name
+     - Description
+
+   * - ``partitionKey``
+     - The field by which to split the collection data. The field
+       should be indexed and contain unique values.
+
+       **Default:** ``_id``
 
 .. _configure-input-uri:
 
