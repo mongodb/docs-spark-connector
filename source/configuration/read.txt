@@ -102,7 +102,7 @@ You can configure the following properties to read from MongoDB:
              :ref:`conf-paginatebysizepartitioner`.
 
        - ``PaginateIntoPartitionsPartitioner``
-             A partitioner that creates a specified maximum number of 
+             A partitioner that creates a specified number of 
              partitions for a collection. Uses the count and the 
              average document size of a collection to calculate the 
              number of documents to include in each partition. For 
@@ -300,8 +300,7 @@ Partitioner Configuration
        **Default:** ``_id``
 
    * - ``maxNumberOfPartitions``
-     - The maximum number of partitions this partitioner
-       will create.
+     - The number of partitions to create.
 
        **Default:** ``64``
 
