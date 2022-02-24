@@ -80,10 +80,6 @@ You can configure the following properties to read from MongoDB:
 
        The connector provides the following partitioners:
 
-       - ``MongoDefaultPartitioner``
-            **Default**. Wraps the MongoSamplePartitioner and provides
-            help for users of older versions of MongoDB.
-
        - ``MongoSamplePartitioner``
              **Requires MongoDB 3.2**. A general purpose partitioner for
              all deployments. Uses the average document size and random
