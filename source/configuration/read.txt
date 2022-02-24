@@ -102,12 +102,12 @@ You can configure the following properties to read from MongoDB:
              :ref:`conf-paginatebysizepartitioner`.
 
        - ``PaginateIntoPartitionsPartitioner``
-             
-             A partitioner to create the maximum number of partitions 
-             on a collection. Uses the count and the average document 
-             size of a collection to calculate the number of documents 
-             to include in each partition. For configuration settings 
-             for the PaginateIntoPartitionsPartitioner, see
+             A partitioner that creates a specified maximum number of 
+             partitions for a collection. Uses the count and the 
+             average document size of a collection to calculate the 
+             number of documents to include in each partition. For 
+             configuration settings for the 
+             PaginateIntoPartitionsPartitioner, see
              :ref:`conf-paginateintopartitionspartitioner`.
 
        You can also specify a custom partitioner implementation. For
@@ -184,8 +184,9 @@ Partitioner Configuration
      - Description
 
    * - ``partitionKey``
-     - The field by which to split the collection data. The field
-       should be indexed and contain unique values.
+     - A comma-delimited list of fields by which to split the 
+       collection data. The fields should be indexed and contain unique 
+       values.
 
        **Default:** ``_id``
 
@@ -264,8 +265,9 @@ Partitioner Configuration
      - Description
 
    * - ``partitionKey``
-     - The field by which to split the collection data. The field
-       should be indexed and contain unique values.
+     - A comma-delimited list of fields by which to split the 
+       collection data. The fields should be indexed and contain unique 
+       values.
 
        **Default:** ``_id``
 
@@ -291,10 +293,17 @@ Partitioner Configuration
      - Description
 
    * - ``partitionKey``
-     - The field by which to split the collection data. The field
-       should be indexed and contain unique values.
+     - A comma-delimited list of fields by which to split the 
+       collection data. The fields should be indexed and contain unique 
+       values.
 
        **Default:** ``_id``
+
+   * - ``maxNumberOfPartitions``
+     - The maximum number of partitions this partitioner
+       will create.
+
+       **Default:** ``64``
 
 .. _configure-input-uri:
 
