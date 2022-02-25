@@ -1,4 +1,7 @@
 .. _read-from-mongodb: 
+.. _scala-read:
+.. _java-read:
+.. _gs-read-config:
 
 =================
 Read from MongoDB
@@ -11,10 +14,6 @@ Read from MongoDB
    :backlinks: none
    :depth: 1
    :class: singlecol 
-
-.. _scala-read:
-.. _java-read:
-.. _gs-read-config:
 
 Overview
 --------

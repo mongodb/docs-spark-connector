@@ -83,7 +83,38 @@ share the MongoClient across threads.
      - The length of time to keep a ``MongoClient`` available for sharing.
 
        **Default:** ``5000``
-       
+
+
+.. _explicit-conf-options:
+
+Explicit Configuration Options
+------------------------------
+
+Explicit options override any corresponding settings in ``SparkConf``.
+
+.. example::
+
+   ``dfw.options("collection", "myCollection").save()`` 
+   uses ``myCollection`` regardless of your ``SparkConf`` configuration.
+
+Explicit configuration options support short form syntax.
+
+.. example::
+
+   dfw.options("spark.mongodb.collection", "myCollection").save()
+   
+   Can be written as
+
+   dfw.options("collection", "myCollection").save()
+
+``ConfigException``
+-------------------
+
+Configuration errors throw a ``ConfigException``.
+
+Review your ``SparkConf``, any ``ReadConfig`` and ``WriteConfig`` 
+objects you use, and any explicit configuration options you specify.
+
 .. toctree::
    :titlesonly:
 
