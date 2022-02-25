@@ -84,7 +84,6 @@ share the MongoClient across threads.
 
        **Default:** ``5000``
 
-
 .. _explicit-conf-options:
 
 Explicit Configuration Options
