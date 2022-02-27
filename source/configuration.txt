@@ -60,11 +60,12 @@ a ``Map`` via the ``asOptions()`` method.
 Short-Form Syntax
 `````````````````
 
-Options maps support short-form syntax.
+Options maps support short-form syntax. You may omit X when specifying 
+an option key string.
 
 .. example::
 
-   The following option syntaxes are equivalent to one another:
+   The following syntax are equivalent to one another:
 
    - ``dfw.options("spark.mongodb.collection", "myCollection").save()``
 
@@ -101,11 +102,14 @@ share the MongoClient across threads.
 
        **Default:** ``5000``
 
-``ConfigException``
--------------------
+``ConfigException``\s
+---------------------
 
-Configuration errors throw a ``ConfigException``. Confirm the validity 
-of any of the following methods of configuration that you use:
+A configuration error throws a ``ConfigException``. 
+
+
+Confirm the 
+validity of any of the following methods of configuration that you use:
 
 - ``SparkConf``
 - ``ReadConfig`` and ``WriteConfig`` objects
