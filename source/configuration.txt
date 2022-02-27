@@ -60,8 +60,8 @@ a ``Map`` via the ``asOptions()`` method.
 Short-Form Syntax
 `````````````````
 
-Options maps support short-form syntax. You may omit X when specifying 
-an option key string.
+Options maps support short-form syntax. You may omit the prefix when 
+specifying an option key string.
 
 .. example::
 
