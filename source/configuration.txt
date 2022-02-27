@@ -38,6 +38,7 @@ Various methods in the MongoDB Connector API accept an optional
 </blob/master/src/main/scala/com/mongodb/spark/config/ReadConfig.scala>`
 or a :mongo-spark:`WriteConfig
 </blob/master/src/main/scala/com/mongodb/spark/config/WriteConfig.scala>` object.
+
 ``ReadConfig`` and ``WriteConfig`` settings override any
 corresponding settings in ``SparkConf``.
 For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`. For
@@ -50,8 +51,24 @@ In the Spark API, some methods (e.g. ``DataFrameReader`` and
 ``DataFrameWriter``) accept options in the form of a ``Map[String,
 String]``.
 
+Options specified this way override any corresponding settings in 
+``SparkConf``.
+
 You can convert custom ``ReadConfig`` or ``WriteConfig`` settings into
 a ``Map`` via the ``asOptions()`` method.
+
+Short-Form Syntax
+`````````````````
+
+Options maps support short-form syntax.
+
+.. example::
+
+   The following option syntaxes are equivalent to one another:
+
+   - ``dfw.options("spark.mongodb.collection", "myCollection").save()``
+
+   - ``dfw.options("collection", "myCollection").save()``
 
 Via System Property
 ~~~~~~~~~~~~~~~~~~~
@@ -84,38 +101,15 @@ share the MongoClient across threads.
 
        **Default:** ``5000``
 
-.. _explicit-conf-options:
-
-Explicit Configuration Options
-------------------------------
-
-Explicit configuration options (options you specify with 
-``.option()``) override any corresponding settings in ``SparkConf``.
-
-.. example::
-
-   ``dfw.options("collection", "myCollection").save()``
-   uses ``myCollection`` regardless of your ``SparkConf`` configuration.
-
-Explicit configuration options support short form syntax.
-
-.. example::
-
-   dfw.options("spark.mongodb.collection", "myCollection").save()
-   
-   Can be written as
-
-   dfw.options("collection", "myCollection").save()
-
 ``ConfigException``
 -------------------
 
-Configuration errors throw a ``ConfigException``.
+Configuration errors throw a ``ConfigException``. Confirm the validity 
+of any of the following methods of configuration that you use:
 
-A ``ConfigException`` can be caused by:
 - ``SparkConf``
-- any ``ReadConfig`` and ``WriteConfig`` objects
-- and any explicit configuration options
+- ``ReadConfig`` and ``WriteConfig`` objects
+- Options maps
 
 .. toctree::
    :titlesonly:
