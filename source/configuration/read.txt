@@ -84,31 +84,32 @@ You can configure the following properties to read from MongoDB:
              **Requires MongoDB 3.2**. A general purpose partitioner for
              all deployments. Uses the average document size and random
              sampling of the collection to determine suitable
-             partitions for the collection. For configuration 
-             settings for the SamplePartitioner, see
-             :ref:`conf-samplepartitioner`.
+             partitions for the collection. To learn more about the 
+             ``SamplePartitioner``, see the 
+             :ref:`configuration settings description <conf-samplepartitioner>`.
 
        - ``ShardedPartitioner``
              A partitioner for sharded clusters. Partitions the
              collection based on the data chunks. Requires read access
-             to the ``config`` database. For configuration settings for
-             the ShardedPartitioner, see :ref:`conf-shardedpartitioner`.
+             to the ``config`` database. To learn more about the 
+             ``ShardedPartitioner``, see the 
+             :ref:`configuration settings description <conf-shardedpartitioner>`.
 
        - ``PaginateBySizePartitioner``
              A slow, general purpose partitioner for all deployments.
              Creates partitions based on data size. Requires a query
-             for every partition. For configuration settings for the
-             PaginateBySizePartitioner, see 
-             :ref:`conf-paginatebysizepartitioner`.
+             for every partition. To learn more about the 
+             ``PaginateBySizePartitioner``, see the 
+             :ref:`configuration settings description <conf-paginatebysizepartitioner>`.
 
        - ``PaginateIntoPartitionsPartitioner``
              A partitioner that creates a specified number of 
-             partitions for a collection. Uses the count and the 
-             average document size of a collection to calculate the 
-             number of documents to include in each partition. For 
-             configuration settings for the 
-             PaginateIntoPartitionsPartitioner, see
-             :ref:`conf-paginateintopartitionspartitioner`.
+             partitions for a collection. Uses the total number of 
+             documents and the average document size in a collection to 
+             calculate the number of documents to include in each 
+             partition. To learn more about the 
+             ``PaginateIntoPartitionsPartitioner``, see the 
+             :ref:`configuration settings description <conf-paginateintopartitionspartitioner>`.
 
        You can also specify a custom partitioner implementation. For
        custom implementations of the ``Partitioner`` trait, provide
@@ -169,6 +170,7 @@ You can configure the following properties to read from MongoDB:
 Partitioner Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _conf-mongosamplepartitioner:
 .. _conf-samplepartitioner:
 
 ``SamplePartitioner`` Configuration
@@ -226,6 +228,7 @@ Partitioner Configuration
    per intended partition) and defines 5 partitions by selecting 
    ``partitionKey`` ranges from the sampled documents.
 
+.. _conf-mongoshardedpartitioner:
 .. _conf-shardedpartitioner:
 
 ``ShardedPartitioner`` Configuration
@@ -250,6 +253,7 @@ Partitioner Configuration
 
           This property is not compatible with hashed shard keys.
 
+.. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
 
 ``PaginateBySizePartitioner`` Configuration
@@ -278,7 +282,6 @@ Partitioner Configuration
        **Default:** ``64``
 
 .. _conf-paginateintopartitionspartitioner:
-
 
 ``PaginateIntoPartitionsPartitioner`` Configuration
 ```````````````````````````````````````````````````
