@@ -89,11 +89,12 @@ share the MongoClient across threads.
 Explicit Configuration Options
 ------------------------------
 
-Explicit options override any corresponding settings in ``SparkConf``.
+Explicit configuration options (options you specify with 
+``.option()``) override any corresponding settings in ``SparkConf``.
 
 .. example::
 
-   ``dfw.options("collection", "myCollection").save()`` 
+   ``dfw.options("collection", "myCollection").save()``
    uses ``myCollection`` regardless of your ``SparkConf`` configuration.
 
 Explicit configuration options support short form syntax.
@@ -111,8 +112,10 @@ Explicit configuration options support short form syntax.
 
 Configuration errors throw a ``ConfigException``.
 
-Review your ``SparkConf``, any ``ReadConfig`` and ``WriteConfig`` 
-objects you use, and any explicit configuration options you specify.
+A ``ConfigException`` can be caused by:
+- ``SparkConf``
+- any ``ReadConfig`` and ``WriteConfig`` objects
+- and any explicit configuration options
 
 .. toctree::
    :titlesonly:
