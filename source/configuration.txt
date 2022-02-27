@@ -105,11 +105,9 @@ share the MongoClient across threads.
 ``ConfigException``\s
 ---------------------
 
-A configuration error throws a ``ConfigException``. 
-
-
-Confirm the 
-validity of any of the following methods of configuration that you use:
+A configuration error throws a ``ConfigException``. Confirm that any of 
+the following methods of configuration that you use are configured 
+properly:
 
 - ``SparkConf``
 - ``ReadConfig`` and ``WriteConfig`` objects
