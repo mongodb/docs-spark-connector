@@ -30,32 +30,42 @@ defaults.
    configuration options. Refer to the configuration sections for the
    specific prefix.
 
+To learn more about ``SparkConf``, see the Spark documentation for your 
+language:
+
+- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__
+- `Java <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__
+- `Python <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__
+
 Via ``ReadConfig`` and ``WriteConfig``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Various methods in the MongoDB Connector API accept an optional
-:mongo-spark:`ReadConfig
-</blob/master/src/main/scala/com/mongodb/spark/config/ReadConfig.scala>`
-or a :mongo-spark:`WriteConfig
-</blob/master/src/main/scala/com/mongodb/spark/config/WriteConfig.scala>` object.
-
-``ReadConfig`` and ``WriteConfig`` settings override any
+``ReadConfig`` or a ``WriteConfig`` object. These settings override any 
 corresponding settings in ``SparkConf``.
-For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`. For
-more details, refer to the source for these methods.
+
+For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`. 
+
+To learn more about :mongo-spark:`ReadConfig
+</blob/master/src/main/scala/com/mongodb/spark/config/ReadConfig.scala>`
+or :mongo-spark:`WriteConfig
+</blob/master/src/main/scala/com/mongodb/spark/config/WriteConfig.scala>` objects, refer to the source for these methods.
 
 Via Options Map
 ~~~~~~~~~~~~~~~
 
 In the Spark API, some methods (e.g. ``DataFrameReader`` and
 ``DataFrameWriter``) accept options in the form of a ``Map[String,
-String]``.
+String]``. Options specified this way override any corresponding 
+settings in ``SparkConf``.
 
-Options specified this way override any corresponding settings in 
-``SparkConf``.
+.. note:: 
+   
+   You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
+   into a ``Map`` via the ``asOptions()`` method.
 
-You can convert custom ``ReadConfig`` or ``WriteConfig`` settings into
-a ``Map`` via the ``asOptions()`` method.
+To learn more about Spark API options, see :ref:`spark-write-conf` or 
+:ref:`spark-read-conf`.
 
 Short-Form Syntax
 `````````````````
@@ -65,7 +75,7 @@ specifying an option key string.
 
 .. example::
 
-   The following syntax are equivalent to one another:
+   The following syntaxes are equivalent to one another:
 
    - ``dfw.options("spark.mongodb.collection", "myCollection").save()``
 
