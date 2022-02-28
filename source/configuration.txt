@@ -11,15 +11,16 @@ Configuration Options
    :class: singlecol
 
 Various configuration options are available for the MongoDB Spark
-Connector.
+Connector. To learn more about the options you can set, see 
+:ref:`spark-write-conf` and :ref:`spark-read-conf`.
 
 Specify Configuration
 ---------------------
 
 .. _spark-conf:
 
-Via ``SparkConf``
-~~~~~~~~~~~~~~~~~
+Using ``SparkConf``
+~~~~~~~~~~~~~~~~~~~
 
 You can specify these options via ``SparkConf`` using the ``--conf``
 setting or the ``$SPARK_HOME/conf/spark-default.conf`` file, and
@@ -41,8 +42,8 @@ language:
 
 .. _read-write-config:
 
-Via ``ReadConfig`` and ``WriteConfig``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using ``ReadConfig`` and ``WriteConfig``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Various methods in the MongoDB Connector API accept an optional
 ``ReadConfig`` or a ``WriteConfig`` object. These settings override any 
@@ -57,21 +58,30 @@ or :mongo-spark:`WriteConfig
 
 .. _options-map:
 
-Via Options Map
-~~~~~~~~~~~~~~~
+Using an Options Map
+~~~~~~~~~~~~~~~~~~~~
 
 In the Spark API, some methods (e.g. ``DataFrameReader`` and
 ``DataFrameWriter``) accept options in the form of a ``Map[String,
 String]``. Options specified this way override any corresponding 
 settings in ``SparkConf``.
 
-.. note:: 
-   
-   You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
-   into a ``Map`` via the ``asOptions()`` method.
+You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
+into a ``Map`` via the ``asOptions()`` method.
 
-To learn more about the options you can set with the Spark API, see 
-:ref:`spark-write-conf` or :ref:`spark-read-conf`.
+To learn more about specifying options with the Spark API, see the 
+Spark documentation for your language:
+
+- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameReader.html>`__
+ 
+.. DataFrameWriter
+
+- `Java <https://spark.apache.org/docs/latest/api/java/index.html>`__
+  
+.. DataFrameReader
+   DataFrameWriter
+
+- `Python <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql.html>`__
 
 Short-Form Syntax
 `````````````````
@@ -87,11 +97,11 @@ specifying an option key string.
 
    - ``dfw.options("collection", "myCollection").save()``
 
-Via System Property
-~~~~~~~~~~~~~~~~~~~
+Using a System Property
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The connector provides a cache for ``MongoClients`` which can only be
-configured via the System Property. See :ref:`cache-configuration`.
+configured with a System Property. See :ref:`cache-configuration`.
 
 .. _cache-configuration:
 
@@ -104,7 +114,7 @@ share the MongoClient across threads.
 .. important::
 
    As the cache is setup before the Spark Configuration is available,
-   the cache can only be configured via a System Property.
+   the cache can only be configured with a System Property.
 
 .. list-table::
    :header-rows: 1
@@ -114,7 +124,8 @@ share the MongoClient across threads.
      - Description
 
    * - ``mongodb.keep_alive_ms``
-     - The length of time to keep a ``MongoClient`` available for sharing.
+     - The length of time to keep a ``MongoClient`` available for 
+       sharing.
 
        **Default:** ``5000``
 
