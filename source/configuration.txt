@@ -16,6 +16,8 @@ Connector.
 Specify Configuration
 ---------------------
 
+.. _spark-conf:
+
 Via ``SparkConf``
 ~~~~~~~~~~~~~~~~~
 
@@ -37,6 +39,8 @@ language:
 - `Java <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__
 - `Python <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__
 
+.. _read-write-config:
+
 Via ``ReadConfig`` and ``WriteConfig``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -51,6 +55,8 @@ To learn more about :mongo-spark:`ReadConfig
 or :mongo-spark:`WriteConfig
 </blob/master/src/main/scala/com/mongodb/spark/config/WriteConfig.scala>` objects, refer to the source for these methods.
 
+.. _options-map:
+
 Via Options Map
 ~~~~~~~~~~~~~~~
 
@@ -64,8 +70,8 @@ settings in ``SparkConf``.
    You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
    into a ``Map`` via the ``asOptions()`` method.
 
-To learn more about Spark API options, see :ref:`spark-write-conf` or 
-:ref:`spark-read-conf`.
+To learn more about the options you can set with the Spark API, see 
+:ref:`spark-write-conf` or :ref:`spark-read-conf`.
 
 Short-Form Syntax
 `````````````````
@@ -119,9 +125,9 @@ A configuration error throws a ``ConfigException``. Confirm that any of
 the following methods of configuration that you use are configured 
 properly:
 
-- ``SparkConf``
-- ``ReadConfig`` and ``WriteConfig`` objects
-- Options maps
+- :ref:`SparkConf <spark-conf>`
+- :ref:`ReadConfig and WriteConfig <read-write-config>` objects
+- :ref:`Options maps <options-map>`
 
 .. toctree::
    :titlesonly:
