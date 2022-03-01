@@ -30,6 +30,8 @@ file, and MongoDB Spark Connector will use the settings in
 You can specify configuration options with ``SparkConf`` using any of 
 the following approaches:
 
+.. todo consider expanding these approaches into subsections and providing examples for each
+
 .. tabs-selector:: drivers
 
 .. tabs-drivers::
@@ -74,7 +76,9 @@ Various methods in the MongoDB Connector API accept an optional
 ``ReadConfig`` or a ``WriteConfig`` object. These settings override any 
 corresponding settings in ``SparkConf``.
 
-For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`. 
+For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`.
+
+.. todo consider moving above linked examples onto this page - they are within tabs, so the links won't be as helpful
 
 To learn more about :mongo-spark:`ReadConfig
 </blob/master/src/main/scala/com/mongodb/spark/config/ReadConfig.scala>`
@@ -90,16 +94,14 @@ In the Spark API, the DataFrameReader and DataFrameWriter methods
 accept options in the form of a ``Map[String, String]``. Options 
 specified this way override any corresponding settings in ``SparkConf``.
 
+.. todo consider adding an example
+
 .. tip::
    
    You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
    into a ``Map`` using the ``asOptions()`` method:
 
-   .. code-block:: scala
-      
-      val readConfig = ReadConfig(Map("uri" -> "mongodb://example.com/database.collection", "collection" -> "spark"), Some(ReadConfig(sc)))
-   
-      sc.loadFromMongoDB(ReadConfig.asOptions())
+.. todo create example of .asOptions() above
 
 .. tabs-drivers::
 
