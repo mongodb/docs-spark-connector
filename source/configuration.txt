@@ -59,8 +59,6 @@ the following approaches:
 The MongoDB Spark Connector will use the settings in ``SparkConf`` as 
 defaults.
 
-.. todo add code example
-
 .. important::
 
    When setting configurations with ``SparkConf``, you must prefix the
@@ -95,9 +93,13 @@ specified this way override any corresponding settings in ``SparkConf``.
 .. tip::
    
    You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
-   into a ``Map`` using the ``asOptions()`` method.
+   into a ``Map`` using the ``asOptions()`` method:
 
-.. todo add code example
+   .. code-block:: scala
+      
+      val readConfig = ReadConfig(Map("uri" -> "mongodb://example.com/database.collection", "collection" -> "spark"), Some(ReadConfig(sc)))
+   
+      sc.loadFromMongoDB(ReadConfig.asOptions())
 
 .. tabs-drivers::
 
