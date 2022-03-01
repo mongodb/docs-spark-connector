@@ -27,7 +27,8 @@ You can specify configuration options with ``SparkConf`` using the
 file, and MongoDB Spark Connector will use the settings in 
 ``SparkConf`` as the defaults.
 
-You can specify configuration options with ``SparkConf`` using any of the following approaches:
+You can specify configuration options with ``SparkConf`` using any of 
+the following approaches:
 
 .. tabs-selector:: drivers
 
@@ -87,7 +88,9 @@ or :mongo-spark:`WriteConfig
 Using an Options Map
 ~~~~~~~~~~~~~~~~~~~~
 
-In the Spark API, the DataFrameReader and DataFrameWriter methods accept options in the form of a ``Map[String, String]``. Options specified this way override any corresponding settings in ``SparkConf``.
+In the Spark API, the DataFrameReader and DataFrameWriter methods 
+accept options in the form of a ``Map[String, String]``. Options 
+specified this way override any corresponding settings in ``SparkConf``.
 
 .. tip::
    
