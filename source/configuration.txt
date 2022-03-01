@@ -10,6 +10,8 @@ Configuration Options
    :depth: 1
    :class: singlecol
 
+.. tabs-selector:: drivers
+
 Various configuration options are available for the MongoDB Spark
 Connector. To learn more about the options you can set, see 
 :ref:`spark-write-conf` and :ref:`spark-read-conf`.
@@ -22,23 +24,38 @@ Specify Configuration
 Using ``SparkConf``
 ~~~~~~~~~~~~~~~~~~~
 
-You can specify these options via ``SparkConf`` using the ``--conf``
-setting or the ``$SPARK_HOME/conf/spark-default.conf`` file, and
-MongoDB Spark Connector will use the settings in ``SparkConf`` as the
-defaults.
+.. todo make it clear what SparkConf is, how you can configure it
+
+You can specify configuration options with ``SparkConf`` using the 
+``--conf`` flag or the ``$SPARK_HOME/conf/spark-default.conf`` 
+file, and MongoDB Spark Connector will use the settings in 
+``SparkConf`` as the defaults.
+
+.. todo add code example
 
 .. important::
 
-   When setting configurations via ``SparkConf``, you must prefix the
-   configuration options. Refer to the configuration sections for the
-   specific prefix.
+   When setting configurations with ``SparkConf``, you must prefix the
+   configuration options. Refer to :ref:`spark-write-conf` and 
+   :ref:`spark-read-conf` for the specific prefixes.
 
-To learn more about ``SparkConf``, see the Spark documentation for your 
-language:
+.. tabs-drivers::
 
-- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__
-- `Java <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__
-- `Python <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__
+   tabs:
+     - id: java-sync
+       content: |
+
+       To learn more, see the `Java SparkConf documentation <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__.
+
+     - id: python
+       content: |
+
+       To learn more, see the `Python SparkConf documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__.
+
+     - id: scala
+       content: |
+
+       To learn more, see the `Scala SparkConf documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__.
 
 .. _read-write-config:
 
@@ -61,28 +78,45 @@ or :mongo-spark:`WriteConfig
 Using an Options Map
 ~~~~~~~~~~~~~~~~~~~~
 
-In the Spark API, some methods (e.g. ``DataFrameReader`` and
-``DataFrameWriter``) accept options in the form of a ``Map[String,
-String]``. Options specified this way override any corresponding 
-settings in ``SparkConf``.
+In the Spark API, the DataFrameReader and DataFrameWriter methods accept options in the form of a ``Map[String, String]``. Options specified this way override any corresponding settings in ``SparkConf``.
 
-You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
-into a ``Map`` via the ``asOptions()`` method.
+.. tip::
+   
+   You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
+   into a ``Map`` using the ``asOptions()`` method.
 
-To learn more about specifying options with the Spark API, see the 
-Spark documentation for your language:
+.. todo add code example
 
-- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameReader.html>`__
- 
-.. DataFrameWriter
+.. tabs-drivers::
 
-- `Java <https://spark.apache.org/docs/latest/api/java/index.html>`__
+   tabs:
+     - id: java-sync
+       content: |
+
+       To learn more about specifying options with 
+       `DataFrameReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameReader.html#option-java.lang.String-boolean->`__ and 
+       `DataFrameWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameWriter.html#option-java.lang.String-boolean-`__, 
+       refer to the Java Spark documentation for the ``.option()`` 
+       method.
+
+     - id: python
+       content: |
+
+       To learn more about specifying options with 
+       `DataFrameReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrameReader.option.html#pyspark.sql.DataFrameReader.option>`__ and 
+       `DataFrameWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.DataFrameWriter.option.html#pyspark.sql.DataFrameWriter.option>`__, 
+       refer to the Java Spark documentation for the ``.option()`` 
+       method.
+
+     - id: scala
+       content: |
+
+       To learn more about specifying options with 
+       `DataFrameReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameReader.html#option(key:String,value:Double):org.apache.spark.sql.DataFrameReader>`__ and 
+       `DataFrameWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameWriter.html#option(key:String,value:Double):org.apache.spark.sql.DataFrameWriter[T]>`__, 
+       refer to the Java Spark documentation for the ``.option()`` 
+       method.
   
-.. DataFrameReader
-   DataFrameWriter
-
-- `Python <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql.html>`__
-
 Short-Form Syntax
 `````````````````
 
@@ -93,9 +127,9 @@ specifying an option key string.
 
    The following syntaxes are equivalent to one another:
 
-   - ``dfw.options("spark.mongodb.collection", "myCollection").save()``
+   - ``dfw.option("spark.mongodb.collection", "myCollection").save()``
 
-   - ``dfw.options("collection", "myCollection").save()``
+   - ``dfw.option("collection", "myCollection").save()``
 
 Using a System Property
 ~~~~~~~~~~~~~~~~~~~~~~~
