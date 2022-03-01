@@ -10,8 +10,6 @@ Configuration Options
    :depth: 1
    :class: singlecol
 
-.. tabs-selector:: drivers
-
 Various configuration options are available for the MongoDB Spark
 Connector. To learn more about the options you can set, see 
 :ref:`spark-write-conf` and :ref:`spark-read-conf`.
@@ -24,12 +22,41 @@ Specify Configuration
 Using ``SparkConf``
 ~~~~~~~~~~~~~~~~~~~
 
-.. todo make it clear what SparkConf is, how you can configure it
-
 You can specify configuration options with ``SparkConf`` using the 
 ``--conf`` flag or the ``$SPARK_HOME/conf/spark-default.conf`` 
 file, and MongoDB Spark Connector will use the settings in 
 ``SparkConf`` as the defaults.
+
+You can specify configuration options with ``SparkConf`` using any of the following approaches:
+
+.. tabs-selector:: drivers
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+       - the ``SparkConf`` constructor in your application. To learn more, see the `Java SparkConf documentation <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__.
+
+     - id: python
+       content: |
+
+       - the ``SparkConf`` constructor in your application. To learn more, see the `Python SparkConf documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__.
+
+     - id: scala
+       content: |
+
+       - the ``SparkConf`` constructor in your application. To learn more, see the `Scala SparkConf documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__.
+
+- the ``--conf`` flag at runtime. To learn more, see 
+  `Dynamically Loading Spark Properties <https://spark.apache.org/docs/latest/configuration.html#dynamically-loading-spark-properties>`__ in 
+  the Spark documentation.
+
+- the ``$SPARK_HOME/conf/spark-default.conf`` file.
+
+The MongoDB Spark Connector will use the settings in ``SparkConf`` as 
+defaults.
 
 .. todo add code example
 
@@ -38,24 +65,6 @@ file, and MongoDB Spark Connector will use the settings in
    When setting configurations with ``SparkConf``, you must prefix the
    configuration options. Refer to :ref:`spark-write-conf` and 
    :ref:`spark-read-conf` for the specific prefixes.
-
-.. tabs-drivers::
-
-   tabs:
-     - id: java-sync
-       content: |
-
-       To learn more, see the `Java SparkConf documentation <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__.
-
-     - id: python
-       content: |
-
-       To learn more, see the `Python SparkConf documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__.
-
-     - id: scala
-       content: |
-
-       To learn more, see the `Scala SparkConf documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__.
 
 .. _read-write-config:
 
