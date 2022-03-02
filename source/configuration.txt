@@ -25,8 +25,6 @@ Using ``SparkConf``
 You can specify configuration options with ``SparkConf`` using any of 
 the following approaches:
 
-.. todo consider expanding these approaches into subsections and providing examples for each
-
 .. tabs-selector:: drivers
 
 .. tabs-drivers::
@@ -35,23 +33,23 @@ the following approaches:
      - id: java-sync
        content: |
 
-         - the ``SparkConf`` constructor in your application. To learn more, see the `Java SparkConf documentation <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__.
+         - The ``SparkConf`` constructor in your application. To learn more, see the `Java SparkConf documentation <https://spark.apache.org/docs/latest/api/java/index.html?org/apache/spark/SparkConf.html>`__.
 
      - id: python
        content: |
 
-         - the ``SparkConf`` constructor in your application. To learn more, see the `Python SparkConf documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__.
+         - The ``SparkConf`` constructor in your application. To learn more, see the `Python SparkConf documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.SparkConf.html>`__.
 
      - id: scala
        content: |
 
-         - the ``SparkConf`` constructor in your application. To learn more, see the `Scala SparkConf documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__.
+         - The ``SparkConf`` constructor in your application. To learn more, see the `Scala SparkConf documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/SparkConf.html>`__.
 
-- the ``--conf`` flag at runtime. To learn more, see 
+- The ``--conf`` flag at runtime. To learn more, see 
   `Dynamically Loading Spark Properties <https://spark.apache.org/docs/latest/configuration.html#dynamically-loading-spark-properties>`__ in 
   the Spark documentation.
 
-- the ``$SPARK_HOME/conf/spark-default.conf`` file.
+- The ``$SPARK_HOME/conf/spark-default.conf`` file.
 
 The MongoDB Spark Connector will use the settings in ``SparkConf`` as 
 defaults.
@@ -73,8 +71,6 @@ corresponding settings in ``SparkConf``.
 
 For examples, see :ref:`gs-read-config` and :ref:`gs-write-config`.
 
-.. todo consider moving above linked examples onto this page - they are within tabs, so the links won't be as helpful
-
 To learn more about :mongo-spark:`ReadConfig
 </blob/master/src/main/scala/com/mongodb/spark/config/ReadConfig.scala>`
 or :mongo-spark:`WriteConfig
@@ -89,14 +85,15 @@ In the Spark API, the DataFrameReader and DataFrameWriter methods
 accept options in the form of a ``Map[String, String]``. Options 
 specified this way override any corresponding settings in ``SparkConf``.
 
-.. todo consider adding an example
-
 .. tip::
    
    You can convert custom ``ReadConfig`` or ``WriteConfig`` settings 
-   into a ``Map`` using the ``asOptions()`` method.
+   into a ``Map`` using the ``asOptions()`` method:
 
-.. todo create example of .asOptions() above
+   .. code-block:: scala
+      :copyable: false
+   
+      val df = sparkSession.read.format("mongo").options(customReadConfig.asOptions).load()
 
 .. tabs-drivers::
 
