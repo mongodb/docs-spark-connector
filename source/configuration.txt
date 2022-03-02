@@ -22,11 +22,6 @@ Specify Configuration
 Using ``SparkConf``
 ~~~~~~~~~~~~~~~~~~~
 
-You can specify configuration options with ``SparkConf`` using the 
-``--conf`` flag or the ``$SPARK_HOME/conf/spark-default.conf`` 
-file, and MongoDB Spark Connector will use the settings in 
-``SparkConf`` as the defaults.
-
 You can specify configuration options with ``SparkConf`` using any of 
 the following approaches:
 
@@ -111,7 +106,7 @@ specified this way override any corresponding settings in ``SparkConf``.
 
          To learn more about specifying options with 
          `DataFrameReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameReader.html#option-java.lang.String-boolean->`__ and 
-         `DataFrameWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameWriter.html#option-java.lang.String-boolean-`__, 
+         `DataFrameWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameWriter.html#option-java.lang.String-boolean->`__, 
          refer to the Java Spark documentation for the ``.option()`` 
          method.
 
