@@ -30,7 +30,8 @@ file, and MongoDB Spark Connector will use the settings in
 You can specify configuration options with ``SparkConf`` using any of 
 the following approaches:
 
-.. todo consider expanding these approaches into subsections and providing examples for each
+.. todo consider expanding these approaches into subsections and 
+providing examples for each
 
 .. tabs-selector:: drivers
 
