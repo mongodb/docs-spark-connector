@@ -81,7 +81,7 @@ You can configure the following properties to read from MongoDB:
        The connector provides the following partitioners:
 
        - ``SamplePartitioner``
-             **Requires MongoDB 3.2**. A general purpose partitioner for
+             A general purpose partitioner for
              all deployments. Uses the average document size and random
              sampling of the collection to determine suitable
              partitions for the collection. To learn more about the 
@@ -112,10 +112,8 @@ You can configure the following properties to read from MongoDB:
              :ref:`configuration settings description <conf-paginateintopartitionspartitioner>`.
 
        You can also specify a custom partitioner implementation. For
-       custom implementations of the ``Partitioner`` trait, provide
-       the full class name. If you don't provide package names, then
-       this property uses the default package,
-       ``com.mongodb.spark.rdd.partitioner``.
+       custom implementations of the ``Partitioner`` interface, provide
+       the full class name.
 
        To configure options for the various partitioners, see
        :ref:`partitioner-conf`.
@@ -185,20 +183,20 @@ Partitioner Configuration
    * - Property name
      - Description
 
-   * - ``partitionKey``
+   * - ``partitioner.options.partitionKey``
      - A comma-delimited list of fields by which to split the 
        collection data. The fields should be indexed and contain unique 
        values.
 
        **Default:** ``_id``
 
-   * - ``partitionSizeMB``
+   * - ``partitioner.options.partitionSizeMB``
      - The size (in MB) for each partition. Smaller partition sizes 
        create more partitions containing fewer documents.
 
        **Default:** ``64``
 
-   * - ``samplesPerPartition``
+   * - ``partitioner.options.samplesPerPartition``
      - The number of sample documents to take for each partition in 
        order to establish a ``partitionKey`` range for each partition. 
        
@@ -234,24 +232,10 @@ Partitioner Configuration
 ``ShardedPartitioner`` Configuration
 ````````````````````````````````````
 
-.. include:: /includes/sparkconf-partitioner-options-note.rst
+The ``ShardedPartitioner`` automatically determines 
+partitions to use based on your shard configuration. 
 
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - Property name
-     - Description
-
-   * - ``shardkey``
-     - The field by which to split the collection data. The field
-       should be indexed.
-
-       **Default:** ``_id``
-
-       .. important:: 
-
-          This property is not compatible with hashed shard keys.
+This partitioner is not compatible with hashed shard keys.
 
 .. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
@@ -268,14 +252,14 @@ Partitioner Configuration
    * - Property name
      - Description
 
-   * - ``partitionKey``
+   * - ``partitioner.options.partitionKey``
      - A comma-delimited list of fields by which to split the 
        collection data. The fields should be indexed and contain unique 
        values.
 
        **Default:** ``_id``
 
-   * - ``partitionSizeMB``
+   * - ``partitioner.options.partitionSizeMB``
      - The size (in MB) for each partition. Smaller partition sizes 
        create more partitions containing fewer documents.
 
@@ -295,7 +279,7 @@ Partitioner Configuration
    * - Property name
      - Description
 
-   * - ``partitionKey``
+   * - ``partitioner.options.partitionKey``
      - A comma-delimited list of fields by which to split the 
        collection data. The fields should be indexed and contain unique 
        values.
