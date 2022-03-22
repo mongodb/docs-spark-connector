@@ -55,7 +55,7 @@ rst_epilog = '\n'.join([
 ])
 
 extlinks = {
-    'manual': ('https://docs.mongodb.com/manual%s', ''),
+    'manual': ('https://www.mongodb.com/docs/manual%s', ''),
     'mongo-spark': ('https://github.com/mongodb/mongo-spark%s', ''),
 }
 
