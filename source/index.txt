@@ -107,7 +107,7 @@ versions of Apache Spark and MongoDB:
    getting-started
    write-to-mongodb
    read-from-mongodb
-   streaming
+   structured-streaming
    tutorials
    faq
    release-notes

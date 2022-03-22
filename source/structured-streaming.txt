@@ -1,0 +1,125 @@
+.. _spark-streaming:
+
+==========================
+Spark Structured Streaming
+==========================
+
+.. default-domain:: mongodb
+
+.. contents:: On this page
+   :local:
+   :backlinks: none
+   :depth: 1
+   :class: singlecol
+
+.. todo find a place for /scala/streaming.txt
+
+.. include:: includes/streaming-distinction.rst
+
+Overview
+--------
+
+.. Add support for using MongoDB as a streaming source via change streams.
+.. https://docs.mongodb.com/kafka-connector/current/source-connector/fundamentals/change-streams/
+
+Spark Structured Streaming is a stream processing engine you can use through the Dataset or DataFrame API.
+
+Spark Structured Streaming allows on-the-fly analysis of live data streams with MongoDB. See the `Spark documentation
+<https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__ for a detailed description of Spark Structured Streaming functionality.
+
+.. The key idea in Structured Streaming is to treat a live data stream as a table that is being continuously appended.
+
+.. blog
+Apache Spark comes with a stream processing engine called Structured Streaming, which is based on Spark's SQL engine and DataFrame APIs. Spark Structured Streaming treats each incoming stream of data as a micro-batch, continually appending each micro-batch to the target dataset. This makes it easy to  convert existing Spark batch jobs into a streaming job. Structured Streaming provides maximum throughput via the same distributed capabilities that has made Spark such a popular platform.  In the following example, we’ll show you how to stream data to MongoDB using Structured Stream.
+
+
+Streaming Configuration Options
+-------------------------------
+
+.. Requires a single cursor. Configuration options can mimic Kafka streaming support. 
+.. https://docs.mongodb.com/kafka-connector/current/source-connector/configuration-properties/
+
+For general configuration options for the MongoDB Spark Connector, see 
+:ref:`spark-input-conf` and :ref:`spark-output-conf`.
+
+The following configuration options are specific to 
+Structured Streaming:
+
+.. list-table::
+   :header-rows: 1
+
+   * - Property name
+     - Description
+   * - 
+     -
+
+Usage Examples
+--------------
+
+The following examples use a Docker environment that provides a 
+`Jupyter <https://jupyter.org/>`__ notebook running 
+`pyspark <https://spark.apache.org/docs/latest/api/python/>`__ and a 
+MongoDB replica set. You can download and run this environment from 
+this `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__.
+
+For each example... setup
+
+.. code-block:: python
+   :copyable: true
+   :emphasize-lines: 0
+
+
+Stream to MongoDB from a CSV file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+   :copyable: true
+   :emphasize-lines: 0
+
+   
+Stream from MongoDB to another MongoDB collection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+
+Read from MongoDB
+~~~~~~~~~~~~~~~~~
+
+The following example demonstrates how to use the Dataset/DataFrame API 
+to stream data from MongoDB and then examine the schema in your Jupyter 
+notebook.
+
+.. tabs-selector:: drivers
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+     - id: python
+       content: |
+
+     - id: scala
+       content: |
+
+Write to MongoDB
+~~~~~~~~~~~~~~~~
+
+The following example demonstrates how to use the Dataset/DataFrame API 
+to stream data from a CSV file and write it to a replica set.
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+     - id: python
+       content: |
+
+     - id: scala
+       content: |
