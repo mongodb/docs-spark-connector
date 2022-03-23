@@ -1,13 +1,13 @@
 #!make
 MAKEFLAGS += --silent
 
-# This allows us to accept extra arguments (by doing nothing when we get a job that doesn't match, 
+# This allows us to accept extra arguments (by doing nothing when we get a job that doesn't match,
 # rather than throwing an error).
-%: 
-    @: 
+%:
+    @:
 
 # $(MAKECMDGOALS) is the list of "targets" spelled out on the command line
-stagel: 
+stagel:
 	git clone --quiet https://github.com/mongodb/snooty-scripts.git build_scripts
 	@ cd build_scripts && npm install
 	@ source ~/.config/.snootyenv && node build_scripts/app.js $(filter-out $@,$(MAKECMDGOALS))
@@ -22,7 +22,7 @@ local:
 GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 USER=$(shell whoami)
 STAGING_URL="https://docs-mongodborg-staging.corp.mongodb.com"
-PRODUCTION_URL="https://docs.mongodb.com"
+PRODUCTION_URL="https://mongodb.com/docs"
 STAGING_BUCKET=docs-mongodb-org-staging
 PRODUCTION_BUCKET=docs-mongodb-org-prod
 PREFIX=spark-connector

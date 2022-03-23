@@ -1,7 +1,7 @@
 project:
   name: 'spark-connector'
   tag: 'spark-connector'
-  url: 'https://docs.mongodb.com/spark-connector'
+  url: 'https://mongodb.com/docs/spark-connector'
   title: 'MongoDB Spark Connector'
   branched: true
   #siteroot: false

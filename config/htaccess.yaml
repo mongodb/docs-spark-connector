@@ -29,56 +29,56 @@ code: 301
 from: '/'
 to: '/current'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/configuration'
 to: '/current/configuration'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/faq'
 to: '/current/faq'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/getting-started'
 to: '/current/getting-started'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/java-api'
 to: '/current/java-api'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/python-api'
 to: '/current/python-api'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/spark-sql'
 to: '/current/spark-sql'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/sparkR'
 to: '/current/r-api'
 outputs:
-  - {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 #######################################################################
@@ -88,112 +88,112 @@ code: 301
 from: '/python/write-to-mongodb'
 to: '/python-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/python/read-from-mongodb'
 to: '/python-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/python/aggregation'
 to: '/python-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/python/filters-and-sql'
 to: '/python-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/scala/write-to-mongodb'
 to: '/getting-started'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/scala/read-from-mongodb'
 to: '/getting-started'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/scala/aggregation'
 to: '/getting-started'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/scala/datasets-and-sql'
 to: '/spark-sql'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/java/write-to-mongodb'
 to: '/java-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/java/read-from-mongodb'
 to: '/java-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/java/aggregation'
 to: '/java-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/java/datasets-and-sql'
 to: '/java-api'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/r/write-to-mongodb'
 to: '/sparkR'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/r/read-from-mongodb'
 to: '/sparkR'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/r/aggregation'
 to: '/sparkR'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/r/filters-and-sql'
 to: '/sparkR'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 #######################################################################
@@ -203,14 +203,14 @@ code: 301
 from: '/scala-api'
 to: '/getting-started'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/r-api'
 to: '/sparkR'
 outputs:
-  - 'before-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'before-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 #######################################################################
@@ -221,20 +221,20 @@ code: 301
 from: '/getting-started'
 to: ''
 outputs:
-  - 'after-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'after-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/spark-sql'
 to: ''
 outputs:
-  - 'after-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'after-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ---
 code: 301
 from: '/sparkR'
 to: '/r-api'
 outputs:
-  - 'after-v1.1': {'/spark-connector': 'https://docs.mongodb.com/spark-connector'}
+  - 'after-v1.1': {'/spark-connector': 'https://mongodb.com/docs/spark-connector'}
 type: redirect
 ...
