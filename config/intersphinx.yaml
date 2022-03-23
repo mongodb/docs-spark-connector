@@ -1,8 +1,0 @@
-name: python2
-url: https://docs.python.org/2/
-path: python2.inv
----
-name: mongodb
-url: https://mongodb.com/docs/manual/
-path: mongodb.inv
-...
