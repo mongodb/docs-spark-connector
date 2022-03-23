@@ -7,7 +7,7 @@ This repository contains documentation regarding MongoDB Spark Connector.
 Build Locally
 -------------
 
-To build the documentation locally, 
+To build the documentation locally,
 
 - Install `giza <https://pypi.python.org/pypi/giza/>`_, if not already
   installed.
@@ -21,7 +21,7 @@ To build the documentation locally,
 Contribute
 ----------
 
-To contribute to the documentation, 
+To contribute to the documentation,
 
 - If you have not done so already, please sign the `MongoDB Contributor
   Agreement <https://www.mongodb.com/legal/contributor-agreement>`_.
@@ -31,10 +31,9 @@ To contribute to the documentation,
 See the following documents that provide an overview of the
 documentation style and process:
 
-- `Style Guide <http://docs.mongodb.org/manual/meta/style-guide>`_
-- `Documentation Practices <http://docs.mongodb.org/manual/meta/practices>`_
-- `Documentation Organization <http://docs.mongodb.org/manual/meta/organization>`_
-- `Build Instructions <http://docs.mongodb.org/manual/meta/build>`_
+- `Style Guide <http://www.mongodb.com/docs/meta/style-guide>`_
+- `Documentation Practices <https://www.mongodb.com/docs/meta/practices>`_
+- `Documentation Organization <http://www.mongodb.com/docs/meta/organization>`_
 
 File JIRA Tickets
 -----------------
