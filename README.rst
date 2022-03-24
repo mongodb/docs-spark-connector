@@ -32,7 +32,7 @@ See the following documents that provide an overview of the
 documentation style and process:
 
 - `Style Guide <http://www.mongodb.com/docs/meta/style-guide>`_
-- `Documentation Practices <http://www.mongodb.com/meta/practices>`_
+- `Documentation Practices <http://www.mongodb.com/docs/meta/practices>`_
 - `Documentation Organization <http://www.mongodb.com/docs/meta/organization>`_
 
 File JIRA Tickets
