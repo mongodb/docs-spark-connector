@@ -1,7 +1,6 @@
 .. _read-from-mongodb: 
 .. _scala-read:
 .. _java-read:
-.. _gs-read-config:
 
 =================
 Read from MongoDB

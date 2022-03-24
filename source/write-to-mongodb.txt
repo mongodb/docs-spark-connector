@@ -1,7 +1,6 @@
 .. _write-to-mongodb:
 .. _scala-write:
 .. _java-write:
-.. _gs-write-config:
 
 ================
 Write to MongoDB
