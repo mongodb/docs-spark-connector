@@ -24,7 +24,7 @@ Overview
 
 Spark Structured Streaming is a stream processing engine you can use through the Dataset or DataFrame API.
 
-Spark Structured Streaming allows on-the-fly analysis of live data streams with MongoDB. See the `Spark documentation
+Spark Structured Streaming allows real time analysis of live data streams with MongoDB. See the `Spark documentation
 <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__ for a detailed description of Spark Structured Streaming functionality.
 
 .. The key idea in Structured Streaming is to treat a live data stream as a table that is being continuously appended.
@@ -62,20 +62,68 @@ The following examples use a Docker environment that provides a
 MongoDB replica set. You can download and run this environment from 
 this `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__.
 
-For each example... setup
+For each example, create a ``SparkSession`` as shown below:
 
 .. code-block:: python
    :copyable: true
    :emphasize-lines: 0
 
+   spark = SparkSession.\
+        builder.\
+        appName("pyspark-notebook2").\
+        master("spark://spark-master:7077").\
+        config("spark.executor.memory", "1g").\
+        config('spark.mongodb.connection.uri', "mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0").\
+        config("spark.mongodb.database", "Stocks").\
+        config("spark.mongodb.collection", "Source").\
+        config("spark.jars","mongosparkv10.jar").\
+        getOrCreate()
 
 Stream to MongoDB from a CSV file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To stream to MongoDB from a CSV file, 
+
 .. code-block:: python
    :copyable: true
    :emphasize-lines: 0
 
+   readSchema = ( StructType()
+     .add('Type', StringType())
+     .add('Date', TimestampType())
+     .add('Price', DoubleType())
+   )
+
+   ds = (spark
+     .readStream.format("csv")
+     .option("header", "true")
+     .schema(readSchema)
+     .load("daily*.csv")
+   )
+
+   slidingWindows = (ds
+     .withWatermark("Date", "1 minute")
+     .groupBy(ds.Type, F.window(ds.Date, "7 day"))
+     .avg()
+     .orderBy(ds.Type,'window')
+   )
+
+   dsw = (
+     slidingWindows
+       .writeStream
+       .format("mongodb")
+       .queryName("7DaySlidingWindow")
+       .option("checkpointLocation", "/tmp/pyspark/")
+       .option("forceDeleteTempCheckpointLocation", "true")
+       .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0')
+       .option('spark.mongodb.database', 'Pricing')
+       .option('spark.mongodb.collection', 'NaturalGas')
+       .outputMode("complete")
+   )
+
+   query = dsw.start()
+   query.processAllAvailable()
+   query.stop()
    
 Stream from MongoDB to another MongoDB collection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
