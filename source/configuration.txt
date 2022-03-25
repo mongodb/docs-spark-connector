@@ -109,7 +109,7 @@ specifying an option key string.
 
    The following syntaxes are equivalent to one another:
 
-   - ``dfw.option("spark.mongodb.write.collection", "myCollection")``
+   - ``dfw.option("spark.mongodb.write.collection", "myCollection").save()``
 
    - ``dfw.option("spark.mongodb.collection", "myCollection").save()``
 
