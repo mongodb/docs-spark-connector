@@ -9,7 +9,7 @@ Structured Streaming with MongoDB
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 1
+   :depth: 2
    :class: singlecol
 
 Overview
@@ -41,18 +41,30 @@ Configuring a Read Stream
 Specify ``.readStream`` configuration settings on your local 
 SparkSession.
 
-.. code-block:: python
-   :copyable: true
+.. tabs-drivers::
 
-   <local SparkSession>
-     .readStream
-     .format("csv")
-     .option("header", "true")
-     .schema(exampleSchema)
-     .load("example*.csv")
+   tabs:
+     - id: java-sync
+       content: |
 
-For a complete list of methods, see the 
-`pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
+     - id: python
+       content: |
+
+         .. code-block:: python
+            :copyable: true
+         
+            <local SparkSession>
+              .readStream
+              .format("csv")
+              .option("header", "true")
+              .schema(exampleSchema)
+              .load("example*.csv")
+         
+         For a complete list of methods, see the 
+         `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
+
+     - id: scala
+       content: |
 
 .. _continuous-processing:
 
@@ -66,28 +78,40 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
 To use continuous processing with the MongoDB Spark Connector, add the 
 ``.trigger()`` method to the ``.writeStream`` of the streaming 
-DataFrame you created from your MongoDB ``.readStream``.
+Dataset or DataFrame that you created from your MongoDB ``.readStream``.
 
-.. code-block:: python
-   :copyable: true
-
-   streamingDataFrame = (<local SparkSession>
-     .readStream
-     .format("mongodb")
-     .schema(exampleSchema)
-     .load()
-   )
-
-   streamingDataFrame
-     .writeStream
-     .trigger(continuous="1 second")
-     .start()
-   
 .. note:: 
 
    Reading a stream from MongoDB with ``.readStream`` depends 
    upon watching :manual:`change streams </changeStreams>` for 
    real-time updates.
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+     - id: python
+       content: |
+
+         .. code-block:: python
+            :copyable: true
+         
+            streamingDataFrame = (<local SparkSession>
+              .readStream
+              .format("mongodb")
+              .schema(exampleSchema)
+              .load()
+            )
+         
+            streamingDataFrame
+              .writeStream
+              .trigger(continuous="1 second")
+              .start()
+
+     - id: scala
+       content: |
 
 .. _write-structured-stream:
 
@@ -100,22 +124,34 @@ Configuring a Write Stream
    see :ref:`spark-input-conf` and :ref:`spark-output-conf`.
 
 Specify ``.writeStream`` configuration settings on your streaming 
-DataFrame.
+Dataset or DataFrame.
 
-.. code-block:: python
-   :copyable: true
+.. tabs-drivers::
 
-   <streaming DataFrame>
-     .writeStream
-     .format("mongodb")
-     .queryName("exampleQuery")
-     .option("checkpointLocation", "/tmp/checkpoint/")
-     .option("forceDeleteTempCheckpointLocation", "true")
-     .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/exampleDatabase.exampleCollection?replicaSet=rs0')
-     .outputMode("complete")
+   tabs:
+     - id: java-sync
+       content: |
 
-For a complete list of methods, see the 
-`pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
+     - id: python
+       content: |
+
+         .. code-block:: python
+            :copyable: true
+         
+            <streaming Dataset/ DataFrame>
+              .writeStream
+              .format("mongodb")
+              .queryName("exampleQuery")
+              .option("checkpointLocation", "/tmp/checkpoint/")
+              .option("forceDeleteTempCheckpointLocation", "true")
+              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/exampleDatabase.exampleCollection?replicaSet=rs0')
+              .outputMode("complete")
+
+         For a complete list of methods, see the 
+         `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
+
+     - id: scala
+       content: |
 
 Usage Examples
 --------------
