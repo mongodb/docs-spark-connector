@@ -53,11 +53,11 @@ SparkSession.
          .. code-block:: python
             :copyable: true
          
-            <local SparkSession>
-              .readStream
-              .format("csv")
-              .option("header", "true")
-              .schema(exampleSchema)
+            <local SparkSession> \
+              .readStream \
+              .format("csv") \
+              .option("header", "true") \
+              .schema(exampleSchema) \
               .load("example*.csv")
          
          For a complete list of methods, see the 
@@ -105,9 +105,9 @@ Dataset or DataFrame that you create from your MongoDB ``.readStream``.
               .load()
             )
          
-            streamingDataFrame
-              .writeStream
-              .trigger(continuous="1 second")
+            streamingDataFrame \
+              .writeStream \
+              .trigger(continuous="1 second") \
               .start()
 
      - id: scala
@@ -138,13 +138,13 @@ Dataset or DataFrame.
          .. code-block:: python
             :copyable: true
          
-            <streaming Dataset/ DataFrame>
-              .writeStream
-              .format("mongodb")
-              .queryName("exampleQuery")
-              .option("checkpointLocation", "/tmp/checkpoint/")
-              .option("forceDeleteTempCheckpointLocation", "true")
-              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/exampleDatabase.exampleCollection?replicaSet=rs0')
+            <streaming Dataset/ DataFrame> \
+              .writeStream \
+              .format("mongodb") \
+              .queryName("exampleQuery") \
+              .option("checkpointLocation", "/tmp/checkpoint/") \
+              .option("forceDeleteTempCheckpointLocation", "true") \
+              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/exampleDatabase.exampleCollection?replicaSet=rs0') \
               .outputMode("complete")
 
          For a complete list of methods, see the 
@@ -226,11 +226,12 @@ version {+current-version+} to use for the following examples.
          .. code-block:: python
             :copyable: true
          
-            spark = SparkSession
+            spark = (SparkSession
               .builder
               .master("spark://spark-master:7077")
               .config("spark.jars","mongosparkv10.jar")
-              .getOrCreate() 
+              .getOrCreate()
+            )
 
      - id: scala
        content: |
@@ -265,7 +266,7 @@ Stream to MongoDB from a CSV File
             :emphasize-lines: 9, 15, 20
  
             # define the schema of the .csv
-            readSchema = ( StructType()
+            readSchema = (StructType()
               .add('Type', StringType())
               .add('Date', TimestampType())
               .add('Price', DoubleType())
@@ -308,8 +309,8 @@ Stream to a CSV File from MongoDB
    :ref:`continuous processing <continuous-processing>` 
    and an incoming stream of data to write out.
 
-   Once your stream is running, try adding data to MongoDB and observe 
-   your output ``.csv``.
+   Once your stream is running, try adding data to MongoDB and 
+   observing your output ``.csv``.
 
 .. tabs-drivers::
 
@@ -338,7 +339,7 @@ Stream to a CSV File from MongoDB
             :emphasize-lines: 10, 18, 21-22
 
             # define the schema of the Source collection
-            readSchema = ( StructType()
+            readSchema = (StructType()
               .add('company_symbol', StringType())
               .add('company_name', StringType())
               .add('price', DoubleType())
