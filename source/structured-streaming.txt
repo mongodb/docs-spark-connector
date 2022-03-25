@@ -271,21 +271,27 @@ Stream to MongoDB from a CSV File
               .add('Price', DoubleType())
             )
 
-            spark
+            query = (spark
               .readStream
               .format("csv")
               .option("header", "true")
               .schema(readSchema)
               .load("daily*.csv")
-              # manipulate your streaming data
               .writeStream
               .format("mongodb")
+              .option("checkpointLocation", "/tmp/pyspark/")
+              .option("forceDeleteTempCheckpointLocation", "true")
               .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Pricing.NaturalGas?replicaSet=rs0')
               .option('spark.mongodb.database', 'Pricing')
               .option('spark.mongodb.collection', 'NaturalGas')
-              .outputMode("complete")
-              .start()
+              .outputMode("append")
+            )
 
+            # run the query
+            sq = query.start()
+            sq.processAllAvailable()
+            sq.stop()
+            
      - id: scala
        content: |
 
@@ -339,7 +345,7 @@ Stream to a CSV File from MongoDB
               .add('tx_time', TimestampType())
             )            
 
-            spark
+            query = (spark
               .readStream
               .format("mongodb")
               .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0')
@@ -353,7 +359,10 @@ Stream to a CSV File from MongoDB
               .option("path", "/output/")
               .trigger(continuous="1 second")
               .outputMode("append")
-              .start()
+            )
+
+            # run the query
+            sq = query.start()   
 
      - id: scala
        content: |
