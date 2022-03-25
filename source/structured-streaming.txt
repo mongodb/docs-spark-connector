@@ -263,7 +263,7 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 9, 15, 20
+            :emphasize-lines: 9, 14, 21
  
             # define the schema of the .csv
             readSchema = (StructType()
