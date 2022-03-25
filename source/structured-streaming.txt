@@ -170,7 +170,8 @@ Prerequisites
      - id: python
        content: |
 
-         The following examples use a Docker environment that provides a `JupyterLabs <https://jupyter.org/>`__ notebook running 
+         The following examples use a Docker environment that provides 
+         a `JupyterLabs <https://jupyter.org/>`__ notebook running 
          `pyspark <https://spark.apache.org/docs/latest/api/python/>`__ 
          and a MongoDB replica set. You can download and run this 
          environment from this `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__.
@@ -342,10 +343,33 @@ Stream to a CSV File from MongoDB
          To create a :ref:`read stream <read-structured-stream>` to a 
          ``.csv`` file from MongoDB, 
 
+         first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
+         from MongoDB, then use that DataStreamReader to 
+         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
+         to a new ``.csv`` file. Finally, ``.start()`` the stream.
+         
+         As new data is inserted into MongoDB, MongoDB streams that 
+         data out to a ``.csv`` file in the `outputMode <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__ 
+         you specify.
+
          .. code-block:: python
             :copyable: true
+            :emphasize-lines: 2, 9, 12
 
-            code
+            spark
+              .readStream
+              .format("mongodb")
+              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0')
+              .option('spark.mongodb.database', 'Stocks')
+              .option('spark.mongodb.collection', 'Source')
+              .load()
+              # transform your streaming data
+              .writeStream
+              .format("csv")
+              .option("path", "/output/")
+              .trigger(continuous="1 second")
+              .outputMode("append")
+              .start()
 
      - id: scala
        content: |
