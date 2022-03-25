@@ -78,7 +78,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
 To use continuous processing with the MongoDB Spark Connector, add the 
 ``.trigger()`` method to the ``.writeStream`` of the streaming 
-Dataset or DataFrame that you created from your MongoDB ``.readStream``.
+Dataset or DataFrame that you create from your MongoDB ``.readStream``.
 
 .. note:: 
 
@@ -193,7 +193,7 @@ Prerequisites
             `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__ 
             parent directory.
             
-            Add the following line to your ``run`` script
+            Add the following line to the ``run`` script
             immediately after ``docker-compose exec`` commands:
          
             .. code-block:: sh
@@ -211,8 +211,8 @@ Prerequisites
 Create a SparkSession
 ~~~~~~~~~~~~~~~~~~~~~
 
-Create a ``SparkSession`` configured with the MongoDB Connector to use 
-for the following examples.
+Create a ``SparkSession`` configured with MongoDB Spark Connector 
+version {+current-version+} to use for the following examples.
 
 .. tabs-drivers::
 
@@ -229,7 +229,6 @@ for the following examples.
             spark = SparkSession
               .builder
               .master("spark://spark-master:7077")
-              .config('spark.mongodb.connection.uri', "mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0")
               .config("spark.jars","mongosparkv10.jar")
               .getOrCreate() 
 
@@ -263,7 +262,7 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 10, 28, 36
+            :emphasize-lines: 9, 15, 20
  
             # define the schema of the .csv
             readSchema = ( StructType()
@@ -272,45 +271,20 @@ Stream to MongoDB from a CSV File
               .add('Price', DoubleType())
             )
 
-            # use .readStream to create a DataStreamReader
-            dsr = (spark
+            spark
               .readStream
               .format("csv")
               .option("header", "true")
               .schema(readSchema)
               .load("daily*.csv")
-            )
-
-            # manipulate streaming data
-            slidingWindows = (dsr
-              .withWatermark("Date", "1 minute")
-              .groupBy(ds.Type, F.window(ds.Date, "7 day"))
-              .avg()
-              .orderBy(ds.Type,'window')
-            )
-
-            # use .writeStream to create a DataStreamWriter
-            dsw = (
-              slidingWindows
-                .writeStream
-                .format("mongodb")
-                .queryName("7DaySlidingWindow")
-                .option("checkpointLocation", "/tmp/pyspark/")
-                .option("forceDeleteTempCheckpointLocation", "true")
-                .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0')
-                .option('spark.mongodb.database', 'Pricing')
-                .option('spark.mongodb.collection', 'NaturalGas')
-                .outputMode("complete")
-            )
-
-            # begin the stream
-            query = dsw.start()
-
-            # check that the stream is in progress
-            query.isActive
-
-            # stop the stream
-            query.stop()
+              # manipulate your streaming data
+              .writeStream
+              .format("mongodb")
+              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Pricing.NaturalGas?replicaSet=rs0')
+              .option('spark.mongodb.database', 'Pricing')
+              .option('spark.mongodb.collection', 'NaturalGas')
+              .outputMode("complete")
+              .start()
 
      - id: scala
        content: |
@@ -322,11 +296,14 @@ Stream to MongoDB from a CSV File
 Stream to a CSV File from MongoDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
+.. tip:: Streaming via change streams
 
    Streaming from MongoDB requires 
    :ref:`continuous processing <continuous-processing>` 
    and an incoming stream of data to write out.
+
+   Once your stream is running, try adding data to MongoDB and observe 
+   your output ``.csv``.
 
 .. tabs-drivers::
 
@@ -341,9 +318,7 @@ Stream to a CSV File from MongoDB
        content: |
 
          To create a :ref:`read stream <read-structured-stream>` to a 
-         ``.csv`` file from MongoDB, 
-
-         first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
+         ``.csv`` file from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
          from MongoDB, then use that DataStreamReader to 
          create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
          to a new ``.csv`` file. Finally, ``.start()`` the stream.
@@ -354,7 +329,15 @@ Stream to a CSV File from MongoDB
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 2, 9, 12
+            :emphasize-lines: 10, 18, 21-22
+
+            # define the schema of the Source collection
+            readSchema = ( StructType()
+              .add('company_symbol', StringType())
+              .add('company_name', StringType())
+              .add('price', DoubleType())
+              .add('tx_time', TimestampType())
+            )            
 
             spark
               .readStream
@@ -362,8 +345,9 @@ Stream to a CSV File from MongoDB
               .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0')
               .option('spark.mongodb.database', 'Stocks')
               .option('spark.mongodb.collection', 'Source')
+              .schema(readSchema)
               .load()
-              # transform your streaming data
+              # manipulate your streaming data
               .writeStream
               .format("csv")
               .option("path", "/output/")
