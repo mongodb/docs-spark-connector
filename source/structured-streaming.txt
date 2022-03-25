@@ -1,8 +1,8 @@
 .. _spark-structured-streaming:
 
-=======================================
-Spark Structured Streaming with MongoDB
-=======================================
+=================================
+Structured Streaming with MongoDB
+=================================
 
 .. default-domain:: mongodb
 
@@ -12,32 +12,31 @@ Spark Structured Streaming with MongoDB
    :depth: 1
    :class: singlecol
 
-.. todo find a place for /scala/streaming.txt
-
-.. include:: includes/streaming-distinction.rst
-
 Overview
 --------
 
-Spark Structured Streaming 
+Spark Structured Streaming is a stream processing engine you can use 
+through the Dataset or DataFrame API.
 
-.. Add support for using MongoDB as a streaming source via change streams.
-.. https://docs.mongodb.com/kafka-connector/current/source-connector/fundamentals/change-streams/
+.. include:: includes/streaming-distinction.rst
 
-Spark Structured Streaming is a stream processing engine you can use through the Dataset or DataFrame API.
+You can use the MongoDB Spark Connector with Spark Structured Streaming 
+to apply filters, aggregation pipelines, and other MongoDB features to 
+your streaming data.
 
-Spark Structured Streaming allows real-time analysis of live data streams with MongoDB. See the `Spark documentation
-<https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__ for a detailed description of Spark Structured Streaming functionality.
+See the `Spark documentation
+<https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__ 
+for a detailed description of Structured Streaming.
+
+Concepts
+--------
 
 .. The key idea in Structured Streaming is to treat a live data stream as a table that is being continuously appended.
 
 .. blog
 Apache Spark comes with a stream processing engine called Structured Streaming, which is based on Spark's SQL engine and DataFrame APIs. Spark Structured Streaming treats each incoming stream of data as a micro-batch, continually appending each micro-batch to the target dataset. This makes it easy to  convert existing Spark batch jobs into a streaming job. Structured Streaming provides maximum throughput via the same distributed capabilities that has made Spark such a popular platform.  In the following example, we’ll show you how to stream data to MongoDB using Structured Stream.
 
-While utilizing Spark, the MongoDB Spark Connector also takes advantage of the following MongoDB specific features: 
-Aggregation pipelines
-Secondary index extraction
-Working with only the data it needs (from filtering)  
+Connector uses change streams.
 
 .. _continuous-processing:
 
@@ -50,14 +49,16 @@ more, see the `Spark documentation <https://spark.apache.org/docs/latest/structu
 
 Reading a stream from MongoDB with ``.readStream`` depends 
 upon watching :manual:`change streams </changeStreams>` for 
-real-time updates. 
+real-time updates.
+
+``.trigger()`` goes on ``.writeStream``.
 
 .. Configuration options can mimic Kafka streaming support. 
 .. https://docs.mongodb.com/kafka-connector/current/source-connector/configuration-properties/
 
 .. _read-structured-stream:
 
-Read Stream Configuration
+Configuring a Read Stream
 -------------------------
 
 .. note:: 
@@ -79,7 +80,7 @@ SparkSession.
 
 .. _write-structured-stream:
 
-Write Stream Configuration
+Configuring a Write Stream
 --------------------------
 
 .. note:: 
@@ -138,7 +139,7 @@ for the following examples:
         config("spark.jars","mongosparkv10.jar").\
         getOrCreate()
 
-Stream to MongoDB from a CSV file
+Stream to MongoDB from a CSV File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To create a :ref:`write stream <write-structured-stream>` to MongoDB 
@@ -166,8 +167,8 @@ from a ``.csv`` file, ...
             :copyable: true
 
 
-Stream to a CSV from MongoDB
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Stream to a CSV File from MongoDB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
 
