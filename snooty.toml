@@ -3,7 +3,7 @@ title = "MongoDB Spark Connector"
 
 intersphinx = ["https://www.mongodb.com/docs/manual/objects.inv"]
 
-toc_landing_pages = ["configuration"]
+toc_landing_pages = ["configuration", "structured-streaming"]
 
 [constants]
 current-version = "10.0"

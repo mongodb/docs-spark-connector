@@ -15,113 +15,20 @@ Structured Streaming with MongoDB
 Overview
 --------
 
-Spark Structured Streaming is a stream processing engine you can use 
-through the Dataset or DataFrame API.
+Spark Structured Streaming is a data stream processing engine you can 
+use through the Dataset or DataFrame API. The MongoDB Spark Connector 
+lets you stream to and from MongoDB using Spark Structured Streaming.
 
 .. include:: includes/streaming-distinction.rst
-
-You can use the MongoDB Spark Connector with Spark Structured Streaming 
-to apply filters, aggregation pipelines, and other MongoDB features to 
-your streaming data.
 
 To learn more about Structured Streaming, see the 
 `Spark Programming Guide
 <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__.
-   
-.. _read-structured-stream:
-
-Configuring a Read Stream
--------------------------
-
-.. note:: 
-   
-   For general configuration settings for the MongoDB Spark Connector, 
-   see :ref:`spark-input-conf` and :ref:`spark-output-conf`.
-
-Specify ``.readStream`` configuration settings on your local 
-SparkSession.
-
-.. tabs-drivers::
-
-   tabs:
-     - id: java-sync
-       content: |
-
-     - id: python
-       content: |
-
-         .. code-block:: python
-            :copyable: true
-         
-            <local SparkSession> \
-              .readStream \
-              .format("csv") \
-              .option("header", "true") \
-              .schema(exampleSchema) \
-              .load("example*.csv")
-         
-         For a complete list of methods, see the 
-         `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
-
-     - id: scala
-       content: |
-
-.. _continuous-processing:
-
-Continuous Processing
-~~~~~~~~~~~~~~~~~~~~~
-
-Reading a stream from a MongoDB database requires 
-*continuous processing*, 
-an experimental feature introduced in Spark version 2.3. To learn 
-more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
-
-To use continuous processing with the MongoDB Spark Connector, add the 
-``.trigger()`` method to the ``.writeStream`` of the streaming 
-Dataset or DataFrame that you create from your MongoDB ``.readStream``.
-
-.. note:: 
-
-   Reading a stream from MongoDB with ``.readStream`` depends 
-   upon watching :manual:`change streams </changeStreams>` for 
-   real-time updates.
-
-.. tabs-drivers::
-
-   tabs:
-     - id: java-sync
-       content: |
-
-     - id: python
-       content: |
-
-         .. code-block:: python
-            :copyable: true
-         
-            streamingDataFrame = (<local SparkSession>
-              .readStream
-              .format("mongodb")
-              .schema(exampleSchema)
-              .load()
-            )
-         
-            streamingDataFrame \
-              .writeStream \
-              .trigger(continuous="1 second") \
-              .start()
-
-     - id: scala
-       content: |
 
 .. _write-structured-stream:
 
-Configuring a Write Stream
---------------------------
-
-.. note:: 
-   
-   For general configuration settings for the MongoDB Spark Connector, 
-   see :ref:`spark-input-conf` and :ref:`spark-output-conf`.
+Configuring a Write Stream to MongoDB
+-------------------------------------
 
 Specify ``.writeStream`` configuration settings on your streaming 
 Dataset or DataFrame.
@@ -137,15 +44,16 @@ Dataset or DataFrame.
 
          .. code-block:: python
             :copyable: true
+            :emphasize-lines: 6
          
             <streaming Dataset/ DataFrame> \
               .writeStream \
-              .format("mongodb") \
               .queryName("exampleQuery") \
+              .format("mongodb") \
               .option("checkpointLocation", "/tmp/checkpoint/") \
               .option("forceDeleteTempCheckpointLocation", "true") \
-              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/exampleDatabase.exampleCollection?replicaSet=rs0') \
-              .outputMode("complete")
+              .option("spark.mongodb.connection.uri", <mongodb-connection-string>) \
+              .outputMode("append")
 
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
@@ -153,66 +61,30 @@ Dataset or DataFrame.
      - id: scala
        content: |
 
-Usage Examples
---------------
+.. _read-structured-stream:
 
-Prerequisites
-~~~~~~~~~~~~~
+Configuring a Read Stream from MongoDB
+--------------------------------------
 
-.. tabs-selector:: drivers
+.. _continuous-processing:
 
-.. tabs-drivers::
+Reading a stream from a MongoDB database requires 
+*continuous processing*, 
+an experimental feature introduced in Spark version 2.3. To learn 
+more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
 
-   tabs:
-     - id: java-sync
-       content: |
+To use continuous processing with the MongoDB Spark Connector, add the 
+``.trigger()`` method to the ``.writeStream`` of the streaming 
+Dataset or DataFrame that you create from your MongoDB ``.readStream``.
 
-     - id: python
-       content: |
+.. note:: 
 
-         The following examples use a Docker environment that provides 
-         a `JupyterLabs <https://jupyter.org/>`__ notebook running 
-         `pyspark <https://spark.apache.org/docs/latest/api/python/>`__ 
-         and a MongoDB replica set. You can download and run this 
-         environment from this `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__.
-  
-         Ensure that you have access to the following files in your 
-         environment:
-         
-         - The MongoDB Spark Connector version {+current-version+} 
-           ``.jar`` file.
-         
-         - The ``daily_csv.csv`` file from 
-           `DataHub.io <https://datahub.io/core/natural-gas#resource-daily>`__ 
-           to use as sample data.
-         
-         .. tip:: Adding files to the example Docker environment
-         
-            Add each file you want to copy into your Docker 
-            environment to your local
-            `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__ 
-            parent directory.
-            
-            Add the following line to the ``run`` script
-            immediately after ``docker-compose exec`` commands:
-         
-            .. code-block:: sh
-               :copyable: true
-            
-               docker cp <file-to-copy> jupyterlab:/home/jovyan/
-         
-            On Linux or MacOS, edit ``run.sh``.
-         
-            On Windows, edit ``run.ps1``.
+   Reading a stream from MongoDB with continuous processing depends 
+   upon watching :manual:`change streams </changeStreams>` for 
+   real-time updates.
 
-     - id: scala
-       content: |
-
-Create a SparkSession
-~~~~~~~~~~~~~~~~~~~~~
-
-Create a ``SparkSession`` configured with MongoDB Spark Connector 
-version {+current-version+} to use for the following examples.
+Specify ``.readStream`` configuration settings on your local 
+SparkSession.
 
 .. tabs-drivers::
 
@@ -225,16 +97,32 @@ version {+current-version+} to use for the following examples.
 
          .. code-block:: python
             :copyable: true
+            :emphasize-lines: 8
          
-            spark = (SparkSession
-              .builder
-              .master("spark://spark-master:7077")
-              .config("spark.jars","mongosparkv10.jar")
-              .getOrCreate()
+            streamingDataFrame = (<local SparkSession>
+              .readStream
+              .format("mongodb")
+              .load()
             )
+         
+            query = (streamingDataFrame
+              .writeStream
+              .trigger(continuous="1 second")
+              .queryName("exampleQuery")
+              .format("memory")
+              .outputMode("append")
+            )
+
+            query.start()
+
+         For a complete list of methods, see the 
+         `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
 
      - id: scala
        content: |
+
+Examples
+--------
 
 Stream to MongoDB from a CSV File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -298,7 +186,6 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: scala
             :copyable: true
-
 
 Stream to a CSV File from MongoDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -370,3 +257,8 @@ Stream to a CSV File from MongoDB
 
          .. code-block:: scala
             :copyable: true
+
+.. toctree::
+   :titlesonly:
+   
+   tutorials

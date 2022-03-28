@@ -12,6 +12,8 @@ Tutorials
    :depth: 1
    :class: singlecol
 
+This tutorial guides you through setting up a Docker environment with everything you need to experiment with Spark Structured Streaming, MongoDB, and the MongoDB Spark Connector.
+
 .. tabs-selector:: drivers
 
 .. tabs-drivers::
@@ -22,6 +24,82 @@ Tutorials
 
      - id: python
        content: |
+
+         The tutorial Docker environment provides a Spark cluster, a MongoDB replica set and a `JupyterLab <https://jupyter.org/>`__ notebook running `pyspark <https://spark.apache.org/docs/latest/api/python/>`__. 
+         You can download and run this environment from this `MongoDB 
+         University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__.
+
+     - id: scala
+       content: |
+
+Prerequisites
+-------------
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+     - id: python
+       content: |
+  
+         Ensure that you have access to the following files in your 
+         environment:
+         
+         - The MongoDB Spark Connector version {+current-version+} 
+           ``.jar`` file.
+         
+         - The ``daily_csv.csv`` file from 
+           `DataHub.io <https://datahub.io/core/natural-gas#resource-daily>`__ 
+           to use as sample data.
+         
+         .. tip:: Adding files to the example Docker environment
+         
+            Add each file you want to copy into your Docker 
+            environment to your local
+            `MongoDB University GitHub repository <https://github.com/mongodb-university/mongodb-spark>`__ 
+            parent directory.
+            
+            Add the following line to the ``run`` script
+            immediately after ``docker-compose exec`` commands:
+         
+            .. code-block:: sh
+               :copyable: true
+            
+               docker cp <file-to-copy> jupyterlab:/home/jovyan/
+         
+            On Linux or MacOS, edit ``run.sh``.
+         
+            On Windows, edit ``run.ps1``.
+
+     - id: scala
+       content: |
+
+Create a SparkSession
+---------------------
+
+Create a ``SparkSession`` configured with MongoDB Spark Connector 
+version {+current-version+} to use for the following examples.
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+     - id: python
+       content: |
+
+         .. code-block:: python
+            :copyable: true
+         
+            spark = (SparkSession
+              .builder
+              .master("spark://spark-master:7077")
+              .config("spark.jars","mongosparkv10.jar")
+              .getOrCreate()
+            )
 
      - id: scala
        content: |
