@@ -108,7 +108,6 @@ versions of Apache Spark and MongoDB:
    write-to-mongodb
    read-from-mongodb
    structured-streaming
-   tutorials
    faq
    release-notes
    API Docs <https://www.javadoc.io/doc/org.mongodb.spark/mongo-spark-connector_{+scala-version+}/{+current-version+}>
