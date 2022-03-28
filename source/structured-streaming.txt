@@ -151,7 +151,7 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 9, 14, 21
+            :emphasize-lines: 18, 24
 
             # create a local SparkSession
             spark = SparkSession \
@@ -231,7 +231,7 @@ Stream to a CSV File from MongoDB
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 10, 18, 21-22
+            :emphasize-lines: 19, 27, 30
 
             # create a local SparkSession
             spark = SparkSession \
