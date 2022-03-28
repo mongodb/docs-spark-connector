@@ -44,7 +44,6 @@ Dataset or DataFrame.
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 6
          
             <streaming Dataset/ DataFrame> \
               .writeStream \
@@ -62,11 +61,10 @@ Dataset or DataFrame.
        content: |
 
 .. _read-structured-stream:
+.. _continuous-processing:
 
 Configuring a Read Stream from MongoDB
 --------------------------------------
-
-.. _continuous-processing:
 
 Reading a stream from a MongoDB database requires 
 *continuous processing*, 
@@ -83,6 +81,8 @@ Dataset or DataFrame that you create from your MongoDB ``.readStream``.
    upon watching :manual:`change streams </changeStreams>` for 
    real-time updates.
 
+   To read a stream from MongoDB, you must stream data to MongoDB.
+
 Specify ``.readStream`` configuration settings on your local 
 SparkSession.
 
@@ -97,7 +97,7 @@ SparkSession.
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 8
+            :emphasize-lines: 9
          
             streamingDataFrame = (<local SparkSession>
               .readStream
@@ -152,6 +152,14 @@ Stream to MongoDB from a CSV File
          .. code-block:: python
             :copyable: true
             :emphasize-lines: 9, 14, 21
+
+            # create a local SparkSession
+            spark = SparkSession \
+              .builder \
+              .appName("writeExample") \
+              .master("spark://spark-master:<port>") \
+              .config("spark.jars", "<mongodb-spark-connector-{+current-version+}>.jar") \
+              .getOrCreate()
  
             # define the schema of the .csv
             readSchema = (StructType()
@@ -160,26 +168,26 @@ Stream to MongoDB from a CSV File
               .add('Price', DoubleType())
             )
 
+            # define a streaming query
             query = (spark
               .readStream
               .format("csv")
               .option("header", "true")
               .schema(readSchema)
               .load("daily*.csv")
+              # manipulate your streaming data
               .writeStream
               .format("mongodb")
               .option("checkpointLocation", "/tmp/pyspark/")
               .option("forceDeleteTempCheckpointLocation", "true")
-              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Pricing.NaturalGas?replicaSet=rs0')
-              .option('spark.mongodb.database', 'Pricing')
-              .option('spark.mongodb.collection', 'NaturalGas')
+              .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
+              .option('spark.mongodb.database', <database-name>)
+              .option('spark.mongodb.collection', <collection-name>)
               .outputMode("append")
             )
 
             # run the query
-            sq = query.start()
-            sq.processAllAvailable()
-            sq.stop()
+            query.start()
             
      - id: scala
        content: |
@@ -225,7 +233,15 @@ Stream to a CSV File from MongoDB
             :copyable: true
             :emphasize-lines: 10, 18, 21-22
 
-            # define the schema of the Source collection
+            # create a local SparkSession
+            spark = SparkSession \
+              .builder \
+              .appName("readExample") \
+              .master("spark://spark-master:<port>") \
+              .config("spark.jars", "<mongodb-spark-connector-{+current-version+}>.jar") \
+              .getOrCreate()
+
+            # define the schema of the source collection
             readSchema = (StructType()
               .add('company_symbol', StringType())
               .add('company_name', StringType())
@@ -233,12 +249,13 @@ Stream to a CSV File from MongoDB
               .add('tx_time', TimestampType())
             )            
 
+            # define a streaming query
             query = (spark
               .readStream
               .format("mongodb")
-              .option('spark.mongodb.connection.uri', 'mongodb://mongo1,mongo2,mongo3/Stocks.Source?replicaSet=rs0')
-              .option('spark.mongodb.database', 'Stocks')
-              .option('spark.mongodb.collection', 'Source')
+              .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
+              .option('spark.mongodb.database', <database-name>)
+              .option('spark.mongodb.collection', <collection-name>)
               .schema(readSchema)
               .load()
               # manipulate your streaming data
@@ -250,7 +267,7 @@ Stream to a CSV File from MongoDB
             )
 
             # run the query
-            sq = query.start()   
+            query.start()   
 
      - id: scala
        content: |
