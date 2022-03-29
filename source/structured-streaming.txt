@@ -221,7 +221,7 @@ Stream to a CSV File from MongoDB
 
          To create a :ref:`read stream <read-structured-stream>` to a 
          ``.csv`` file from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
-         from MongoDB, then use that DataStreamReader to 
+         from MongoDB, then use that ``DataStreamReader`` to 
          create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
          to a new ``.csv`` file. Finally, ``.start()`` the stream.
          
