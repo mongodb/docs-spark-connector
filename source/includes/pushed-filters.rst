@@ -6,7 +6,8 @@
    MongoDB before sending it to Spark. This improves Spark performance 
    by retrieving and processing only the data you need.
 
-   The following filters are pushed down to an aggregation pipeline:
+   MongoDB Spark Connector pushes the following filters to an 
+   aggregation pipeline:
 
    - And
    - EqualNullSafe
