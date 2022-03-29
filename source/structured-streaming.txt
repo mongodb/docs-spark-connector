@@ -318,4 +318,3 @@ Stream to a CSV File from MongoDB
 
          .. code-block:: scala
             :copyable: true
-
