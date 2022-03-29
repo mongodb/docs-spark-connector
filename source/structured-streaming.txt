@@ -74,7 +74,7 @@ MongoDB:
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 3-5
+            :emphasize-lines: 3-4
          
             <streaming Dataset/ DataFrame> \
               .writeStream \
@@ -121,8 +121,8 @@ stream with your configuration.
 
 .. note:: 
    
-   Spark does not begin streaming until you call the ``.start()`` on a 
-   streaming query.
+   Spark does not begin streaming until you call the ``.start()`` 
+   method on a streaming query.
 
 You must specify the following configuration settings to read from 
 MongoDB:
