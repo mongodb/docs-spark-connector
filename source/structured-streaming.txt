@@ -31,38 +31,6 @@ To learn more about Structured Streaming, see the
 Configuring a Write Stream to MongoDB
 -------------------------------------
 
-Specify write stream configuration settings on your streaming 
-Dataset or DataFrame with ``.writeStream``.
-
-You must specify the following configuration settings to write to 
-MongoDB:
-
-.. list-table::
-   :header-rows: 1
-   :stub-columns: 1
-   :widths: 10 40
-
-   * - Setting
-     - Description
-
-   * - ``.writeStream.format()``
-     - The format to use for write stream data. Use "mongodb".
-
-   * - ``.writeStream.option()``
-     - Use the ``.option`` method to specify your MongoDB deployment 
-       connection string with the "spark.mongodb.connection.uri" 
-       option key.
-
-       You must specify a database and collection, either as part of 
-       your connection string or with additional ``.option`` 
-       methods using the following keys:
-
-       - "spark.mongodb.database"
-       - "spark.mongodb.collection"
-
-   * - ``.writeStream.outputMode()``
-     - The output mode to use.
-
 .. tabs-drivers::
 
    tabs:
@@ -71,6 +39,39 @@ MongoDB:
 
      - id: python
        content: |
+
+         Specify write stream configuration settings on your streaming 
+         Dataset or DataFrame using the ``writeStream`` property. You 
+         must specify the following configuration settings to write 
+         to MongoDB:
+         
+         .. list-table::
+            :header-rows: 1
+            :stub-columns: 1
+            :widths: 10 40
+         
+            * - Setting
+              - Description
+         
+            * - ``.writeStream.format()``
+              - The format to use for write stream data. Use 
+                ``mongodb``.
+         
+            * - ``.writeStream.option()``
+              - Use the ``option`` method to specify your MongoDB 
+                deployment connection string with the ``spark.mongodb.
+                connection.uri`` option key.
+         
+                You must specify a database and collection, either as 
+                part of your connection string or with additional 
+                ``option`` methods using the following keys:
+         
+                - ``spark.mongodb.database``
+                - ``spark.mongodb.collection``
+         
+            * - ``.writeStream.outputMode()``
+              - The output mode to use. To view a list of all supported 
+                output modes, see `the pyspark outputMode documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__.
 
          .. code-block:: python
             :copyable: true
@@ -101,47 +102,6 @@ Reading a stream from a MongoDB database requires
 an experimental feature introduced in Spark version 2.3. To learn 
 more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
 
-To use continuous processing with the MongoDB Spark Connector, add the 
-``.trigger()`` method to the ``.writeStream`` of the streaming 
-Dataset or DataFrame that you create from your MongoDB ``.readStream``. 
-In your ``.trigger()``, specify the ``continuous`` parameter.
-
-.. note:: 
-
-   The connector populates its read stream from your MongoDB 
-   deployment's change stream. To populate your change stream, perform 
-   update operations on your database.
-
-   To learn more about change streams, see 
-   :manual:`Change Streams </changeStreams>` in the MongoDB manual.
-
-Specify read stream configuration settings on your local 
-SparkSession ``.readStream``. Lastly, add ``.load()`` to create a read 
-stream with your configuration.
-
-.. note:: 
-   
-   Spark does not begin streaming until you call the ``.start()`` 
-   method on a streaming query.
-
-You must specify the following configuration settings to read from 
-MongoDB:
-
-.. list-table::
-   :header-rows: 1
-   :stub-columns: 1
-   :widths: 10 40
-
-   * - Setting
-     - Description
-
-   * - ``.readStream.format()``
-     - The format to use for read stream data. Use "mongodb".
-
-   * - ``.writeStream.trigger()``
-     - Enables continuous processing for your ``.readStream``. Use 
-       the ``continuous`` parameter.
-
 .. tabs-drivers::
 
    tabs:
@@ -150,6 +110,41 @@ MongoDB:
 
      - id: python
        content: |
+
+         To use continuous processing with the MongoDB Spark Connector, 
+         add the ``.trigger()`` method to the ``writeStream`` property 
+         of the streaming Dataset or DataFrame that you create from 
+         your MongoDB read stream. In your ``.trigger()``, specify the 
+         ``continuous`` parameter.
+         
+         .. note:: 
+         
+            The connector populates its read stream from your MongoDB 
+            deployment's change stream. To populate your change stream, 
+            perform update operations on your database.
+         
+            To learn more about change streams, see 
+            :manual:`Change Streams </changeStreams>` in the MongoDB 
+            manual.
+         
+         Specify read stream configuration settings on your local 
+         SparkSession ``readStream``. You must specify the following 
+         configuration settings to read from MongoDB:
+         
+         .. list-table::
+            :header-rows: 1
+            :stub-columns: 1
+            :widths: 10 40
+         
+            * - Setting
+              - Description
+         
+            * - ``.readStream.format()``
+              - The format to use for read stream data. Use ``mongodb``.
+         
+            * - ``.writeStream.trigger()``
+              - Enables continuous processing for your read stream. Use 
+                the ``continuous`` parameter.
 
          .. code-block:: python
             :copyable: true
@@ -170,6 +165,11 @@ MongoDB:
 
             query.start()
 
+         .. note::
+            
+            Spark does not begin streaming until you call the 
+            ``.start()`` method on a streaming query.
+
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
 
@@ -180,7 +180,7 @@ Examples
 --------
 
 The following examples show Spark Structured Streaming configurations 
-for streaming between MongoDB and a CSV file.
+for streaming between MongoDB and a ``.csv`` file.
 
 Stream to MongoDB from a CSV File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -210,7 +210,7 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 18, 24
+            :emphasize-lines: 11, 17
 
             # create a local SparkSession
             spark = SparkSession \
@@ -219,21 +219,14 @@ Stream to MongoDB from a CSV File
               .master("spark://spark-master:<port>") \
               .config("spark.jars", "<mongodb-spark-connector-{+current-version+}>.jar") \
               .getOrCreate()
- 
-            # define the schema of the .csv
-            readSchema = (StructType()
-              .add('Type', StringType())
-              .add('Date', TimestampType())
-              .add('Price', DoubleType())
-            )
 
             # define a streaming query
             query = (spark
               .readStream
               .format("csv")
               .option("header", "true")
-              .schema(readSchema)
-              .load("daily*.csv")
+              .schema(<csv-schema>)
+              .load(<csv-file-name>)
               # manipulate your streaming data
               .writeStream
               .format("mongodb")
