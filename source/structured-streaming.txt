@@ -44,11 +44,11 @@ The following configuration settings are required:
    * - Setting
      - Description
 
-   * - .format()
+   * - ``.format()``
      - The format to use for write stream data. If you are streaming to 
        a MongoDB deployment, use "mongodb".
 
-   * - .outputMode()
+   * - ``.outputMode()``
      - The output mode to use. Defaults to "complete".
 
 .. tabs-drivers::
