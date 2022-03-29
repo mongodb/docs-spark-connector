@@ -74,7 +74,7 @@ MongoDB:
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 3-4
+            :emphasize-lines: 3-4, 7
          
             <streaming Dataset/ DataFrame> \
               .writeStream \
