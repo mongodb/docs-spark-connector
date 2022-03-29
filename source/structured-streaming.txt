@@ -17,7 +17,8 @@ Overview
 
 Spark Structured Streaming is a data stream processing engine you can 
 use through the Dataset or DataFrame API. The MongoDB Spark Connector 
-enables you to stream to and from MongoDB using Spark Structured Streaming.
+enables you to stream to and from MongoDB using Spark Structured 
+Streaming.
 
 .. include:: includes/streaming-distinction.rst
 
@@ -30,8 +31,25 @@ To learn more about Structured Streaming, see the
 Configuring a Write Stream to MongoDB
 -------------------------------------
 
-Specify ``.writeStream`` configuration settings on your streaming 
-Dataset or DataFrame.
+Specify write stream configuration settings on your streaming 
+Dataset or DataFrame with ``.writeStream``.
+
+The following configuration settings are required:
+
+.. list-table::
+   :header-rows: 1
+   :stub-columns: 1
+   :widths: 10 30
+
+   * - Setting
+     - Description
+
+   * - .format()
+     - The format to use for write stream data. If you are streaming to 
+       a MongoDB deployment, use "mongodb".
+
+   * - .outputMode()
+     - The output mode to use. Defaults to "complete".
 
 .. tabs-drivers::
 
@@ -73,18 +91,20 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
 To use continuous processing with the MongoDB Spark Connector, add the 
 ``.trigger()`` method to the ``.writeStream`` of the streaming 
-Dataset or DataFrame that you create from your MongoDB ``.readStream``.
+Dataset or DataFrame that you create from your MongoDB ``.readStream``. 
+In your ``.trigger()``, specify the ``continuous`` parameter.
 
 .. note:: 
 
-   Reading a stream from MongoDB with continuous processing depends 
-   upon watching :manual:`change streams </changeStreams>` for 
-   real-time updates.
+   The connector populates its read stream from your MongoDB 
+   deployment's change stream. To populate your change stream, perform 
+   update operations on your database.
 
-   To read a stream from MongoDB, you must stream data to MongoDB.
+   To learn more about change streams, see 
+   :manual:`Change Streams </changeStreams>` in the MongoDB manual.
 
-Specify ``.readStream`` configuration settings on your local 
-SparkSession.
+Specify read stream configuration settings on your local 
+SparkSession ``.readStream``.
 
 .. tabs-drivers::
 
@@ -124,6 +144,9 @@ SparkSession.
 Examples
 --------
 
+The following examples show Spark Structured Streaming configurations 
+for streaming between MongoDB and a CSV file.
+
 Stream to MongoDB from a CSV File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -143,7 +166,8 @@ Stream to MongoDB from a CSV File
          MongoDB from a ``.csv`` file, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
          from the ``.csv`` file, then use that ``DataStreamReader`` to 
          create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
-         to MongoDB. Finally, ``.start()`` the stream.
+         to MongoDB. Finally, use the ``.start()`` method to begin the 
+         stream.
          
          As streaming data is read from the ``.csv`` file, it is added 
          to MongoDB in the `outputMode <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__ 
@@ -198,15 +222,6 @@ Stream to MongoDB from a CSV File
 Stream to a CSV File from MongoDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. tip:: Streaming via change streams
-
-   Streaming from MongoDB requires 
-   :ref:`continuous processing <continuous-processing>` 
-   and an incoming stream of data to write out.
-
-   Once your stream is running, try adding data to MongoDB and 
-   observing your output ``.csv``.
-
 .. tabs-drivers::
 
    tabs:
@@ -223,7 +238,8 @@ Stream to a CSV File from MongoDB
          ``.csv`` file from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
          from MongoDB, then use that ``DataStreamReader`` to 
          create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
-         to a new ``.csv`` file. Finally, ``.start()`` the stream.
+         to a new ``.csv`` file. Finally, use the ``.start()`` method 
+         to begin the stream.
          
          As new data is inserted into MongoDB, MongoDB streams that 
          data out to a ``.csv`` file in the `outputMode <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__ 
