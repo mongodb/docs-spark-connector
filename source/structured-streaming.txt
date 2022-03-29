@@ -17,7 +17,7 @@ Overview
 
 Spark Structured Streaming is a data stream processing engine you can 
 use through the Dataset or DataFrame API. The MongoDB Spark Connector 
-lets you stream to and from MongoDB using Spark Structured Streaming.
+enables you to stream to and from MongoDB using Spark Structured Streaming.
 
 .. include:: includes/streaming-distinction.rst
 
