@@ -47,8 +47,7 @@ versions of Apache Spark and MongoDB:
 Announcements
 -------------
 
-   - **March 31, 2022**, `MongoDB Connector for Spark version v10.0.0
-     <https://www.mongodb.com/products/spark-connector>`_ Released.
+- **March 31, 2022**, `MongoDB Connector for Spark version v10.0.0 <https://www.mongodb.com/products/spark-connector>`_ Released.
 
 .. toctree::
    :titlesonly:
