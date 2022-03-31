@@ -4,6 +4,8 @@
    :mongo-spark:`JavaIntroduction.java
    </blob/master/examples/src/test/java/tour/JavaIntroduction.java>`.
 
+.. include:: /includes/new-format-name.rst
+
 Dependency Management
 ---------------------
 
@@ -16,7 +18,7 @@ The following excerpt is from a Maven ``pom.xml`` file:
    <dependencies>
      <dependency>
        <groupId>org.mongodb.spark</groupId>
-       <artifactId>mongo-spark-connector_{+scala-version+}</artifactId>
+       <artifactId>mongo-spark-connector_{+current-version+}</artifactId>
        <version>{+current-version+}</version>
      </dependency>
      <dependency>

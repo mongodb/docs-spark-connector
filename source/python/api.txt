@@ -4,6 +4,8 @@
    :mongo-spark:`introduction.py
    </blob/master/examples/src/test/python/introduction.py>`.
 
+.. include:: /includes/new-format-name.rst
+
 Python Spark Shell
 ------------------
 
@@ -11,6 +13,8 @@ This tutorial uses the ``pyspark`` shell, but the code works
 with self-contained Python applications as well.
 
 When starting the ``pyspark`` shell, you can specify:
+
+.. todo
 
 .. include:: /includes/extracts/command-line-start-pyspark.rst
 
