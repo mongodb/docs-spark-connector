@@ -17,7 +17,7 @@ Import the MongoDB Connector Package
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enable MongoDB Connector specific functions and implicits for your
-``SparkSession``, DataFrames, and Datasets by importing the following 
+``SparkSession`` and Datasets by importing the following 
 package in the Spark shell:
 
 .. code-block:: scala
@@ -27,7 +27,7 @@ package in the Spark shell:
 Connect to MongoDB
 ~~~~~~~~~~~~~~~~~~
 
-Connection to MongoDB happens automatically when a DataFrame or Dataset 
+Connection to MongoDB happens automatically when a Dataset 
 action requires a :ref:`read <scala-read>` from MongoDB or a
 :ref:`write <scala-write>` to MongoDB.
 
@@ -88,7 +88,7 @@ MongoSpark Helper
 If you require granular control over your configuration, then the
 ``MongoSpark`` companion provides a ``builder()`` method for
 configuring all aspects of the Mongo Spark Connector. It also provides
-methods to create an RDD, ``DataFrame`` or ``Dataset``.
+methods to create a DataFrame or Dataset.
 
 Troubleshooting
 ---------------

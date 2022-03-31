@@ -14,8 +14,6 @@ with self-contained Python applications as well.
 
 When starting the ``pyspark`` shell, you can specify:
 
-.. todo
-
 .. include:: /includes/extracts/command-line-start-pyspark.rst
 
 Create a ``SparkSession`` Object
