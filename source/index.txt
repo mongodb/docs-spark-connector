@@ -10,7 +10,8 @@ integration between MongoDB and Apache Spark.
 
 .. note::
 
-   .. todo
+   Parallel connectors
+   New .format() namespace - "mongodb"
 
 With the connector, you have access to all Spark libraries for use with
 MongoDB datasets: Datasets for analysis with SQL (benefiting from
