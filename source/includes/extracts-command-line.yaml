@@ -3,7 +3,7 @@ content: |
    - the ``--packages`` option to download the MongoDB Spark Connector
      package.  The following package is available:
 
-     - ``mongo-spark-connector_{+current-version+}``
+     - ``mongo-spark-connector_{+scala-version+}``
 
    - the ``--conf`` option to configure the MongoDB Spark Connnector.
      These settings configure the ``SparkConf`` object.
