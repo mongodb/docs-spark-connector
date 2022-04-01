@@ -3,6 +3,8 @@
    For the source code that contains the examples below, see
    :mongo-spark:`SparkSQL.scala
    </blob/master/examples/src/test/scala/tour/SparkSQL.scala>`.
+
+.. include:: /includes/new-format-name.rst
    
 Getting Started
 ---------------
@@ -56,14 +58,14 @@ Insert the following documents to the ``characters`` collection:
 DataFrames and Datasets
 -----------------------
 
-New in Spark 2.0, a ``DataFrame`` is represented by a ``Dataset`` of
-``Rows`` and is now an alias of ``Dataset[Row]``.
+A ``DataFrame`` is represented by a ``Dataset`` of
+``Rows``. It is an alias of ``Dataset[Row]``.
 
 The Mongo Spark Connector provides the
-``com.mongodb.spark.sql.DefaultSource`` class that creates
-``DataFrames`` and ``Datasets`` from MongoDB. Use the connector's
-``MongoSpark`` helper to facilitate the creation of a ``DataFrame``:
-
+``com.mongodb.spark.sql.connector.MongoTableProvider`` class that 
+creates ``DataFrames`` and ``Datasets`` from MongoDB. Use the 
+connector's ``MongoSpark`` helper to facilitate the creation of a 
+``DataFrame``:
 
 .. code-block:: scala
 
@@ -90,33 +92,12 @@ Alternatively, you can use ``SparkSession`` methods to create DataFrames:
 
 .. code-block:: scala
 
-   val df2 = sparkSession.loadFromMongoDB() // SparkSession used for configuration
-   val df3 = sparkSession.loadFromMongoDB(ReadConfig(
-     Map("uri" -> "mongodb://example.com/database.collection")
-     )
-   ) // ReadConfig used for configuration
-
-   val df4 = sparkSession.read.mongo() // SparkSession used for configuration
-   sqlContext.read.format("mongodb").load()
-
-   // Set custom options
-   import com.mongodb.spark.config._
-
-   val customReadConfig = ReadConfig(Map("readPreference.name" -> "secondaryPreferred"), Some(ReadConfig(sc)))
-   val df5 = sparkSession.read.mongo(customReadConfig)
-
-   val df6 = sparkSession.read.format("mongodb").options(customReadConfig.asOptions).load()
+   val df2 = sparkSession.read.format("mongodb").options(...).load()
 
 Filters
 -------
 
-.. note::
-
-   When using ``filters`` with DataFrames or Spark SQL, the underlying
-   Mongo Connector code constructs an :manual:`aggregation pipeline
-   </core/aggregation-pipeline/>` to filter the data in MongoDB before
-   sending it to Spark.
-
+.. include:: /includes/pushed-filters.rst
 
 The following example filters and output the characters with ages under
 100:
@@ -159,7 +140,6 @@ Explicitly Declare a Schema
    val explicitDF = MongoSpark.load[Character](sparkSession)
    explicitDF.printSchema()
 
-
 The operation prints the following output:
 
 .. code-block:: none
@@ -177,22 +157,6 @@ You can use the case class when converting the ``DataFrame`` to a
 .. code-block:: scala
 
    val dataset = explicitDF.as[Character]
-
-Convert RDD to DataFrame and Dataset
-------------------------------------
-
-The ``MongoRDD`` class provides helpers to convert an ``RDD`` to
-``DataFrames`` and ``Datasets``. The following example passes a
-``SparkContext`` object to the ``MongoSpark.load()`` which returns an
-``RDD``, then converts it:
-
-.. code-block:: scala
-
-   // Passing the SparkContext to load returns a RDD, not DF or DS
-   val rdd = MongoSpark.load(sparkSession.sparkContext)
-   val dfInferredSchema = rdd.toDF()
-   val dfExplicitSchema = rdd.toDF[Character]()
-   val ds = rdd.toDS[Character]()
 
 SQL Queries
 -----------
@@ -223,12 +187,11 @@ collection:
    MongoSpark.save(centenarians.write.option("collection", "hundredClub").mode("overwrite"))
 
    println("Reading from the 'hundredClub' collection:")
-   MongoSpark.load[Character](sparkSession, ReadConfig(Map("collection" -> "hundredClub"), Some(ReadConfig(sparkSession)))).show()
+   MongoSpark.load(sparkSession.option("collection", "hundredClub")).show()
 
 The DataFrameWriter includes the ``.mode("overwrite")`` to drop the
 ``hundredClub`` collection before writing the results, if the
 collection already exists.
-
 
 In the Spark Shell, the operation prints the following output:
 
