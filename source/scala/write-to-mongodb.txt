@@ -8,20 +8,6 @@
 
    MongoSpark.save(documents) // Uses the SparkConf for configuration
 
-Using a ``WriteConfig``
------------------------
-
-.. include:: /includes/scala-java-write-writeconfig.rst
-
-.. code-block:: scala
-
-   import com.mongodb.spark.config._
-
-   val writeConfig = WriteConfig(Map("collection" -> "spark", "writeConcern.w" -> "majority"), Some(WriteConfig(sc)))
-   val sparkDocuments = sc.parallelize((1 to 10).map(i => Document.parse(s"{spark: $i}")))
-   
-   MongoSpark.save(sparkDocuments, writeConfig)
-
 .. _rdd-save-methods:
 
 RDD Save Helper Methods
