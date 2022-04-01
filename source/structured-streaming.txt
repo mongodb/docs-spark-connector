@@ -31,6 +31,8 @@ To learn more about Structured Streaming, see the
 Configuring a Write Stream to MongoDB
 -------------------------------------
 
+.. tabs-selector:: drivers
+
 .. tabs-drivers::
 
    tabs:
