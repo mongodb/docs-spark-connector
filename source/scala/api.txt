@@ -1,9 +1,3 @@
-.. note:: Source Code
-
-   For the source code that contains the examples below, see
-   :mongo-spark:`Introduction.scala
-   </blob/master/examples/src/test/scala/tour/Introduction.scala>`.
-
 .. include:: /includes/new-format-name.rst
 
 Spark Shell
@@ -81,14 +75,6 @@ Configuration
          
      }
    }
-
-MongoSpark Helper
------------------
-
-If you require granular control over your configuration, then the
-``MongoSpark`` companion provides a ``builder()`` method for
-configuring all aspects of the Mongo Spark Connector. It also provides
-methods to create a DataFrame or Dataset.
 
 Troubleshooting
 ---------------

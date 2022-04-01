@@ -1,6 +1,7 @@
 .. _read-from-mongodb: 
 .. _scala-read:
 .. _java-read:
+.. _bson-spark-datatypes:
 .. _scala-dataset-filters:
 
 =================
@@ -15,6 +16,11 @@ Read from MongoDB
    :depth: 1
    :class: singlecol 
 
+
+
+Overview
+--------
+
 .. tabs-selector:: drivers
 
 .. tabs-drivers::
@@ -25,8 +31,6 @@ Read from MongoDB
 
          .. include:: /java/read-from-mongodb.txt
 
-         .. include:: /java/datasets-and-sql.txt
-
      - id: python
        content: |
 
@@ -34,11 +38,29 @@ Read from MongoDB
 
          .. include:: /python/aggregation.txt
 
-         .. include:: /python/filters-and-sql.txt
-
      - id: scala
        content: |
 
          .. include:: /scala/read-from-mongodb.txt
 
+Spark API and SQL
+-----------------
+
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+         .. include:: /java/datasets-and-sql.txt
+
+     - id: python
+       content: |
+
+         .. include:: /python/filters-and-sql.txt
+
+     - id: scala
+       content: |
+
          .. include:: /scala/datasets-and-sql.txt
+
