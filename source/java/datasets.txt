@@ -8,9 +8,8 @@ class in the Java API, so ``Dataset<Row>`` must be used to reference a
 DataFrame going forward.
 
 The following app demonstrates how to create a ``Dataset`` with an
-:ref:`implicit schema <java-implicit-schema>`, create a ``Dataset``
-with an :ref:`explicit schema <java-explicit-schema>`, and run
-:ref:`SQL queries <java-sql>` on the dataset.
+:ref:`implicit schema <java-implicit-schema>`or an 
+:ref:`explicit schema <java-explicit-schema>`.
 
 Consider a collection named ``characters``:
 
@@ -202,31 +201,3 @@ define the schema for the Dataset:
    |  82|         Fíli|
    |null|       Bombur|
    +----+-------------+
-
-.. _java-sql:
-
-SQL
----
-
-.. include:: /includes/scala-java-sql-register-table.rst
-
-.. code-block:: java
-
-		explicitDS.createOrReplaceTempView("characters");
-		Dataset<Row> centenarians = spark.sql("SELECT name, age FROM characters WHERE age >= 100");
-		centenarians.show();
-
-``centenarians.show()`` outputs the following:
-
-.. code-block:: sh
-
-   +-------+----+
-   |   name| age|
-   +-------+----+
-   |Gandalf|1000|
-   | Thorin| 195|
-   |  Balin| 178|
-   | Dwalin| 169|
-   |    Óin| 167|
-   |  Glóin| 158|
-   +-------+----+

@@ -142,7 +142,7 @@ The operation prints the following output:
     |-- name: string (nullable = true)
     |-- age: integer (nullable = false)
 
-Convert to DataSet
+Convert to Dataset
 ~~~~~~~~~~~~~~~~~~
 
 You can use the case class when converting the ``DataFrame`` to a
@@ -151,19 +151,6 @@ You can use the case class when converting the ``DataFrame`` to a
 .. code-block:: scala
 
    val dataset = explicitDF.as[Character]
-
-SQL Queries
------------
-
-.. include:: /includes/scala-java-sql-register-table.rst
-
-.. code-block:: scala
-
-   val characters = MongoSpark.load[Character](sparkSession)
-   characters.createOrReplaceTempView("characters")
-
-   val centenarians = sparkSession.sql("SELECT name, age FROM characters WHERE age >= 100")
-   centenarians.show()
 
 Save DataFrames to MongoDB
 --------------------------
@@ -210,145 +197,3 @@ to MongoDB using the DataFrameWriter directly:
 
    centenarians.write.option("collection", "hundredClub").mode("overwrite").mongo()
    centenarians.write.option("collection", "hundredClub").mode("overwrite").format("mongodb").save()
-
-DataTypes
----------
-
-Spark supports a limited number of data types to ensure that all BSON
-types can be round tripped in and out of Spark DataFrames/Datasets. The 
-Spark Connector creates custom StructTypes for any unsupported BSON 
-types.
-
-The following table shows the mapping between the BSON Types and Spark
-Types:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 25 75
-
-   * - BSON Type
-     - Spark Type
-
-   * - ``Document``
-     - ``StructType``
-
-   * - ``Array``
-     - ``ArrayType``
-
-   * - ``32-bit integer``
-     - ``Integer``
-
-   * - ``64-bit integer``
-     - ``Long``
-
-   * - ``Binary data``
-     - ``Array[Byte]`` or ``StructType``: ``{ subType: Byte, data: Array[Byte]}``
-
-   * - ``Boolean``
-     - ``Boolean``
-
-   * - ``Date``
-     - ``java.sql.Timestamp``
-
-   * - ``DBPointer``
-     - ``StructType``: ``{ ref: String , oid: String}``
-
-   * - ``Double``
-     - ``Double``
-
-   * - ``JavaScript``
-     - ``StructType``: ``{ code: String }``
-
-   * - ``JavaScript with scope``
-     - ``StructType``: ``{ code: String , scope: String }``
-
-   * - ``Max key``
-     - ``StructType``: ``{ maxKey: Integer }``
-
-   * - ``Min key``
-     - ``StructType``: ``{ minKey: Integer }``
-
-   * - ``Null``
-     - ``null``
-
-   * - ``ObjectId``
-     - ``StructType``: ``{ oid: String }``
-
-   * - ``Regular Expression``
-     - ``StructType``: ``{ regex: String , options: String }``
-
-   * - ``String``
-     - ``String``
-
-   * - ``Symbol``
-     - ``StructType``: ``{ symbol: String }``
-
-   * - ``Timestamp``
-     - ``StructType``: ``{ time: Integer , inc: Integer }``
-
-   * - ``Undefined``
-     - ``StructType``: ``{ undefined: Boolean }``
-
-Dataset support
-~~~~~~~~~~~~~~~
-
-To help better support Datasets, the following Scala case classes (
-``com.mongodb.spark.sql.fieldTypes``) and JavaBean classes (
-``com.mongodb.spark.sql.fieldTypes.api.java.``) have been created to
-represent the unsupported BSON Types:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 45 30 30
-
-
-   * - BSON Type
-     - Scala case class
-     - JavaBean
-
-   * - ``Binary data``
-     - ``Binary``
-     - ``Binary``
-
-   * - ``DBPointer``
-     - ``DBPointer``
-     - ``DBPointer``
-
-   * - ``JavaScript``
-     - ``JavaScript``
-     - ``JavaScript``
-
-   * - ``JavaScript with scope``
-     - ``JavaScriptWithScope``
-     - ``JavaScriptWithScope``
-
-   * - ``Max key``
-     - ``MaxKey``
-     - ``MaxKey``
-
-   * - ``Min key``
-     - ``MinKey``
-     - ``MinKey``
-
-   * - ``ObjectId``
-     - ``ObjectId``
-     - ``ObjectId``
-
-   * - ``Regular Expression``
-     - ``RegularExpression``
-     - ``RegularExpression``
-
-   * - ``Symbol``
-     - ``Symbol``
-     - ``Symbol``
-
-   * - ``Timestamp``
-     - ``Timestamp``
-     - ``Timestamp``
-   * - ``Undefined``
-     - ``Undefined``
-     - ``Undefined``
-
-For convenience, all BSON Types can be represented as a String value as
-well. However, these values lose all their original type information
-and, if saved back to MongoDB, are stored as a Strings.
