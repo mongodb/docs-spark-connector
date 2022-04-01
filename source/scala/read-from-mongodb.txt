@@ -1,38 +1,16 @@
-Use the ``MongoSpark.load`` method to create an RDD representing
-a collection.
+Use your local SparkSession's ``read`` method to create a DataFrame 
+representing a collection.
 
 The following example loads the collection specified in the
 ``SparkConf``:
 
 .. code-block:: scala
 
-   val rdd = MongoSpark.load(sc)
-   
-   println(rdd.count)
-   println(rdd.first.toJson)
+   val df = spark.read.format("mongodb").load() // Uses the SparkConf for configuration
 
 To specify a different collection, database, and other :ref:`read
-configuration settings <spark-input-conf>`, pass a ``ReadConfig`` to
-``MongoSpark.load()``.
-
-SparkContext Load Helper Methods
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-``SparkContext`` has an implicit helper method ``loadFromMongoDB()`` to
-load data from MongoDB.
-
-For example, use the ``loadFromMongoDB()`` method without any arguments
-to load the collection specified in the ``SparkConf``:
+configuration settings <spark-input-conf>`, use the ``option`` method:
 
 .. code-block:: scala
 
-   sc.loadFromMongoDB() // Uses the SparkConf for configuration
-
-Call ``loadFromMongoDB()`` with a ``ReadConfig`` object to specify a
-different MongoDB server address, database and collection. See
-:ref:`input configuration settings <spark-output-conf>` for available
-settings:
-
-.. code-block:: scala
-
-   sc.loadFromMongoDB(ReadConfig(Map("uri" -> "mongodb://example.com/database.collection"))) // Uses the ReadConfig
+   val df = spark.read.format("mongodb").option("database", "<example-database>").option("collection", "<example-collection>").load()

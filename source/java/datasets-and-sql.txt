@@ -230,20 +230,3 @@ SQL
    |    Óin| 167|
    |  Glóin| 158|
    +-------+----+
-   
-
-Save DataFrames to MongoDB
---------------------------
-
-The MongoDB Spark Connector provides the ability to persist DataFrames
-to a collection in MongoDB.
-
-The following operation saves ``centenarians`` into the ``hundredClub``
-collection in MongoDB:
-
-.. code-block:: java
-
-   /* Note: "overwrite" drops the collection before writing,
-    * use "append" to add to the collection */
-   MongoSpark.write(centenarians).option("collection", "hundredClub")
-       .mode("overwrite").save();

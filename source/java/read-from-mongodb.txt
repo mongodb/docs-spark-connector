@@ -1,42 +1,16 @@
-Pass a ``JavaSparkContext`` to ``MongoSpark.load()`` to read from
-MongoDB into a ``JavaMongoRDD``. The following example loads the data
-from the ``myCollection`` collection in the ``test`` database that was
-saved as part of the :ref:`write example <java-write>`.
+Use your local SparkSession's ``read`` method to create a DataFrame 
+representing a collection.
+
+The following example loads the collection specified in the
+``SparkConf``:
 
 .. code-block:: java
 
-   package com.mongodb.spark_examples;
+   Dataset<Row> df = spark.read().format("mongodb").load() // Uses the SparkConf for configuration
 
-   import org.apache.spark.api.java.JavaSparkContext;
-   import org.apache.spark.sql.SparkSession;
-   import org.bson.Document;
+To specify a different collection, database, and other :ref:`read
+configuration settings <spark-input-conf>`, use the ``option`` method:
 
-   import com.mongodb.spark.MongoSpark;
-   import com.mongodb.spark.rdd.api.java.JavaMongoRDD;
+.. code-block:: java
 
-   public final class ReadFromMongoDB {
-   
-     public static void main(final String[] args) throws InterruptedException {
-       
-       SparkSession spark = SparkSession.builder()
-         .master("local")
-         .appName("MongoSparkConnectorIntro")
-         .config("spark.mongodb.read.uri", "mongodb://127.0.0.1/test.myCollection")
-         .config("spark.mongodb.write.uri", "mongodb://127.0.0.1/test.myCollection")
-         .getOrCreate();
-         
-       // Create a JavaSparkContext using the SparkSession's SparkContext object
-       JavaSparkContext jsc = new JavaSparkContext(spark.sparkContext());
-       
-       /*Start Example: Read data from MongoDB************************/
-       JavaMongoRDD<Document> rdd = MongoSpark.load(jsc);
-       /*End Example**************************************************/
-       
-       // Analyze data from MongoDB
-       System.out.println(rdd.count());
-       System.out.println(rdd.first().toJson());
-       
-       jsc.close();
-         
-     }
-   }
+   Dataset<Row> df = spark.read().format("mongodb").option("database", "<example-database>").option("collection", "<example-collection>").load()
