@@ -28,7 +28,7 @@ Overview
 
          .. include:: /java/read-from-mongodb.txt
 
-         .. include:: /python/datasets.txt
+         .. include:: /java/datasets.txt
 
      - id: python
        content: |
@@ -44,7 +44,7 @@ Overview
 
          .. include:: /scala/read-from-mongodb.txt
 
-         .. include:: /python/datasets.txt
+         .. include:: /scala/datasets.txt
 
 SQL Queries
 -----------
