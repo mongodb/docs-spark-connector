@@ -209,7 +209,7 @@ Stream to MongoDB from a CSV File
               .builder \
               .appName("writeExample") \
               .master("spark://spark-master:<port>") \
-              .config("spark.jars", "<mongodb-spark-connector-{+current-version+}>.jar") \
+              .config("spark.jars", "<mongo-spark-connector>.jar") \
               .getOrCreate()
 
             # define a streaming query
@@ -263,7 +263,7 @@ Stream to a CSV File from MongoDB
               .builder \
               .appName("readExample") \
               .master("spark://spark-master:<port>") \
-              .config("spark.jars", "<mongodb-spark-connector-{+current-version+}>.jar") \
+              .config("spark.jars", "<mongo-spark-connector>.jar") \
               .getOrCreate()
 
             # define the schema of the source collection

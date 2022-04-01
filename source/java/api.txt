@@ -18,7 +18,7 @@ The following excerpt is from a Maven ``pom.xml`` file:
    <dependencies>
      <dependency>
        <groupId>org.mongodb.spark</groupId>
-       <artifactId>mongo-spark-connector_{+current-version+}</artifactId>
+       <artifactId>mongo-spark-connector</artifactId>
        <version>{+current-version+}</version>
      </dependency>
      <dependency>
