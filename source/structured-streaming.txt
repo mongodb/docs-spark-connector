@@ -34,8 +34,6 @@ Configuring a Write Stream to MongoDB
 .. tabs-drivers::
 
    tabs:
-     - id: java-sync
-       content: |
 
      - id: python
        content: |
@@ -92,9 +90,6 @@ Configuring a Write Stream to MongoDB
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
 
-     - id: scala
-       content: |
-
 .. _read-structured-stream:
 .. _continuous-processing:
 
@@ -109,8 +104,6 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 .. tabs-drivers::
 
    tabs:
-     - id: java-sync
-       content: |
 
      - id: python
        content: |
@@ -180,9 +173,6 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss.html>`__.
 
-     - id: scala
-       content: |
-
 Examples
 --------
 
@@ -195,11 +185,6 @@ Stream to MongoDB from a CSV File
 .. tabs-drivers::
 
    tabs:
-     - id: java-sync
-       content: |
-
-         .. code-block:: java
-            :copyable: true
 
      - id: python
        content: |
@@ -247,12 +232,6 @@ Stream to MongoDB from a CSV File
 
             # run the query
             query.start()
-            
-     - id: scala
-       content: |
-
-         .. code-block:: scala
-            :copyable: true
 
 Stream to a CSV File from MongoDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -260,11 +239,6 @@ Stream to a CSV File from MongoDB
 .. tabs-drivers::
 
    tabs:
-     - id: java-sync
-       content: |
-
-         .. code-block:: java
-            :copyable: true
 
      - id: python
        content: |
@@ -319,9 +293,3 @@ Stream to a CSV File from MongoDB
 
             # run the query
             query.start()   
-
-     - id: scala
-       content: |
-
-         .. code-block:: scala
-            :copyable: true
