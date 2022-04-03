@@ -63,7 +63,7 @@ connector's ``MongoSpark`` helper to facilitate the creation of a
 
 .. code-block:: scala
 
-   val df = MongoSpark.load(sparkSession)  // Uses the SparkSession
+   val df = MongoSpark.load(spark)  // Uses the SparkSession
    df.printSchema()                        // Prints DataFrame schema
 
 The operation prints the following:
