@@ -1,16 +1,21 @@
 Use your local SparkSession's ``read`` method to create a DataFrame 
 representing a collection.
 
+.. note::
+   
+   ``DataFrame`` does not exist as a class in the Java API. Use 
+   ``Dataset<Row>`` to reference a DataFrame.
+
 The following example loads the collection specified in the
 ``SparkConf``:
 
 .. code-block:: java
 
-   Dataset<Row> df = spark.read().format("mongodb").load() // Uses the SparkConf for configuration
+   Dataset<Row> df = spark.read().format("mongodb").load(); // Uses the SparkConf for configuration
 
 To specify a different collection, database, and other :ref:`read
 configuration settings <spark-input-conf>`, use the ``option`` method:
 
 .. code-block:: java
 
-   Dataset<Row> df = spark.read().format("mongodb").option("database", "<example-database>").option("collection", "<example-collection>").load()
+   Dataset<Row> df = spark.read().format("mongodb").option("database", "<example-database>").option("collection", "<example-collection>").load();

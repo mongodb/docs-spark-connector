@@ -35,5 +35,4 @@ To read from a collection called ``contacts`` in a database called
 
 .. code-block:: python
 
-   df = spark.read.format("mongodb").option("uri",
-   "mongodb://127.0.0.1/people.contacts").load()
+   df = spark.read.format("mongodb").option("uri", "mongodb://127.0.0.1/people.contacts").load()

@@ -1,5 +1,3 @@
-.. include:: /includes/new-format-name.rst
-   
 Getting Started
 ---------------
 
@@ -57,9 +55,7 @@ A ``DataFrame`` is represented by a ``Dataset`` of
 
 The Mongo Spark Connector provides the
 ``com.mongodb.spark.sql.connector.MongoTableProvider`` class that 
-creates ``DataFrames`` and ``Datasets`` from MongoDB. Use the 
-connector's ``MongoSpark`` helper to facilitate the creation of a 
-``DataFrame``:
+creates ``DataFrames`` and ``Datasets`` from MongoDB.
 
 .. code-block:: scala
 
@@ -141,16 +137,6 @@ The operation prints the following output:
    root
     |-- name: string (nullable = true)
     |-- age: integer (nullable = false)
-
-Convert to Dataset
-~~~~~~~~~~~~~~~~~~
-
-You can use the case class when converting the ``DataFrame`` to a
-``Dataset`` as in the following example:
-
-.. code-block:: scala
-
-   val dataset = explicitDF.as[Character]
 
 Save DataFrames to MongoDB
 --------------------------

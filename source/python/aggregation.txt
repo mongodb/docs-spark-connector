@@ -1,3 +1,6 @@
+Aggregation
+-----------
+
 Use MongoDB's :manual:`aggregation pipeline
 </core/aggregation-pipeline/>` to apply filtering rules and perform
 aggregation operations when reading data from MongoDB into Spark.
