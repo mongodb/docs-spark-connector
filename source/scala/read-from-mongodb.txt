@@ -19,3 +19,34 @@ configuration settings <spark-input-conf>`, use the ``option`` method:
 .. code-block:: scala
 
    val df = spark.read.format("mongodb").option("database", "<example-database>").option("collection", "<example-collection>").load()
+
+.. _scala-implicit-schema:
+
+Schema Inference
+----------------
+
+When you load a Dataset or DataFrame without a schema, Spark samples 
+the records to infer the schema of the collection.
+
+Consider a collection named ``characters``:
+
+.. include:: /includes/characters-example-collection.rst
+
+The following operation loads data from the MongoDB collection 
+specified in ``SparkConf`` and infers the schema:
+
+.. code-block:: scala
+
+   val df = MongoSpark.load(spark)  // Uses the SparkSession
+   df.printSchema()                 // Prints DataFrame schema
+
+``df.printSchema()`` outputs the following schema to the console:
+
+.. code-block:: sh
+   
+   root
+    |-- _id: struct (nullable = true)
+    |    |-- oid: string (nullable = true)
+    |-- age: integer (nullable = true)
+    |-- name: string (nullable = true)
+   
