@@ -5,7 +5,7 @@ saves it to the MongoDB collection specified in ``SparkConf``:
 
    val df = spark.read.format("json").load("example.json")
 
-   df.write.format("mongodb").mode("overwrite").save() // Uses the SparkConf for configuration
+   df.write.format("mongodb").mode("overwrite").save()
 
 The MongoDB Connector for Spark supports the following save modes:
 
