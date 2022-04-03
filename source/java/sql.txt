@@ -4,7 +4,7 @@
 
 .. code-block:: java
 
-		explicitDS.createOrReplaceTempView("characters");
+		implicitDS.createOrReplaceTempView("characters");
 		Dataset<Row> centenarians = spark.sql("SELECT name, age FROM characters WHERE age >= 100");
 		centenarians.show();
 
