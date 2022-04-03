@@ -1,8 +1,8 @@
-Datasets
---------
+Schemas
+-------
 
-The following app demonstrates how to create a ``Dataset`` with an
-:ref:`implicit schema <java-implicit-schema>`or an 
+You can create a ``Dataset`` with an
+:ref:`implicit schema <java-implicit-schema>` or an 
 :ref:`explicit schema <java-explicit-schema>`.
 
 Consider a collection named ``characters``:
@@ -25,7 +25,8 @@ Consider a collection named ``characters``:
 Implicitly Declare a Schema
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To create a Dataset from MongoDB data, load the data with your local ``SparkSession``.
+To create a Dataset from MongoDB data, load the data with your local 
+``SparkSession``.
 
 The dataset's schema is inferred whenever data is read from MongoDB and
 stored in a ``Dataset<Row>`` without specifying a schema-defining
@@ -33,8 +34,8 @@ stored in a ``Dataset<Row>`` without specifying a schema-defining
 the database. To explicitly declare a schema, see
 :ref:`java-explicit-schema`.
 
-The following operation loads data from MongoDB then uses the Dataset
-API to create a Dataset and infer the schema:
+The following operation loads data from the MongoDB collection 
+specified in ``SparkConf`` and infers the schema:
 
 .. code-block:: java
    
@@ -71,72 +72,3 @@ API to create a Dataset and infer the schema:
    |[585024d558bef808...|null|       Bombur|
    +--------------------+----+-------------+
 
-.. _java-explicit-schema:
-
-Explicitly Declare a Schema
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. |class| replace:: ``Java bean``
-
-.. include:: /includes/scala-java-explicit-schema.rst
-
-.. code-block:: java
-
-   import java.io.Serializable;
-
-   public final class Character implements Serializable {
-       private String name;
-       private Integer age;
-
-       public String getName() {
-           return name;
-       }
-
-       public void setName(String name) {
-           this.name = name;
-       }
-
-       public Integer getAge() {
-           return age;
-       }
-
-       public void setAge(final Integer age) {
-           this.age = age;
-       }
-   }
-
-The bean is passed to the ``toDS( Class<T> beanClass )`` method to
-define the schema for the Dataset:
-
-.. code-block:: java
-
-	 Dataset<Character> explicitDS = MongoSpark.load(jsc).toDS(Character.class);
-	 explicitDS.printSchema();
-	 explicitDS.show();
-
-``explicitDS.printSchema()`` outputs the following:
-
-.. code-block:: none
-
-   root
-    |-- age: integer (nullable = true)
-    |-- name: string (nullable = true)
-
-``explicitDS.show()`` outputs the following:
-
-.. code-block:: sh
-
-   +----+-------------+
-   | age|         name|
-   +----+-------------+
-   |  50|Bilbo Baggins|
-   |1000|      Gandalf|
-   | 195|       Thorin|
-   | 178|        Balin|
-   |  77|         Kíli|
-   | 169|       Dwalin|
-   | 167|          Óin|
-   | 158|        Glóin|
-   |  82|         Fíli|
-   |null|       Bombur|
-   +----+-------------+

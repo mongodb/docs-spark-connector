@@ -1,6 +1,11 @@
 Use your local SparkSession's ``read`` method to create a DataFrame 
 representing a collection.
 
+.. note::
+   
+   A ``DataFrame`` is represented by a ``Dataset`` of
+   ``Rows``. It is an alias of ``Dataset[Row]``.
+
 The following example loads the collection specified in the
 ``SparkConf``:
 
