@@ -15,3 +15,16 @@ scala-version-full = "2.12.13"
 [substitutions]
 copy = "unicode:: U+000A9"
 ent-build = "MongoDB Enterprise"
+
+[[banners]]
+targets = ["*"]
+variant = "info"
+value = """\
+    To take advantage of features in Spark's version 2 API, such as \
+    using a MongoDB deployment as a streaming source, use the new \
+    v10.x series of the MongoDB Connector.
+    """
+
+Version 3.x and earlier of the MongoDB Connector for Spark 
+
+Version 10.x and later of the MongoDB Connector for Spark 
