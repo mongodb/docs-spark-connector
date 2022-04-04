@@ -315,6 +315,7 @@ Change Streams
 
        **Default:** ``false``
 
+
 .. _configure-input-uri:
 
 ``uri`` Configuration Setting
