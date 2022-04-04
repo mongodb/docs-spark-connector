@@ -293,6 +293,8 @@ This partitioner is not compatible with hashed shard keys.
 
        **Default:** ``64``
 
+.. _spark-change-stream-conf:
+
 Change Streams
 --------------
 
