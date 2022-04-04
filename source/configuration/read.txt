@@ -313,9 +313,7 @@ Change Streams
 
    * - ``lookup.full.document``
 
-     - If ``true``, 
-     
-       Determines what values your change stream returns on update 
+     - Determines what values your change stream returns on update 
        operations.
 
        The default setting returns the differences between the original 
