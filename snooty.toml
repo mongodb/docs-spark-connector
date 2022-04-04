@@ -20,11 +20,11 @@ ent-build = "MongoDB Enterprise"
 targets = ["*"]
 variant = "info"
 value = """\
-    To take advantage of features in Spark's version 2 API, such as \
-    using a MongoDB deployment as a streaming source, use the new \
-    v10.x series of the MongoDB Connector.
+    MongoDB Connector for Spark comes in 2 standalone series: \
+    - 3.x and earlier \
+    - 10.x and later \
+    \
+    Use the 10.x series of the Connector to take advantage of the \
+    latest features and improvements in the Spark Dataset/ DataFrame \ 
+    API, such as Spark Structured Streaming.
     """
-
-Version 3.x and earlier of the MongoDB Connector for Spark 
-
-Version 10.x and later of the MongoDB Connector for Spark 
