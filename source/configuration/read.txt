@@ -293,6 +293,25 @@ This partitioner is not compatible with hashed shard keys.
 
        **Default:** ``64``
 
+Change Streams
+--------------
+
+.. note::
+
+   If you use ``SparkConf`` to set the connector's read configurations, 
+   prefix ``spark.mongodb.change.stream.`` to each property.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - ``publish.full.document.only``
+
+     - If ``true``, publish only the changed document instead of the 
+       full change stream document.
+
+       **Default:** ``false``
+
 .. _configure-input-uri:
 
 ``uri`` Configuration Setting
