@@ -22,6 +22,6 @@ variant = "info"
 value = """\
     MongoDB Connector for Spark comes in two standalone series: version \
     3.x and earlier, and version 10.x and later. \
-    Use the 10.x series of the Connector to take advantage of \
+    Use the latest 10.x series of the Connector to take advantage of \
     native integration with Spark features like Structured Streaming.
     """
