@@ -6,9 +6,9 @@ intersphinx = ["https://www.mongodb.com/docs/manual/objects.inv"]
 toc_landing_pages = ["/java-api", "/python-api", "/scala-api", "/r-api"]
 
 [constants]
-current-version = "2.1.8"
-spark-core-version = "2.1.8"
-spark-sql-version = "2.1.8"
+current-version = "2.1.9"
+spark-core-version = "2.1.9"
+spark-sql-version = "2.1.9"
 
 [substitutions]
 copy = "unicode:: U+000A9"
