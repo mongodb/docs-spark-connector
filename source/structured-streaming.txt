@@ -346,8 +346,8 @@ Stream to MongoDB from a CSV File
               .option("checkpointLocation", "/tmp/pyspark/")
               .option("forceDeleteTempCheckpointLocation", "true")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
-              .option('spark.mongodb.database', <database-name>)
-              .option('spark.mongodb.collection', <collection-name>)
+              .option("spark.mongodb.database", <database-name>)
+              .option("spark.mongodb.collection", <collection-name>)
               .outputMode("append")
             )
 
@@ -370,7 +370,7 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: scala
             :copyable: true
-            :emphasize-lines: 11, 17
+            :emphasize-lines: 10, 16
 
             // create a local SparkSession
             spark = SparkSession
@@ -392,8 +392,8 @@ Stream to MongoDB from a CSV File
               .option("checkpointLocation", "/tmp/")
               .option("forceDeleteTempCheckpointLocation", "true")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
-              .option('spark.mongodb.database', <database-name>)
-              .option('spark.mongodb.collection', <collection-name>)
+              .option("spark.mongodb.database", <database-name>)
+              .option("spark.mongodb.collection", <collection-name>)
               .outputMode("append")
 
             // run the query
@@ -476,7 +476,7 @@ Stream to a CSV File from MongoDB
 
          .. code-block:: scala
             :copyable: true
-            :emphasize-lines: 18, 25, 27
+            :emphasize-lines: 17, 25, 28
 
             // create a local SparkSession
             spark = SparkSession
@@ -488,17 +488,17 @@ Stream to a CSV File from MongoDB
 
             // define the schema of the source collection
             readSchema = StructType()
-              .add('company_symbol', StringType())
-              .add('company_name', StringType())
-              .add('price', DoubleType())
-              .add('tx_time', TimestampType())
+              .add("company_symbol", StringType())
+              .add("company_name", StringType())
+              .add("price", DoubleType())
+              .add("tx_time", TimestampType())
 
             // define a streaming query
             query = spark.readStream
               .format("mongodb")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
-              .option('spark.mongodb.database', <database-name>)
-              .option('spark.mongodb.collection', <collection-name>)
+              .option("spark.mongodb.database", <database-name>)
+              .option("spark.mongodb.collection", <collection-name>)
               .schema(readSchema)
               .load()
               # manipulate your streaming data
