@@ -333,12 +333,10 @@ Change Streams
 
    * - ``publish.full.document.only``
 
-     - If ``true``, returns only the changed document instead of the 
-       full change stream document.
-
-       When set to ``true``, the connector automatically sets the 
-       ``lookup.full.document`` property to ``updateLookup`` to receive 
-       the updated documents.
+     - If ``true``, this property returns only the changed document 
+       instead of the full change stream document. The connector 
+       automatically sets the ``lookup.full.document`` property to 
+       ``updateLookup`` to receive the updated documents.
 
        **Default:** ``false``
 
