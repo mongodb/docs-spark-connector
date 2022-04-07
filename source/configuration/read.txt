@@ -329,7 +329,7 @@ Change Streams
           see the MongoDB server manual guide 
           :manual:`Lookup Full Document for Update Operation </changeStreams/#lookup-full-document-for-update-operations>`.
 
-       **Default:** ""
+       **Default:** "default"
 
    * - ``publish.full.document.only``
 
