@@ -343,7 +343,7 @@ Change Streams
 .. _configure-input-uri:
 
 ``connection.uri`` Configuration Setting
------------------------------
+----------------------------------------
 
 You can set all :ref:`spark-input-conf` via the read ``connection.uri`` setting.
 

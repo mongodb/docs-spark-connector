@@ -103,7 +103,7 @@ The following options for writing to MongoDB are available:
 .. _configure-output-uri:
 
 ``connection.uri`` Configuration Setting
------------------------------
+----------------------------------------
 
 You can set all :ref:`spark-output-conf` via the write ``connection.uri``.
 
