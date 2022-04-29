@@ -386,7 +386,7 @@ Stream to MongoDB from a CSV File
               .option("header", "true")
               .schema(<csv-schema>)
               .load(<csv-file-name>)
-              # manipulate your streaming data
+              // manipulate your streaming data
               .writeStream
               .format("mongodb")
               .option("checkpointLocation", "/tmp/")
@@ -501,7 +501,7 @@ Stream to a CSV File from MongoDB
               .option("spark.mongodb.collection", <collection-name>)
               .schema(readSchema)
               .load()
-              # manipulate your streaming data
+              // manipulate your streaming data
               .writeStream
               .format("csv")
               .option("path", "/output/")
