@@ -275,11 +275,11 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
             import org.apache.spark.sql.streaming.Trigger
          
-            streamingDataFrame = <local SparkSession>.readStream
+            val streamingDataFrame = <local SparkSession>.readStream
               .format("mongodb")
               .load()
          
-            query = streamingDataFrame.writeStream
+            val query = streamingDataFrame.writeStream
               .trigger(Trigger.Continuous("1 second"))
               .format("memory")
               .outputMode("append")
@@ -373,7 +373,7 @@ Stream to MongoDB from a CSV File
             :emphasize-lines: 10, 16
 
             // create a local SparkSession
-            spark = SparkSession
+            val spark = SparkSession
               .builder
               .appName("writeExample")
               .master("spark://spark-master:<port>")
@@ -381,7 +381,7 @@ Stream to MongoDB from a CSV File
               .getOrCreate()
 
             // define a streaming query
-            query = spark.readStream
+            val query = spark.readStream
               .format("csv")
               .option("header", "true")
               .schema(<csv-schema>)
@@ -479,7 +479,7 @@ Stream to a CSV File from MongoDB
             :emphasize-lines: 17, 25, 28
 
             // create a local SparkSession
-            spark = SparkSession
+            val spark = SparkSession
               .builder
               .appName("readExample")
               .master("spark://spark-master:<port>")
@@ -487,14 +487,14 @@ Stream to a CSV File from MongoDB
               .getOrCreate()
 
             // define the schema of the source collection
-            readSchema = StructType()
+            val readSchema = StructType()
               .add("company_symbol", StringType())
               .add("company_name", StringType())
               .add("price", DoubleType())
               .add("tx_time", TimestampType())
 
             // define a streaming query
-            query = spark.readStream
+            val query = spark.readStream
               .format("mongodb")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
               .option("spark.mongodb.database", <database-name>)
@@ -509,4 +509,4 @@ Stream to a CSV File from MongoDB
               .outputMode("append")
 
             // run the query
-            query.start()   
+            query.start()
