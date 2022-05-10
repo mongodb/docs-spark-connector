@@ -148,7 +148,7 @@ You can configure the following properties to read from MongoDB:
    * - ``sql.pipeline.includeFiltersAndProjections``
      - Includes any filters and projections in the aggregation pipeline.
 
-   * - ``pipeline``
+   * - ``aggregation.pipeline``
      - Enables you to apply custom aggregation pipelines to the collection
        before sending it to Spark.
 
