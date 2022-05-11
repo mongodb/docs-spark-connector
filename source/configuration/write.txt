@@ -31,7 +31,7 @@ The following options for writing to MongoDB are available:
    * - Property name
      - Description
 
-   * - ``spark.mongodb.write``
+   * - ``spark.mongodb.write.``
      - Write configuration prefix.
 
    * - ``mongoClientFactory``
