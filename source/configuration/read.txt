@@ -57,7 +57,7 @@ You can configure the following properties to read from MongoDB:
        | The collection name configuration.
 
    * - ``partitioner``
-       | The partitioner full class name.
+     - | The partitioner full class name.
 
        | You can specify a custom implementation which must implement the
          ``com.mongodb.spark.sql.connector.read.partitioner.Partitioner``
@@ -77,12 +77,12 @@ You can configure the following properties to read from MongoDB:
    * - ``sql.inferSchema.mapTypes.enabled``
      - | Whether to enable Map types when inferring the schema.
        | When enabled, large compatible struct types are inferred to a
-         `MapType` instead.
+         ``MapType`` instead.
        |
        | **Default:** ``true``
 
    * - ``sql.inferSchema.mapTypes.minimum.key.size``
-     - | Minimum size of a `StructType` before inferring as a `MapType`.
+     - | Minimum size of a ``StructType`` before inferring as a ``MapType``.
        |
        | **Default:** ``250``
 
@@ -128,6 +128,7 @@ You can configure the following properties to read from MongoDB:
 
           This setting overrides the ``change.stream.lookup.full.document``
           setting.
+
        |
        | **Default**: ``false``
 

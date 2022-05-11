@@ -73,13 +73,13 @@ The following options for writing to MongoDB are available:
      - | Specifies the type of write operation to perform. You can set
          this to one of the following values:
 
-         - ``insert``: insert the data.
-         - ``replace``: replace an existing document that matches the
-           ``idFieldList`` value with the new data, or insert the data if
-           no match exists.
-         - ``update``: update an existing document that matches the
-           ``idFieldList``value with the new data, or inserts the data if
-           no match exists.
+       - ``insert``: insert the data.
+       - ``replace``: replace an existing document that matches the
+         ``idFieldList`` value with the new data, or insert the data if
+         no match exists.
+       - ``update``: update an existing document that matches the
+         ``idFieldList`` value with the new data, or inserts the data if
+         no match exists.
 
        |
        | **Default:** ``replace``
@@ -94,10 +94,10 @@ The following options for writing to MongoDB are available:
          which the change propagated in the MongoDB replica set. You can
          specify one of the following values:
 
-         - ``MAJORITY``
-         - ``W1``, ``W2``, or ``W3``
-         - ``ACKNOWLEDGED``
-         - ``UNACKNOWLEDGED``
+       - ``MAJORITY``
+       - ``W1``, ``W2``, or ``W3``
+       - ``ACKNOWLEDGED``
+       - ``UNACKNOWLEDGED``
 
        |
        | For more information on ``w`` values, see the MongoDB server guide on
