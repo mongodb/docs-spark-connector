@@ -124,7 +124,7 @@ The following options for writing to MongoDB are available:
        |
        | For more information on ``wTimeoutMS`` values, see the MongoDB server
          guide on the
-         :manual:`WriteConcern wtimeout option <reference/write-concern/#wtimeout>`.
+         :manual:`WriteConcern wtimeout option </reference/write-concern/#wtimeout>`.
 
 .. _configure-output-uri:
 
