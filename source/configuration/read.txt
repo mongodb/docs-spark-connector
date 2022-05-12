@@ -123,8 +123,17 @@ You can configure the following properties to read from MongoDB:
 
 .. _partitioner-conf:
 
-Partitioner Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Partitioner Configurations
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section contains configuration information for the following 
+partitioners:
+
+- :ref:`SamplePartitioner <conf-samplepartitioner>`
+- :ref:`ShardedPartitioner <conf-shardedpartitioner>`
+- :ref:`PaginateBySizePartitioner <conf-paginatebysizepartitioner>`
+- :ref:`PaginateIntoPartitionsPartitioner <conf-paginateintopartitionspartitione>`
+- :ref:`SinglePartitionPartitioner <conf-singlepartitionpartitioner>`
 
 .. _conf-mongosamplepartitioner:
 .. _conf-samplepartitioner:
