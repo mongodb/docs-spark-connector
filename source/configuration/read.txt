@@ -132,7 +132,7 @@ partitioners:
 - :ref:`SamplePartitioner <conf-samplepartitioner>`
 - :ref:`ShardedPartitioner <conf-shardedpartitioner>`
 - :ref:`PaginateBySizePartitioner <conf-paginatebysizepartitioner>`
-- :ref:`PaginateIntoPartitionsPartitioner <_conf-paginateintopartitionspartitioner>`
+- :ref:`PaginateIntoPartitionsPartitioner <conf-paginateintopartitionspartitioner>`
 - :ref:`SinglePartitionPartitioner <conf-singlepartitionpartitioner>`
 
 .. _conf-mongosamplepartitioner:
