@@ -31,9 +31,6 @@ You can configure the following properties to read from MongoDB:
    * - Property name
      - Description
 
-   * - ``spark.mongodb.read.``
-     - Read configuration prefix.
-
    * - ``mongoClientFactory``
      - | MongoClientFactory configuration key.
        | You can specify a custom implementation which must implement the
@@ -62,11 +59,17 @@ You can configure the following properties to read from MongoDB:
        | You can specify a custom implementation which must implement the
          ``com.mongodb.spark.sql.connector.read.partitioner.Partitioner``
           interface.
+       | See the
+         :ref:`Partitioner Configuration <partitioner-conf>` section for more
+         information on partitioners.
        |
        | **Default:** ``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``
 
    * - ``partioner.options.``
-     - Partitioner configuration prefix.
+     - | Partitioner configuration prefix.
+       | See the
+         :ref:`Partitioner Configuration <partitioner-conf>` section for more
+         information on partitioners.
 
    * - ``sampleSize``
      - | The number of documents to sample from the collection when inferring
@@ -116,38 +119,6 @@ You can configure the following properties to read from MongoDB:
        |
        | **Default:** ``true``
 
-   * - ``change.stream.publish.full.document.only``
-     - | Specifies whether to publish the changed document or the full
-         change stream document.
-       |
-       | When set to ``true``, the connector filters out messages that
-         omit the ``fullDocument`` field and only publishes the value of the
-         field.
-
-       .. note::
-
-          This setting overrides the ``change.stream.lookup.full.document``
-          setting.
-
-       |
-       | **Default**: ``false``
-
-   * - ``change.stream.lookup.full.document``
-     - | Specifies what information to return for update operations when
-         using a change stream.
-       |
-       | When set to ``updateLookup``, the connector returns the most
-         current majority-committed version of the updated document.
-       |
-       | When set to ``default``, the connector returns the server's
-         default value for the ``fullDocument`` field.
-
-       |
-       | For more information on change stream update operation
-         configuration, see the MongoDB server manual guide on
-         :manual:`Lookup Full Document for Update Operations </changeStreams/#lookup-full-document-for-update-operations>`
-       |
-       | **Default**: ``default``
 
 
 .. _partitioner-conf:
@@ -163,6 +134,9 @@ Partitioner Configuration
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
+You must specify this partitioner using the full classname:
+``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``.
+
 .. list-table::
    :header-rows: 1
    :widths: 35 65
@@ -170,59 +144,52 @@ Partitioner Configuration
    * - Property name
      - Description
 
-   * - ``partitioner.options.partitionKey``
-     - A comma-delimited list of fields by which to split the
-       collection data. The fields should be indexed and contain unique
-       values.
+   * - ``partitioner.options.partition.field``
+     - The field to use for partitioning, which must be a unique field.
 
        **Default:** ``_id``
 
-   * - ``partitioner.options.partitionSizeMB``
+   * - ``partitioner.options.partition.size``
      - The size (in MB) for each partition. Smaller partition sizes
        create more partitions containing fewer documents.
 
        **Default:** ``64``
 
-   * - ``partitioner.options.samplesPerPartition``
-     - The number of sample documents to take for each partition in
-       order to establish a ``partitionKey`` range for each partition.
+   * - ``partitioner.options.samples.per.partition``
+     - The number of samples to take per partition. The total number of
+       samples taken is:
 
-       A greater number of ``samplesPerPartition`` helps to find
-       ``partitionKey`` ranges that more closely match the
-       ``partitionSizeMB`` you specify.
+       .. code-block:: none
 
-       .. note::
-
-          For sampling to improve performance, ``samplesPerPartition``
-          must be fewer than the number of documents within each of
-          your partitions.
-
-          You can estimate the number of documents within each of your
-          partitions by dividing your ``partitionSizeMB`` by the
-          average document size (in MB) in your collection.
+          samples per partiion * ( count / number of documents per partition)
 
        **Default:** ``10``
 
 .. example::
 
    For a collection with 640 documents with an average document
-   size of 0.5 MB, the default ``SamplePartitioner`` configuration
-   values creates 5 partitions with 128 documents per partition.
+   size of 0.5 MB, the default SamplePartitioner configuration values creates
+   5 partitions with 128 documents per partition.
 
    The MongoDB Spark Connector samples 50 documents (the default 10
    per intended partition) and defines 5 partitions by selecting
-   ``partitionKey`` ranges from the sampled documents.
+   partition field ranges from the sampled documents.
 
 .. _conf-mongoshardedpartitioner:
 .. _conf-shardedpartitioner:
 
 ``ShardedPartitioner`` Configuration
-````````````````````````````````````
+`````````````````````````````````````
 
-The ``ShardedPartitioner`` automatically determines
-partitions to use based on your shard configuration.
+The ``ShardedPartitioner`` automatically determines the partitions to use
+based on your shard configuration.
 
-This partitioner is not compatible with hashed shard keys.
+You must specify this partitioner using the full classname:
+``com.mongodb.spark.sql.connector.read.partitioner.ShardedPartitioner``.
+
+.. warning::
+
+   This partitioner is not compatible with hashed shard keys.
 
 .. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
@@ -232,6 +199,9 @@ This partitioner is not compatible with hashed shard keys.
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
+You must specify this partitioner using the full classname:
+``com.mongodb.spark.sql.connector.read.partitioner.PaginateBySizePartitioner``.
+
 .. list-table::
    :header-rows: 1
    :widths: 35 65
@@ -239,14 +209,12 @@ This partitioner is not compatible with hashed shard keys.
    * - Property name
      - Description
 
-   * - ``partitioner.options.partitionKey``
-     - A comma-delimited list of fields by which to split the
-       collection data. The fields should be indexed and contain unique
-       values.
+   * - ``partitioner.options.partition.field``
+     - The field to use for partitioning, which must be a unique field.
 
        **Default:** ``_id``
 
-   * - ``partitioner.options.partitionSizeMB``
+   * - ``partitioner.options.partition.size``
      - The size (in MB) for each partition. Smaller partition sizes
        create more partitions containing fewer documents.
 
@@ -259,6 +227,9 @@ This partitioner is not compatible with hashed shard keys.
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
+You must specify this partitioner using the full classname:
+``com.mongodb.spark.sql.connector.read.partitioner.PaginateIntoPartitionsPartitioner``.
+
 .. list-table::
    :header-rows: 1
    :widths: 35 65
@@ -266,10 +237,8 @@ This partitioner is not compatible with hashed shard keys.
    * - Property name
      - Description
 
-   * - ``partitioner.options.partitionKey``
-     - A comma-delimited list of fields by which to split the
-       collection data. The fields should be indexed and contain unique
-       values.
+   * - ``partitioner.options.partition.field``
+     - The field to use for partitioning, which must be a unique field.
 
        **Default:** ``_id``
 
@@ -277,6 +246,20 @@ This partitioner is not compatible with hashed shard keys.
      - The number of partitions to create.
 
        **Default:** ``64``
+
+.. _conf-singlepartitionpartitioner:
+
+``SinglePartitionPartitioner`` Configuration
+````````````````````````````````````````````
+
+.. include:: /includes/sparkconf-partitioner-options-note.rst
+
+You must specify this partitioner using the full classname:
+``com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner``.
+
+This partitioner creates a single partition.
+
+
 
 .. _spark-change-stream-conf:
 
@@ -296,7 +279,7 @@ Change Streams
    * - Property name
      - Description
 
-   * - ``lookup.full.document``
+   * - ``change.stream.lookup.full.document``
 
      - Determines what values your change stream returns on update
        operations.
@@ -316,14 +299,22 @@ Change Streams
 
        **Default:** "default"
 
-   * - ``publish.full.document.only``
+   * - ``change.stream.publish.full.document.only``
+     - | Specifies whether to publish the changed document or the full
+         change stream document.
+       |
+       | When set to ``true``, the connector filters out messages that
+         omit the ``fullDocument`` field and only publishes the value of the
+         field.
 
-     - If ``true``, this property returns only the changed document
-       instead of the full change stream document. The connector
-       automatically sets the ``lookup.full.document`` property to
-       ``updateLookup`` to receive the updated documents.
+       .. note::
 
-       **Default:** ``false``
+          This setting overrides the ``change.stream.lookup.full.document``
+          setting.
+
+       |
+       | **Default**: ``false``
+
 
 .. _configure-input-uri:
 
@@ -333,7 +324,7 @@ Change Streams
 You can set all :ref:`spark-input-conf` via the read ``connection.uri`` setting.
 
 For example, consider the following example which sets the read
-``connection.uri`` setting via ``SparkConf``:
+``connection.uri`` setting:
 
 .. note::
 

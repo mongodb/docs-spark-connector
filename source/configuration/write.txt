@@ -31,9 +31,6 @@ The following options for writing to MongoDB are available:
    * - Property name
      - Description
 
-   * - ``spark.mongodb.write.``
-     - Write configuration prefix.
-
    * - ``mongoClientFactory``
      - | MongoClientFactory configuration key.
        | You can specify a custom implementation which must implement the
@@ -132,9 +129,6 @@ The following options for writing to MongoDB are available:
 ----------------------------------------
 
 You can set all :ref:`spark-output-conf` via the write ``connection.uri``.
-
-For example, consider the following example which sets the write
-``connection.uri`` setting via ``SparkConf``:
 
 .. note::
 
