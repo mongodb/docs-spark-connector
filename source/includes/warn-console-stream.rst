@@ -1,4 +1,4 @@
-.. warning::
+.. important::
 
    Streaming to your console is memory intensive and intended 
    only for testing purposes. Avoid streaming large datasets 
