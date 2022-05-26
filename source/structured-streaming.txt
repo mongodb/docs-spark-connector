@@ -211,14 +211,14 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               .load()
             )
          
-            query = (streamingDataFrame
+            dataStreamWriter = (streamingDataFrame
               .writeStream
               .trigger(continuous="1 second")
               .format("memory")
               .outputMode("append")
             )
 
-            query.start()
+            query = dataStreamWriter.start()
 
          .. note::
             
@@ -279,12 +279,12 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               .format("mongodb")
               .load()
          
-            val query = streamingDataFrame.writeStream
+            val dataStreamWriter = streamingDataFrame.writeStream
               .trigger(Trigger.Continuous("1 second"))
               .format("memory")
               .outputMode("append")
 
-            query.start()
+            val query = dataStreamWriter.start()
 
          .. note::
             
@@ -334,7 +334,7 @@ Stream to MongoDB from a CSV File
               .getOrCreate()
 
             # define a streaming query
-            query = (spark
+            dataStreamWriter = (spark
               .readStream
               .format("csv")
               .option("header", "true")
@@ -352,7 +352,7 @@ Stream to MongoDB from a CSV File
             )
 
             # run the query
-            query.start()
+            query = dataStreamWriter.start()
 
      - id: scala
        content: |
@@ -381,7 +381,7 @@ Stream to MongoDB from a CSV File
               .getOrCreate()
 
             // define a streaming query
-            val query = spark.readStream
+            val dataStreamWriter = spark.readStream
               .format("csv")
               .option("header", "true")
               .schema(<csv-schema>)
@@ -397,7 +397,7 @@ Stream to MongoDB from a CSV File
               .outputMode("append")
 
             // run the query
-            query.start()
+            val query = dataStreamWriter.start()
 
 Stream to your Console from MongoDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -443,7 +443,7 @@ Stream to your Console from MongoDB
             )
 
             # define a streaming query
-            query = (spark
+            dataStreamWriter = (spark
               .readStream
               .format("mongodb")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
@@ -459,7 +459,7 @@ Stream to your Console from MongoDB
             )
 
             # run the query
-            query.start()  
+            query = dataStreamWriter.start()  
 
      - id: scala
        content: |
@@ -497,7 +497,7 @@ Stream to your Console from MongoDB
               .add("tx_time", TimestampType())
 
             // define a streaming query
-            val query = spark.readStream
+            val dataStreamWriter = spark.readStream
               .format("mongodb")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
               .option("spark.mongodb.database", <database-name>)
@@ -511,4 +511,4 @@ Stream to your Console from MongoDB
               .outputMode("append")
 
             // run the query
-            query.start()
+            val query = dataStreamWriter.start()
