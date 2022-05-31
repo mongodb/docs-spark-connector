@@ -11,7 +11,7 @@ DOTCOM_STAGING_URL="https://mongodbcom-cdn.website.staging.corp.mongodb.com"
 DOTCOM_STAGING_BUCKET=docs-mongodb-org-dotcomstg
 DOTCOM_PRODUCTION_URL="https://mongodb.com"
 DOTCOM_PRODUCTION_BUCKET=docs-mongodb-org-dotcomprd
-DOTCOM_PREFIX=docs-qa/spark-connector
+DOTCOM_PREFIX=docs/spark-connector
 DOTCOM_STGPREFIX=docs-qa/spark-connector
 
 # Parse our published-branches configuration file to get the name of
@@ -56,15 +56,6 @@ fake-deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to 
 
 
 deploy: ## Deploys the DIR (dirhtml) artifacts generated from "publish" to the production bucket.
-	@echo "Doing a dry-run"
-	mut-publish build/public/ ${PRODUCTION_BUCKET} --prefix=${PREFIX} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
-
-	@echo ''
-	read -p "Press any key to perform the previous"
-	mut-publish build/public/ ${PRODUCTION_BUCKET} --prefix=${PREFIX} --deploy --verbose   --redirects build/public/.htaccess  ${ARGS}
-
-	@echo "Hosted at ${PRODUCTION_URL}/${PREFIX}/${GIT_BRANCH}/index.html"
-
 		@echo "Doing a dry-run"
 	mut-publish build/public/ ${DOTCOM_PRODUCTION_BUCKET} --prefix=${DOTCOM_PREFIX} --deploy --verbose  --redirects build/public/.htaccess --dry-run ${ARGS}
 
