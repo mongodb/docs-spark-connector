@@ -71,24 +71,24 @@ Configuring a Write Stream to MongoDB
          
             * - ``writeStream.outputMode()``
               - The output mode to use. To view a list of all supported 
-                output modes, see `the Scala outputMode documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode(outputMode:String):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
+                output modes, see `the Java outputMode documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__.
          
          The following code snippet shows how to use the preceding 
          configuration settings to stream data to MongoDB:
 
-         .. code-block:: scala
+         .. code-block:: java
             :copyable: true
             :emphasize-lines: 2-3, 6
          
-            <streaming Dataset/ DataFrame>.writeStream
+            <streaming Dataset/ DataFrame>.writeStream()
               .format("mongodb")
               .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
               .option("spark.mongodb.database", <database-name>)
               .option("spark.mongodb.collection", <collection-name>)
-              .outputMode("append")
+              .outputMode("append");
 
          For a complete list of methods, see the 
-         `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/index.html>`__.       
+         `Java Structured Streaming reference <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/>`__.       
 
      - id: python
        content: |
@@ -219,8 +219,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          To use continuous processing with the MongoDB Spark Connector, 
          add the ``trigger()`` method to the ``writeStream`` property 
          of the streaming Dataset or DataFrame that you create from 
-         your MongoDB read stream. In your ``trigger()``, specify the 
-         ``continuous`` parameter.
+         your MongoDB read stream. In your ``trigger()``, use the 
+         ``Trigger.Continuous()`` property.
          
          .. note:: 
          
@@ -254,22 +254,24 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          The following code snippet shows how to use the preceding 
          configuration settings to stream data from MongoDB:
 
-         .. code-block:: scala
+         .. code-block:: java
             :copyable: true
-            :emphasize-lines: 1, 4, 8
+            :emphasize-lines: 1, 5, 10
 
-            import org.apache.spark.sql.streaming.Trigger
-         
-            val streamingDataFrame = <local SparkSession>.readStream
+            import org.apache.spark.sql.streaming.Trigger;
+ 
+            Dataset<Row> streamingDataset = <local SparkSession>
+              .readStream()
               .format("mongodb")
-              .load()
-         
-            val query = streamingDataFrame.writeStream
+              .load();
+ 
+            DataStreamWriter<Row> dataStreamWriter = streamingDataset
+              .writeStream()
               .trigger(Trigger.Continuous("1 second"))
               .format("memory")
-              .outputMode("append")
-
-            query.start()
+              .outputMode("append");
+ 
+            StreamingQuery query = dataStreamWriter.start();
 
          .. note::
             
@@ -277,7 +279,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             ``start()`` method on a streaming query.
 
          For a complete list of methods, see the 
-         `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/index.html>`__.
+         `Java Structured Streaming reference <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/>`__.
 
      - id: python
        content: |
@@ -353,8 +355,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          To use continuous processing with the MongoDB Spark Connector, 
          add the ``trigger()`` method to the ``writeStream`` property 
          of the streaming Dataset or DataFrame that you create from 
-         your MongoDB read stream. In your ``trigger()``, specify the 
-         ``continuous`` parameter.
+         your MongoDB read stream. In your ``trigger()``, 
+         use the ``Trigger.Continuous()`` property.
          
          .. note:: 
          
@@ -417,7 +419,7 @@ Examples
 --------
 
 The following examples show Spark Structured Streaming configurations 
-for streaming between MongoDB and a ``.csv`` file.
+for streaming to and from MongoDB.
 
 Stream to MongoDB from a CSV File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -426,50 +428,49 @@ Stream to MongoDB from a CSV File
 
    tabs:
 
-     - id: scala
+     - id: java-sync
        content: |
 
          To create a :ref:`write stream <write-structured-stream>` to 
-         MongoDB from a ``.csv`` file, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+         MongoDB from a ``.csv`` file, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
          from the ``.csv`` file, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
+         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
          to MongoDB. Finally, use the ``start()`` method to begin the 
          stream.
          
          As streaming data is read from the ``.csv`` file, it is added 
-         to MongoDB in the `outputMode <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode(outputMode:String):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__ 
+         to MongoDB in the `outputMode <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__ 
          you specify.
 
-         .. code-block:: scala
+         .. code-block:: java
             :copyable: true
-            :emphasize-lines: 10, 16
 
             // create a local SparkSession
-            val spark = SparkSession
-              .builder
+            SparkSession spark = SparkSession
+              .builder()
               .appName("writeExample")
               .master("spark://spark-master:<port>")
               .config("spark.jars", "<mongo-spark-connector>.jar")
-              .getOrCreate()
-
+              .getOrCreate();
+             
             // define a streaming query
-            val query = spark.readStream
+            DataStreamWriter<Row> dataStreamWriter = spark.readStream()
               .format("csv")
               .option("header", "true")
-              .schema(<csv-schema>)
-              .load(<csv-file-name>)
+              .schema("<csv-schema>")
+              .load("<csv-file-name>")
               // manipulate your streaming data
-              .writeStream
+              .writeStream()
               .format("mongodb")
               .option("checkpointLocation", "/tmp/")
               .option("forceDeleteTempCheckpointLocation", "true")
-              .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
-              .option("spark.mongodb.database", <database-name>)
-              .option("spark.mongodb.collection", <collection-name>)
-              .outputMode("append")
-
+              .option("spark.mongodb.connection.uri", "<mongodb-connection-string>")
+              .option("spark.mongodb.database", "<database-name>")
+              .option("spark.mongodb.collection", "<collection-name>")
+              .outputMode("append");
+             
             // run the query
-            query.start()
+            StreamingQuery query = dataStreamWriter.start();
 
      - id: python
        content: |
@@ -487,7 +488,6 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 11, 17
 
             # create a local SparkSession
             spark = SparkSession \
@@ -534,7 +534,6 @@ Stream to MongoDB from a CSV File
 
          .. code-block:: scala
             :copyable: true
-            :emphasize-lines: 10, 16
 
             // create a local SparkSession
             val spark = SparkSession
@@ -573,53 +572,54 @@ Stream to your Console from MongoDB
      - id: java-sync
        content: |
 
-         To create a :ref:`read stream <read-structured-stream>` to a 
-         ``.csv`` file from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.htmll>`__ 
+         To create a :ref:`read stream <read-structured-stream>` 
+         output to your console from MongoDB, first create a 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
          from MongoDB, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
-         to a new ``.csv`` file. Finally, use the ``start()`` method 
+         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
+         to the console. Finally, use the ``start()`` method 
          to begin the stream.
          
          As new data is inserted into MongoDB, MongoDB streams that 
-         data out to a ``.csv`` file in the `outputMode <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode(outputMode:String):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__ 
+         data out to your console in the `outputMode <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__ 
          you specify.
 
-         .. code-block:: scala
+         .. include:: /includes/warn-console-stream.txt
+
+         .. code-block:: java
             :copyable: true
-            :emphasize-lines: 17, 25, 28
 
             // create a local SparkSession
-            val spark = SparkSession
-              .builder
+            SparkSession spark = SparkSession
+              .builder()
               .appName("readExample")
               .master("spark://spark-master:<port>")
               .config("spark.jars", "<mongo-spark-connector>.jar")
-              .getOrCreate()
-
+              .getOrCreate();
+             
             // define the schema of the source collection
-            val readSchema = StructType()
-              .add("company_symbol", StringType())
-              .add("company_name", StringType())
-              .add("price", DoubleType())
-              .add("tx_time", TimestampType())
-
+            StructType readSchema = new StructType()
+              .add("company_symbol", DataTypes.StringType)
+              .add("company_name", DataTypes.StringType)
+              .add("price", DataTypes.DoubleType)
+              .add("tx_time", DataTypes.TimestampType);
+             
             // define a streaming query
-            val query = spark.readStream
+            DataStreamWriter<Row> dataStreamWriter = spark.readStream()
               .format("mongodb")
-              .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
-              .option("spark.mongodb.database", <database-name>)
-              .option("spark.mongodb.collection", <collection-name>)
+              .option("spark.mongodb.connection.uri", "<mongodb-connection-string>")
+              .option("spark.mongodb.database", "<database-name>")
+              .option("spark.mongodb.collection", "<collection-name>")
               .schema(readSchema)
               .load()
               // manipulate your streaming data
-              .writeStream
-              .format("csv")
-              .option("path", "/output/")
+              .writeStream()
+              .format("console")
               .trigger(Trigger.Continuous("1 second"))
-              .outputMode("append")
-
+              .outputMode("append");
+             
             // run the query
-            query.start()
+            StreamingQuery query = dataStreamWriter.start();
 
      - id: python
        content: |
@@ -639,7 +639,6 @@ Stream to your Console from MongoDB
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 19, 27, 30
 
             # create a local SparkSession
             spark = SparkSession \
@@ -680,7 +679,7 @@ Stream to your Console from MongoDB
        content: |
 
          To create a :ref:`read stream <read-structured-stream>` 
-         output to your console from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.htmll>`__ 
+         output to your console from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
          from MongoDB, then use that ``DataStreamReader`` to 
          create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
          to the console. Finally, use the ``start()`` method 
@@ -694,7 +693,6 @@ Stream to your Console from MongoDB
 
          .. code-block:: scala
             :copyable: true
-            :emphasize-lines: 17, 25, 28
 
             // create a local SparkSession
             val spark = SparkSession
