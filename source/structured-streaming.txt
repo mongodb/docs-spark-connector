@@ -244,10 +244,11 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 written to the streaming sink. To view a list of all 
                 supported policies, see `the Java Trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/Trigger.html>`__.
 
-                .. note::
-                   
-                   Enables continuous processing for your read stream. 
-                   Import and use the ``Trigger.Continuous()`` property.
+                When set, this method enables continuous processing 
+                for your read stream. Pass the method a time value 
+                created by the ``Trigger.Continuous()`` method.
+
+                .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
          configuration settings to stream data from MongoDB:
@@ -272,7 +273,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          .. note::
             
             Spark does not begin streaming until you call the 
-            ``start()`` method on a streaming query.
+            ``start`` method on a streaming query.
 
          For a complete list of methods, see the 
          `Java Structured Streaming reference <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
@@ -308,10 +309,11 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 written to the streaming sink. To view a list of all 
                 supported policies, see `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.trigger.html#pyspark.sql.streaming.DataStreamWriter.trigger>`__.
 
-                .. note::
+                When set, this method enables continuous processing 
+                for your read stream. Pass the method a time value 
+                using the ``continuous`` parameter.
 
-                   Enables continuous processing for your read stream. 
-                   Use the ``continuous`` parameter.
+                .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
          configuration settings to stream data from MongoDB:
@@ -336,7 +338,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          .. note::
             
             Spark does not begin streaming until you call the 
-            ``start()`` method on a streaming query.
+            ``start`` method on a streaming query.
 
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__.
@@ -372,10 +374,11 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 written to the streaming sink. To view a list of all 
                 supported policies, see `the Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
 
-                .. note::
-                   
-                   Enables continuous processing for your read stream. 
-                   Import and use the ``Trigger.Continuous()`` property.
+                When set, this method enables continuous processing 
+                for your read stream. Pass the method a time value 
+                created by the ``Trigger.Continuous()`` method.
+
+                .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
          configuration settings to stream data from MongoDB:
@@ -400,7 +403,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          .. note::
             
             Spark does not begin streaming until you call the 
-            ``start()`` method on a streaming query.
+            ``start`` method on a streaming query.
 
          For a complete list of methods, see the 
          `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
@@ -414,6 +417,8 @@ for streaming to and from MongoDB.
 Stream to MongoDB from a CSV File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To stream data from a CSV file to MongoDB:
+
 .. tabs-drivers::
 
    tabs:
@@ -421,12 +426,18 @@ Stream to MongoDB from a CSV File
      - id: java-sync
        content: |
 
-         To create a :ref:`write stream <write-structured-stream>` to 
-         MongoDB from a CSV file, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
-         from the CSV file, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
-         to MongoDB. Finally, call the ``start()`` method to begin the 
-         stream.
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+            that reads from the CSV file.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
+            by calling the ``writeStream`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``.
+
+         #. Call the ``start`` method on the ``DataStreamWriter``
+            instance to begin the stream.
          
          As the connector reads data from the CSV file, it adds that 
          data to MongoDB using the `outputMode <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__ 
@@ -464,12 +475,18 @@ Stream to MongoDB from a CSV File
      - id: python
        content: |
 
-         To create a :ref:`write stream <write-structured-stream>` to 
-         MongoDB from a CSV file, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
-         from the CSV file, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
-         to MongoDB. Finally, call the ``start()`` method to begin the 
-         stream.
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
+            that reads from the CSV file.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__
+            by calling the ``writeStream`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``.
+
+         #. Call the ``start`` method on the ``DataStreamWriter``
+            instance to begin the stream.
          
          As the connector reads data from the CSV file, it adds that 
          data to MongoDB using the `outputMode <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__ 
@@ -508,12 +525,18 @@ Stream to MongoDB from a CSV File
      - id: scala
        content: |
 
-         To create a :ref:`write stream <write-structured-stream>` to 
-         MongoDB from a CSV file, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
-         from the CSV file, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
-         to MongoDB. Finally, call the ``start()`` method to begin the 
-         stream.
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+            that reads from the CSV file.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
+            by calling the ``writeStream`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``.
+
+         #. Call the ``start`` method on the ``DataStreamWriter``
+            instance to begin the stream.
          
          As the connector reads data from the CSV file, it adds that 
          data to MongoDB using the `outputMode <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode(outputMode:String):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__ 
@@ -551,6 +574,8 @@ Stream to MongoDB from a CSV File
 Stream to your Console from MongoDB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+To stream data from MongoDB to your console:
+
 .. tabs-drivers::
 
    tabs:
@@ -558,14 +583,19 @@ Stream to your Console from MongoDB
      - id: java-sync
        content: |
 
-         To create a :ref:`read stream <read-structured-stream>` 
-         output to your console from MongoDB, first create a 
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
-         from MongoDB, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
-         to the console. Finally, call the ``start()`` method 
-         to begin the stream.
-         
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+            that reads from MongoDB.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
+            by calling the ``writeStream`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``.
+
+         #. Call the ``start`` method on the ``DataStreamWriter``
+            instance to begin the stream.
+
          As new data is inserted into MongoDB, MongoDB streams that 
          data out to your console using the `outputMode <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__ 
          you specify.
@@ -609,12 +639,18 @@ Stream to your Console from MongoDB
      - id: python
        content: |
 
-         To create a :ref:`read stream <read-structured-stream>` 
-         output to your console from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
-         from MongoDB, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__ 
-         to the console. Finally, call the ``start()`` method 
-         to begin the stream.
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
+            that reads from MongoDB.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__
+            by calling the ``writeStream`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``.
+
+         #. Call the ``start`` method on the ``DataStreamWriter``
+            instance to begin the stream.
          
          As new data is inserted into MongoDB, MongoDB streams that 
          data out to your console using the `outputMode <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__ 
@@ -661,12 +697,18 @@ Stream to your Console from MongoDB
      - id: scala
        content: |
 
-         To create a :ref:`read stream <read-structured-stream>` 
-         output to your console from MongoDB, first create a `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
-         from MongoDB, then use that ``DataStreamReader`` to 
-         create a `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
-         to the console. Finally, call the ``start()`` method 
-         to begin the stream.
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+            that reads from MongoDB.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
+            by calling the ``writeStream`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``.
+
+         #. Call the ``start`` method on the ``DataStreamWriter``
+            instance to begin the stream.
          
          As new data is inserted into MongoDB, MongoDB streams that 
          data out to your console using the `outputMode <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode(outputMode:String):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__ 
