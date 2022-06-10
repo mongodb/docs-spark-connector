@@ -273,7 +273,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          .. note::
             
             Spark does not begin streaming until you call the 
-            ``start`` method on a streaming query.
+            ``start()`` method on a streaming query.
 
          For a complete list of methods, see the 
          `Java Structured Streaming reference <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
@@ -338,7 +338,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          .. note::
             
             Spark does not begin streaming until you call the 
-            ``start`` method on a streaming query.
+            ``start()`` method on a streaming query.
 
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__.
@@ -403,7 +403,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          .. note::
             
             Spark does not begin streaming until you call the 
-            ``start`` method on a streaming query.
+            ``start()`` method on a streaming query.
 
          For a complete list of methods, see the 
          `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
@@ -432,12 +432,12 @@ To stream data from a CSV file to MongoDB:
 
          #. Create a 
             `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__ 
-            by calling the ``writeStream`` method on the streaming 
+            by calling the ``writeStream()`` method on the streaming 
             Dataset or streaming DataFrame that you created with a 
             ``DataStreamReader``. Specify the format ``mongodb`` using 
-            the ``format`` method.
+            the ``format()`` method.
 
-         #. Call the ``start`` method on the ``DataStreamWriter``
+         #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
          
          As the connector reads data from the CSV file, it adds that 
@@ -482,11 +482,11 @@ To stream data from a CSV file to MongoDB:
 
          #. Create a 
             `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__
-            by calling the ``writeStream`` method on the streaming 
+            by calling the ``writeStream()`` method on the streaming 
             DataFrame that you created with a ``DataStreamReader``. 
-            Specify the format ``mongodb`` using the ``format`` method.
+            Specify the format ``mongodb`` using the ``format()`` method.
 
-         #. Call the ``start`` method on the ``DataStreamWriter``
+         #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
          
          As the connector reads data from the CSV file, it adds that 
@@ -532,12 +532,12 @@ To stream data from a CSV file to MongoDB:
 
          #. Create a 
             `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
-            by calling the ``writeStream`` method on the streaming 
+            by calling the ``writeStream()`` method on the streaming 
             Dataset or streaming DataFrame that you created with a 
             ``DataStreamReader``. Specify the format ``mongodb`` using 
-            the ``format`` method.
+            the ``format()`` method.
 
-         #. Call the ``start`` method on the ``DataStreamWriter``
+         #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
          
          As the connector reads data from the CSV file, it adds that 
@@ -591,12 +591,12 @@ To stream data from MongoDB to your console:
 
          #. Create a 
             `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
-            by calling the ``writeStream`` method on the streaming 
+            by calling the ``writeStream()`` method on the streaming 
             Dataset or streaming DataFrame that you created with a 
             ``DataStreamReader``. Specify the format ``console`` using 
-            the ``format`` method.
+            the ``format()`` method.
 
-         #. Call the ``start`` method on the ``DataStreamWriter``
+         #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
 
          As new data is inserted into MongoDB, MongoDB streams that 
@@ -648,11 +648,11 @@ To stream data from MongoDB to your console:
 
          #. Create a 
             `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__
-            by calling the ``writeStream`` method on the streaming 
+            by calling the ``writeStream()`` method on the streaming 
             DataFrame that you created with a ``DataStreamReader``. 
-            Specify the format ``console`` using the ``format`` method.
+            Specify the format ``console`` using the ``format()`` method.
 
-         #. Call the ``start`` method on the ``DataStreamWriter``
+         #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
          
          As new data is inserted into MongoDB, MongoDB streams that 
@@ -706,12 +706,12 @@ To stream data from MongoDB to your console:
 
          #. Create a 
             `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
-            by calling the ``writeStream`` method on the streaming 
+            by calling the ``writeStream()`` method on the streaming 
             Dataset or streaming DataFrame that you created with a 
             ``DataStreamReader``. Specify the format ``console`` using 
-            the ``format`` method.
+            the ``format()`` method.
 
-         #. Call the ``start`` method on the ``DataStreamWriter``
+         #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
          
          As new data is inserted into MongoDB, MongoDB streams that 
