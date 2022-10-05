@@ -91,6 +91,7 @@ The following options for writing to MongoDB are available:
        in the following example:
 
        .. code-block:: none
+          :copyable: false
 
           "fieldName1,fieldName2"
 
