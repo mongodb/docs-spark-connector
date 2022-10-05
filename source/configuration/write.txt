@@ -32,13 +32,13 @@ The following options for writing to MongoDB are available:
      - Description
 
    * - ``connection.uri``
-     - **Required.** 
+     - **Required.**
        The connection string in the form
        ``mongodb://host:port/``. The ``host`` can be a hostname, IP
        address, or UNIX domain socket. If the connection string doesn't
        specify a ``port``, it uses the default MongoDB port, ``27017``.
-       
-       .. note:: 
+
+       .. note::
 
           The other remaining options may be appended to the ``connection.uri``
           setting. See :ref:`configure-output-uri`.
@@ -67,7 +67,7 @@ The following options for writing to MongoDB are available:
        If false it will only update the fields in the document that match the fields in the Dataset.
 
        **Default:** ``true``
-       
+
    * - ``maxBatchSize``
      - The maximum batch size for bulk operations when saving data.
 
@@ -77,7 +77,7 @@ The following options for writing to MongoDB are available:
      - The write concern :ref:`w <wc-w>` value.
 
        **Default:** ``w: 1``
-   
+
    * - ``writeConcern.journal``
      - The write concern :ref:`journal <wc-j>` value.
 
@@ -85,8 +85,14 @@ The following options for writing to MongoDB are available:
      - The write concern :ref:`wTimeout <wc-wtimeout>` value.
 
    * - ``shardKey``
-     - The field by which to split the collection data. The field
+     - The field or fields by which to split the collection data. The fields
        should be indexed and contain unique values.
+       To specify multiple fields, separate them using a comma as shown
+       in the following example:
+
+       .. code-block:: none
+
+          "fieldName1,fieldName2"
 
        **Default:** ``_id``
 
