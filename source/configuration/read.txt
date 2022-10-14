@@ -21,6 +21,7 @@ You can configure the following properties to read from MongoDB:
 
 .. note::
 
+
    If you use ``SparkConf`` to set the connector's read configurations,
    prefix ``spark.mongodb.read.`` to each property.
 
@@ -146,6 +147,7 @@ partitioners:
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``.
 
+
 .. list-table::
    :header-rows: 1
    :widths: 35 65
@@ -163,6 +165,7 @@ You must specify this partitioner using the full classname:
        create more partitions containing fewer documents.
 
        **Default:** ``64``
+
 
    * - ``partitioner.options.samples.per.partition``
      - The number of samples to take per partition. The total number of
@@ -200,6 +203,7 @@ You must specify this partitioner using the full classname:
 
    This partitioner is not compatible with hashed shard keys.
 
+
 .. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
 
@@ -225,6 +229,7 @@ You must specify this partitioner using the full classname:
 
    * - ``partitioner.options.partition.size``
      - The size (in MB) for each partition. Smaller partition sizes
+
        create more partitions containing fewer documents.
 
        **Default:** ``64``
@@ -239,13 +244,14 @@ You must specify this partitioner using the full classname:
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.PaginateIntoPartitionsPartitioner``.
 
+
 .. list-table::
    :header-rows: 1
    :widths: 35 65
 
    * - Property name
      - Description
-
+     
    * - ``partitioner.options.partition.field``
      - The field to use for partitioning, which must be a unique field.
 
@@ -270,6 +276,7 @@ This partitioner creates a single partition.
 
 
 
+
 .. _spark-change-stream-conf:
 
 Change Streams
@@ -279,6 +286,7 @@ Change Streams
 
    If you use ``SparkConf`` to set the connector's change stream
    configurations, prefix ``spark.mongodb.change.stream.`` to each
+
    property.
 
 .. list-table::
@@ -343,6 +351,7 @@ For example, consider the following example which sets the read
 .. code:: cfg
 
    spark.mongodb.read.connection.uri=mongodb://127.0.0.1/databaseName.collectionName?readPreference=primaryPreferred
+
 
 The configuration corresponds to the following separate configuration
 settings:
