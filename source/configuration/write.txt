@@ -82,9 +82,8 @@ The following options for writing to MongoDB are available:
        | **Default:** ``replace``
 
    * - ``idFieldList``
-     - | Field or list of fields by which to split the collection data. The
-         fields should be indexed and contain unique values.
-         To specify more than one field, separate them using a comma as hown
+     - | Field or list of fields by which to split the collection data. To
+         specify more than one field, separate them using a comma as shown
          in the following example:
 
        .. code-block:: none
@@ -92,7 +91,6 @@ The following options for writing to MongoDB are available:
 
           "fieldName1,fieldName2"
 
-       |
        | **Default:** ``_id``
 
    * - ``writeConcern.w``
