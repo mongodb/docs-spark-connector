@@ -6,9 +6,9 @@ intersphinx = ["https://docs.mongodb.com/manual/objects.inv"]
 toc_landing_pages = ["configuration"]
 
 [constants]
-current-version = "10"
-spark-core-version = "3.0.1"
-spark-sql-version = "3.0.1"
+current-version = "10.0.5"
+spark-core-version = "3.0.2"
+spark-sql-version = "3.0.2"
 scala-version = "2.12"
 scala-version-full = "2.12.13"
 
