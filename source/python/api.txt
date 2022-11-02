@@ -1,8 +1,4 @@
-.. note:: Source Code
-
-   For the source code that contains the examples below, see
-   :mongo-spark:`introduction.py
-   </blob/master/examples/src/test/python/introduction.py>`.
+.. include:: /includes/new-format-name.rst
 
 Python Spark Shell
 ------------------
@@ -23,8 +19,8 @@ Create a ``SparkSession`` Object
    ``spark`` by default. In a standalone Python application, you need
    to create your ``SparkSession`` object explicitly, as show below.
    
-If you specified the ``spark.mongodb.input.uri``
-and ``spark.mongodb.output.uri`` configuration options when you
+If you specified the ``spark.mongodb.read.connection.uri``
+and ``spark.mongodb.write.connection.uri`` configuration options when you
 started ``pyspark``, the default ``SparkSession`` object uses them.
 If you'd rather create your own ``SparkSession`` object from within
 ``pyspark``, you can use ``SparkSession.builder`` and specify different
@@ -37,8 +33,8 @@ configuration options.
    my_spark = SparkSession \
        .builder \
        .appName("myApp") \
-       .config("spark.mongodb.input.uri", "mongodb://127.0.0.1/test.coll") \
-       .config("spark.mongodb.output.uri", "mongodb://127.0.0.1/test.coll") \
+       .config("spark.mongodb.read.connection.uri", "mongodb://127.0.0.1/test.coll") \
+       .config("spark.mongodb.write.connection.uri", "mongodb://127.0.0.1/test.coll") \
        .getOrCreate()
 
 You can use a ``SparkSession`` object to write data to MongoDB, read

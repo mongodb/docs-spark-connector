@@ -15,8 +15,6 @@ Prerequisites
 
 .. include:: /includes/list-prerequisites.rst
 
-- Java 8 or later.
-
 .. _pyspark-shell:
 .. _scala-getting-started:
 .. _python-basics:
@@ -50,4 +48,4 @@ Tutorials
 
 - :doc:`write-to-mongodb`
 - :doc:`read-from-mongodb`
-- :doc:`streaming`
+- :doc:`structured-streaming`
