@@ -244,8 +244,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 call ``writeStream.trigger()``, the Spark connector will use 
                 micro-batch processing instead. 
   
-                To view a list of all supported processing policies, see `the java 
-                trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/trigger.html>`__.
+                To view a list of all supported processing policies, see `the Java 
+                trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/Trigger.html>`__.
 
                 .. include:: /includes/note-trigger-method
 
