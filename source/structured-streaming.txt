@@ -203,12 +203,14 @@ Configuring a Write Stream to MongoDB
 
 Configuring a Read Stream from MongoDB
 --------------------------------------
-When reading a stream from a MongoDB database, the {+driver-long+} supports both *micro-batch 
-processing* and 
+When reading a stream from a MongoDB database, the {+driver-long+} supports both 
+*micro-batch processing* and 
 *continuous processing*. Micro-batch processing is the default processing engine, while
 continuous processing is an experimental feature introduced in 
 Spark version 2.3. To learn 
 more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
+
+.. include:: /includes/fact-read-from-change-stream
 
 .. tabs-drivers::
 
@@ -217,11 +219,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: java-sync
        content: |
 
-         Specify read stream configuration settings on 
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__. You must specify the following 
-         configuration settings to read from MongoDB:
-         
-         .. include:: /includes/fact-read-from-change-stream
+         To read data from MongoDB, specify the following read-stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__: 
          
          .. list-table::
             :header-rows: 1
@@ -282,9 +281,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: python
        content: |
 
-         Specify read stream configuration settings on 
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__. You must specify the following 
-         configuration settings to read from MongoDB:
+         To read data from MongoDB, specify the following read-stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__:  
 
          To use continuous processing with the MongoDB Spark Connector, 
          call the ``trigger()`` method on the ``writeStream`` property 
@@ -292,8 +290,6 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          your MongoDB read stream. In your ``trigger()``, specify the 
          ``continuous`` parameter.
          
-         .. include:: /includes/fact-read-from-change-stream
-
          .. list-table::
             :header-rows: 1
             :stub-columns: 1
@@ -326,7 +322,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 2, 8, 12
+            :emphasize-lines: 2, 7, 12
          
             streamingDataFrame = (<local SparkSession>.readStream
               .format("mongodb")
@@ -351,11 +347,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
      - id: scala
        content: |
-         Specify read stream configuration settings on 
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__. You must specify the following 
-         configuration settings to read from MongoDB:
-
-         .. include:: /includes/fact-read-from-change-stream
+         
+         To read data from MongoDB, specify the following read-stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__:  
 
          .. list-table::
             :header-rows: 1
