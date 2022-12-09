@@ -203,10 +203,11 @@ Configuring a Write Stream to MongoDB
 
 Configuring a Read Stream from MongoDB
 --------------------------------------
-
-Reading a stream from a MongoDB database requires 
-*continuous processing*, 
-an experimental feature introduced in Spark version 2.3. To learn 
+When reading a stream from a MongoDB database, the {+title+} supports both *micro-batch 
+processing* and 
+*continuous processing*. Micro-batch processing is the default processing engine, while
+continuous processing is an experimental feature introduced in 
+Spark version 2.3. To learn 
 more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
 
 .. tabs-drivers::
@@ -216,17 +217,11 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: java-sync
        content: |
 
-         To use continuous processing with the MongoDB Spark Connector, 
-         call the ``trigger()`` method on the ``writeStream`` property 
-         of the streaming Dataset or streaming DataFrame that you 
-         create from your MongoDB read stream. Pass a setting returned 
-         by ``Trigger.Continuous()`` to the the ``trigger()`` method.
-         
-         .. include:: /includes/fact-read-from-change-stream
-         
          Specify read stream configuration settings on 
          `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__. You must specify the following 
          configuration settings to read from MongoDB:
+         
+         .. include:: /includes/fact-read-from-change-stream
          
          .. list-table::
             :header-rows: 1
@@ -240,18 +235,24 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               - The format to use for read stream data. Use ``mongodb``.
          
             * - ``writeStream.trigger()``
-              - The policy that indicates how often results should be 
-                written to the streaming sink. To view a list of all 
-                supported policies, see `the Java Trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/Trigger.html>`__.
-
-                When set, this method enables continuous processing 
-                for your read stream. Pass the method a time value 
-                created by the ``Trigger.Continuous()`` method.
+              - Specifies how often results should be 
+                written to the streaming sink. 
+                
+                To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
+                as an argument, where ``<time value>`` is how often the Spark Connector 
+                should asynchronously checkpoint. If you 
+                pass any other static method of the ``Trigger`` class, or if you don't 
+                call ``writeStream.trigger()``, the Spark connector will use 
+                micro-batch processing instead. 
+  
+                To view a list of all supported processing policies, see `the java 
+                trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/trigger.html>`__.
 
                 .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
-         configuration settings to stream data from MongoDB:
+         configuration settings to continuously process data streamed from MongoDB,
+         asynchronously checkpointing every second:
 
          .. code-block:: java
             :copyable: true
@@ -281,6 +282,10 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: python
        content: |
 
+         Specify read stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__. You must specify the following 
+         configuration settings to read from MongoDB:
+
          To use continuous processing with the MongoDB Spark Connector, 
          call the ``trigger()`` method on the ``writeStream`` property 
          of the streaming DataFrame that you create from 
@@ -288,11 +293,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          ``continuous`` parameter.
          
          .. include:: /includes/fact-read-from-change-stream
-         
-         Specify read stream configuration settings on 
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamReader.html>`__. You must specify the following 
-         configuration settings to read from MongoDB:
-         
+
          .. list-table::
             :header-rows: 1
             :stub-columns: 1
@@ -305,18 +306,23 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               - The format to use for read stream data. Use ``mongodb``.
          
             * - ``writeStream.trigger()``
-              - The policy that indicates how often results should be 
-                written to the streaming sink. To view a list of all 
-                supported policies, see `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.trigger.html#pyspark.sql.streaming.DataStreamWriter.trigger>`__.
+              - Specifies how often results should be 
+                written to the streaming sink. 
 
-                When set, this method enables continuous processing 
-                for your read stream. Pass the method a time value 
+                To use continuous processing, pass the method a time value 
                 using the ``continuous`` parameter.
+                If you pass any other named parameter, or if you don't 
+                call ``writeStream.trigger()``, the Spark Connector will use 
+                micro-batch processing instead. 
+                
+                To view a list of all supported processing policies, see 
+                `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html>`__.
 
                 .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
-         configuration settings to stream data from MongoDB:
+         configuration settings to continuously process data streamed from MongoDB,
+         asynchronously checkpointing every second:
 
          .. code-block:: python
             :copyable: true
@@ -345,19 +351,12 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
      - id: scala
        content: |
-
-         To use continuous processing with the MongoDB Spark Connector, 
-         call the ``trigger()`` method on the ``writeStream`` property 
-         of the streaming Dataset or streaming DataFrame that you 
-         create from your MongoDB read stream. Pass a setting returned 
-         by ``Trigger.Continuous()`` to the the ``trigger()`` method.
-         
-         .. include:: /includes/fact-read-from-change-stream
-         
          Specify read stream configuration settings on 
          `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__. You must specify the following 
          configuration settings to read from MongoDB:
-         
+
+         .. include:: /includes/fact-read-from-change-stream
+
          .. list-table::
             :header-rows: 1
             :stub-columns: 1
@@ -370,18 +369,24 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               - The format to use for read stream data. Use ``mongodb``.
          
             * - ``writeStream.trigger()``
-              - The policy that indicates how often results should be 
-                written to the streaming sink. To view a list of all 
-                supported policies, see `the Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
+              - Specifies how often results should be 
+                written to the streaming sink.
 
-                When set, this method enables continuous processing 
-                for your read stream. Pass the method a time value 
-                created by the ``Trigger.Continuous()`` method.
+                To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
+                as an argument, where ``<time value>`` is how often the Spark Connector 
+                should asynchronously checkpoint. If you 
+                pass any other static method of the ``Trigger`` class, or if you don't 
+                call ``writeStream.trigger()``, the Spark connector will use 
+                micro-batch processing instead. 
+                
+                To view a list of all 
+                supported processing policies, see `the Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
 
                 .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
-         configuration settings to stream data from MongoDB:
+         configuration settings to continuously process data streamed from MongoDB,
+         asynchronously checkpointing every second:
 
          .. code-block:: scala
             :copyable: true
