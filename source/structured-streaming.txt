@@ -94,7 +94,7 @@ Configuring a Write Stream to MongoDB
        content: |
 
          Specify write stream configuration settings on your streaming 
-         DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.html>`__. You 
+         DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.html>`__. You 
          must specify the following configuration settings to write 
          to MongoDB:
          
@@ -125,7 +125,7 @@ Configuring a Write Stream to MongoDB
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame is 
                 written to a streaming sink. To view a list of all 
-                supported output modes, see `the pyspark outputMode documentation <https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__.
+                supported output modes, see `the pyspark outputMode documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__.
 
          
          The following code snippet shows how to use the preceding 
