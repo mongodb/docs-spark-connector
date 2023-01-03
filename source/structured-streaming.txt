@@ -63,7 +63,7 @@ Configuring a Write Stream to MongoDB
 
                 You can also use the ``option()`` method to configure other stream settings, 
                 including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointingdirectory>`__.
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
          
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame/Dataset is 
@@ -114,7 +114,7 @@ Configuring a Write Stream to MongoDB
          
                 You can also use the ``option()`` method to configure other stream settings, 
                 including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointingdirectory>`__.
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
 
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame is 
@@ -165,7 +165,7 @@ Configuring a Write Stream to MongoDB
          
                 You can also use the ``option()`` method to configure other stream settings, 
                 including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointingdirectory>`__.
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
 
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame/Dataset is 
@@ -326,6 +326,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             dataStreamWriter = (streamingDataFrame.writeStream
               .trigger(continuous="1 second")
               .format("memory")
+              .option("checkpointLocation", "/tmp/checkpointDir")
               .outputMode("append")
             )
 
@@ -390,6 +391,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             val dataStreamWriter = streamingDataFrame.writeStream
               .trigger(Trigger.Continuous("1 second"))
               .format("memory")
+              .option("checkpointLocation", "/tmp/checkpointDir")
               .outputMode("append")
 
             val query = dataStreamWriter.start()
