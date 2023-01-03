@@ -75,7 +75,6 @@ Configuring a Write Stream to MongoDB
 
          .. code-block:: java
             :copyable: true
-            :emphasize-lines: 2-3, 6
          
             <streaming Dataset/DataFrame>.writeStream()
               .format("mongodb")
@@ -127,7 +126,6 @@ Configuring a Write Stream to MongoDB
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 2-3, 6
          
             <streaming DataFrame>.writeStream \
               .format("mongodb") \
@@ -177,7 +175,6 @@ Configuring a Write Stream to MongoDB
 
          .. code-block:: scala
             :copyable: true
-            :emphasize-lines: 2-3, 6
          
             <streaming Dataset/DataFrame>.writeStream
               .format("mongodb")
@@ -247,7 +244,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
          .. code-block:: java
             :copyable: true
-            :emphasize-lines: 1, 4, 8, 12
+            :emphasize-lines: 1, 4, 8, 13
 
             import org.apache.spark.sql.streaming.Trigger;
  
@@ -316,7 +313,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
          .. code-block:: python
             :copyable: true
-            :emphasize-lines: 2, 7, 12
+            :emphasize-lines: 2, 7, 13
          
             streamingDataFrame = (<local SparkSession>.readStream
               .format("mongodb")
@@ -380,7 +377,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
          .. code-block:: scala
             :copyable: true
-            :emphasize-lines: 1, 4, 8, 12
+            :emphasize-lines: 1, 4, 8, 13
 
             import org.apache.spark.sql.streaming.Trigger
          
