@@ -57,16 +57,13 @@ Configuring a Write Stream to MongoDB
                 ``mongodb``.
          
             * - ``writeStream.option()``
-              - Use the ``option`` method to specify your MongoDB 
+              - Use the ``option()`` method to specify your MongoDB 
                 deployment :manual:`connection string </reference/connection-string/>` with the 
                 ``spark.mongodb.connection.uri`` option key.
-         
-                You must specify a database and collection, either as 
-                part of your connection string or with additional 
-                ``option`` methods using the following keys:
-         
-                - ``spark.mongodb.database``
-                - ``spark.mongodb.collection``
+
+                You can also use the ``option()`` method to configure other stream settings, 
+                including the MongoDB database and collection, destination 
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointingdirectory>`__.
          
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame/Dataset is 
@@ -115,13 +112,10 @@ Configuring a Write Stream to MongoDB
                 deployment :manual:`connection string </reference/connection-string/>` with the 
                 ``spark.mongodb.connection.uri`` option key.
          
-                You must specify a database and collection, either as 
-                part of your connection string or with additional 
-                ``option`` methods using the following keys:
-         
-                - ``spark.mongodb.database``
-                - ``spark.mongodb.collection``
-         
+                You can also use the ``option()`` method to configure other stream settings, 
+                including the MongoDB database and collection, destination 
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointingdirectory>`__.
+
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame is 
                 written to a streaming sink. To view a list of all 
@@ -141,7 +135,7 @@ Configuring a Write Stream to MongoDB
               .option("spark.mongodb.database", <database-name>) \
               .option("spark.mongodb.collection", <collection-name>) \
               .outputMode("append")
-
+         
          For a complete list of methods, see the 
          `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.html>`__.
 
@@ -169,13 +163,10 @@ Configuring a Write Stream to MongoDB
                 deployment :manual:`connection string </reference/connection-string/>` with the 
                 ``spark.mongodb.connection.uri`` option key.
          
-                You must specify a database and collection, either as 
-                part of your connection string or with additional 
-                ``option`` methods using the following keys:
-         
-                - ``spark.mongodb.database``
-                - ``spark.mongodb.collection``
-         
+                You can also use the ``option()`` method to configure other stream settings, 
+                including the MongoDB database and collection, destination 
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointingdirectory>`__.
+
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame/Dataset is 
                 written to a streaming sink. To view a list of all 
@@ -194,7 +185,7 @@ Configuring a Write Stream to MongoDB
               .option("spark.mongodb.database", <database-name>)
               .option("spark.mongodb.collection", <collection-name>)
               .outputMode("append")
-
+ 
          For a complete list of methods, see the 
          `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__.
 
@@ -250,8 +241,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
-         configuration settings to continuously process data streamed from MongoDB,
-         asynchronously checkpointing every second:
+         configuration settings to continuously process data streamed from MongoDB.
+         The connector appends all new data to the existing data and asynchronously 
+         writes checkpoints to ``/tmp/checkpointDir`` once per second:
 
          .. code-block:: java
             :copyable: true
@@ -266,6 +258,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             DataStreamWriter<Row> dataStreamWriter = streamingDataset.writeStream()
               .trigger(Trigger.Continuous("1 second"))
               .format("memory")
+              .option("checkpointLocation", "/tmp/checkpointDir")
               .outputMode("append");
  
             StreamingQuery query = dataStreamWriter.start();
@@ -317,8 +310,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
-         configuration settings to continuously process data streamed from MongoDB,
-         asynchronously checkpointing every second:
+         configuration settings to continuously process data streamed from MongoDB.
+         The connector appends all new data to the existing data and asynchronously 
+         writes checkpoints to ``/tmp/checkpointDir`` once per second:
 
          .. code-block:: python
             :copyable: true
@@ -379,8 +373,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
                 .. include:: /includes/note-trigger-method
 
          The following code snippet shows how to use the preceding 
-         configuration settings to continuously process data streamed from MongoDB,
-         asynchronously checkpointing every second:
+         configuration settings to continuously process data streamed from MongoDB.
+         The connector appends all new data to the existing data and asynchronously 
+         writes checkpoints to ``/tmp/checkpointDir`` once per second:
 
          .. code-block:: scala
             :copyable: true
