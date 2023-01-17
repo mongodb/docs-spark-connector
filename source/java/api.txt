@@ -10,10 +10,10 @@ Spark 3.1.3 and previous versions support only Scala {+scala-previous+}.
 To provide support for both Scala versions, version {+current-version+} of the Spark 
 Connector produces two artifacts:
 
-- ``org.mongodb.spark:mongo-spark-connector_{+scala-previous+}:{+current-version+}`` is compiled against Spark 3.1.x, 
-  and should support all Spark 3.x versions above that.
-- ``org.mongodb.spark:mongo-spark-connector_{+scala-latest+}:{+current-version+}`` is compiled against Spark 3.2.x,
-  and should support all Spark 3.x versions above that.
+- ``org.mongodb.spark:mongo-spark-connector_{+scala-previous+}:{+current-version+}`` is 
+  compiled against Scala {+scala-previous+}, and supports Spark 3.1.x and above.  
+- ``org.mongodb.spark:mongo-spark-connector_{+scala-latest+}:{+current-version+}`` is 
+  compiled against Scala {+scala-latest+}, and supports Spark 3.2.x and above.
 
 .. important::
    
