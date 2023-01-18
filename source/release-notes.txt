@@ -11,9 +11,10 @@ MongoDB Connector for Spark 10.1.0
 - Support for BSON data types
 - Option to disable automatic upsert on write operations
 
+See `this post <https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1>`__ 
+on the MongoDB blog for more information about these features.
+
 MongoDB Connector for Spark 10.0.0
 ----------------------------------
-
-*Released on March 31, 2022*
 
 - Support for Spark Structured Streaming
