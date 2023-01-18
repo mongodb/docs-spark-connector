@@ -7,11 +7,13 @@ Release Notes
 MongoDB Connector for Spark 10.1.0
 ----------------------------------
 
-- 
+- Support for microbatch mode with Spark Structured Streaming
+- Support for BSON data types
+- Option to disable automatic upsert on write operations
 
 MongoDB Connector for Spark 10.0.0
 ----------------------------------
 
 *Released on March 31, 2022*
 
-- Support for Spark Structured Streaming.
+- Support for Spark Structured Streaming
