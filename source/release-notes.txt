@@ -17,7 +17,7 @@ MongoDB Connector for Spark 10.1.0
   to MongoDB instead of throwing an exception.
 
 See `this post <https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1>`__ 
-on the MongoDB blog for more information about some of these features.
+on the MongoDB blog for more information.
 
 MongoDB Connector for Spark 10.0.0
 ----------------------------------
