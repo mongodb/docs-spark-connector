@@ -13,7 +13,7 @@ MongoDB Connector for Spark 10.1.0
 - Improved partitioner support for empty collections.
 - Option to disable automatic upsert on write operations.
 - Improved schema inference for empty arrays.
-- Support for null values in arrays and lists. The Connector now stores these values
+- Support for null values in arrays and lists. The Connector now writes these values
   to MongoDB instead of throwing an exception.
 
 See `this post <https://www.mongodb.com/blog/post/introducing-mongodb-spark-connector-version-10-1>`__ 
@@ -22,4 +22,4 @@ on the MongoDB blog for more information.
 MongoDB Connector for Spark 10.0.0
 ----------------------------------
 
-- Support for Spark Structured Streaming
+- Support for Spark Structured Streaming.
