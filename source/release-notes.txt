@@ -8,7 +8,7 @@ MongoDB Connector for Spark 10.1.0
 ----------------------------------
 
 - Support for Scala 2.13.
-- Support for microbatch mode with Spark Structured Streaming.
+- Support for micro-batch mode with Spark Structured Streaming.
 - Support for BSON data types.
 - Improved partitioner support for empty collections.
 - Option to disable automatic upsert on write operations.
