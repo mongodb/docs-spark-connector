@@ -120,6 +120,11 @@ You can configure the following properties to read from MongoDB:
        |
        | **Default:** ``true``
 
+   * - ``outputExtendedJson``
+     - | When ``true``, ensures round-tripping of all BSON data types.
+       |
+       | **Default:** ``false``
+
 
 
 .. _partitioner-conf:
