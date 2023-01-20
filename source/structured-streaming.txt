@@ -126,7 +126,11 @@ Configuring a Write Stream to MongoDB
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame is 
                 written to a streaming sink. To view a list of all 
+<<<<<<< HEAD
                 supported output modes, see the `pyspark outputMode documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__.
+=======
+                supported output modes, see `the pyspark outputMode documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__.
+>>>>>>> ba3bfcb (broken links)
 
          
          The following code snippet shows how to use the preceding 
@@ -308,7 +312,7 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             * - ``writeStream.trigger()``
               - The policy that indicates how often results should be 
                 written to the streaming sink. To view a list of all 
-                supported policies, see the `pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html#pyspark.sql.streaming.DataStreamWriter.trigger>`__.
+                supported policies, see `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html#pyspark.sql.streaming.DataStreamWriter.trigger>`__.
 
                 When set, this method enables continuous processing 
                 for your read stream. Pass the method a time value 
