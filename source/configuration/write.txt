@@ -140,6 +140,12 @@ The following options for writing to MongoDB are available:
          ``false``.
        |
        | **Default:** ``true``
+   
+   * - ``convertJson``
+     - | When ``true``, the Connector will process strings that may include 
+         JSON or extended JSON.
+       |
+       | **Default:** ``false``
 
 .. _configure-output-uri:
 
