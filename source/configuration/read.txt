@@ -121,11 +121,12 @@ You can configure the following properties to read from MongoDB:
        | **Default:** ``true``
 
    * - ``outputExtendedJson``
-     - | When ``true``, ensures round-tripping of all BSON data types.
+     - | When ``true``, the Connector converts BSON types not supported by Spark into 
+         extended JSON strings.
+         When ``false``, the Connector uses the original relaxed JSON format for 
+         unsupported types.
        |
        | **Default:** ``false``
-
-
 
 .. _partitioner-conf:
 

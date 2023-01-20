@@ -142,8 +142,8 @@ The following options for writing to MongoDB are available:
        | **Default:** ``true``
    
    * - ``convertJson``
-     - | When ``true``, the Connector will process strings that may include 
-         JSON or extended JSON.
+     - | When ``true``, the Connector parses the string and converts extended JSON 
+         into BSON.
        |
        | **Default:** ``false``
 
