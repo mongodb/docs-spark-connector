@@ -121,9 +121,9 @@ You can configure the following properties to read from MongoDB:
        | **Default:** ``true``
 
    * - ``outputExtendedJson``
-     - | When ``true``, the Connector converts BSON types not supported by Spark into 
+     - | When ``true``, the connector converts BSON types not supported by Spark into 
          extended JSON strings.
-         When ``false``, the Connector uses the original relaxed JSON format for 
+         When ``false``, the connector uses the original relaxed JSON format for 
          unsupported types.
        |
        | **Default:** ``false``
