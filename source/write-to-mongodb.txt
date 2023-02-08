@@ -31,4 +31,4 @@ Write to MongoDB
 .. important::
 
    If your write operation includes a field with a ``null`` value,
-   the ``null`` value is written to MongoDB. 
+   the connector writes the field name and ``null`` value to MongoDB. 
