@@ -34,7 +34,7 @@ Write to MongoDB
    collection and creates a new collection that uses the
    default collection options.
    This can affect collections that don't use the default options,
-   such as the following collection types:
+   including the following collection types:
 
    - Sharded collections
    - Collections with non-default collations
