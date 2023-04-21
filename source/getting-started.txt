@@ -49,3 +49,8 @@ Tutorials
 - :doc:`write-to-mongodb`
 - :doc:`read-from-mongodb`
 - :doc:`structured-streaming`
+
+.. tip::
+
+   For more information about using Spark with MongoDB,
+   see `this MongoDB white paper. <paper https://www.mongodb.com/collateral/apache-spark-and-mongodb-turning-analytics-into-real-time-action>`__
