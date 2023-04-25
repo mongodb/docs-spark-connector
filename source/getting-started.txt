@@ -52,5 +52,5 @@ Tutorials
 
 .. tip::
 
-   For more information about using Spark with MongoDB,
-   see `this MongoDB white paper. <https://www.mongodb.com/collateral/apache-spark-and-mongodb-turning-analytics-into-real-time-action>`__
+   For more information about using Apache Spark with MongoDB,
+   see this `MongoDB white paper. <https://www.mongodb.com/collateral/apache-spark-and-mongodb-turning-analytics-into-real-time-action>`__
