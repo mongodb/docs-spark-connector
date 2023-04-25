@@ -42,7 +42,11 @@ Getting Started
 
          .. include:: /scala/api.txt
 
-   
+ .. tip::
+
+   For more information about using Apache Spark with MongoDB,
+   see this `MongoDB white paper. <https://www.mongodb.com/collateral/apache-spark-and-mongodb-turning-analytics-into-real-time-action>`__  
+
 Tutorials
 ---------
 
@@ -50,7 +54,3 @@ Tutorials
 - :doc:`read-from-mongodb`
 - :doc:`structured-streaming`
 
-.. tip::
-
-   For more information about using Apache Spark with MongoDB,
-   see this `MongoDB white paper. <https://www.mongodb.com/collateral/apache-spark-and-mongodb-turning-analytics-into-real-time-action>`__
