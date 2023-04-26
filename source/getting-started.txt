@@ -43,6 +43,7 @@ If you get a ``java.net.BindException: Can't assign requested address``,
 
 - Try including the following option when starting the Spark shell:
 
+<<<<<<< HEAD
   .. code-block:: sh
 
      --driver-java-options "-Djava.net.preferIPv4Stack=true"
@@ -275,3 +276,4 @@ If you require granular control over your configuration, then the
 ``MongoSpark`` companion provides a ``builder()`` method for
 configuring all aspects of the Mongo Spark Connector. It also provides
 methods to create an RDD, ``DataFrame`` or ``Dataset``.
+
