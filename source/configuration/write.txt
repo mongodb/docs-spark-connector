@@ -97,10 +97,9 @@ The following options for writing to MongoDB are available:
 
    * - ``writeConcern.w``
      - | Specifies ``w``, a write-concern option to acknowledge the level to
-         which the change propagated in the MongoDB replica set. You can
-         set this option to any of the values described in the
-         :manual:`server documentation about the WriteConcern w option
-         </reference/write-concern/#w-option>`.
+         which the change propagated in the MongoDB replica set. For a list
+         of allowed values for this option, see :manual:`WriteConcern
+         </reference/write-concern/#w-option>` in the MongoDB manual.
        |
        | **Default:** ``1`` (acknowledged)
 
