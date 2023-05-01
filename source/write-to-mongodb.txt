@@ -28,6 +28,18 @@ Write to MongoDB
 
          .. include:: /scala/write-to-mongodb.txt
 
+.. warning::
+
+   If you specify the ``overwrite`` save mode, the connector drops the target
+   collection and creates a new collection that uses the
+   default collection options.
+   This can affect collections that don't use the default options,
+   including the following collection types:
+
+   - Sharded collections
+   - Collections with non-default collations
+   - Time-series collections
+
 .. important::
 
    If your write operation includes a field with a ``null`` value,
