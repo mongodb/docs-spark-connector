@@ -96,8 +96,9 @@ The following options for writing to MongoDB are available:
        | **Default:** ``_id``
 
    * - ``writeConcern.w``
-     - | Specifies ``w``, a write-concern option to acknowledge the level to
-         which the change propagated in the MongoDB replica set. For a list
+     - | Specifies ``w``, a write-concern option to request acknowledgment
+         that the write operation has propogated to a specified number of
+         MongoDB instances. For a list
          of allowed values for this option, see :manual:`WriteConcern
          </reference/write-concern/#w-option>` in the MongoDB manual.
        |
