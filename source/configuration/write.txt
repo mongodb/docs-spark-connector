@@ -102,7 +102,7 @@ The following options for writing to MongoDB are available:
          of allowed values for this option, see :manual:`WriteConcern
          </reference/write-concern/#w-option>` in the MongoDB manual.
        |
-       | **Default:** ``1`` (acknowledged)
+       | **Default:** ``1``
 
    * - ``writeConcern.journal``
      - | Specifies ``j``, a write-concern option to enable request for
