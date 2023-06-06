@@ -133,6 +133,10 @@ You can configure the following properties to read from MongoDB:
 Partitioner Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Partitioners change the read behavior for batch reads with the {+driver-short+}.
+They have no effect on structured streams because structured streams only
+produce a single stream.
+
 This section contains configuration information for the following 
 partitioners:
 
