@@ -209,6 +209,13 @@ Reading a stream from a MongoDB database requires
 an experimental feature introduced in Spark version 2.3. To learn 
 more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
 
+.. note::
+
+    Since Structured Streaming produces a single partition, it ignores
+    :ref:`partitioner configurations <partitioner-conf>`. Partitioner
+    configuration only apply when there are multiple partitions. This is true
+    for both micro-batch processing and continuous processing streams.
+
 .. tabs-drivers::
 
    tabs:
