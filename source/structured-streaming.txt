@@ -202,10 +202,10 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
 .. note::
 
-    Since structured streaming produces a single partition,
-    :ref:`partitioner configurations <partitioner-conf>` do not change the
-    behavior of read streams. This is true for both micro-batch processing and
-    continuous processing streams.
+    Since Structured Streaming produces a single partition, it ignores
+    :ref:`partitioner configurations <partitioner-conf>`. Partitioner
+    configuration only apply when there are multiple partitions. This is true
+    for both micro-batch processing and continuous processing streams.
 
 .. tabs-drivers::
 
