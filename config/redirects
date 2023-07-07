@@ -33,3 +33,9 @@ raw: ${prefix}/sparkR -> ${base}/current/r-api/
 (v1.1-*]: ${prefix}/${version}/spark-sql -> ${base}/${version}/
 (v1.1-*]: ${prefix}/${version}/sparkR -> ${base}/${version}/r-api/
 [*-v2.0]: ${prefix}/${version}/release-notes -> ${base}/${version}/
+
+# DOCSP-30740
+[v10.0-*]: ${prefix}/${version}/java-api -> ${base}/${version}/getting-started
+[v10.0-*]: ${prefix}/${version}/python-api -> ${base}/${version}/getting-started
+[v10.0-*]: ${prefix}/${version}/r-api -> ${base}/${version}/getting-started
+[v10.0-*]: ${prefix}/${version}/scala-api -> ${base}/${version}/getting-started
