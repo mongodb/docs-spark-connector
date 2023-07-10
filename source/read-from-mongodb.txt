@@ -42,7 +42,7 @@ Overview
 
          .. include:: /scala/filters.txt
 
-.. important:: Change Stream Schema Inference
+.. important:: Inferring the Schema of a Change Stream
 
    When the {+connector-short+} infers the schema of a data frame 
    read from a change stream, by default,
@@ -52,7 +52,7 @@ Overview
    change stream instead.
 
    For more information on configuring a read operation, see the
-   :ref:`spark-change-stream-conf` guide.
+   :ref:`spark-change-stream-conf` section of the Read Configuration Options guide.
 
 SQL Queries
 -----------
