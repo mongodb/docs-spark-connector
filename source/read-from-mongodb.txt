@@ -44,15 +44,15 @@ Overview
 
 .. important:: Change Stream Schema Inference
 
-   When the {+driver-short+} infers the schema of a data frame 
+   When the {+connector-short+} infers the schema of a data frame 
    read from a change stream, by default,
-   it will use the schema of the underlying collection rather than the schema
-   of the change stream. To instruct the connector to use the schema of the 
-   change stream, set the ``change.stream.publish.full.document.only`` option 
-   to ``true``.
+   it will use the schema of the underlying collection rather than that
+   of the change stream. If you set the ``change.stream.publish.full.document.only``
+   option to ``true``, the connector uses the schema of the 
+   change stream instead.
 
    For more information on configuring a read operation, see the
-   :ref:`spark-read-conf` guide.
+   :ref:`spark-change-stream-conf` guide.
 
 SQL Queries
 -----------
