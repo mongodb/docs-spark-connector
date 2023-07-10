@@ -330,9 +330,13 @@ Change Streams
      - | Specifies whether to publish the changed document or the full
          change stream document.
        |
-       | When set to ``true``, the connector filters out messages that
-         omit the ``fullDocument`` field and only publishes the value of the
-         field.
+       | When set to ``true``:
+       |
+       | - The connector filters out messages that
+           omit the ``fullDocument`` field and only publishes the value of the
+           field.
+       | - If you don't specify a schema, the connector infers the schema of the 
+         change stream document rather than the underlying collection.
 
        .. note::
 
