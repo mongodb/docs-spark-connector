@@ -331,12 +331,12 @@ Change Streams
          change stream document.
        |
        | When set to ``true``:
-       |
-       | - The connector filters out messages that
-           omit the ``fullDocument`` field and only publishes the value of the
-           field.
-       | - If you don't specify a schema, the connector infers the schema of the 
-         change stream document rather than the underlying collection.
+       
+       - The connector filters out messages that
+         omit the ``fullDocument`` field and only publishes the value of the
+         field.
+       - If you don't specify a schema, the connector infers the schema
+         from the change stream document rather than from the underlying collection.
 
        .. note::
 
