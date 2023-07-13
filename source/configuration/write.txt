@@ -45,6 +45,13 @@ The following options for writing to MongoDB are available:
      - | When ``true``, the connector parses the string and converts extended JSON
          into BSON.
        |
+       | This setting accepts the following values:
+
+       - ``false``: Don't convert any JSON values to BSON.
+       - ``objectOrArrayOnly``: Convert only objects and arrays to BSON. 
+       - ``any``: Convert all JSON values to BSON.
+
+       |
        | **Default:** ``false``
 
    * - ``database``
@@ -87,12 +94,12 @@ The following options for writing to MongoDB are available:
      - | Specifies the type of write operation to perform. You can set
          this to one of the following values:
 
-       - ``insert``: insert the data.
-       - ``replace``: replace an existing document that matches the
+       - ``insert``: Insert the data.
+       - ``replace``: Replace an existing document that matches the
          ``idFieldList`` value with the new data. If no match exists, the
          value of ``upsertDocument`` indicates whether the connector
          inserts a new document.
-       - ``update``: update an existing document that matches the
+       - ``update``: Update an existing document that matches the
          ``idFieldList`` value with the new data. If no match exists, the
          value of ``upsertDocument`` indicates whether the connector
          inserts a new document.
