@@ -346,10 +346,10 @@ Change Streams
    * - ``change.stream.micro.batch.max.partition.count``
      - | The maximum number of partitions the {+connector-short+} divides each 
          micro-batch into. Spark workers can process these partitions in parallel.
-         
-         This setting applies only when using micro-batch streams.
-       
-         **Default**: ``1``
+       |  
+       | This setting applies only when using micro-batch streams.
+       |
+       | **Default**: ``1``
 
        .. warning:: Event Order
 
