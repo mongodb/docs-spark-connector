@@ -46,50 +46,21 @@ The following options for writing to MongoDB are available:
          into BSON.
        |
        | This setting accepts the following values:
-
-       - ``false``: The connector leaves all values as strings.
+       
+       - ``any``: The connector converts all JSON values to BSON.
+         - ``"{a: 1}"`` becomes ``{a: 1}``.
+         - ``"[1, 2, 3]"`` becomes ``[1, 2, 3]``. 
+         -``"true"`` becomes ``true``l
+         -``"01234"`` becomes ``1234``.
+         - ``"{a:b:c}"`` doesn't change.
        - ``objectOrArrayOnly``: The connector converts only JSON objects and arrays to
          BSON. 
-       - ``any``: The connector converts all JSON values to BSON.
-
-       |
-       | The following table displays how this setting changes the way the connector
-         converts various strings:
-       | 
-       | .. list-table::
-            :header-rows: 1
-            :stub-columns: 1
-            :widths: 10 10 10 10
-       |  
-            * - String
-              - ``convertJson=false``
-              - ``convertJson=objectOrArrayOnly``
-              - ``convertJson=any``
-       |  
-            * - ``"{a: 1}"``
-              - ``"{a: 1}"``
-              - ``{a: 1}``
-              - ``{a: 1}``
-       |
-            * - ``"[1, 2, 3]"``
-              - ``"[1, 2, 3]"``
-              - ``[1, 2, 3]``
-              - ``[1, 2, 3]``
-       |     
-            * - ``"true"``
-              - ``"true"``
-              - ``"true"``
-              - ``true``
-       |
-            * - ``"01234"``
-              - ``"01234"``
-              - ``"01234"``
-              - ``1234``
-       |
-            * - ``"{a:b:c}"``
-              - ``"{a:b:c}"``
-              - ``"{a:b:c}"``
-              - ``"{a:b:c}"``
+         - ``"{a: 1}"`` becomes ``{a: 1}``. 
+         - ``"[1, 2, 3]"`` becomes ``[1, 2, 3]``. 
+         -``"true"`` doesn't change.
+         -``"01234"`` doesn't change.
+         - ``"{a:b:c}"`` doesn't change.
+       - ``false``: The connector leaves all values as strings.
 
        | **Default:** ``false``
 
