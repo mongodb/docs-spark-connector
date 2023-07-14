@@ -48,18 +48,22 @@ The following options for writing to MongoDB are available:
        | This setting accepts the following values:
        
        - ``any``: The connector converts all JSON values to BSON.
+
          - ``"{a: 1}"`` becomes ``{a: 1}``.
          - ``"[1, 2, 3]"`` becomes ``[1, 2, 3]``. 
          -``"true"`` becomes ``true``l
          -``"01234"`` becomes ``1234``.
          - ``"{a:b:c}"`` doesn't change.
+
        - ``objectOrArrayOnly``: The connector converts only JSON objects and arrays to
-         BSON. 
+         BSON.
+
          - ``"{a: 1}"`` becomes ``{a: 1}``. 
          - ``"[1, 2, 3]"`` becomes ``[1, 2, 3]``. 
          -``"true"`` doesn't change.
          -``"01234"`` doesn't change.
          - ``"{a:b:c}"`` doesn't change.
+
        - ``false``: The connector leaves all values as strings.
 
        | **Default:** ``false``
