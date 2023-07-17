@@ -41,7 +41,7 @@ to use and define the Schema when using DataFrames.
 How can I use mTLS for authentication?
 --------------------------------------
 
-Include the following options when you run ``spark-submit``:
+To use mTLS, include the following options when you run ``spark-submit``:
 
 .. code-block:: bash
 
