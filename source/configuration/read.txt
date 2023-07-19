@@ -289,9 +289,6 @@ You must specify this partitioner using the full classname:
 
 This partitioner creates a single partition.
 
-
-
-
 .. _spark-change-stream-conf:
 
 Change Streams
@@ -329,6 +326,20 @@ Change Streams
           see the MongoDB server manual guide
           :manual:`Lookup Full Document for Update Operation </changeStreams/#lookup-full-document-for-update-operations>`.
 
+   * - ``change.stream.micro.batch.max.partition.count``
+     - | The maximum number of partitions the {+connector-short+} divides each 
+         micro-batch into. Spark workers can process these partitions in parallel.
+       |  
+       | This setting applies only when using micro-batch streams.
+       |
+       | **Default**: ``1``
+
+       .. warning:: Event Order
+
+          Specifying a value larger than ``1`` can alter the order in which
+          the {+connector-short+} processes change events. Avoid this setting
+          if out-of-order processing could create data inconsistencies downstream. 
+
    * - ``change.stream.publish.full.document.only``
      - | Specifies whether to publish the changed document or the full
          change stream document.
@@ -347,20 +358,6 @@ Change Streams
 
           This setting overrides the ``change.stream.lookup.full.document``
           setting.
-
-   * - ``change.stream.micro.batch.max.partition.count``
-     - | The maximum number of partitions the {+connector-short+} divides each 
-         micro-batch into. Spark workers can process these partitions in parallel.
-       |  
-       | This setting applies only when using micro-batch streams.
-       |
-       | **Default**: ``1``
-
-       .. warning:: Event Order
-
-          Specifying a value larger than ``1`` can alter the order in which
-          the {+connector-short+} processes change events. Avoid this setting
-          if out-of-order processing could create data inconsistencies downstream. 
 
 .. _configure-input-uri:
 
