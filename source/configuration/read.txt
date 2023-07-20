@@ -359,7 +359,7 @@ Change Streams
           This setting overrides the ``change.stream.lookup.full.document``
           setting.
 
-* - ``change.stream.startup.mode``
+   * - ``change.stream.startup.mode``
      - | Specifies how the connector starts up when no offset is available.
        |
        | This setting accepts the following values:
