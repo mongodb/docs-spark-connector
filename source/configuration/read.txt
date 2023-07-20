@@ -370,9 +370,7 @@ Change Streams
            
          To use the ``timestamp`` option, you must specify a time by using the
          ``change.stream.startup.mode.timestamp.start.at.operation.time`` setting.
-         
-         The ``change.stream.startup.mode.timestamp.start.at.operation.time`` setting 
-         accepts timestamps in the following formats:
+         This setting accepts timestamps in the following formats:
          
          - An integer representing the number of seconds since the
            :wikipedia:`Unix epoch <Unix_time>`
