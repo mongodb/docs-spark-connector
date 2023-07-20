@@ -361,14 +361,13 @@ Change Streams
 
    * - ``change.stream.startup.mode``
      - | Specifies how the connector starts up when no offset is available.
-       |
        | This setting accepts the following values:
-       |
+       | 
        | - ``latest``: The connector begins processing
            change events starting with the most recent event.
            It will not process any earlier unprocessed events.
          - ``timestamp``: The connector begins processing change events at a specified time.
-       |  
+           | 
            To use the ``timestamp`` option, you must specify a time by using the
            ``change.stream.startup.mode.timestamp.start.at.operation.time`` setting.
        |  
