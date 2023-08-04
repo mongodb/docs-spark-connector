@@ -19,7 +19,7 @@ targets = ["*"]
 variant = "info"
 value = """\
     This version of the documentation is archived and no longer \
-    supported. See the `current documentation <link>`__ for \
+    supported. See the `current documentation <https://www.mongodb.com/docs/spark-connector/current/>`__ for \
     the latest version of the MongoDB Connector for Spark.
     """
 
