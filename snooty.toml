@@ -5,6 +5,8 @@ intersphinx = ["https://www.mongodb.com/docs/manual/objects.inv"]
 
 toc_landing_pages = ["/java-api", "/python-api", "/scala-api", "/r-api"]
 
+eol = true
+
 [constants]
 current-version = "2.2.10"
 spark-core-version = "2.2.10"
@@ -18,8 +20,8 @@ ent-build = "MongoDB Enterprise"
 targets = ["*"]
 variant = "info"
 value = """\
-    MongoDB Connector for Spark comes in two standalone series: version \
-    3.x and earlier, and version 10.x and later. \
-    Use the latest 10.x series of the Connector to take advantage of \
-    native integration with Spark features like Structured Streaming.
+    This version of the documentation is archived and no longer \
+    supported. See the `current documentation <https://www.mongodb.com/docs/spark-connector/current/>`__ for \
+    the latest version of the MongoDB Connector for Spark.
     """
+
