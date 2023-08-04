@@ -5,6 +5,8 @@ intersphinx = ["https://www.mongodb.com/docs/manual/objects.inv"]
 
 toc_landing_pages = ["/java-api", "/python-api", "/scala-api", "/r-api"]
 
+eol = true
+
 [constants]
 current-version = "2.2.10"
 spark-core-version = "2.2.10"
