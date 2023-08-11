@@ -112,6 +112,15 @@ The following options for writing to MongoDB are available:
          guide on the
          :manual:`WriteConcern j option </reference/write-concern/#j-option>`.
 
+   * - ``writeConcern.w``
+     - | Specifies ``w``, a write-concern option to request acknowledgment
+         that the write operation has propagated to a specified number of
+         MongoDB nodes. For a list
+         of allowed values for this option, see :manual:`WriteConcern
+         </reference/write-concern/#w-option>` in the MongoDB manual.
+       |
+       | **Default:** ``1``
+
    * - ``writeConcern.wTimeoutMS``
      - | Specifies ``wTimeoutMS``, a write-concern option to return an error
          when a write operation exceeds the number of milliseconds. If you
