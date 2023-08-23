@@ -108,7 +108,6 @@ html_theme_options = {
     'version_selector':  get_versions(conf),
     'active_branches': conf.version.active,
     'eol': True,
-    'eol_msg': 'This version of the documentation is archived and no longer supported. View the current documentation[link] to learn how to upgrade[link] your version of [product name].'
 }
 
 html_sidebars = sconf.sidebars
