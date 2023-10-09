@@ -10,7 +10,7 @@ Read from MongoDB
 .. toctree::
    :caption: Read Configuration Options
 
-   /./batch-read-config.txt
+   /batch-mode/batch-read-config
 
 .. contents:: On this page
    :local:
