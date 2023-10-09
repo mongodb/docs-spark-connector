@@ -47,10 +47,8 @@ versions of Apache Spark and MongoDB:
 .. toctree::
    :titlesonly:
 
-   configuration
    getting-started
-   write-to-mongodb
-   read-from-mongodb
+   batch-mode
    structured-streaming
    faq
    release-notes
