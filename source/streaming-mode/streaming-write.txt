@@ -9,7 +9,7 @@ Write to MongoDB
 .. toctree::
    :caption: Read Configuration Options
 
-   /batch-mode/batch-write-config
+   /streaming-mode/streaming-write-config
 
 .. tabs-selector:: drivers
 
