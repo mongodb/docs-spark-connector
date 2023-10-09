@@ -156,9 +156,3 @@ properly:
 
 - :ref:`SparkConf <spark-conf>`
 - :ref:`Options maps <options-map>`
-
-.. toctree::
-   :titlesonly:
-
-   configuration/write
-   configuration/read
