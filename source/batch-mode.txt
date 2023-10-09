@@ -1,0 +1,12 @@
+==========
+Batch Mode
+==========
+
+.. meta::
+   :description: Use the {+connector-long+} to read and write batches of data. 
+
+.. toctree::
+   :caption: Batch Mode
+
+   /batch-mode/batch-read
+   /batch-mode/batch-write

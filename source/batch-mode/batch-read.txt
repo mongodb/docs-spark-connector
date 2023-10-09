@@ -7,7 +7,10 @@
 Read from MongoDB
 =================
 
-.. default-domain:: mongodb
+.. toctree::
+   :caption: Read Configuration Options
+
+   /./batch-read-config.txt
 
 .. contents:: On this page
    :local:
