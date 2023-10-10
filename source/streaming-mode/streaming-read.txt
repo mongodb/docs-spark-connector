@@ -2,6 +2,12 @@
 .. _scala-read:
 .. _java-read:
 .. _scala-dataset-filters:
+.. _streaming-read-from-mongodb: 
+.. _streaming-scala-read:
+.. _streaming-java-read:
+.. _streaming-scala-dataset-filters:
+.. _read-structured-stream:
+.. _continuous-processing:
 
 =================
 Read from MongoDB
@@ -21,59 +27,407 @@ Read from MongoDB
 Overview
 --------
 
-.. tabs-selector:: drivers
+When reading a stream from a MongoDB database, the {+connector-long+} supports both 
+*micro-batch processing* and 
+*continuous processing*. Micro-batch processing is the default processing engine, while
+continuous processing is an experimental feature introduced in 
+Spark version 2.3. To learn 
+more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
+
+.. include:: /includes/fact-read-from-change-stream
+
+.. note::
+
+    Since Structured Streaming produces a single partition, it ignores
+    :ref:`partitioner configurations <partitioner-conf>`. Partitioner
+    configuration only apply when there are multiple partitions. This is true
+    for both micro-batch processing and continuous processing streams.
 
 .. tabs-drivers::
 
    tabs:
+
      - id: java-sync
        content: |
 
-         .. include:: /java/read-from-mongodb.txt
+         To read data from MongoDB, specify the following read-stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__: 
+         
+         .. list-table::
+            :header-rows: 1
+            :stub-columns: 1
+            :widths: 10 40
+         
+            * - Setting
+              - Description
+         
+            * - ``readStream.format()``
+              - The format to use for read stream data. Use ``mongodb``.
+         
+            * - ``writeStream.trigger()``
+              - Specifies how often results should be 
+                written to the streaming sink. 
+                
+                To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
+                as an argument, where ``<time value>`` is how often the Spark Connector 
+                should asynchronously checkpoint. If you 
+                pass any other static method of the ``Trigger`` class, or if you don't 
+                call ``writeStream.trigger()``, the Spark connector will use 
+                micro-batch processing instead. 
+  
+                To view a list of all supported processing policies, see `the Java 
+                trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/Trigger.html>`__.
+
+                .. include:: /includes/note-trigger-method
+
+         The following code snippet shows how to use the preceding 
+         configuration settings to continuously process data streamed from MongoDB.
+         The connector appends all new data to the existing data and asynchronously 
+         writes checkpoints to ``/tmp/checkpointDir`` once per second:
+
+         .. code-block:: java
+            :copyable: true
+            :emphasize-lines: 1, 4, 8, 13
+
+            import org.apache.spark.sql.streaming.Trigger;
+ 
+            Dataset<Row> streamingDataset = <local SparkSession>.readStream()
+              .format("mongodb")
+              .load();
+ 
+            DataStreamWriter<Row> dataStreamWriter = streamingDataset.writeStream()
+              .trigger(Trigger.Continuous("1 second"))
+              .format("memory")
+              .option("checkpointLocation", "/tmp/checkpointDir")
+              .outputMode("append");
+ 
+            StreamingQuery query = dataStreamWriter.start();
+
+         .. note::
+            
+            Spark does not begin streaming until you call the 
+            ``start()`` method on a streaming query.
+
+         For a complete list of methods, see the 
+         `Java Structured Streaming reference <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
 
      - id: python
        content: |
 
-         .. include:: /python/read-from-mongodb.txt
+         To read data from MongoDB, specify the following read-stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html>`__:  
 
-         .. include:: /python/filters.txt
+         To use continuous processing with the MongoDB Spark Connector, 
+         call the ``trigger()`` method on the ``writeStream`` property 
+         of the streaming DataFrame that you create from 
+         your MongoDB read stream. In your ``trigger()``, specify the 
+         ``continuous`` parameter.
+         
+         .. list-table::
+            :header-rows: 1
+            :stub-columns: 1
+            :widths: 10 40
+         
+            * - Setting
+              - Description
+         
+            * - ``readStream.format()``
+              - The format to use for read stream data. Use ``mongodb``.
+         
+            * - ``writeStream.trigger()``
+              - Specifies how often results should be 
+                written to the streaming sink. 
+
+                To use continuous processing, pass the method a time value 
+                using the ``continuous`` parameter.
+                If you pass any other named parameter, or if you don't 
+                call ``writeStream.trigger()``, the Spark Connector will use 
+                micro-batch processing instead. 
+                
+                To view a list of all supported processing policies, see 
+                `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html>`__.
+
+                .. include:: /includes/note-trigger-method
+
+         The following code snippet shows how to use the preceding 
+         configuration settings to continuously process data streamed from MongoDB.
+         The connector appends all new data to the existing data and asynchronously 
+         writes checkpoints to ``/tmp/checkpointDir`` once per second:
+
+         .. code-block:: python
+            :copyable: true
+            :emphasize-lines: 2, 7, 13
+         
+            streamingDataFrame = (<local SparkSession>.readStream
+              .format("mongodb")
+              .load()
+            )
+         
+            dataStreamWriter = (streamingDataFrame.writeStream
+              .trigger(continuous="1 second")
+              .format("memory")
+              .option("checkpointLocation", "/tmp/checkpointDir")
+              .outputMode("append")
+            )
+
+            query = dataStreamWriter.start()
+
+         .. note::
+            
+            Spark does not begin streaming until you call the 
+            ``start()`` method on a streaming query.
+
+         For a complete list of methods, see the 
+         `pyspark Structured Streaming reference <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html>`__.
 
      - id: scala
        content: |
+         
+         To read data from MongoDB, specify the following read-stream configuration settings on 
+         `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__:  
 
-         .. include:: /scala/read-from-mongodb.txt
+         .. list-table::
+            :header-rows: 1
+            :stub-columns: 1
+            :widths: 10 40
+         
+            * - Setting
+              - Description
+         
+            * - ``readStream.format()``
+              - The format to use for read stream data. Use ``mongodb``.
+         
+            * - ``writeStream.trigger()``
+              - Specifies how often results should be 
+                written to the streaming sink.
 
-         .. include:: /scala/filters.txt
+                To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
+                as an argument, where ``<time value>`` is how often the Spark Connector 
+                should asynchronously checkpoint. If you 
+                pass any other static method of the ``Trigger`` class, or if you don't 
+                call ``writeStream.trigger()``, the Spark connector will use 
+                micro-batch processing instead. 
+                
+                To view a list of all 
+                supported processing policies, see `the Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
 
-.. important:: Inferring the Schema of a Change Stream
+                .. include:: /includes/note-trigger-method
 
-   When the {+connector-short+} infers the schema of a data frame 
-   read from a change stream, by default,
-   it will use the schema of the underlying collection rather than that
-   of the change stream. If you set the ``change.stream.publish.full.document.only``
-   option to ``true``, the connector uses the schema of the 
-   change stream instead.
+         The following code snippet shows how to use the preceding 
+         configuration settings to continuously process data streamed from MongoDB.
+         The connector appends all new data to the existing data and asynchronously 
+         writes checkpoints to ``/tmp/checkpointDir`` once per second:
 
-   For more information on configuring a read operation, see the
-   :ref:`spark-change-stream-conf` section of the Read Configuration Options guide.
+         .. code-block:: scala
+            :copyable: true
+            :emphasize-lines: 1, 4, 8, 13
 
-SQL Queries
------------
+            import org.apache.spark.sql.streaming.Trigger
+         
+            val streamingDataFrame = <local SparkSession>.readStream
+              .format("mongodb")
+              .load()
+         
+            val dataStreamWriter = streamingDataFrame.writeStream
+              .trigger(Trigger.Continuous("1 second"))
+              .format("memory")
+              .option("checkpointLocation", "/tmp/checkpointDir")
+              .outputMode("append")
+
+            val query = dataStreamWriter.start()
+
+         .. note::
+            
+            Spark does not begin streaming until you call the 
+            ``start()`` method on a streaming query.
+
+         For a complete list of methods, see the 
+         `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
+
+Examples
+--------
+
+The following example shows Spark Structured Streaming configurations 
+for streaming from MongoDB.
+
+Stream to your Console from MongoDB
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To stream data from MongoDB to your console:
 
 .. tabs-drivers::
 
    tabs:
+
      - id: java-sync
        content: |
 
-         .. include:: /java/sql.txt
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+            that reads from MongoDB.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
+            by calling the ``writeStream()`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``. Specify the format ``console`` using 
+            the ``format()`` method.
+
+         #. Call the ``start()`` method on the ``DataStreamWriter``
+            instance to begin the stream.
+
+         As new data is inserted into MongoDB, MongoDB streams that 
+         data out to your console using the `outputMode <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__ 
+         you specify.
+
+         .. include:: /includes/warn-console-stream.txt
+
+         .. code-block:: java
+            :copyable: true
+
+            // create a local SparkSession
+            SparkSession spark = SparkSession.builder()
+              .appName("readExample")
+              .master("spark://spark-master:<port>")
+              .config("spark.jars", "<mongo-spark-connector-JAR-file-name>")
+              .getOrCreate();
+             
+            // define the schema of the source collection
+            StructType readSchema = new StructType()
+              .add("company_symbol", DataTypes.StringType)
+              .add("company_name", DataTypes.StringType)
+              .add("price", DataTypes.DoubleType)
+              .add("tx_time", DataTypes.TimestampType);
+             
+            // define a streaming query
+            DataStreamWriter<Row> dataStreamWriter = spark.readStream()
+              .format("mongodb")
+              .option("spark.mongodb.connection.uri", "<mongodb-connection-string>")
+              .option("spark.mongodb.database", "<database-name>")
+              .option("spark.mongodb.collection", "<collection-name>")
+              .schema(readSchema)
+              .load()
+              // manipulate your streaming data
+              .writeStream()
+              .format("console")
+              .trigger(Trigger.Continuous("1 second"))
+              .outputMode("append");
+             
+            // run the query
+            StreamingQuery query = dataStreamWriter.start();
 
      - id: python
        content: |
 
-         .. include:: /python/sql.txt
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html>`__ 
+            that reads from MongoDB.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.html>`__
+            by calling the ``writeStream()`` method on the streaming 
+            DataFrame that you created with a ``DataStreamReader``. 
+            Specify the format ``console`` using the ``format()`` method.
+
+         #. Call the ``start()`` method on the ``DataStreamWriter``
+            instance to begin the stream.
+         
+         As new data is inserted into MongoDB, MongoDB streams that 
+         data out to your console using the `outputMode <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.outputMode.html#pyspark.sql.streaming.DataStreamWriter.outputMode>`__ 
+         you specify.
+
+         .. include:: /includes/warn-console-stream.txt
+
+         .. code-block:: python
+            :copyable: true
+
+            # create a local SparkSession
+            spark = SparkSession.builder \
+              .appName("readExample") \
+              .master("spark://spark-master:<port>") \
+              .config("spark.jars", "<mongo-spark-connector-JAR-file-name>") \
+              .getOrCreate()
+
+            # define the schema of the source collection
+            readSchema = (StructType()
+              .add('company_symbol', StringType())
+              .add('company_name', StringType())
+              .add('price', DoubleType())
+              .add('tx_time', TimestampType())
+            )
+
+            # define a streaming query
+            dataStreamWriter = (spark.readStream
+              .format("mongodb")
+              .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
+              .option('spark.mongodb.database', <database-name>)
+              .option('spark.mongodb.collection', <collection-name>)
+              .schema(readSchema)
+              .load()
+              # manipulate your streaming data
+              .writeStream
+              .format("console")
+              .trigger(continuous="1 second")
+              .outputMode("append")
+            )
+
+            # run the query
+            query = dataStreamWriter.start()  
 
      - id: scala
        content: |
 
-         .. include:: /scala/sql.txt
+         1. Create a 
+            `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
+            that reads from MongoDB.
+
+         #. Create a 
+            `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
+            by calling the ``writeStream()`` method on the streaming 
+            Dataset or streaming DataFrame that you created with a 
+            ``DataStreamReader``. Specify the format ``console`` using 
+            the ``format()`` method.
+
+         #. Call the ``start()`` method on the ``DataStreamWriter``
+            instance to begin the stream.
+         
+         As new data is inserted into MongoDB, MongoDB streams that 
+         data out to your console using the `outputMode <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode(outputMode:String):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__ 
+         you specify.
+
+         .. include:: /includes/warn-console-stream.txt
+
+         .. code-block:: scala
+            :copyable: true
+
+            // create a local SparkSession
+            val spark = SparkSession.builder
+              .appName("readExample")
+              .master("spark://spark-master:<port>")
+              .config("spark.jars", "<mongo-spark-connector-JAR-file-name>")
+              .getOrCreate()
+
+            // define the schema of the source collection
+            val readSchema = StructType()
+              .add("company_symbol", StringType())
+              .add("company_name", StringType())
+              .add("price", DoubleType())
+              .add("tx_time", TimestampType())
+
+            // define a streaming query
+            val dataStreamWriter = spark.readStream
+              .format("mongodb")
+              .option("spark.mongodb.connection.uri", <mongodb-connection-string>)
+              .option("spark.mongodb.database", <database-name>)
+              .option("spark.mongodb.collection", <collection-name>)
+              .schema(readSchema)
+              .load()
+              // manipulate your streaming data
+              .writeStream
+              .format("console")
+              .trigger(Trigger.Continuous("1 second"))
+              .outputMode("append")
+
+            // run the query
+            val query = dataStreamWriter.start()
+
