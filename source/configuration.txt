@@ -1,8 +1,8 @@
-=====================
-Configuration Options
-=====================
+.. _configuration:
 
-.. default-domain:: mongodb
+=================
+Configuring Spark
+=================
 
 .. contents:: On this page
    :local:
@@ -118,34 +118,12 @@ specifying an option key string.
 Using a System Property
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-The connector provides a cache for ``MongoClients`` which can only be
-configured with a System Property. See :ref:`cache-configuration`.
+The {+connector-short+} reads some configuration settings before ``SparkConf`` is
+available. You must specify these settings by using a JVM system property.
 
-.. _cache-configuration:
+.. tip:: System Properties
 
-Cache Configuration
--------------------
-
-The MongoConnector includes a cache for MongoClients, so workers can
-share the MongoClient across threads.
-
-.. important::
-
-   As the cache is setup before the Spark Configuration is available,
-   the cache can only be configured with a System Property.
-
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - System Property name
-     - Description
-
-   * - ``mongodb.keep_alive_ms``
-     - The length of time to keep a ``MongoClient`` available for 
-       sharing.
-
-       **Default:** ``5000``
+   For more information on Java system properties, see the `Java documentation. <https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html>`__
 
 ``ConfigException``\s
 ---------------------

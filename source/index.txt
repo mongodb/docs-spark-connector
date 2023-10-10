@@ -48,6 +48,7 @@ versions of Apache Spark and MongoDB:
    :titlesonly:
 
    getting-started
+   configuration
    /batch-mode
    structured-streaming
    faq

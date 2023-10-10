@@ -49,7 +49,28 @@ To use mTLS, include the following options when you run ``spark-submit``:
    --driver-java-options -Djavax.net.ssl.trustStorePassword=<your truststore password> \
    --driver-java-options -Djavax.net.ssl.keyStore=<path to your keystore.jks file> \
    --driver-java-options -Djavax.net.ssl.keyStorePassword=<your keystore password> \
-   -conf spark.executor.extraJavaOptions=-Djavax.net.ssl.trustStore=<path to your truststore.jks file> \
-   -conf spark.executor.extraJavaOptions=-Djavax.net.ssl.trustStorePassword=<your truststore password> \
-   -conf spark.executor.extraJavaOptions=-Djavax.net.ssl.keyStore=<path to your keystore.jks file> \
-   -conf spark.executor.extraJavaOptions=-Djavax.net.ssl.keyStorePassword=<your keystore password> \
+   --conf spark.executor.extraJavaOptions=-Djavax.net.ssl.trustStore=<path to your truststore.jks file> \
+   --conf spark.executor.extraJavaOptions=-Djavax.net.ssl.trustStorePassword=<your truststore password> \
+   --conf spark.executor.extraJavaOptions=-Djavax.net.ssl.keyStore=<path to your keystore.jks file> \
+   --conf spark.executor.extraJavaOptions=-Djavax.net.ssl.keyStorePassword=<your keystore password> \
+
+.. _cache-configuration:
+
+How can I share a MongoClient instance across threads?
+------------------------------------------------------
+
+The MongoConnector includes a cache that lets workers
+share a single ``MongoClient`` across threads. To specify the length of time to keep a
+``MongoClient`` available, include the ``mongodb.keep_alive_ms`` option when you run
+``spark-submit``:
+
+.. code-block:: bash
+
+   --driver-java-options -Dmongodb.keep_alive_ms=<number of milliseconds to keep MongoClient available>
+
+By default, this property has a value of ``5000``.
+
+.. note::
+
+   Because the cache is set up before the Spark Configuration is available,
+   you must use a system property to configure it.
