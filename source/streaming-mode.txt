@@ -8,11 +8,7 @@ Streaming Mode
    :depth: 2
    :class: singlecol
 
-.. meta::
-   :description: Use the {+connector-long+} to stream data. 
-
 .. toctree::
-   :caption: Streaming Mode
 
    /streaming-mode/streaming-read
    /streaming-mode/streaming-write

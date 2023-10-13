@@ -2,8 +2,6 @@
 MongoDB Connector for Spark
 ===========================
 
-.. default-domain:: mongodb
-
 The `MongoDB Connector for Spark
 <https://www.mongodb.com/products/spark-connector>`_ provides
 integration between MongoDB and Apache Spark.
@@ -49,8 +47,8 @@ versions of Apache Spark and MongoDB:
 
    getting-started
    configuration
-   batch-mode
-   streaming-mode
+   /batch-mode
+   /streaming-mode
    faq
    release-notes
    api-docs
