@@ -2,6 +2,12 @@
 Batch Mode
 ==========
 
+.. contents:: On this page
+   :local:
+   :backlinks: none
+   :depth: 1
+   :class: singlecol
+
 .. toctree::
 
    /batch-mode/batch-read
@@ -9,3 +15,9 @@ Batch Mode
 
 Overview
 --------
+
+The following sections show you how to use the {+connector-short+} to read data from
+MongoDB and write data to MongoDB in batch mode:
+
+- :ref:batch-read-from-mongodb
+- :ref:batch-write-to-mongodb
