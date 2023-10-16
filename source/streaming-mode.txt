@@ -24,8 +24,8 @@ it's available instead of waiting for a time interval to pass.
 The following sections show you how to use the {+connector-short+} to read data from
 MongoDB and write data to MongoDB in streaming mode:
 
-- :ref:streaming-read-from-mongodb
-- :ref:streaming-write-to-mongodb
+- :ref:`streaming-read-from-mongodb`
+- :ref:`streaming-write-to-mongodb`
 
 .. tip:: Apache Spark Documentation
 
