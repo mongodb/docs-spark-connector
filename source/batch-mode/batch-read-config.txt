@@ -1,4 +1,5 @@
 .. _spark-read-conf:
+.. _spark-batch-read-conf:
 
 ==========================
 Read Configuration Options
@@ -11,11 +12,12 @@ Read Configuration Options
    :class: singlecol
 
 .. _spark-input-conf:
+.. _spark-batch-input-conf:
 
 Read Configuration
 ------------------
 
-You can configure the following properties to read from MongoDB:
+You can configure the following properties when reading data from MongoDB in batch mode:
 
 .. note::
 
@@ -153,13 +155,11 @@ partitioners:
 .. _conf-samplepartitioner:
 
 ``SamplePartitioner`` Configuration
-```````````````````````````````````
 
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``.
-
 
 .. list-table::
    :header-rows: 1
@@ -178,7 +178,6 @@ You must specify this partitioner using the full classname:
        create more partitions containing fewer documents.
 
        **Default:** ``64``
-
 
    * - ``partitioner.options.samples.per.partition``
      - The number of samples to take per partition. The total number of
@@ -205,7 +204,6 @@ You must specify this partitioner using the full classname:
 
 ``ShardedPartitioner`` Configuration
 `````````````````````````````````````
-
 The ``ShardedPartitioner`` automatically determines the partitions to use
 based on your shard configuration.
 
@@ -215,7 +213,6 @@ You must specify this partitioner using the full classname:
 .. warning::
 
    This partitioner is not compatible with hashed shard keys.
-
 
 .. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
@@ -251,12 +248,10 @@ You must specify this partitioner using the full classname:
 
 ``PaginateIntoPartitionsPartitioner`` Configuration
 ```````````````````````````````````````````````````
-
 .. include:: /includes/sparkconf-partitioner-options-note.rst
 
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.PaginateIntoPartitionsPartitioner``.
-
 
 .. list-table::
    :header-rows: 1
@@ -287,99 +282,6 @@ You must specify this partitioner using the full classname:
 
 This partitioner creates a single partition.
 
-.. _spark-change-stream-conf:
-
-Change Streams
---------------
-
-.. note::
-
-   If you use ``SparkConf`` to set the connector's change stream
-   configurations, prefix ``spark.mongodb.`` to each property.
-
-.. list-table::
-   :header-rows: 1
-   :widths: 35 65
-
-   * - Property name
-     - Description
-
-   * - ``change.stream.lookup.full.document``
-
-     - Determines what values your change stream returns on update
-       operations.
-
-       The default setting returns the differences between the original
-       document and the updated document.
-
-       The ``updateLookup`` setting returns the differences between the
-       original document and updated document as well as a copy of the
-       entire updated document.
-
-       **Default:** "default"
-
-       .. tip::
-
-          For more information on how this change stream option works,
-          see the MongoDB server manual guide
-          :manual:`Lookup Full Document for Update Operation </changeStreams/#lookup-full-document-for-update-operations>`.
-
-   * - ``change.stream.micro.batch.max.partition.count``
-     - | The maximum number of partitions the {+connector-short+} divides each 
-         micro-batch into. Spark workers can process these partitions in parallel.
-       |  
-       | This setting applies only when using micro-batch streams.
-       |
-       | **Default**: ``1``
-
-       .. warning:: Event Order
-
-          Specifying a value larger than ``1`` can alter the order in which
-          the {+connector-short+} processes change events. Avoid this setting
-          if out-of-order processing could create data inconsistencies downstream. 
-
-   * - ``change.stream.publish.full.document.only``
-     - | Specifies whether to publish the changed document or the full
-         change stream document.
-       |
-       | When this setting is ``true``, the connector exhibits the following behavior:
-       
-       - The connector filters out messages that
-         omit the ``fullDocument`` field and only publishes the value of the
-         field.
-       - If you don't specify a schema, the connector infers the schema
-         from the change stream document rather than from the underlying collection.
-
-         **Default**: ``false``
-       
-       .. note::
-
-          This setting overrides the ``change.stream.lookup.full.document``
-          setting.
-
-   * - ``change.stream.startup.mode``
-     - | Specifies how the connector starts up when no offset is available.
-       
-       | This setting accepts the following values:
-        
-       - ``latest``: The connector begins processing
-         change events starting with the most recent event.
-         It will not process any earlier unprocessed events.
-       - ``timestamp``: The connector begins processing change events at a specified time.
-           
-         To use the ``timestamp`` option, you must specify a time by using the
-         ``change.stream.startup.mode.timestamp.start.at.operation.time`` setting.
-         This setting accepts timestamps in the following formats:
-         
-         - An integer representing the number of seconds since the
-           :wikipedia:`Unix epoch <Unix_time>`
-         - A date and time in
-           `ISO-8601 <https://www.iso.org/iso-8601-date-and-time-format.html>`__
-           format with one-second precision
-         - An extended JSON ``BsonTimestamp``
-       
-         **Default**: ``latest``
-       
 .. _configure-input-uri:
 
 ``connection.uri`` Configuration Setting

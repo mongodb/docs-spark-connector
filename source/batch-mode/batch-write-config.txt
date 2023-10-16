@@ -1,10 +1,9 @@
 .. _spark-write-conf:
+.. _spark-batch-write-conf:
 
 ===========================
 Write Configuration Options
 ===========================
-
-.. default-domain:: mongodb
 
 .. contents:: On this page
    :local:
@@ -13,11 +12,12 @@ Write Configuration Options
    :class: singlecol
 
 .. _spark-output-conf:
+.. _spark-batch-output-conf:
 
 Write Configuration
 -------------------
 
-The following options for writing to MongoDB are available:
+You can configure the following properties when writing data to MongoDB in batch mode:
 
 .. note::
 
@@ -169,12 +169,12 @@ The following options for writing to MongoDB are available:
          guide on the
          :manual:`WriteConcern wtimeout option </reference/write-concern/#wtimeout>`.
 
-.. _configure-output-uri:
+.. _configure-batch-output-uri:
 
 ``connection.uri`` Configuration Setting
 ----------------------------------------
 
-You can set all :ref:`spark-output-conf` via the write ``connection.uri``.
+You can set all :ref:`spark-batch-output-conf` via the write ``connection.uri``.
 
 .. note::
 

@@ -1,6 +1,7 @@
 .. _write-to-mongodb:
 .. _scala-write:
 .. _java-write:
+.. _batch-write-to-mongodb:
 
 ================
 Write to MongoDB
@@ -49,4 +50,4 @@ Write to MongoDB
    the connector writes the field name and ``null`` value to MongoDB. You can
    change this behavior by setting the write configuration property
    ``ignoreNullValues``. For more information about setting the connector's
-   write behavior, see :ref:`Write Configuration Options <spark-write-conf>`.
+   write behavior, see :ref:`Write Configuration Options <spark-batch-write-conf>`.
