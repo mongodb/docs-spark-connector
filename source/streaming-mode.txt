@@ -5,7 +5,7 @@ Streaming Mode
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 2
+   :depth: 1
    :class: singlecol
 
 .. toctree::
@@ -13,13 +13,22 @@ Streaming Mode
    /streaming-mode/streaming-read
    /streaming-mode/streaming-write
 
-Spark Structured Streaming is a data stream processing engine you can 
-use through the Dataset or DataFrame API. The MongoDB Spark Connector 
-enables you to stream to and from MongoDB using Spark Structured 
-Streaming.
+Overview
+--------
+
+In streaming mode, you can use Spark Structured Streaming to process data as soon as
+it's available instead of waiting for a time interval to pass.
 
 .. include:: includes/streaming-distinction.rst
 
-To learn more about Structured Streaming, see the 
-`Spark Programming Guide
-<https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__.
+The following sections show you how to use the {+connector-short+} to read data from
+MongoDB and write data to MongoDB in streaming mode:
+
+- :ref:streaming-read-from-mongodb
+- :ref:streaming-write-to-mongodb
+
+.. tip:: Apache Spark Documentation
+
+   To learn more about using Spark to process streams of data, see the 
+   `Spark Programming Guide
+   <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html>`__.
