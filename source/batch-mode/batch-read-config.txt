@@ -128,7 +128,7 @@ You can configure the following properties when reading data from MongoDB in bat
 .. _partitioner-conf:
 
 Partitioner Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 Partitioners change the read behavior for batch reads with the {+connector-short+}.
 They do not affect Structured Streaming because the data stream processing
@@ -147,7 +147,7 @@ partitioners:
 .. _conf-samplepartitioner:
 
 ``SamplePartitioner`` Configuration
-```````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``.
@@ -194,7 +194,8 @@ You must specify this partitioner using the full classname:
 .. _conf-shardedpartitioner:
 
 ``ShardedPartitioner`` Configuration
-`````````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The ``ShardedPartitioner`` automatically determines the partitions to use
 based on your shard configuration.
 
@@ -209,7 +210,7 @@ You must specify this partitioner using the full classname:
 .. _conf-paginatebysizepartitioner:
 
 ``PaginateBySizePartitioner`` Configuration
-```````````````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.PaginateBySizePartitioner``.
@@ -236,7 +237,7 @@ You must specify this partitioner using the full classname:
 .. _conf-paginateintopartitionspartitioner:
 
 ``PaginateIntoPartitionsPartitioner`` Configuration
-```````````````````````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.PaginateIntoPartitionsPartitioner``.
@@ -261,7 +262,7 @@ You must specify this partitioner using the full classname:
 .. _conf-singlepartitionpartitioner:
 
 ``SinglePartitionPartitioner`` Configuration
-````````````````````````````````````````````
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You must specify this partitioner using the full classname:
 ``com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner``.
