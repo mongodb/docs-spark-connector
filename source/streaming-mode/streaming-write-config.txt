@@ -71,6 +71,6 @@ You can configure the following properties when writing data to MongoDB in strea
    * - ``forceDeleteTempCheckpointLocation``
      - | A Boolean value that specifies whether to delete existing checkpoint data. 
        |
-       | **Default:** False 
+       | **Default:** ``false`` 
 
 .. include:: /includes/connection-write-config.rst
