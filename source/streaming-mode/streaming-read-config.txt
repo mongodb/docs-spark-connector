@@ -12,9 +12,6 @@ Read Configuration Options
 
 .. _spark-streaming-input-conf:
 
-Read Configuration
-------------------
-
 You can configure the following properties when reading data from MongoDB in streaming mode.
 
 .. include:: /includes/conf-read-prefix.rst

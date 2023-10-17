@@ -12,9 +12,6 @@ Write Configuration Options
 
 .. _spark-streaming-output-conf:
 
-Write Configuration
--------------------
-
 You can configure the following properties when writing data to MongoDB in streaming mode.
 
 .. include:: /includes/conf-write-prefix.rst

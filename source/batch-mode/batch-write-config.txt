@@ -12,9 +12,6 @@ Write Configuration Options
 
 .. _spark-batch-output-conf:
 
-Write Configuration
--------------------
-
 You can configure the following properties when writing data to MongoDB in batch mode:
 
 .. include:: /includes/conf-write-prefix.rst
