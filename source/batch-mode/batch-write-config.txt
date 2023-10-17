@@ -169,37 +169,4 @@ You can configure the following properties when writing data to MongoDB in batch
          guide on the
          :manual:`WriteConcern wtimeout option </reference/write-concern/#wtimeout>`.
 
-.. _configure-batch-output-uri:
-
-``connection.uri`` Configuration Setting
-----------------------------------------
-
-You can set all :ref:`spark-batch-output-conf` via the write ``connection.uri``.
-
-.. note::
-
-   If you use ``SparkConf`` to set the connector's write configurations,
-   prefix ``spark.mongodb.write.`` to the setting.
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/test.myCollection
-
-The configuration corresponds to the following separate configuration
-settings:
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/
-   spark.mongodb.write.database=test
-   spark.mongodb.write.collection=myCollection
-
-If you specify a setting both in the ``connection.uri`` and in a separate
-configuration, the ``connection.uri`` setting overrides the separate
-setting. For example, in the following configuration, the
-database for the connection is ``foobar``:
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/foobar
-   spark.mongodb.write.database=bar
+.. include:: /includes/connection-write-config.rst

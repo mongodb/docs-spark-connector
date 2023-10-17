@@ -12,11 +12,12 @@ Write Configuration Options
    :class: singlecol
 
 .. _spark-streaming-output-conf:
+.. _spark-output-conf:
 
 Write Configuration
 -------------------
 
-You can configure the following properties when writing data to MongoDB in streaming mode:
+You can configure the following properties when writing data to MongoDB in streaming mode.
 
 .. note::
 
@@ -65,44 +66,11 @@ You can configure the following properties when writing data to MongoDB in strea
        | For more information about checkpoints, see the
          `Spark Structured Streaming Programming Guide <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__
        | 
-       | **Default:** 
+       | **Default:** None 
    
    * - ``forceDeleteTempCheckpointLocation``
      - | A Boolean value that specifies whether to delete existing checkpoint data. 
        |
-       | **Default:** 
+       | **Default:** False 
 
-.. _configure-streaming-output-uri:
-
-``connection.uri`` Configuration Setting
-----------------------------------------
-
-You can set all :ref:`spark-output-conf` via the write ``connection.uri``.
-
-.. note::
-
-   If you use ``SparkConf`` to set the connector's write configurations,
-   prefix ``spark.mongodb.write.`` to the setting.
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/test.myCollection
-
-The configuration corresponds to the following separate configuration
-settings:
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/
-   spark.mongodb.write.database=test
-   spark.mongodb.write.collection=myCollection
-
-If you specify a setting both in the ``connection.uri`` and in a separate
-configuration, the ``connection.uri`` setting overrides the separate
-setting. For example, in the following configuration, the
-database for the connection is ``foobar``:
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/foobar
-   spark.mongodb.write.database=bar
+.. include:: /includes/connection-write-config.rst
