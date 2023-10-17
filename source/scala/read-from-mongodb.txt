@@ -13,8 +13,8 @@ The following example loads the collection specified in the
 
    val df = spark.read.format("mongodb").load() // Uses the SparkConf for configuration
 
-To specify a different collection, database, and other :ref:`read
-configuration settings <spark-input-conf>`, use the ``option`` method:
+To specify a different collection, database, and other read
+configuration settings, use the ``option`` method:
 
 .. code-block:: scala
 

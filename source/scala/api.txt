@@ -22,8 +22,8 @@ Connect to MongoDB
 ~~~~~~~~~~~~~~~~~~
 
 Connection to MongoDB happens automatically when a Dataset 
-action requires a :ref:`read <scala-read>` from MongoDB or a
-:ref:`write <scala-write>` to MongoDB.
+action requires a read from MongoDB or a
+write to MongoDB.
 
 .. _scala-app:
 

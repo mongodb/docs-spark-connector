@@ -1,13 +1,4 @@
-.. _read-from-mongodb: 
-.. _scala-read:
-.. _java-read:
-.. _scala-dataset-filters:
 .. _streaming-read-from-mongodb: 
-.. _streaming-scala-read:
-.. _streaming-java-read:
-.. _streaming-scala-dataset-filters:
-.. _read-structured-stream:
-.. _continuous-processing:
 
 =================
 Read from MongoDB

@@ -1,8 +1,4 @@
-.. _read-from-mongodb: 
-.. _scala-read:
-.. _java-read:
-.. _scala-dataset-filters:
-.. _batch-read-from-mongodb: 
+.. _batch-read-from-mongodb:
 
 =================
 Read from MongoDB

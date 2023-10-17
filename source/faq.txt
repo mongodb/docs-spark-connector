@@ -25,8 +25,8 @@ To promote data locality,
   :binary:`~bin.mongod`.
 
 - For a sharded cluster, you should have a :binary:`~bin.mongos` on the
-  same nodes and use :ref:`localThreshold <spark-input-conf>`
-  configuration to connect to the nearest :binary:`~bin.mongos`. 
+  same nodes and use the ``localThreshold``
+  configuration setting to connect to the nearest :binary:`~bin.mongos`. 
   To partition the data by shard use the 
   :ref:`conf-shardedpartitioner`.
 
