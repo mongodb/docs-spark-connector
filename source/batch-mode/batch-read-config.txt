@@ -54,7 +54,7 @@ You can configure the following properties when reading data from MongoDB in bat
    * - ``partitioner``
      - | The partitioner full class name.
 
-       | You can specify a custom implementation which must implement the
+       | You can specify a custom implementation that must implement the
          ``com.mongodb.spark.sql.connector.read.partitioner.Partitioner``
           interface.
        | See the
@@ -130,9 +130,8 @@ You can configure the following properties when reading data from MongoDB in bat
 Partitioner Configurations
 --------------------------
 
-Partitioners change the read behavior for batch reads with the {+connector-short+}.
-They do not affect Structured Streaming because the data stream processing
-engine produces a single stream with Structured Streaming.
+Partitioners change the read behavior of batch reads that use the {+connector-short+}. By
+dividing the data into partitions, you can run transformations in parallel.
 
 This section contains configuration information for the following 
 partitioners:
@@ -143,13 +142,21 @@ partitioners:
 - :ref:`PaginateIntoPartitionsPartitioner <conf-paginateintopartitionspartitioner>`
 - :ref:`SinglePartitionPartitioner <conf-singlepartitionpartitioner>`
 
+.. note:: Batch Reads Only
+  
+   Because the data-stream-processing engine produces a single data stream,
+   partitioners do not affect streaming reads.
+
 .. _conf-mongosamplepartitioner:
 .. _conf-samplepartitioner:
 
 ``SamplePartitioner`` Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You must specify this partitioner using the full classname:
+``SamplePartitioner`` is the default partitioner configuration. This configuration
+lets you specify a partition field, partition size, and number of samples per partition.
+
+To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``.
 
 .. list-table::
@@ -183,10 +190,10 @@ You must specify this partitioner using the full classname:
 .. example::
 
    For a collection with 640 documents with an average document
-   size of 0.5 MB, the default SamplePartitioner configuration values creates
+   size of 0.5 MB, the default ``SamplePartitioner`` configuration creates
    5 partitions with 128 documents per partition.
 
-   The MongoDB Spark Connector samples 50 documents (the default 10
+   The {+connector-short+} samples 50 documents (the default 10
    per intended partition) and defines 5 partitions by selecting
    partition field ranges from the sampled documents.
 
@@ -196,10 +203,10 @@ You must specify this partitioner using the full classname:
 ``ShardedPartitioner`` Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``ShardedPartitioner`` automatically determines the partitions to use
+The ``ShardedPartitioner`` configuration automatically partitions the data
 based on your shard configuration.
 
-You must specify this partitioner using the full classname:
+To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.ShardedPartitioner``.
 
 .. warning::
@@ -212,7 +219,10 @@ You must specify this partitioner using the full classname:
 ``PaginateBySizePartitioner`` Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You must specify this partitioner using the full classname:
+The ``PaginateBySizePartitioner`` configuration paginates the data by using the
+average document size to split the collection into average-sized chunks.
+
+To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.PaginateBySizePartitioner``.
 
 .. list-table::
@@ -239,7 +249,10 @@ You must specify this partitioner using the full classname:
 ``PaginateIntoPartitionsPartitioner`` Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You must specify this partitioner using the full classname:
+The ``PaginateIntoPartitionsPartitioner`` configuration paginates the data by dividing
+the count of documents in the collection by the maximum number of allowable partitions.
+
+To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.PaginateIntoPartitionsPartitioner``.
 
 .. list-table::
@@ -264,9 +277,9 @@ You must specify this partitioner using the full classname:
 ``SinglePartitionPartitioner`` Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You must specify this partitioner using the full classname:
-``com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner``.
+The ``SinglePartitionPartitioner`` configuration creates a single partition.
 
-This partitioner creates a single partition.
+To use this configuration, set the ``partitioner`` configuration option to
+``com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner``.
 
 .. include:: /includes/connection-read-config.rst
