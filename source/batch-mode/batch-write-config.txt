@@ -1,4 +1,3 @@
-.. _spark-write-conf:
 .. _spark-batch-write-conf:
 
 ===========================
@@ -11,7 +10,6 @@ Write Configuration Options
    :depth: 1
    :class: singlecol
 
-.. _spark-output-conf:
 .. _spark-batch-output-conf:
 
 Write Configuration
@@ -19,10 +17,7 @@ Write Configuration
 
 You can configure the following properties when writing data to MongoDB in batch mode:
 
-.. note::
-
-   If you use ``SparkConf`` to set the connector's write configurations,
-   prefix ``spark.mongodb.write.`` to each property.
+.. include:: /includes/conf-write-prefix.rst
 
 .. list-table::
    :header-rows: 1
@@ -31,8 +26,34 @@ You can configure the following properties when writing data to MongoDB in batch
    * - Property name
      - Description
    
-   .. include:: /includes/shared-config-settings.rst
-   
+   * - ``connection.uri``
+     - | **Required.**
+       | The connection string configuration key.
+       |
+       | **Default:** ``mongodb://localhost:27017/``
+
+   * - ``database``
+     - | **Required.**
+       | The database name configuration.
+
+   * - ``collection``
+     - | **Required.**
+       | The collection name configuration.
+
+   * - ``comment``
+     - | The comment to append to the write operation. Comments appear in the 
+         :manual:`output of the Database Profiler. </reference/database-profiler>`
+       |
+       | **Default:** None 
+
+   * - ``mongoClientFactory``
+     - | MongoClientFactory configuration key.
+       | You can specify a custom implementation that must implement the
+         ``com.mongodb.spark.sql.connector.connection.MongoClientFactory``
+         interface.
+       |
+       | **Default:** ``com.mongodb.spark.sql.connector.connection.DefaultMongoClientFactory``
+
    * - ``convertJson``
      - | Specifies whether the connector parses the string and converts extended JSON
          into BSON.

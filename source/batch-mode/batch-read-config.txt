@@ -17,12 +17,9 @@ Read Configuration Options
 Read Configuration
 ------------------
 
-You can configure the following properties when reading data from MongoDB in batch mode:
+You can configure the following properties when reading data from MongoDB in batch mode.
 
-.. note::
-
-   If you use ``SparkConf`` to set the connector's read configurations,
-   prefix ``spark.mongodb.read.`` to each property.
+.. include:: /includes/conf-read-prefix.rst
 
 .. list-table::
    :header-rows: 1
@@ -282,42 +279,4 @@ You must specify this partitioner using the full classname:
 
 This partitioner creates a single partition.
 
-.. _configure-input-uri:
-
-``connection.uri`` Configuration Setting
-----------------------------------------
-
-You can set all :ref:`spark-input-conf` via the read ``connection.uri`` setting.
-
-For example, consider the following example which sets the read
-``connection.uri`` setting:
-
-.. note::
-
-   If you use ``SparkConf`` to set the connector's read configurations,
-   prefix ``spark.mongodb.read.`` to the setting.
-
-.. code:: cfg
-
-   spark.mongodb.read.connection.uri=mongodb://127.0.0.1/databaseName.collectionName?readPreference=primaryPreferred
-
-
-The configuration corresponds to the following separate configuration
-settings:
-
-.. code:: cfg
-
-   spark.mongodb.read.connection.uri=mongodb://127.0.0.1/
-   spark.mongodb.read.database=databaseName
-   spark.mongodb.read.collection=collectionName
-   spark.mongodb.read.readPreference.name=primaryPreferred
-
-If you specify a setting both in the ``connection.uri`` and in a separate
-configuration, the ``connection.uri`` setting overrides the separate
-setting. For example, given the following configuration, the
-database for the connection is ``foobar``:
-
-.. code:: cfg
-
-   spark.mongodb.read.connection.uri=mongodb://127.0.0.1/foobar
-   spark.mongodb.read.database=bar
+.. include:: /includes/connection-read-config.rst

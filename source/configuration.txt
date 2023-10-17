@@ -10,9 +10,14 @@ Configuring Spark
    :depth: 1
    :class: singlecol
 
-Various configuration options are available for the MongoDB Spark
-Connector. To learn more about the options you can set, see 
-:ref:`spark-write-conf` and :ref:`spark-read-conf`.
+You can configure read and write operations in both batch and streaming mode.
+To learn more about the available configuration options, see the following
+pages:
+
+- :ref:`spark-batch-read-conf`
+- :ref:`spark-batch-write-conf`
+- :ref:`spark-streaming-read-conf`
+- :ref:`spark-streaming-write-conf`
 
 Specify Configuration
 ---------------------

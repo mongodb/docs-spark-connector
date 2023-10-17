@@ -1,4 +1,3 @@
-.. _spark-write-conf:
 .. _spark-streaming-write-conf:
 
 ===========================
@@ -12,17 +11,13 @@ Write Configuration Options
    :class: singlecol
 
 .. _spark-streaming-output-conf:
-.. _spark-output-conf:
 
 Write Configuration
 -------------------
 
 You can configure the following properties when writing data to MongoDB in streaming mode.
 
-.. note::
-
-   If you use ``SparkConf`` to set the connector's write configurations,
-   prefix ``spark.mongodb.write.`` to each property.
+.. include:: /includes/conf-write-prefix.rst
 
 .. list-table::
    :header-rows: 1
@@ -53,7 +48,7 @@ You can configure the following properties when writing data to MongoDB in strea
 
    * - ``mongoClientFactory``
      - | MongoClientFactory configuration key.
-       | You can specify a custom implementation which must implement the
+       | You can specify a custom implementation that must implement the
          ``com.mongodb.spark.sql.connector.connection.MongoClientFactory``
          interface.
        |
