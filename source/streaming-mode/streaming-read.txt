@@ -27,13 +27,6 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
 .. include:: /includes/fact-read-from-change-stream
 
-.. note::
-
-    Since Structured Streaming produces a single partition, it ignores
-    :ref:`partitioner configurations <partitioner-conf>`. Partitioner
-    configuration only apply when there are multiple partitions. This is true
-    for both micro-batch processing and continuous processing streams.
-
 .. tabs-drivers::
 
    tabs:
@@ -55,22 +48,15 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             * - ``readStream.format()``
               - The format to use for read stream data. Use ``mongodb``.
          
-            * - ``writeStream.trigger()``
-              - Specifies how often results should be 
-                written to the streaming sink. 
-                
-                To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
-                as an argument, where ``<time value>`` is how often the Spark Connector 
-                should asynchronously checkpoint. If you 
-                pass any other static method of the ``Trigger`` class, or if you don't 
-                call ``writeStream.trigger()``, the Spark connector will use 
-                micro-batch processing instead. 
-  
-                To view a list of all supported processing policies, see `the Java 
-                trigger documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/Trigger.html>`__.
-
-                .. include:: /includes/note-trigger-method
-
+            * - ``readStream.option()``
+              - Use the ``option`` method to specify your MongoDB 
+                deployment :manual:`connection string </reference/connection-string/>` with the 
+                ``spark.mongodb.connection.uri`` option key.
+         
+                You can also use the ``option()`` method to configure other stream settings, 
+                including the MongoDB database and collection, destination 
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+            
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
@@ -124,22 +110,16 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          
             * - ``readStream.format()``
               - The format to use for read stream data. Use ``mongodb``.
+ 
+            * - ``readStream.option()``
+              - Use the ``option`` method to specify your MongoDB 
+                deployment :manual:`connection string </reference/connection-string/>` with the 
+                ``spark.mongodb.connection.uri`` option key.
          
-            * - ``writeStream.trigger()``
-              - Specifies how often results should be 
-                written to the streaming sink. 
-
-                To use continuous processing, pass the method a time value 
-                using the ``continuous`` parameter.
-                If you pass any other named parameter, or if you don't 
-                call ``writeStream.trigger()``, the Spark Connector will use 
-                micro-batch processing instead. 
-                
-                To view a list of all supported processing policies, see 
-                `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html>`__.
-
-                .. include:: /includes/note-trigger-method
-
+                You can also use the ``option()`` method to configure other stream settings, 
+                including the MongoDB database and collection, destination 
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+        
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
@@ -187,23 +167,16 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          
             * - ``readStream.format()``
               - The format to use for read stream data. Use ``mongodb``.
+ 
+            * - ``readStream.option()``
+              - Use the ``option`` method to specify your MongoDB 
+                deployment :manual:`connection string </reference/connection-string/>` with the 
+                ``spark.mongodb.connection.uri`` option key.
          
-            * - ``writeStream.trigger()``
-              - Specifies how often results should be 
-                written to the streaming sink.
-
-                To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
-                as an argument, where ``<time value>`` is how often the Spark Connector 
-                should asynchronously checkpoint. If you 
-                pass any other static method of the ``Trigger`` class, or if you don't 
-                call ``writeStream.trigger()``, the Spark connector will use 
-                micro-batch processing instead. 
-                
-                To view a list of all 
-                supported processing policies, see `the Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
-
-                .. include:: /includes/note-trigger-method
-
+                You can also use the ``option()`` method to configure other stream settings, 
+                including the MongoDB database and collection, destination 
+                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+        
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
