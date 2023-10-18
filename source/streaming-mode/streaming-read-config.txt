@@ -81,6 +81,12 @@ You can configure the following properties when reading data from MongoDB in str
        |
        | **Default:** ``true``
 
+   * - ``change.stream.``
+     - | Change stream configuration prefix.
+       | See the
+         :ref:`Change Stream Configuration <partitioner-conf>` section for more
+         information about change streams.
+
    * - ``outputExtendedJson``
      - | When ``true``, the connector converts BSON types not supported by Spark into 
          extended JSON strings.
@@ -91,13 +97,12 @@ You can configure the following properties when reading data from MongoDB in str
 
 .. _spark-change-stream-conf:
 
-Change Streams
---------------
+Change Stream Configuration
+---------------------------
 
-.. note::
+You can configure the following properties when reading a change stream from MongoDB:
 
-   If you use ``SparkConf`` to set the connector's change stream
-   configurations, prefix ``spark.mongodb.`` to each property.
+.. include:: /includes/conf-read-prefix.rst
 
 .. list-table::
    :header-rows: 1

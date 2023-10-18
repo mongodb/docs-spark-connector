@@ -14,12 +14,13 @@ The following code examples show how to specify ``connection.uri``,
    spark.mongodb.read.connection.uri=mongodb://127.0.0.1/
    spark.mongodb.read.database=test
    spark.mongodb.read.collection=myCollection
+   spark.mongodb.read.readPreference.name=primaryPreferred
 
 - In ``connection.uri``:
 
 .. code:: cfg
 
-  spark.mongodb.read.connection.uri=mongodb://127.0.0.1/test.myCollection
+  spark.mongodb.read.connection.uri=mongodb://127.0.0.1/test.myCollection?readPreference=primaryPreferred
 
 .. important:: connection.uri Takes Precedence
 
