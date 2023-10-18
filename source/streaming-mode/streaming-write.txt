@@ -31,18 +31,19 @@ Write to MongoDB
               - Description
          
             * - ``writeStream.format()``
-              - The format to use for write stream data. Use 
-                ``mongodb``.
+              - Specifies the format of the underlying output data source. Use ``mongodb``
+                to write to MongoDB.
          
             * - ``writeStream.option()``
-              - Use the ``option()`` method to specify your MongoDB 
-                deployment :manual:`connection string </reference/connection-string/>` with the 
-                ``spark.mongodb.connection.uri`` option key.
+              - Use the ``option`` method to configure stream settings, including the
+                MongoDB deployment
+                :manual:`connection string </reference/connection-string/>`,
+                MongoDB database and collection, and
+                `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
 
-                You can also use the ``option()`` method to configure other stream settings, 
-                including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
-         
+                For a list of write stream configuration options, see
+                the :ref:`spark-streaming-write-conf` guide.
+
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame/Dataset is 
                 written to a streaming sink. To view a list of all 
@@ -96,15 +97,14 @@ Write to MongoDB
               - Description
          
             * - ``writeStream.format()``
-              - Specifies the underlying output data source. Use ``mongodb`` to write
-                to MongoDB.
+              - Specifies the format of the underlying output data source. Use ``mongodb``
+                to write to MongoDB.
          
             * - ``writeStream.option()``
               - Use the ``option`` method to configure stream settings, including the
                 MongoDB deployment
                 :manual:`connection string </reference/connection-string/>`,
-                MongoDB database and collection, destination 
-                directory, and
+                MongoDB database and collection, and
                 `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
 
                 For a list of write stream configuration options, see
@@ -162,17 +162,18 @@ Write to MongoDB
               - Description
          
             * - ``writeStream.format()``
-              - The format to use for write stream data. Use 
-                ``mongodb``.
+              - Specifies the format of the underlying output data source. Use ``mongodb``
+                to write to MongoDB.
          
             * - ``writeStream.option()``
-              - Use the ``option`` method to specify your MongoDB 
-                deployment :manual:`connection string </reference/connection-string/>` with the 
-                ``spark.mongodb.connection.uri`` option key.
-         
-                You can also use the ``option()`` method to configure other stream settings, 
-                including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+              - Use the ``option`` method to configure stream settings, including the
+                MongoDB deployment
+                :manual:`connection string </reference/connection-string/>`,
+                MongoDB database and collection, and
+                `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+
+                For a list of write stream configuration options, see
+                the :ref:`spark-streaming-write-conf` guide.
 
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame/Dataset is 

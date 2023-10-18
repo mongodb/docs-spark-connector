@@ -46,17 +46,21 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               - Description
          
             * - ``readStream.format()``
-              - The format to use for read stream data. Use ``mongodb``.
+              - Specifies the format of the underlying input data source. Use ``mongodb``
+                to read from MongoDB.
          
             * - ``readStream.option()``
-              - Use the ``option`` method to specify your MongoDB 
-                deployment :manual:`connection string </reference/connection-string/>` with the 
-                ``spark.mongodb.connection.uri`` option key.
-         
-                You can also use the ``option()`` method to configure other stream settings, 
-                including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+              - Use the ``option`` method to configure stream settings, including the
+                MongoDB deployment
+                :manual:`connection string </reference/connection-string/>`,
+                MongoDB database and collection, and aggregation pipeline stages.
+
+                For a list of read stream configuration options, see
+                the :ref:`spark-streaming-read-conf` guide.
             
+            * - ``readStream.schema()``
+              - Specifies the input schema.
+
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
@@ -109,17 +113,21 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
               - Description
          
             * - ``readStream.format()``
-              - The format to use for read stream data. Use ``mongodb``.
- 
+              - Specifies the format of the underlying input data source. Use ``mongodb``
+                to read from MongoDB.
+
             * - ``readStream.option()``
-              - Use the ``option`` method to specify your MongoDB 
-                deployment :manual:`connection string </reference/connection-string/>` with the 
-                ``spark.mongodb.connection.uri`` option key.
-         
-                You can also use the ``option()`` method to configure other stream settings, 
-                including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+              - Use the ``option`` method to configure stream settings, including the
+                MongoDB deployment
+                :manual:`connection string </reference/connection-string/>`,
+                MongoDB database and collection, and aggregation pipeline stages.
+
+                For a list of read stream configuration options, see
+                the :ref:`spark-streaming-read-conf` guide.
         
+            * - ``readStream.schema()``
+              - Specifies the input schema.
+
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
@@ -161,22 +169,26 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
             :header-rows: 1
             :stub-columns: 1
             :widths: 10 40
-         
+
             * - Setting
               - Description
-         
+
             * - ``readStream.format()``
-              - The format to use for read stream data. Use ``mongodb``.
- 
+              - Specifies the format of the underlying input data source. Use ``mongodb``
+                to read from MongoDB.
+
             * - ``readStream.option()``
-              - Use the ``option`` method to specify your MongoDB 
-                deployment :manual:`connection string </reference/connection-string/>` with the 
-                ``spark.mongodb.connection.uri`` option key.
-         
-                You can also use the ``option()`` method to configure other stream settings, 
-                including the MongoDB database and collection, destination 
-                directory, and `checkpoint directory <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__.
+              - Use the ``option`` method to configure stream settings, including the
+                MongoDB deployment
+                :manual:`connection string </reference/connection-string/>`,
+                MongoDB database and collection, and aggregation pipeline stages.
+
+                For a list of read stream configuration options, see
+                the :ref:`spark-streaming-read-conf` guide.
         
+            * - ``readStream.schema()``
+              - Specifies the input schema.
+
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
@@ -208,16 +220,10 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          For a complete list of methods, see the 
          `Scala Structured Streaming reference <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__.
 
-Examples
---------
+Example
+-------
 
-The following example shows Spark Structured Streaming configurations 
-for streaming from MongoDB.
-
-Stream to your Console from MongoDB
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To stream data from MongoDB to your console:
+The following example shows how to stream data from MongoDB to your console.
 
 .. tabs-drivers::
 
@@ -395,16 +401,21 @@ To stream data from MongoDB to your console:
             // run the query
             val query = dataStreamWriter.start()
 
-//todo
-
 .. important:: Inferring the Schema of a Change Stream
 
    When the {+connector-short+} infers the schema of a data frame 
    read from a change stream, by default,
-   it will use the schema of the underlying collection rather than that
+   it uses the schema of the underlying collection rather than that
    of the change stream. If you set the ``change.stream.publish.full.document.only``
    option to ``true``, the connector uses the schema of the 
    change stream instead.
 
-   For more information on configuring a read operation, see the
-   :ref:`spark-change-stream-conf` section of the Read Configuration Options guide.
+   For a list of change stream configuration options, see the
+   :ref:`Read Configuration Options <spark-change-stream-conf>` guide.
+
+DataStreamReader API Documentation
+----------------------------------
+
+- `PySpark <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html#pyspark.sql.streaming.DataStreamReader>`__
+- `Java <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__
+- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__
