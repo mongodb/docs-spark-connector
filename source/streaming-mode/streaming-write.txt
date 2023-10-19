@@ -19,8 +19,9 @@ Write to MongoDB
        content: |
 
          Specify write stream configuration settings on your streaming 
-         Dataset or streaming DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__. You must specify the following configuration 
-         settings to write to MongoDB:
+         Dataset or streaming DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__.
+         
+         You must specify the following configuration settings to write to MongoDB:
          
          .. list-table::
             :header-rows: 1
@@ -84,9 +85,9 @@ Write to MongoDB
        content: |
 
          Specify write stream configuration settings on your streaming 
-         DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.html>`__. You 
-         must specify the following configuration settings to write 
-         to MongoDB:
+         DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.html>`__.
+         
+         You must specify the following configuration settings to write to MongoDB:
          
          .. list-table::
             :header-rows: 1
@@ -150,8 +151,9 @@ Write to MongoDB
        content: |
 
          Specify write stream configuration settings on your streaming 
-         Dataset or streaming DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__. You must specify the following configuration 
-         settings to write to MongoDB:
+         Dataset or streaming DataFrame using `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__.
+         
+         You must specify the following configuration settings to write to MongoDB:
          
          .. list-table::
             :header-rows: 1
@@ -371,10 +373,3 @@ file to MongoDB:
 
             // run the query
             val query = dataStreamWriter.start()
-
-DataStreamWriter API Documentation
-----------------------------------
-
-- `PySpark <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.html#pyspark.sql.streaming.DataStreamWriter>`__
-- `Java <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
-- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html>`__

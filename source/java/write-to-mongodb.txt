@@ -17,5 +17,3 @@ saves it to the MongoDB database and collection specified in ``SparkConf``:
    dataFrame.write().format("mongodb")
                     .mode("overwrite")
                     .save();
-
-.. include:: /includes/save-modes-tip.rst

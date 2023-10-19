@@ -29,7 +29,12 @@ Write to MongoDB
 
          .. include:: /scala/write-to-mongodb.txt
 
-.. warning:: Setting the Write Mode to ``overwrite``
+.. warning:: Save Modes
+   
+   The {+connector-long+} supports the following save modes:
+
+   -  ``append``
+   - ``overwrite``
 
    If you specify the ``overwrite`` write mode, the connector drops the target
    collection and creates a new collection that uses the
@@ -38,13 +43,18 @@ Write to MongoDB
    such as the following collection types:
 
    - Sharded collections
-   - Collections with non-default collations
+   - Collections with nondefault collations
    - Time-series collections
 
+   To learn more about save modes, see the
+   `Spark SQL Guide <https://spark.apache.org/docs/3.2.0/sql-data-sources-load-save-functions.html#save-modes>`__.
+   
 .. important::
 
    If your write operation includes a field with a ``null`` value,
    the connector writes the field name and ``null`` value to MongoDB. You can
    change this behavior by setting the write configuration property
-   ``ignoreNullValues``. For more information about setting the connector's
+   ``ignoreNullValues``.
+   
+   For more information about setting the connector's
    write behavior, see :ref:`Write Configuration Options <spark-batch-write-conf>`.

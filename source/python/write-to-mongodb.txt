@@ -20,5 +20,3 @@ and ages and a list of column names. The example then writes this DataFrame to t
                   .option("database", "people")
                   .option("collection", "contacts")
                   .save()
-
-.. include:: /includes/save-modes-tip.rst
