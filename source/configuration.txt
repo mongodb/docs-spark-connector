@@ -72,6 +72,22 @@ this method to specify options for the underlying read or write operation.
    
    Options specified in this way override any corresponding settings in ``SparkConf``.
 
+Short-Form Syntax
+`````````````````
+
+Options maps support short-form syntax. You may omit the prefix when 
+specifying an option key string.
+
+.. example::
+
+   The following syntaxes are equivalent to one another:
+
+   - ``dfw.option("spark.mongodb.write.collection", "myCollection").save()``
+
+   - ``dfw.option("spark.mongodb.collection", "myCollection").save()``
+
+   - ``dfw.option("collection", "myCollection").save()``
+
 To learn more about the ``option()`` method, see the following Spark
 documentation pages:
 
@@ -89,35 +105,19 @@ documentation pages:
      - id: python
        content: |
 
-         `DataFrameReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.option.html>`__
-         `DataFrameWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameWriter.option.html>`__
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.option.html>`__
-         `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.option.html>`__
+         - `DataFrameReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.option.html>`__
+         - `DataFrameWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameWriter.option.html>`__
+         - `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.option.html>`__
+         - `DataStreamWriter <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.option.html>`__
 
      - id: scala
        content: |
 
-         `DataFrameReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameReader.html#option(key:String,value:Double):org.apache.spark.sql.DataFrameReader>`__
-         `DataFrameWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameWriter.html#option(key:String,value:Double):org.apache.spark.sql.DataFrameWriter[T]>`__
-         `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html#option(key:String,value:Double):org.apache.spark.sql.streaming.DataStreamReader>`__
-         `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#option(key:String,value:Double):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__
+         - `DataFrameReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameReader.html#option(key:String,value:Double):org.apache.spark.sql.DataFrameReader>`__
+         - `DataFrameWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/DataFrameWriter.html#option(key:String,value:Double):org.apache.spark.sql.DataFrameWriter[T]>`__
+         - `DataStreamReader <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html#option(key:String,value:Double):org.apache.spark.sql.streaming.DataStreamReader>`__
+         - `DataStreamWriter <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#option(key:String,value:Double):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__
   
-Short-Form Syntax
-`````````````````
-
-Options maps support short-form syntax. You may omit the prefix when 
-specifying an option key string.
-
-.. example::
-
-   The following syntaxes are equivalent to one another:
-
-   - ``dfw.option("spark.mongodb.write.collection", "myCollection").save()``
-
-   - ``dfw.option("spark.mongodb.collection", "myCollection").save()``
-
-   - ``dfw.option("collection", "myCollection").save()``
-
 Using a System Property
 ~~~~~~~~~~~~~~~~~~~~~~~
 

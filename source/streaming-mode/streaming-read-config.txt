@@ -45,7 +45,7 @@ You can configure the following properties when reading data from MongoDB in str
 
    * - ``mongoClientFactory``
      - | MongoClientFactory configuration key.
-       | You can specify a custom implementation which must implement the
+       | You can specify a custom implementation, which must implement the
          ``com.mongodb.spark.sql.connector.connection.MongoClientFactory``
          interface.
        |
@@ -84,7 +84,7 @@ You can configure the following properties when reading data from MongoDB in str
    * - ``change.stream.``
      - | Change stream configuration prefix.
        | See the
-         :ref:`Change Stream Configuration <partitioner-conf>` section for more
+         :ref:`Change Stream Configuration <change-stream-conf>` section for more
          information about change streams.
 
    * - ``outputExtendedJson``
@@ -95,14 +95,12 @@ You can configure the following properties when reading data from MongoDB in str
        |
        | **Default:** ``false``
 
-.. _spark-change-stream-conf:
+.. _change-stream-conf:
 
 Change Stream Configuration
 ---------------------------
 
 You can configure the following properties when reading a change stream from MongoDB:
-
-.. include:: /includes/conf-read-prefix.rst
 
 .. list-table::
    :header-rows: 1

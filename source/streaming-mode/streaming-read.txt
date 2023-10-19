@@ -64,7 +64,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
-         writes checkpoints to ``/tmp/checkpointDir`` once per second:
+         writes checkpoints to ``/tmp/checkpointDir`` once per second. Passing the
+         ``Trigger.Continuous`` parameter to the ``trigger()`` method enables continuous
+         processing.
 
          .. code-block:: java
             :copyable: true
@@ -97,12 +99,6 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
 
          To read data from MongoDB, specify the following read-stream configuration settings on 
          `DataStreamReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html>`__:  
-
-         To use continuous processing with the MongoDB Spark Connector, 
-         call the ``trigger()`` method on the ``writeStream`` property 
-         of the streaming DataFrame that you create from 
-         your MongoDB read stream. In your ``trigger()``, specify the 
-         ``continuous`` parameter.
          
          .. list-table::
             :header-rows: 1
@@ -131,7 +127,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
-         writes checkpoints to ``/tmp/checkpointDir`` once per second:
+         writes checkpoints to ``/tmp/checkpointDir`` once per second. Passing the
+         ``continuous`` parameter to the ``trigger()`` method enables continuous
+         processing.
 
          .. code-block:: python
             :copyable: true
@@ -192,7 +190,9 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
          The following code snippet shows how to use the preceding 
          configuration settings to continuously process data streamed from MongoDB.
          The connector appends all new data to the existing data and asynchronously 
-         writes checkpoints to ``/tmp/checkpointDir`` once per second:
+         writes checkpoints to ``/tmp/checkpointDir`` once per second. Passing the
+         ``Trigger.Continuous`` parameter to the ``trigger()`` method enables continuous
+         processing.
 
          .. code-block:: scala
             :copyable: true
@@ -403,19 +403,13 @@ The following example shows how to stream data from MongoDB to your console.
 
 .. important:: Inferring the Schema of a Change Stream
 
-   When the {+connector-short+} infers the schema of a data frame 
+   When the {+connector-short+} infers the schema of a DataFrame
    read from a change stream, by default,
    it uses the schema of the underlying collection rather than that
    of the change stream. If you set the ``change.stream.publish.full.document.only``
    option to ``true``, the connector uses the schema of the 
    change stream instead.
 
-   For a list of change stream configuration options, see the
-   :ref:`Read Configuration Options <spark-change-stream-conf>` guide.
-
-DataStreamReader API Documentation
-----------------------------------
-
-- `PySpark <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamReader.html#pyspark.sql.streaming.DataStreamReader>`__
-- `Java <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__
-- `Scala <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamReader.html>`__
+   For more information about this setting, and to see a full list of change stream
+   configuration options, see the
+   :ref:`Read Configuration Options <change-stream-conf>` guide.
