@@ -122,6 +122,9 @@ Using a System Property
 The {+connector-short+} reads some configuration settings before ``SparkConf`` is
 available. You must specify these settings by using a JVM system property.
 
-.. tip:: System Properties
+For more information on Java system properties, see the `Java documentation. <https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html>`__
 
-   For more information on Java system properties, see the `Java documentation. <https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html>`__
+.. tip:: Configuration Exceptions
+
+   If the {+connector-short+} throws a ``ConfigException``, confirm that your ``SparkConf``
+   or options map uses correct syntax and contains only valid configuration options.
