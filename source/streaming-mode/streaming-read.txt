@@ -34,8 +34,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: java-sync
        content: |
 
-         To read data from MongoDB, call the ``read()`` method on your
-         DataFrame object. This method returns a
+         To read data from MongoDB, call the ``readStream()`` method on your
+         ``SparkSession`` object. This method returns a
          ``DataStreamReader`` object, which you can use to specify the format and other
          configuration settings for your streaming read operation. 
 
@@ -77,8 +77,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: python
        content: |
 
-         To read data from MongoDB, call the ``read`` function on your
-         DataFrame object. This function returns a
+         To read data from MongoDB, call the ``readStream`` function on your
+         ``SparkSession`` object. This function returns a
          ``DataStreamReader``
          object, which you can use to specify the format and other configuration settings for your
          streaming read operation. 
@@ -121,8 +121,8 @@ more about continuous processing, see the `Spark documentation <https://spark.ap
      - id: scala
        content: |
          
-         To read data from MongoDB, call the ``read`` method on your
-         DataFrame object. This method returns a
+         To read data from MongoDB, call the ``readStream`` method on your
+         ``SparkSession`` object. This method returns a
          ``DataStreamReader``
          object, which you can use to specify the format and other configuration settings for your
          streaming read operation. 

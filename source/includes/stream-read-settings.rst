@@ -1,3 +1,5 @@
+You must specify the following configuration settings to read from MongoDB:
+
 .. list-table::
    :header-rows: 1
    :stub-columns: 1
