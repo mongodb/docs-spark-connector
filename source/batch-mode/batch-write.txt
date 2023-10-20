@@ -5,9 +5,12 @@ Write to MongoDB
 ================
 
 .. toctree::
-   :caption: Write Configuration Options
+   :caption: Batch Write Configuration Options
 
    /batch-mode/batch-write-config
+
+Overview
+--------
 
 .. tabs-drivers::
 

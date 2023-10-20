@@ -1,8 +1,8 @@
 .. _spark-streaming-write-conf:
 
-===========================
-Write Configuration Options
-===========================
+=====================================
+Streaming Write Configuration Options
+=====================================
 
 .. contents:: On this page
    :local:

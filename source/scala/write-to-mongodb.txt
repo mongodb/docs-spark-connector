@@ -7,7 +7,7 @@ batch write operation.
 .. include:: /includes/batch-write-settings.rst
 
 The following example creates a DataFrame from a ``json`` file and 
-saves it to the MongoDB collection specified in ``SparkConf``:
+saves it to the ``people.contacts`` collection in MongoDB:
 
 .. code-block:: scala
 
@@ -16,4 +16,6 @@ saves it to the MongoDB collection specified in ``SparkConf``:
 
    dataFrame.write.format("mongodb")
                   .mode("overwrite")
+                  .option("database", "people")
+                  .option("collection", "contacts")
                   .save()

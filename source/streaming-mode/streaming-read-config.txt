@@ -1,8 +1,8 @@
 .. _spark-streaming-read-conf:
 
-==========================
-Read Configuration Options
-==========================
+====================================
+Streaming Read Configuration Options
+====================================
 
 .. contents:: On this page
    :local:

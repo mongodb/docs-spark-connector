@@ -5,7 +5,7 @@ Write to MongoDB
 ================
 
 .. toctree::
-   :caption: Write Configuration Options
+   :caption: Streaming Write Configuration Options
 
    /streaming-mode/streaming-write-config
 
@@ -16,11 +16,11 @@ Write to MongoDB
      - id: java-sync
        content: |
 
-        To write data to MongoDB, call the ``writeStream()`` method on your
-        DataFrame object. This method returns a
-        ``DataStreamWriter``
-        object, which you can use to specify the format and other configuration settings
-        for your streaming write operation. 
+         To write data to MongoDB, call the ``writeStream()`` method on your
+         DataFrame object. This method returns a
+         ``DataStreamWriter``
+         object, which you can use to specify the format and other configuration settings
+         for your streaming write operation. 
 
          You must specify the following configuration settings to write to MongoDB:
          
@@ -84,11 +84,11 @@ Write to MongoDB
      - id: python
        content: |
 
-        To write data to MongoDB, call the ``writeStream`` function on your
-        DataFrame object. This function returns a
-        ``DataStreamWriter``
-        object, which you can use to specify the format and other configuration settings for your
-        streaming write operation. 
+         To write data to MongoDB, call the ``writeStream`` function on your
+         DataFrame object. This function returns a
+         ``DataStreamWriter``
+         object, which you can use to specify the format and other configuration settings for your
+         streaming write operation. 
 
          You must specify the following configuration settings to write to MongoDB:
 
@@ -151,11 +151,11 @@ Write to MongoDB
      - id: scala
        content: |
 
-        To write data to MongoDB, call the ``write`` method on your
-        DataFrame object. This method returns a
-        ``DataStreamWriter``
-        object, which you can use to specify the format and other configuration settings
-        for your streaming write operation. 
+         To write data to MongoDB, call the ``write`` method on your
+         DataFrame object. This method returns a
+         ``DataStreamWriter``
+         object, which you can use to specify the format and other configuration settings
+         for your streaming write operation. 
 
          You must specify the following configuration settings to write to MongoDB:
 

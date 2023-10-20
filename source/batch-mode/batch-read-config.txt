@@ -1,8 +1,8 @@
 .. _spark-batch-read-conf:
 
-==========================
-Read Configuration Options
-==========================
+================================
+Batch Read Configuration Options
+================================
 
 .. contents:: On this page
    :local:

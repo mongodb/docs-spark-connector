@@ -5,7 +5,7 @@ Read from MongoDB
 =================
 
 .. toctree::
-   :caption: Read Configuration Options
+   :caption: Batch Read Configuration Options
 
    /batch-mode/batch-read-config
 
