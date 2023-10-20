@@ -27,15 +27,7 @@ configuration settings to read data from ``people.contacts`` in MongoDB:
 Schema Inference
 ----------------
 
-When you load a Dataset or DataFrame without a schema, Spark samples 
-the records to infer the schema of the collection.
-
-Suppose that the MongoDB collection ``people.contacts`` contained the following documents:
-
-.. include:: /includes/contacts-example-collection.rst
-
-The following operation loads data from ``people.contacts``
-and infers the schema of the DataFrame:
+.. include:: /includes/schema-inference-intro.rst
 
 .. code-block:: scala
    
