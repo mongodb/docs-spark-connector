@@ -16,10 +16,7 @@ configuration settings to read data from ``people.contacts`` in MongoDB:
                           .option("collection", "contacts")
                           .load();
 
-.. tip:: DataFrame Type
-   
-   ``DataFrame`` doesn't exist as a class in the Java API. Use 
-   ``Dataset<Row>`` to reference a DataFrame.
+.. include:: /includes/java-dataframe-tip.rst
 
 .. _java-implicit-schema:
 

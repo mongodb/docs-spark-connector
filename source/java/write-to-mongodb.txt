@@ -1,6 +1,6 @@
 To write data to MongoDB, call the ``write()`` method on your
 DataFrame object. This method returns a
-`DataFrameWriter <https://spark.apache.org/docs/latest/api/java>`__
+``DataFrameWriter``
 object, which you can use to specify the format and other configuration settings for your
 batch write operation. 
 
@@ -17,3 +17,5 @@ saves it to the MongoDB database and collection specified in ``SparkConf``:
    dataFrame.write().format("mongodb")
                     .mode("overwrite")
                     .save();
+
+.. include:: /includes/java-dataframe-tip.rst
