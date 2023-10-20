@@ -47,7 +47,7 @@ Write to MongoDB
             * - ``writeStream.outputMode()``
               - Specifies how data of a streaming DataFrame is 
                 written to a streaming sink. To view a list of all 
-                supported output modes, see `the Java outputMode documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__.
+                supported output modes, see the `Java outputMode documentation <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html#outputMode-java.lang.String->`__.
  
             * - ``writeStream.trigger()``
               - Specifies how often the {+connector-short+} writes results
@@ -128,7 +128,7 @@ Write to MongoDB
                 micro-batch processing instead. 
                 
                 To view a list of all supported processing policies, see 
-                `the pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html>`__.
+                the `pyspark trigger documentation <https://spark.apache.org/docs/latest/api/python/reference/pyspark.ss/api/pyspark.sql.streaming.DataStreamWriter.trigger.html>`__.
 
                 .. include:: /includes/note-trigger-method
          
@@ -196,7 +196,7 @@ Write to MongoDB
                 micro-batch processing instead. 
                 
                 To view a list of all 
-                supported processing policies, see `the Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
+                supported processing policies, see the `Scala trigger documentation <https://spark.apache.org/docs/latest/api/scala/org/apache/spark/sql/streaming/DataStreamWriter.html#trigger(trigger:org.apache.spark.sql.streaming.Trigger):org.apache.spark.sql.streaming.DataStreamWriter[T]>`__.
 
                 .. include:: /includes/note-trigger-method
         
