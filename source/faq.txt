@@ -7,24 +7,24 @@ FAQ
 How can I achieve data locality?
 --------------------------------
 
-For any MongoDB deployment, the Mongo Spark Connector sets the
-preferred location for a DataFrame or Dataset to be where the data is:
+For any MongoDB deployment, the {+connector-short+} sets the
+preferred location for a DataFrame or Dataset to be where the data is.
 
-- For a non sharded system, it sets the preferred location to be the
+- For a nonsharded system, it sets the preferred location to be the
   hostname(s) of the standalone or the replica set.
 
 - For a sharded system, it sets the preferred location to be the
   hostname(s) of the shards.
 
-To promote data locality,
+To promote data locality, we recommend taking the following actions:
 
-- Ensure there is a Spark Worker on one of the hosts for non-sharded
+- Ensure there is a Spark Worker on one of the hosts for nonsharded
   system or one per shard for sharded systems.
 
 - Use a :readmode:`nearest` read preference to read from the local
   :binary:`~bin.mongod`.
 
-- For a sharded cluster, you should have a :binary:`~bin.mongos` on the
+- For a sharded cluster, have a :binary:`~bin.mongos` on the
   same nodes and use the ``localThreshold``
   configuration setting to connect to the nearest :binary:`~bin.mongos`. 
   To partition the data by shard use the 

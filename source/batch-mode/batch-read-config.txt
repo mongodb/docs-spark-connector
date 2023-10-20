@@ -92,13 +92,13 @@ You can configure the following properties when reading data from MongoDB in bat
          before sending data to Spark.
        | The value must be either an extended JSON single document or list
          of documents.
-       | A single document should resemble the following:
+       | A single document resembles the following:
 
        .. code-block:: json
 
           {"$match": {"closed": false}}
 
-       | A list of documents should resemble the following:
+       | A list of documents resembles the following:
 
        .. code-block:: json
 
