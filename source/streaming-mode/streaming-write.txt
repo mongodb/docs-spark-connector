@@ -54,8 +54,8 @@ Write to MongoDB
                 to the streaming sink. 
                 
                 To use continuous processing, pass ``Trigger.Continuous(<time value>)`` 
-                as an argument, where ``<time value>`` is how often the Spark Connector 
-                should asynchronously checkpoint. If you 
+                as an argument, where ``<time value>`` is how often you want the Spark
+                Connector to asynchronously checkpoint. If you 
                 pass any other static method of the ``Trigger`` class, or if you don't 
                 call ``writeStream.trigger()``, the Spark connector uses 
                 micro-batch processing instead. 
