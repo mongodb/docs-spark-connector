@@ -1,24 +1,29 @@
-Use your local SparkSession's ``read`` method to create a DataFrame 
-representing a collection.
+To read data from MongoDB, call the ``read()`` method on your
+DataFrame object. This method returns a
+`DataFrameReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameReader.html>`__
+object, which you can use to specify the format and other configuration settings for your
+batch read operation. 
 
-.. note::
-   
-   ``DataFrame`` does not exist as a class in the Java API. Use 
-   ``Dataset<Row>`` to reference a DataFrame.
+.. include:: /includes/batch-read-settings.rst
 
-The following example loads the collection specified in the
-``SparkConf``:
-
-.. code-block:: java
-
-   Dataset<Row> df = spark.read().format("mongodb").load(); // Uses the SparkConf for configuration
+The following code snippet shows how to use the preceding 
+configuration settings to continuously process data streamed from MongoDB.
 
 To specify a different collection, database, and other read
 configuration settings, use the ``option`` method:
 
 .. code-block:: java
 
-   Dataset<Row> df = spark.read().format("mongodb").option("database", "<example-database>").option("collection", "<example-collection>").load();
+   Dataset<Row> df = spark.read()
+                          .format("mongodb")
+                          .option("database", "<example-database>")
+                          .option("collection", "<example-collection>")
+                          .load();
+
+.. tip:: DataFrame Type
+   
+   ``DataFrame`` doesn't exist as a class in the Java API. Use 
+   ``Dataset<Row>`` to reference a DataFrame.
 
 .. _java-implicit-schema:
 
