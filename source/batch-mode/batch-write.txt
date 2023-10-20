@@ -9,8 +9,6 @@ Write to MongoDB
 
    /batch-mode/batch-write-config
 
-.. tabs-selector:: drivers
-
 .. tabs-drivers::
 
    tabs:

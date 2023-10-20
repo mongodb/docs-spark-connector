@@ -30,8 +30,6 @@ Using ``SparkConf``
 You can specify configuration options with ``SparkConf`` using any of 
 the following approaches:
 
-.. tabs-selector:: drivers
-
 .. tabs-drivers::
 
    tabs:

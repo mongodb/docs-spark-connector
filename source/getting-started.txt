@@ -22,8 +22,6 @@ Prerequisites
 Getting Started
 ---------------
 
-.. tabs-selector:: drivers
-
 .. tabs-drivers::
 
    tabs:

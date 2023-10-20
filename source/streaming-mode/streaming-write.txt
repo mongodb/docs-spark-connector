@@ -9,8 +9,6 @@ Write to MongoDB
 
    /streaming-mode/streaming-write-config
 
-.. tabs-selector:: drivers
-
 .. tabs-drivers::
 
    tabs:
