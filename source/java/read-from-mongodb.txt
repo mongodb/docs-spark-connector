@@ -6,18 +6,15 @@ batch read operation.
 
 .. include:: /includes/batch-read-settings.rst
 
-The following code snippet shows how to use the preceding 
-configuration settings to continuously process data streamed from MongoDB.
-
-To specify a different collection, database, and other read
-configuration settings, use the ``option`` method:
+The following code example shows how to use the previous
+configuration settings to read data from ``people.contacts`` in MongoDB:
 
 .. code-block:: java
 
-   Dataset<Row> df = spark.read()
+   Dataset<Row> dataFrame = spark.read()
                           .format("mongodb")
-                          .option("database", "<example-database>")
-                          .option("collection", "<example-collection>")
+                          .option("database", "people")
+                          .option("collection", "contacts")
                           .load();
 
 .. tip:: DataFrame Type
@@ -33,44 +30,68 @@ Schema Inference
 When you load a Dataset or DataFrame without a schema, Spark samples 
 the records to infer the schema of the collection.
 
-Consider a collection named ``characters``:
+Suppose that the MongoDB collection ``people.contacts`` contained the following documents:
 
-.. include:: /includes/characters-example-collection.rst
+.. include:: /includes/contacts-example-collection.rst
 
-The following operation loads data from the MongoDB collection 
-specified in ``SparkConf`` and infers the schema:
+The following operation loads data from ``people.contacts``
+and infers the schema of the DataFrame:
 
 .. code-block:: java
    
-   Dataset<Row> implicitDS = spark.read().format("mongodb").load();
-   implicitDS.printSchema();
-   implicitDS.show();
+   Dataset<Row> dataFrame = spark.read()
+                                 .format("mongodb")
+                                 .option("database", "people")
+                                 .option("collection", "contacts")
+                                 .load();
 
-``implicitDS.printSchema()`` outputs the following schema to the console:
+To see the inferred schema, use the ``dataFrame.printSchema()`` method, as shown in
+the following example:
 
-.. code-block:: sh
+.. io-code-block::
+   :copyable: true
+
+   .. input::
+      :language: java
+
+      dataFrame.printSchema();
    
-   root
-    |-- _id: struct (nullable = true)
-    |    |-- oid: string (nullable = true)
-    |-- age: integer (nullable = true)
-    |-- name: string (nullable = true)
+   .. output::
+      :language: none
+      :visible: false
+
+      root
+       |-- _id: struct (nullable = true)
+       |    |-- oid: string (nullable = true)
+       |-- age: integer (nullable = true)
+       |-- name: string (nullable = true)
+ 
+To see the data in the DataFrame, use the ``dataFrame.show()`` method, as shown in
+the following example:
+
+.. io-code-block::
+   :copyable: true
+
+   .. input::
+      :language: java
+
+      dataFrame.show();
    
-``implicitDS.show()`` outputs the following to the console:
+   .. output::
+      :language: none
+      :visible: false
 
-.. code-block:: sh
-
-   +--------------------+----+-------------+
-   |                 _id| age|         name|
-   +--------------------+----+-------------+
-   |[585024d558bef808...|  50|Bilbo Baggins|
-   |[585024d558bef808...|1000|      Gandalf|
-   |[585024d558bef808...| 195|       Thorin|
-   |[585024d558bef808...| 178|        Balin|
-   |[585024d558bef808...|  77|         Kíli|
-   |[585024d558bef808...| 169|       Dwalin|
-   |[585024d558bef808...| 167|          Óin|
-   |[585024d558bef808...| 158|        Glóin|
-   |[585024d558bef808...|  82|         Fíli|
-   |[585024d558bef808...|null|       Bombur|
-   +--------------------+----+-------------+
+      +--------------------+----+-------------+
+      |                 _id| age|         name|
+      +--------------------+----+-------------+
+      |[585024d558bef808...|  50|Bilbo Baggins|
+      |[585024d558bef808...|1000|      Gandalf|
+      |[585024d558bef808...| 195|       Thorin|
+      |[585024d558bef808...| 178|        Balin|
+      |[585024d558bef808...|  77|         Kíli|
+      |[585024d558bef808...| 169|       Dwalin|
+      |[585024d558bef808...| 167|          Óin|
+      |[585024d558bef808...| 158|        Glóin|
+      |[585024d558bef808...|  82|         Fíli|
+      |[585024d558bef808...|null|       Bombur|
+      +--------------------+----+-------------+

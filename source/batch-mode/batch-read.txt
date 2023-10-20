@@ -18,8 +18,6 @@ Read from MongoDB
 Overview
 --------
 
-.. tabs-selector:: drivers
-
 .. tabs-drivers::
 
    tabs:

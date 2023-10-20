@@ -1,38 +1,90 @@
-You can create a Spark DataFrame to hold data from the MongoDB
-collection specified in the
-:ref:`spark.mongodb.read.connection.uri <pyspark-shell>` option which your
-``SparkSession`` option is using.
+To read data from MongoDB, call the ``read`` function on your
+DataFrame object. This function returns a
+`DataFrameReader <https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.html>`__
+object, which you can use to specify the format and other configuration settings for your
+batch read operation. 
 
-.. include:: /includes/example-load-dataframe.rst
+.. include:: /includes/batch-read-settings.rst
 
-Assign the collection to a DataFrame with ``spark.read()``
-from within the ``pyspark`` shell.
-
-.. code-block:: python
-
-   df = spark.read.format("mongodb").load()
-
-Spark samples the records to infer the schema of the collection.
+The following code example shows how to use the previous
+configuration settings to read data from ``people.contacts`` in MongoDB:
 
 .. code-block:: python
 
-   df.printSchema()
+   dataFrame = spark.read
+                    .format("mongodb")
+                    .option("database", "people")
+                    .option("collection", "contacts")
+                    .load()
 
-The above operation produces the following shell output:
+Schema Inference
+----------------
 
-.. code-block:: none
+When you load a Dataset or DataFrame without a schema, Spark samples 
+the records to infer the schema of the collection.
 
-   root
-    |-- _id: double (nullable = true)
-    |-- qty: double (nullable = true)
-    |-- type: string (nullable = true)
+Suppose that the MongoDB collection ``people.contacts`` contained the following documents:
 
-If you need to read from a different MongoDB collection,
-use the ``.option`` method when reading data into a DataFrame.
+.. include:: /includes/contacts-example-collection.rst
 
-To read from a collection called ``contacts`` in a database called
-``people``, specify ``people.contacts`` in the input URI option.
+The following operation loads data from ``people.contacts``
+and infers the schema of the DataFrame:
 
 .. code-block:: python
+   
+   dataFrame = spark.read
+                    .format("mongodb")
+                    .option("database", "people")
+                    .option("collection", "contacts")
+                    .load()
 
-   df = spark.read.format("mongodb").option("uri", "mongodb://127.0.0.1/people.contacts").load()
+To see the inferred schema, use the ``dataFrame.printSchema()`` function, as shown in
+the following example:
+
+.. io-code-block::
+   :copyable: true
+
+   .. input::
+      :language: python
+
+      dataFrame.printSchema()
+   
+   .. output::
+      :language: none
+      :visible: false
+
+      root
+       |-- _id: struct (nullable = true)
+       |    |-- oid: string (nullable = true)
+       |-- age: integer (nullable = true)
+       |-- name: string (nullable = true)
+ 
+To see the data in the DataFrame, use the ``dataFrame.show()`` function, as shown in
+the following example:
+
+.. io-code-block::
+   :copyable: true
+
+   .. input::
+      :language: python
+
+      dataFrame.show()
+   
+   .. output::
+      :language: none
+      :visible: false
+
+      +--------------------+----+-------------+
+      |                 _id| age|         name|
+      +--------------------+----+-------------+
+      |[585024d558bef808...|  50|Bilbo Baggins|
+      |[585024d558bef808...|1000|      Gandalf|
+      |[585024d558bef808...| 195|       Thorin|
+      |[585024d558bef808...| 178|        Balin|
+      |[585024d558bef808...|  77|         Kíli|
+      |[585024d558bef808...| 169|       Dwalin|
+      |[585024d558bef808...| 167|          Óin|
+      |[585024d558bef808...| 158|        Glóin|
+      |[585024d558bef808...|  82|         Fíli|
+      |[585024d558bef808...|null|       Bombur|
+      +--------------------+----+-------------+
