@@ -1,8 +1,7 @@
 To read data from MongoDB, call the ``read()`` method on your
 DataFrame object. This method returns a
-`DataFrameReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameReader.html>`__
-object, which you can use to specify the format and other configuration settings for your
-batch read operation. 
+``DataFrameReader`` object, which you can use to specify the format and other
+configuration settings for your batch read operation. 
 
 .. include:: /includes/batch-read-settings.rst
 

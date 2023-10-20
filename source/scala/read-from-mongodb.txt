@@ -24,7 +24,6 @@ configuration settings to read data from ``people.contacts`` in MongoDB:
 
 .. _scala-implicit-schema:
 
-
 Schema Inference
 ----------------
 
