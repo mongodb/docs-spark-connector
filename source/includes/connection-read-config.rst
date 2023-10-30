@@ -1,5 +1,5 @@
-Specifying Properties in ``connection.uri``
--------------------------------------------
+Specifying Properties in connection.uri
+---------------------------------------
 
 If you use :ref:`SparkConf <spark-conf>` to specify any of the previous settings, you
 can either list them individually or include them in the ``connection.uri`` setting.

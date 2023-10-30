@@ -2,8 +2,6 @@
 FAQ
 ===
 
-.. default-domain:: mongodb
-
 How can I achieve data locality?
 --------------------------------
 

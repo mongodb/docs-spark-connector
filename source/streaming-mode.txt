@@ -18,8 +18,10 @@ Streaming Mode
 Overview
 --------
 
-In streaming mode, you can use Spark Structured Streaming to process data as soon as
-it's available instead of waiting for a time interval to pass.
+The {+connector-short+} supports streaming mode, which uses Spark Structured Streaming
+to process data as soon as it's available instead of waiting for a time interval to pass.
+Spark Structured Streaming is a data-stream-processing engine that you can access by using
+the Dataset or DataFrame API. 
 
 .. include:: includes/streaming-distinction.rst
 
