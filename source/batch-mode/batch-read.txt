@@ -18,6 +18,8 @@ Read from MongoDB in Batch Mode
 Overview
 --------
 
+.. tabs-selector:: drivers
+
 .. tabs-drivers::
 
    tabs:
