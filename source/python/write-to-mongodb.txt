@@ -6,7 +6,8 @@ batch write operation.
 
 .. include:: /includes/batch-write-settings.rst
 
-The following example creates a DataFrame from a list of tuples containing names
+The following example uses the ``createDataFrame()`` function on the ``SparkSession``
+object to create a DataFrame from a list of tuples containing names
 and ages and a list of column names. The example then writes this DataFrame to the
 ``people.contacts`` collection in MongoDB.
 

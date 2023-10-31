@@ -1,8 +1,8 @@
 .. _streaming-read-from-mongodb: 
 
-=================
-Read from MongoDB
-=================
+===================================
+Read from MongoDB in Streaming Mode
+===================================
 
 .. toctree::
    :caption: Streaming Read Configuration Options

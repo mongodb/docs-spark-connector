@@ -1,8 +1,8 @@
 .. _batch-write-to-mongodb:
 
-================
-Write to MongoDB
-================
+==============================
+Write to MongoDB in Batch Mode
+==============================
 
 .. toctree::
    :caption: Batch Write Configuration Options

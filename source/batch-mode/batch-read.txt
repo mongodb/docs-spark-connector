@@ -1,8 +1,8 @@
 .. _batch-read-from-mongodb:
 
-=================
-Read from MongoDB
-=================
+===============================
+Read from MongoDB in Batch Mode
+===============================
 
 .. toctree::
    :caption: Batch Read Configuration Options
@@ -12,7 +12,7 @@ Read from MongoDB
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 1
+   :depth: 2
    :class: singlecol 
 
 Overview
