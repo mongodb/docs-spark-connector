@@ -282,4 +282,7 @@ The ``SinglePartitionPartitioner`` configuration creates a single partition.
 To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner``.
 
+Specifying Properties in ``connection.uri``
+-------------------------------------------
+
 .. include:: /includes/connection-read-config.rst
