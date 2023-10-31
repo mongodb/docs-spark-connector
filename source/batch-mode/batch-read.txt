@@ -12,13 +12,11 @@ Read from MongoDB in Batch Mode
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 2
+   :depth: 1
    :class: singlecol 
 
 Overview
 --------
-
-.. tabs-selector:: drivers
 
 .. tabs-drivers::
 
@@ -33,15 +31,49 @@ Overview
 
          .. include:: /python/read-from-mongodb.txt
 
-         .. include:: /python/filters.txt
-
      - id: scala
        content: |
 
          .. include:: /scala/read-from-mongodb.txt
 
-         .. include:: /scala/filters.txt
+Schema Inference
+----------------
 
+.. tabs-drivers::
+
+   tabs:
+     - id: java-sync
+       content: |
+
+         .. include:: /java/schema-inference.rst
+
+     - id: python
+       content: |
+
+         .. include:: /python/schema-inference.rst
+
+     - id: scala
+       content: |
+
+         .. include:: /scala/schema-inference.rst
+
+Filters
+-------
+
+.. tabs-drivers::
+
+   tabs:
+
+     - id: python
+       content: |
+
+         .. include:: /python/filters.txt
+
+     - id: scala
+       content: |
+
+         .. include:: /scala/filters.txt
+         
 SQL Queries
 -----------
 
