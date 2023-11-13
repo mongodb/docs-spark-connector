@@ -12,6 +12,9 @@ Batch Read Configuration Options
 
 .. _spark-batch-input-conf:
 
+Overview
+--------
+
 You can configure the following properties when reading data from MongoDB in batch mode.
 
 .. include:: /includes/conf-read-prefix.rst
