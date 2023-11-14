@@ -1,6 +1,3 @@
-Specifying Properties in ``connection.uri``
--------------------------------------------
-
 If you use :ref:`SparkConf <spark-conf>` to specify any of the previous settings, you can
 either include them in the ``connection.uri`` setting or list them individually.
 
@@ -11,7 +8,6 @@ setting:
 .. code:: cfg
 
   spark.mongodb.write.connection.uri=mongodb://127.0.0.1/myDB.myCollection?convertJson=any
-
 
 To keep the ``connection.uri`` shorter and make the settings easier to read, you can
 specify them individually instead:

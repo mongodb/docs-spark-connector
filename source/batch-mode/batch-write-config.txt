@@ -12,6 +12,9 @@ Batch Write Configuration Options
 
 .. _spark-batch-output-conf:
 
+Overview
+--------
+
 You can configure the following properties when writing data to MongoDB in batch mode.
 
 .. include:: /includes/conf-write-prefix.rst
@@ -160,5 +163,8 @@ You can configure the following properties when writing data to MongoDB in batch
        | For more information on ``wTimeoutMS`` values, see the MongoDB server
          guide on the
          :manual:`WriteConcern wtimeout option </reference/write-concern/#wtimeout>`.
+
+Specifying Properties in ``connection.uri``
+-------------------------------------------
 
 .. include:: /includes/connection-write-config.rst

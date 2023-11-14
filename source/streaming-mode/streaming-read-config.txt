@@ -12,6 +12,9 @@ Streaming Read Configuration Options
 
 .. _spark-streaming-input-conf:
 
+Overview
+--------
+
 You can configure the following properties when reading data from MongoDB in streaming mode.
 
 .. include:: /includes/conf-read-prefix.rst
@@ -185,4 +188,7 @@ You can configure the following properties when reading a change stream from Mon
        
          **Default**: ``latest``
  
+Specifying Properties in ``connection.uri``
+-------------------------------------------
+
 .. include:: /includes/connection-read-config.rst

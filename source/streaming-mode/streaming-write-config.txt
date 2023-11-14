@@ -12,6 +12,9 @@ Streaming Write Configuration Options
 
 .. _spark-streaming-output-conf:
 
+Overview
+--------
+
 You can configure the following properties when writing data to MongoDB in streaming mode.
 
 .. include:: /includes/conf-write-prefix.rst
@@ -64,5 +67,8 @@ You can configure the following properties when writing data to MongoDB in strea
      - | A Boolean value that specifies whether to delete existing checkpoint data. 
        |
        | **Default:** ``false`` 
+
+Specifying Properties in ``connection.uri``
+-------------------------------------------
 
 .. include:: /includes/connection-write-config.rst
