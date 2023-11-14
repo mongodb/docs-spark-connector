@@ -17,7 +17,7 @@ Write to MongoDB in Streaming Mode
        content: |
 
          To write data to MongoDB, call the ``writeStream()`` method on your
-         ``Dataset`` object. This method returns a
+         ``Dataset<Row>`` object. This method returns a
          ``DataStreamWriter``
          object, which you can use to specify the format and other configuration settings
          for your streaming write operation. 
