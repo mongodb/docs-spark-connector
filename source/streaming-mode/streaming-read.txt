@@ -20,10 +20,14 @@ Overview
 
 When reading a stream from a MongoDB database, the {+connector-long+} supports both 
 *micro-batch processing* and 
-*continuous processing*. Micro-batch processing is the default processing engine, while
-continuous processing is an experimental feature introduced in 
-Spark version 2.3. To learn 
-more about continuous processing, see the `Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
+*continuous processing*. Micro-batch processing, the default processing engine, achieves
+end-to-end latencies as low as 100 milliseconds with exactly-once fault-tolerance
+guarantees. Continuous processing is an experimental feature introduced in 
+Spark version 2.3 that achieves end-to-end latencies as low as 1 millisecond with
+at-least-once guarantees.
+
+To learn more about continuous processing, see the
+`Spark documentation <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#continuous-processing>`__.
 
 .. include:: /includes/fact-read-from-change-stream
 
