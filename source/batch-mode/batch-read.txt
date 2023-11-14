@@ -107,7 +107,7 @@ API documentation:
      - id: java-sync
        content: |
 
-         - `DataSet<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
+         - `Dataset<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
          - `DataFrameReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameReader.html>`__
 
      - id: python

@@ -72,7 +72,7 @@ API documentation:
      - id: java-sync
        content: |
 
-         - `DataSet<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
+         - `Dataset<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
          - `DataFrameWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/DataFrameWriter.html>`__
 
      - id: python
