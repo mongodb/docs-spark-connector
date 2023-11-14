@@ -10,8 +10,8 @@
                         .option("collection", "contacts")
                         .load()
 
-To see the inferred schema, use the ``dataFrame.printSchema()`` method, as shown in
-the following example:
+To see the inferred schema, use the ``printSchema()`` method on your ``DataFrame``
+object, as shown in the following example:
 
 .. io-code-block::
    :copyable: true
@@ -31,8 +31,8 @@ the following example:
        |-- age: integer (nullable = true)
        |-- name: string (nullable = true)
  
-To see the data in the DataFrame, use the ``dataFrame.show()`` method, as shown in
-the following example:
+To see the data in the DataFrame, use the ``show()`` method on your ``DataFrame`` object,
+as shown in the following example:
 
 .. io-code-block::
    :copyable: true

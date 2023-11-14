@@ -10,6 +10,9 @@ Configuring Spark
    :depth: 1
    :class: singlecol
 
+Overview
+--------
+
 You can configure read and write operations in both batch and streaming mode.
 To learn more about the available configuration options, see the following
 pages:
@@ -62,8 +65,8 @@ defaults.
 Using an Options Map
 ~~~~~~~~~~~~~~~~~~~~
 
-In the Spark API, the DataFrameReader, DataFrameWriter, DataStreamReader,
-and DataStreamWriter classes each contain an ``option()`` method. You can use
+In the Spark API, the ``DataFrameReader``, ``DataFrameWriter``, ``DataStreamReader``,
+and ``DataStreamWriter`` classes each contain an ``option()`` method. You can use
 this method to specify options for the underlying read or write operation.
 
 .. note::

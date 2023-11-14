@@ -23,7 +23,7 @@ integration between MongoDB and Apache Spark.
    `MongoDB announcement blog post <https://www.mongodb.com/blog/post/new-mongodb-spark-connector>`__.
 
 With the connector, you have access to all Spark libraries for use with
-MongoDB datasets: Datasets for analysis with SQL (benefiting from
+MongoDB datasets: ``Dataset`` for analysis with SQL (benefiting from
 automatic schema inference), streaming, machine learning, and graph
 APIs. You can also use the connector with the Spark Shell.
 

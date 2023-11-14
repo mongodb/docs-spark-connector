@@ -17,7 +17,7 @@ Write to MongoDB in Streaming Mode
        content: |
 
          To write data to MongoDB, call the ``writeStream()`` method on your
-         DataFrame object. This method returns a
+         ``Dataset`` object. This method returns a
          ``DataStreamWriter``
          object, which you can use to specify the format and other configuration settings
          for your streaming write operation. 
@@ -85,7 +85,7 @@ Write to MongoDB in Streaming Mode
        content: |
 
          To write data to MongoDB, call the ``writeStream`` function on your
-         DataFrame object. This function returns a
+         ``DataFrame`` object. This function returns a
          ``DataStreamWriter``
          object, which you can use to specify the format and other configuration settings for your
          streaming write operation. 
@@ -152,7 +152,7 @@ Write to MongoDB in Streaming Mode
        content: |
 
          To write data to MongoDB, call the ``write`` method on your
-         DataFrame object. This method returns a
+         ``DataFrame`` object. This method returns a
          ``DataStreamWriter``
          object, which you can use to specify the format and other configuration settings
          for your streaming write operation. 
@@ -232,7 +232,7 @@ file to MongoDB:
          1. Create a ``DataStreamReader`` object that reads from the CSV file.
 
          #. To create a ``DataStreamWriter`` object, call the ``writeStream()`` method
-            on the streaming DataFrame that you created with the
+            on the streaming ``Dataset<Row>`` that you created with the
             ``DataStreamReader``. Use the ``format()`` method to specify ``mongodb`` as
             the underlying data format.
 
@@ -277,7 +277,7 @@ file to MongoDB:
          1. Create a ``DataStreamReader`` object that reads from the CSV file.
 
          #. To create a ``DataStreamWriter`` object, call the ``writeStream`` function
-            on the streaming DataFrame that you created with the
+            on the streaming ``DataFrame`` that you created with the
             ``DataStreamReader``. Use the ``format()`` function to specify ``mongodb`` as
             the underlying data format.
          
@@ -323,7 +323,7 @@ file to MongoDB:
          1. Create a ``DataStreamReader`` object that reads from the CSV file.
 
          #. To create a ``DataStreamWriter`` object, call the ``writeStream`` method
-            on the streaming DataFrame that you created with the
+            on the streaming ``DataFrame`` that you created with the
             ``DataStreamReader``. Use the ``format()`` method to specify ``mongodb`` as
             the underlying data format.
          
@@ -374,7 +374,7 @@ API documentation:
      - id: java-sync
        content: |
 
-         - `DataSet<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
+         - `Dataset<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
          - `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
          - `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
      

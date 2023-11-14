@@ -179,7 +179,7 @@ The following example shows how to stream data from MongoDB to your console.
          #. Create a 
             ``DataStreamWriter`` object
             by calling the ``writeStream()`` method on the streaming 
-            Dataset or streaming DataFrame that you created with a 
+            ``Dataset`` object that you created with a 
             ``DataStreamReader``. Specify the format ``console`` using 
             the ``format()`` method.
 
@@ -234,8 +234,8 @@ The following example shows how to stream data from MongoDB to your console.
          #. Create a 
             ``DataStreamWriter`` object
             by calling the ``writeStream()`` method on the streaming 
-            DataFrame that you created with a ``DataStreamReader``. 
-            Specify the format ``console`` using the ``format()`` method.
+            ``DataFrame`` that you created with a ``DataStreamReader``. 
+            Specify the format ``console`` by using the ``format()`` method.
 
          #. Call the ``start()`` method on the ``DataStreamWriter``
             instance to begin the stream.
@@ -291,8 +291,8 @@ The following example shows how to stream data from MongoDB to your console.
          #. Create a 
             ``DataStreamWriter`` object
             by calling the ``writeStream()`` method on the streaming 
-            Dataset or streaming DataFrame that you created with a 
-            ``DataStreamReader``. Specify the format ``console`` using 
+            ``DataFrame`` object that you created by using the
+            ``DataStreamReader``. Specify the format ``console`` by using 
             the ``format()`` method.
 
          #. Call the ``start()`` method on the ``DataStreamWriter``
@@ -363,7 +363,7 @@ API documentation:
      - id: java-sync
        content: |
 
-         - `DataSet<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
+         - `Dataset<T> <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/Dataset.html>`__
          - `DataStreamReader <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamReader.html>`__ 
          - `DataStreamWriter <https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/streaming/DataStreamWriter.html>`__
      

@@ -1,25 +1,27 @@
 Specifying Properties in ``connection.uri``
 -------------------------------------------
 
-If you use :ref:`SparkConf <spark-conf>` to specify any of the previous settings, you
-can either list them individually or include them in the ``connection.uri`` setting.
+If you use :ref:`SparkConf <spark-conf>` to specify any of the previous settings, you can
+either include them in the ``connection.uri`` setting or list them individually.
 
-The following code example shows how to specify the ``connection.uri``,
-``database``, ``collection``, and ``convertJson`` settings individually in a
-``SparkConf`` configuration file:
+The following code example shows how to specify the
+database, collection, and ``convertJson`` setting as part of the ``connection.uri``
+setting: 
+
+.. code:: cfg
+
+  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/myDB.myCollection?convertJson=any
+
+
+To keep the ``connection.uri`` shorter and make the settings easier to read, you can
+specify them individually instead:
 
 .. code:: cfg
 
    spark.mongodb.write.connection.uri=mongodb://127.0.0.1/
-   spark.mongodb.write.database=test
+   spark.mongodb.write.database=myDB
    spark.mongodb.write.collection=myCollection
    spark.mongodb.write.convertJson=any
-
-Instead, you can specify these settings in the value of ``connection.uri``:
-
-.. code:: cfg
-
-  spark.mongodb.write.connection.uri=mongodb://127.0.0.1/test.myCollection?convertJson=any
 
 .. important::
 

@@ -13,7 +13,7 @@ content: |
        If you use ``SparkConf`` to configure the {+connector-short+}, you
        must prefix the settings appropriately. For details and other
        available MongoDB Spark Connector options, see the
-       :doc:`/configuration`.
+       :doc:`/configuration` guide.
 ---
 ref: list-configuration-explanation
 content: |
