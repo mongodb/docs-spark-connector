@@ -150,6 +150,8 @@ You can configure the following properties when reading a change stream from Mon
      - | Specifies whether to publish the changed document or the full
          change stream document.
        |
+       | When this setting is ``false``, you must explicitly specify a schema.
+       |
        | When this setting is ``true``, the connector exhibits the following behavior:
        
        - The connector filters out messages that
@@ -158,7 +160,7 @@ You can configure the following properties when reading a change stream from Mon
        - If you don't specify a schema, the connector infers the schema
          from the change stream document rather than from the underlying collection.
 
-         **Default**: ``false``
+       **Default**: ``false``
        
        .. note::
 
