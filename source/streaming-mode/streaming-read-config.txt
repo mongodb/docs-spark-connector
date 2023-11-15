@@ -10,6 +10,13 @@ Streaming Read Configuration Options
    :depth: 1
    :class: singlecol
 
+.. facet::
+   :name: genre
+   :values: reference
+ 
+.. meta::
+   :keywords: change stream, customize
+
 .. _spark-streaming-input-conf:
 
 Overview
