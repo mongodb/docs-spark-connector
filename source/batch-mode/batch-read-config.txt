@@ -42,7 +42,7 @@ You can configure the following properties when reading data from MongoDB in bat
 
    * - ``mongoClientFactory``
      - | MongoClientFactory configuration key.
-       | You can specify a custom implementation which must implement the
+       | You can specify a custom implementation, which must implement the
          ``com.mongodb.spark.sql.connector.connection.MongoClientFactory``
          interface.
        |
@@ -129,10 +129,6 @@ Partitioner Configurations
 
 Partitioners change the read behavior of batch reads that use the {+connector-short+}. By
 dividing the data into partitions, you can run transformations in parallel.
-
-Partitioners change the read behavior for batch reads with the {+driver-short+}.
-They do not affect Structured Streaming because the data stream processing
-engine produces a single stream with Structured Streaming.
 
 This section contains configuration information for the following 
 partitioners:

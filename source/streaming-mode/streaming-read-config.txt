@@ -131,7 +131,7 @@ You can configure the following properties when reading a change stream from Mon
          change stream document.
        |
        | When this setting is ``true``, the connector filters out messages that omit
-         the ``fullDocument`` field and only publishes the value of the field.
+         the ``fullDocument`` field and publishes only the value of the field.
        
        **Default**: ``false``
        
