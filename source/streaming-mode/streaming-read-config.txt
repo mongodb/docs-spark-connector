@@ -1,0 +1,146 @@
+.. _spark-streaming-read-conf:
+
+====================================
+Streaming Read Configuration Options
+====================================
+
+.. contents:: On this page
+   :local:
+   :backlinks: none
+   :depth: 1
+   :class: singlecol
+
+.. _spark-streaming-input-conf:
+
+Overview
+--------
+
+You can configure the following properties when reading data from MongoDB in streaming mode.
+
+.. include:: /includes/conf-read-prefix.rst
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - Property name
+     - Description
+   
+   * - ``connection.uri``
+     - | **Required.**
+       | The connection string configuration key.
+       |
+       | **Default:** ``mongodb://localhost:27017/``
+
+   * - ``database``
+     - | **Required.**
+       | The database name configuration.
+
+   * - ``collection``
+     - | **Required.**
+       | The collection name configuration.
+
+   * - ``mongoClientFactory``
+     - | MongoClientFactory configuration key.
+       | You can specify a custom implementation, which must implement the
+         ``com.mongodb.spark.sql.connector.connection.MongoClientFactory``
+         interface.
+       |
+       | **Default:** ``com.mongodb.spark.sql.connector.connection.DefaultMongoClientFactory``
+
+   * - ``aggregation.pipeline``
+     - | Specifies a custom aggregation pipeline to apply to the collection
+         before sending data to Spark.
+       | The value must be either an extended JSON single document or list
+         of documents.
+       | A single document resembles the following:
+
+       .. code-block:: json
+
+          {"$match": {"closed": false}}
+
+       | A list of documents resembles the following:
+
+       .. code-block:: json
+
+          [{"$match": {"closed": false}}, {"$project": {"status": 1, "name": 1, "description": 1}}]
+
+       .. important::
+
+          Custom aggregation pipelines must be compatible with the
+          partitioner strategy. For example, aggregation stages such as
+          ``$group`` do not work with any partitioner that creates more than
+          one partition.
+
+   * - ``aggregation.allowDiskUse``
+     - | Specifies whether to allow storage to disk when running the
+         aggregation.
+       |
+       | **Default:** ``true``
+
+   * - ``change.stream.``
+     - | Change stream configuration prefix.
+       | See the
+         :ref:`Change Stream Configuration <change-stream-conf>` section for more
+         information about change streams.
+
+   * - ``outputExtendedJson``
+     - | When ``true``, the connector converts BSON types not supported by Spark into 
+         extended JSON strings.
+         When ``false``, the connector uses the original relaxed JSON format for 
+         unsupported types.
+       |
+       | **Default:** ``false``
+
+.. _change-stream-conf:
+
+Change Stream Configuration
+---------------------------
+
+You can configure the following properties when reading a change stream from MongoDB:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 35 65
+
+   * - Property name
+     - Description
+
+   * - ``change.stream.lookup.full.document``
+
+     - Determines what values your change stream returns on update
+       operations.
+
+       The default setting returns the differences between the original
+       document and the updated document.
+
+       The ``updateLookup`` setting also returns the differences between the
+       original document and updated document, but it also includes a copy of the
+       entire updated document.
+
+       **Default:** "default"
+
+       .. tip::
+
+          For more information about how this change stream option works,
+          see the MongoDB server manual guide
+          :manual:`Lookup Full Document for Update Operation </changeStreams/#lookup-full-document-for-update-operations>`.
+
+   * - ``change.stream.publish.full.document.only``
+     - | Specifies whether to publish the changed document or the full
+         change stream document.
+       |
+       | When this setting is ``true``, the connector filters out messages that omit
+         the ``fullDocument`` field and only publishes the value of the field.
+       
+       **Default**: ``false``
+       
+       .. note::
+
+          This setting overrides the ``change.stream.lookup.full.document``
+          setting.
+
+Specifying Properties in ``connection.uri``
+-------------------------------------------
+
+.. include:: /includes/connection-read-config.rst
