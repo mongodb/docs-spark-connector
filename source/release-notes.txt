@@ -2,11 +2,7 @@
 Release Notes
 =============
 
-.. default-domain:: mongodb
-
 MongoDB Connector for Spark 10.0.0
 ----------------------------------
-
-*Released on March 31, 2022*
 
 - Support for Spark Structured Streaming.

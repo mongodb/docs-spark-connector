@@ -1,0 +1,10 @@
+=================
+API Documentation
+=================
+
+- `Spark Connector for Scala 2.12 <https://www.javadoc.io/doc/org.mongodb.spark/{+artifact-id-2-12+}/{+current-version+}/index.html>`__
+
+.. toctree::
+   :titlesonly:
+
+   Spark Connector for Scala 2.12 <https://www.javadoc.io/doc/org.mongodb.spark/{+artifact-id-2-12+}/{+current-version+}/index.html>
