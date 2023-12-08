@@ -157,12 +157,15 @@ You can configure the following properties when reading a change stream from Mon
      - | Specifies whether to publish the changed document or the full
          change stream document.
        |
-       | When this setting is ``false``, you must explicitly specify a schema.
+       | When this setting is ``false``, you must specify a schema. The schema
+         must include all fields that you want to read from the change stream. You can
+         use optional fields to ensure that the schema is valid for all change-stream
+         events.
        |
        | When this setting is ``true``, the connector exhibits the following behavior:
        
        - The connector filters out messages that
-         omit the ``fullDocument`` field and only publishes the value of the
+         omit the ``fullDocument`` field and publishes only the value of the
          field.
        - If you don't specify a schema, the connector infers the schema
          from the change stream document rather than from the underlying collection.
