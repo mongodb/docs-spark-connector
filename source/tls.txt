@@ -82,7 +82,7 @@ JVM trust store and JVM key store, the following system properties must be set:
 - javax.net.ssl.keyStore
 - javax.net.ssl.keyStorePassword
 
-Set the Properties in your Spark Configuration file
+Set the Properties in Your Spark Configuration File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can set the system properties in your Spark configuration file as follows:
