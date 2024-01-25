@@ -7,7 +7,7 @@ Configure TLS/SSL
 .. contents:: On this page
    :local:
    :backlinks: none
-   :depth: 1
+   :depth: 2
    :class: singlecol
 
 .. facet::
@@ -15,13 +15,13 @@ Configure TLS/SSL
    :values: reference
 
 .. meta::
-   :keywords: code example, authenticate, connection
+   :keywords: code example, authenticate
 
 Overview
 --------
 
 In this guide, you can learn how to configure :wikipedia:`TLS/SSL
-</Transport_Layer_Security>` to secure communications between the
+<Transport_Layer_Security>` to secure communications between the
 {+connector-long+} and MongoDB.
 
 To use TLS/SSL, your application and each of your Spark
@@ -54,8 +54,9 @@ other applications. Using these certificates, other
 applications can prove that the connection to your application is genuine and
 secure.
 
-To learn how to create a key store using the `keytool <https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html>`__, see `Generating a KeyStore
-and TrustStore <https://docs.oracle.com/cd/E19509-01/820-3503/6nf1il6er/index.html>`__.
+Create a key store by using the `keytool
+<https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html>`__, or
+`openssl <https://www.openssl.org/docs/>`__ command line tools.
 
 Enable TLS/SSL
 --------------
