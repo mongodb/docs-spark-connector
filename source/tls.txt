@@ -71,6 +71,10 @@ to ``true`` to enable TLS/SSL:
 
    "mongodb+srv://<username>:<password>@<cluster-url>?tls=true"
 
+For more information about creating a connection string, see the
+:manual:`Connection String guide <reference/connection-string/>` on the server
+manual.
+
 Configure Access to Certificate Stores
 --------------------------------------
 
