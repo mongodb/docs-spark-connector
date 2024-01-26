@@ -22,7 +22,7 @@ Overview
 
 In this guide, you can learn how to configure :wikipedia:`TLS/SSL
 <Transport_Layer_Security>` to secure communications between the
-{+connector-long+} and MongoDB.
+{+connector-long+} and your MongoDB deployment.
 
 To use TLS/SSL, your application and each of your Spark
 workers must have access to cryptographic certificates that prove their
