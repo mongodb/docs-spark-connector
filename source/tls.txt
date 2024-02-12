@@ -108,4 +108,6 @@ You can set the system properties from the command line by adding them with the
    ./bin/spark-submit --name "<Your app name>" \
                       --master "<Master URL>" \
                       --conf "spark.executor.extraJavaOptions=-Djavax.net.ssl.trustStore=<Path to your trust store> -Djavax.net.ssl.trustStorePassword=<Your trust store password> -Djavax.net.ssl.keyStore=<Path to your key store> -Djavax.net.ssl.keyStorePassword=<Your key store password>" \
+                      sparkApplication.jar \
+                      --conf "spark.driver.extraJavaOptions=-Djavax.net.ssl.trustStore=<Path to your trust store> -Djavax.net.ssl.trustStorePassword=<Your trust store password> -Djavax.net.ssl.keyStore=<Path to your key store> -Djavax.net.ssl.keyStorePassword=<Your key store password>" \
                       sparkApplication.jar
