@@ -64,8 +64,8 @@ You can configure the following properties when reading data from MongoDB in str
           ...
           .option("spark.mongodb.collection", "*")
 
-        If you create a collection while scanning from all collections, it is
-        automatically picked up for scanning.
+       If you create a collection while scanning from all collections, it is
+       automatically picked up for scanning.
 
    * - ``comment``
      - | The comment to append to the read operation. Comments appear in the 
