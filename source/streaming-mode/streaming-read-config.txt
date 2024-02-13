@@ -56,7 +56,7 @@ You can configure the following properties when reading data from MongoDB in str
           ...
           .option("spark.mongodb.collection", "collectionOne,collectionTwo")
 
-       | You can scan all collections in the database by using an asterisk (*).
+       | You can scan from all collections in the database by using an asterisk (*).
        | Specify all collections as follows:
 
        .. code-block:: java
