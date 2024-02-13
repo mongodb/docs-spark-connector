@@ -47,7 +47,7 @@ You can configure the following properties when reading data from MongoDB in str
      - | **Required.**
        | The collection name configuration.
        | You can specify multiple collections by separating each collection name
-         with a comma (","). Do not add a space between the collections
+         with a comma (,). Do not add a space between the collections
          unless the space is a part of the collection name.
        | Specify multiple collections as follows:
 
@@ -56,14 +56,16 @@ You can configure the following properties when reading data from MongoDB in str
           ...
           .option("spark.mongodb.collection", "collectionOne,collectionTwo")
 
-       | You can specify all collections in the database by using an asterisk
-         ("*").
+       | You can scan all collections in the database by using an asterisk (*).
        | Specify all collections as follows:
 
        .. code-block:: java
 
           ...
           .option("spark.mongodb.collection", "*")
+
+        If you create a collection while scanning from all collections, it is
+        automatically picked up for scanning.
 
    * - ``comment``
      - | The comment to append to the read operation. Comments appear in the 
