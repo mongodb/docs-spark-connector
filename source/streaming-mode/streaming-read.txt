@@ -15,6 +15,13 @@ Read from MongoDB in Streaming Mode
    :depth: 1
    :class: singlecol 
 
+.. facet::
+   :name: genre
+   :values: reference
+ 
+.. meta::
+   :keywords: change stream
+
 Overview
 --------
 
