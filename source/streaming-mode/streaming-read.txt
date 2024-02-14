@@ -354,10 +354,10 @@ The following example shows how to stream data from MongoDB to your console.
    If you set the ``change.stream.publish.full.document.only``
    option to ``true``, the {+connector-short+} infers the schema of a ``DataFrame``
    by using the schema of the scanned documents. If you set the option to
-   ``false`` you must specify a schema.
+   ``false``, you must specify a schema.
    
-   Schema inference happens at the beginning of scanning, and does not take into
-   account collections that are created while scanning.
+   Schema inference happens at the beginning of streaming, and does not take into
+   account collections that are created during streaming.
 
    For more information about this setting, and to see a full list of change stream
    configuration options, see the
