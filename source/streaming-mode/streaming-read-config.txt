@@ -223,7 +223,7 @@ part of the collection name.
 
    When streaming from multiple collections, the connector reads from
    each collection sequentially. Streaming from a large number of
-   collections cause slower performance.
+   collections can cause slower performance.
 
 Specify multiple collections as shown in the following example:
 
