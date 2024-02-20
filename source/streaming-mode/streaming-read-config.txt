@@ -220,16 +220,16 @@ part of the collection name.
 
 .. note:: Performance Considerations
 
-When streaming from multiple collections, the connector reads from
-each collection sequentially. Streaming from a large number of
-collections cause slower performance.
+   When streaming from multiple collections, the connector reads from
+   each collection sequentially. Streaming from a large number of
+   collections cause slower performance.
 
 Specify multiple collections as follows:
 
 .. code-block:: java
 
-...
-.option("spark.mongodb.collection", "collectionOne,collectionTwo")
+   ...
+   .option("spark.mongodb.collection", "collectionOne,collectionTwo")
 
 .. note::
 
@@ -259,10 +259,10 @@ Specify all collections as follows:
 
 .. code-block:: java
 
-...
-.option("spark.mongodb.collection", "*")
+   ...
+   .option("spark.mongodb.collection", "*")
 
 If you create a collection while streaming from all collections, the new
 collection is automatically included in the stream. 
 
-You can drop collections while streaming from multiple collections.
+You can drop collections at any time while streaming from multiple collections.
