@@ -48,6 +48,7 @@ You can configure the following properties when reading data from MongoDB in str
        | The collection name configuration.
        | You can specify multiple collections by separating the collection names
          with a comma.
+       |
        | To learn more about specifying multiple collections, see :ref:`spark-specify-multiple-collections`.
 
    * - ``comment``
@@ -224,7 +225,7 @@ part of the collection name.
    each collection sequentially. Streaming from a large number of
    collections cause slower performance.
 
-Specify multiple collections as follows:
+Specify multiple collections as shown in the following example:
 
 .. code-block:: java
 
@@ -255,7 +256,7 @@ Specify multiple collections as follows:
 You can stream from all collections in the database by passing an
 asterisk (*) as a string for the collection name.
 
-Specify all collections as follows:
+Specify all collections as shown in the following example:
 
 .. code-block:: java
 
