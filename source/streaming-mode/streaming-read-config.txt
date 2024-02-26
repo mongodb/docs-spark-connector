@@ -236,7 +236,7 @@ you must escape the character as follows:
 
   .. code-block:: java
 
-     "my\\,collection"
+     "my\,collection"
 
 - If the name of a collection used in your ``collection`` configuration
   option is "*", the {+connector-short+} interprets it as a specification
@@ -245,7 +245,7 @@ you must escape the character as follows:
 
   .. code-block:: java
 
-     "\\*"
+     "\*"
 
 - If the name of a collection used in your ``collection`` configuration
   option contains a backslash (\\), the
@@ -255,7 +255,7 @@ you must escape the character as follows:
 
   .. code-block:: java
 
-     "\\\\collection"
+     "\\collection"
   
   .. note:: 
      
@@ -265,7 +265,7 @@ you must escape the character as follows:
 
      .. code-block:: java
 
-        "\\\\\\\\collection"
+        "\\\\collection"
 
 You can stream from all collections in the database by passing an
 asterisk (*) as a string for the collection name.
