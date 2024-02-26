@@ -355,9 +355,6 @@ The following example shows how to stream data from MongoDB to your console.
    option to ``true``, the {+connector-short+} infers the schema of a ``DataFrame``
    by using the schema of the scanned documents. If you set the option to
    ``false``, you must specify a schema.
-   
-   Schema inference happens at the beginning of streaming, and does not take into
-   account collections that are created during streaming.
 
    For more information about this setting, and to see a full list of change stream
    configuration options, see the
