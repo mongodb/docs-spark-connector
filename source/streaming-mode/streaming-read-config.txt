@@ -282,17 +282,16 @@ collection is automatically included in the stream.
 
 You can drop collections at any time while streaming from multiple collections.
 
-.. important:: Inferring the Schema of a Change Stream
+.. important:: Inferring the Schema with Multiple Collections
 
    If you set the ``change.stream.publish.full.document.only``
    option to ``true``, the {+connector-short+} infers the schema of a ``DataFrame``
-   by using the schema of the scanned documents. If you set the option to
-   ``false``, you must specify a schema.
+   by using the schema of the scanned documents. 
    
-   Schema inference happens at the beginning of streaming, and does not take into
-   account collections that are created during streaming.
+   Schema inference happens at the beginning of streaming, and does not take
+   into account collections that are created during streaming.
 
-   When streaming from multiple collections, the connector samples
+   When streaming from multiple collections and inferring the schema, the connector samples
    each collection sequentially. Streaming from a large number of
    collections can cause the schema inference to have noticeably slower
    performance. This performance impact occurs only while inferring the schema.
