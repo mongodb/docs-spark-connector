@@ -13,7 +13,7 @@ Getting Started with the {+connector-short+}
    :values: tutorial
 
 .. meta::
-   :keywords: get started, tutorial, code example
+   :keywords: quick start, tutorial, code example
 
 Prerequisites
 -------------
