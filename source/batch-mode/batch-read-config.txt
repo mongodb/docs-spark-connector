@@ -10,6 +10,13 @@ Batch Read Configuration Options
    :depth: 1
    :class: singlecol
 
+.. facet::
+   :name: genre
+   :values: reference
+    
+.. meta::
+   :keywords: partitioner, customize, settings 
+
 .. _spark-batch-input-conf:
 
 Overview
