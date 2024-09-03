@@ -91,7 +91,7 @@ The following example shows how to specify the ``schemaHint`` option in each
 format by using the Spark shell. The example specifies a ``string`` field named
 ``"value"`` and an ``integer`` field named ``"count"``.
 
-.. code-block:: shell
+.. code-block:: sh
 
    import org.apache.spark.sql.types._
 
