@@ -99,16 +99,16 @@ format by using the Spark shell. The example specifies a ``string`` field named
        StructField("value", StringType), 
        StructField("count", IntegerType))
    
-   # Generate DDL format
+   // Generate DDL format
    mySchema.toDDL
 
-   # Generate SQL DDL format
+   // Generate SQL DDL format
    mySchema.sql
 
-   # Generate Simple String DDL format
+   // Generate Simple String DDL format
    mySchema.simpleString
 
-   # Generate JSON format
+   // Generate JSON format
    mySchema.json
 
 You can also specify the ``schemaHint`` option in the Simple String DDL format,
