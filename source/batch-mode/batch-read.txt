@@ -81,6 +81,7 @@ specify the ``schemaHint`` option in any of the following Spark formats:
 
    * - JSON
      - .. code-block:: json
+          :copyable: false
            
           { "type": "struct", "fields": [
           { "name": "<field name>", "type": "<field type>", "nullable": <true/false> },
@@ -88,7 +89,7 @@ specify the ``schemaHint`` option in any of the following Spark formats:
 
 The following example shows how to specify the ``schemaHint`` option in each
 format by using the Spark shell. The example specifies a ``string`` field named
-``value`` and an ``integer`` field named ``count``.
+``"value"`` and an ``integer`` field named ``"count"``.
 
 .. code-block:: shell
 
