@@ -65,12 +65,10 @@ You can configure the following properties when reading data from MongoDB in str
 
           [{"$match": {"closed": false}}, {"$project": {"status": 1, "name": 1, "description": 1}}]
 
-       .. important::
-
-          Custom aggregation pipelines must be compatible with the
-          partitioner strategy. For example, aggregation stages such as
-          ``$group`` do not work with any partitioner that creates more than
-          one partition.
+       Custom aggregation pipelines must be compatible with the
+       partitioner strategy. For example, aggregation stages such as
+       ``$group`` do not work with any partitioner that creates more than
+       one partition.
 
    * - ``aggregation.allowDiskUse``
      - | Specifies whether to allow storage to disk when running the
@@ -110,13 +108,11 @@ You can configure the following properties when reading a change stream from Mon
        original document and updated document, but it also includes a copy of the
        entire updated document.
 
+       For more information about how this change stream option works,
+       see the MongoDB Server manual guide
+       :manual:`Lookup Full Document for Update Operation </changeStreams/#lookup-full-document-for-update-operations>`.
+       
        **Default:** "default"
-
-       .. tip::
-
-          For more information about how this change stream option works,
-          see the MongoDB server manual guide
-          :manual:`Lookup Full Document for Update Operation </changeStreams/#lookup-full-document-for-update-operations>`.
 
    * - ``change.stream.publish.full.document.only``
      - | Specifies whether to publish the changed document or the full
@@ -125,12 +121,10 @@ You can configure the following properties when reading a change stream from Mon
        | When this setting is ``true``, the connector filters out messages that omit
          the ``fullDocument`` field and publishes only the value of the field.
        
-       **Default**: ``false``
+       This setting overrides the ``change.stream.lookup.full.document``
+       setting.
        
-       .. note::
-
-          This setting overrides the ``change.stream.lookup.full.document``
-          setting.
+       **Default**: ``false``
 
 Specifying Properties in ``connection.uri``
 -------------------------------------------
