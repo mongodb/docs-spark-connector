@@ -88,8 +88,8 @@ specify the ``schemaHint`` option in any of the following Spark formats:
           { "name": "<field name>", "type": "<field type>", "nullable": <true/false> }]}
 
 The following example shows how to specify the ``schemaHint`` option in each
-format by using the Spark shell. The example specifies a ``string`` field named
-``"value"`` and an ``integer`` field named ``"count"``.
+format by using the Spark shell. The example specifies a string-valued field named
+``"value"`` and an integer-valued field named ``"count"``.
 
 .. code-block:: scala
 
