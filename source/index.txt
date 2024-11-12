@@ -6,7 +6,7 @@ MongoDB Connector for Spark
    :titlesonly:
 
    Get Started <getting-started>
-   Configuring Spark <configuration>
+   Configure Spark <configuration>
    Configure TLS/SSL <tls>
    Batch Mode </batch-mode>
    Streaming Mode </streaming-mode>
