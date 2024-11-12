@@ -10,8 +10,8 @@ Batch Mode
 
 .. toctree::
 
-   /batch-mode/batch-read
-   /batch-mode/batch-write
+   Read in Batch Mode </batch-mode/batch-read>
+   Write in Batch Mode </batch-mode/batch-write>
 
 Overview
 --------

@@ -7,7 +7,7 @@ Read from MongoDB in Batch Mode
 .. toctree::
    :caption: Batch Read Configuration Options
 
-   /batch-mode/batch-read-config
+   Configuration Options </batch-mode/batch-read-config>
 
 .. contents:: On this page
    :local:
