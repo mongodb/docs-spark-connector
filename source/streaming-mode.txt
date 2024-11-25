@@ -12,8 +12,8 @@ Streaming Mode
 
 .. toctree::
 
-   Read in Streaming Mode </streaming-mode/streaming-read>
-   Write in Streaming Mode </streaming-mode/streaming-write>
+   Read </streaming-mode/streaming-read>
+   Write </streaming-mode/streaming-write>
 
 Overview
 --------
