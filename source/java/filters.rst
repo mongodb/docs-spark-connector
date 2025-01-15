@@ -4,7 +4,7 @@ You can use `Java Aggregation Expressions <https://www.mongodb.com/docs/drivers/
 
 .. include:: /includes/example-load-dataframe.rst
 
-First, set up a ``DataFrame`` object to connect with your default MongoDB data source:
+First, create a DataFrame to connect with your default MongoDB data source:
 
 .. code-block:: java
 
