@@ -12,7 +12,7 @@ MongoDB Connector for Spark
    Streaming Mode </streaming-mode>
    FAQ <faq>
    Release Notes <release-notes>
-   API Documentation </api-docs>
+   API Documentation <api-docs>
 
 The `MongoDB Connector for Spark
 <https://www.mongodb.com/products/spark-connector>`_ provides
