@@ -8,17 +8,17 @@ First, create a DataFrame to connect with your default MongoDB data source:
 
 .. code-block:: java
 
-   Dataset<Row> dataFrame = spark.read()
-                          .format("mongodb")
-                          .option("database", "food")
-                          .option("collection", "fruit")
-                          .load();
+   Dataset<Row> df = spark.read()
+                     .format("mongodb")
+                     .option("database", "food")
+                     .option("collection", "fruit")
+                     .load();
 
 The following example includes only records in which the ``qty`` field is greater than or equal to ``10``:
 
 .. code-block:: java
 
-   dataFrame.getInteger("qty").gte(of(10))
+   df.filter(df.col("qty").gte(10))
 
 The operation outputs the following:
 
