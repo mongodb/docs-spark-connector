@@ -1,7 +1,7 @@
 .. include:: /includes/pushed-filters.rst
 
 You can use :driver:`Java Aggregation Expressions
-<java/sync/upcoming/fundamentals/aggregation-expression-operations/>` to filter
+</java/sync/upcoming/fundamentals/aggregation-expression-operations/>` to filter
 your data. 
 
 .. include:: /includes/example-load-dataframe.rst
