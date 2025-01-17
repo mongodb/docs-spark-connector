@@ -1,20 +1,23 @@
 .. include:: /includes/pushed-filters.rst
 
-You can use `Java Aggregation Expressions <https://www.mongodb.com/docs/drivers/java/sync/upcoming/fundamentals/aggregation-expression-operations/>`__ to filter your data.
+You can use :driver:`Java Aggregation Expressions
+<java/sync/upcoming/fundamentals/aggregation-expression-operations/>`__  
+to filter your data. 
 
 .. include:: /includes/example-load-dataframe.rst
 
-First, create a DataFrame to connect with your default MongoDB data source:
+First, create a DataFrame to connect to your default MongoDB data source:
 
 .. code-block:: java
 
    Dataset<Row> df = spark.read()
-                     .format("mongodb")
-                     .option("database", "food")
-                     .option("collection", "fruit")
-                     .load();
+                          .format("mongodb")
+                          .option("database", "food")
+                          .option("collection", "fruit")
+                          .load();
 
-The following example includes only records in which the ``qty`` field is greater than or equal to ``10``:
+The following example retrieves only records in which the value of ``qty`` field
+is greater than or equal to ``10``: 
 
 .. code-block:: java
 
