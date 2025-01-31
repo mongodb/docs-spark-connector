@@ -16,7 +16,6 @@ specify them individually instead:
    spark.mongodb.read.connection.uri=mongodb://127.0.0.1/
    spark.mongodb.read.database=myDB
    spark.mongodb.read.collection=myCollection
-   spark.mongodb.read.readPreference.name=primaryPreferred
 
 .. important::
 
