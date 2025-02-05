@@ -43,6 +43,17 @@ compatible with Scala 2.12:
      </dependency>
    </dependencies>
 
+.. note:: 
+
+  If you use the {+connector-short+} without the Java Driver, you will need to
+  install the following libraries:
+
+  - :java-docs:`BSON </apidocs/bson/index.html>`
+
+  - :java-docs:`Core </apidocs/mongodb-driver-core/index.html>`
+
+  - :java-docs:`Java Driver </apidocs/mongodb-driver-sync/index.html>`
+
 Configuration
 -------------
 
