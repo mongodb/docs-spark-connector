@@ -45,7 +45,7 @@ compatible with Scala 2.12:
 
 .. note:: 
 
-  If you use the {+connector-short+} without the Java Driver, you will need to
+  If you use the {+connector-short+} without the Java Driver, you must
   install the following libraries:
 
   - :java-docs:`BSON </apidocs/bson/index.html>`
