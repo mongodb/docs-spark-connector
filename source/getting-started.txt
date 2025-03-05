@@ -60,7 +60,7 @@ Databricks
 ~~~~~~~~~~
 
 Databricks is an analytics platform for building, deploying, and sharing enterprise-level data. To integrate the {+connector-long+} with Databricks,
-see `MongoDB Atlas via Spark <https://docs.databricks.com/aws/en/connect/external-systems/mongodb>`__ in the Databricks documentation.
+see `MongoDB <https://docs.databricks.com/aws/en/connect/external-systems/mongodb>`__ in the Databricks documentation.
 
 Docker
 ~~~~~~
