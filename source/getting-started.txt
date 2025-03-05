@@ -45,6 +45,39 @@ Getting Started
 
          .. include:: /scala/api.rst
 
+Integrations
+------------
+
+You can integrate the {+connector-long+} with third-party platforms to use the {+connector-short+} in various external platforms.
+
+Amazon EMR
+~~~~~~~~~~
+
+Amazon EMR is a managed cluster platform that you can run big data frameworks such as Spark on. To install Spark on an EMR cluster, see
+`Getting Started with Amazon EMR <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-gs.html>`__ in the AWS documentation.
+
+Databricks
+~~~~~~~~~~
+
+Databricks is an analytics platform for building, deploying, and sharing enterprise-level data. To integrate the {+connector-long+} with Databricks,
+see `MongoDB Atlas via Spark <https://docs.databricks.com/aws/en/connect/external-systems/mongodb>`__ in the Databricks documentation.
+
+Docker
+~~~~~~
+
+Docker is an open-source platform that helps developers build, share, and run applications in containers. The following steps guide you through the process of connecting to a Docker container
+and integrating the {+connector-long+} in Docker.
+
+1. To start Spark in a Docker container, see `Apache Spark <https://hub.docker.com/r/apache/spark#!>`__ in the Docker documentation and follow the steps provided. 
+2. See `Create a Local Atlas Deployment with Docker <https://www.mongodb.com/docs/atlas/cli/current/atlas-cli-deploy-docker/>`__ to deploy Atlas on Docker. 
+3. Select the appropriate language in the tabs under :ref:`Getting Started <pyspark-shell> and follow the steps provided. 
+
+Kubernetes
+~~~~~~~~~~
+
+Kubernetes is an open-source platform for automating containerization management. To integrate run Spark on Kubernetes,
+see `Running Spark on Kubernetes <https://spark.apache.org/docs/3.5.4/running-on-kubernetes.html>`__ in the Spark documentation.
+
 Tutorials
 ---------
 
