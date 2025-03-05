@@ -48,7 +48,7 @@ Getting Started
 Integrations
 ------------
 
-You can integrate the {+connector-long+} with third-party platforms to use the {+connector-short+} in various external platforms.
+You can integrate Spark with third-party platforms to use the {+connector-long+} in various external platforms.
 
 Amazon EMR
 ~~~~~~~~~~
@@ -75,7 +75,7 @@ and integrating the {+connector-long+} in Docker.
 Kubernetes
 ~~~~~~~~~~
 
-Kubernetes is an open-source platform for automating containerization management. To integrate run Spark on Kubernetes,
+Kubernetes is an open-source platform for automating containerization management. To run Spark on Kubernetes,
 see `Running Spark on Kubernetes <https://spark.apache.org/docs/3.5.4/running-on-kubernetes.html>`__ in the Spark documentation.
 
 Tutorials
