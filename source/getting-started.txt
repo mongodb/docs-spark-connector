@@ -69,8 +69,8 @@ Docker is an open-source platform that helps developers build, share, and run ap
 and integrating the {+connector-long+} in Docker.
 
 1. To start Spark in a Docker container, see `Apache Spark <https://hub.docker.com/r/apache/spark#!>`__ in the Docker documentation and follow the steps provided. 
-2. See `Create a Local Atlas Deployment with Docker <https://www.mongodb.com/docs/atlas/cli/current/atlas-cli-deploy-docker/>`__ to deploy Atlas on Docker. 
-3. Select the appropriate language in the tabs under :ref:`Getting Started <pyspark-shell>` and follow the steps provided. 
+#. See `Create a Local Atlas Deployment with Docker <https://www.mongodb.com/docs/atlas/cli/current/atlas-cli-deploy-docker/>`__ to deploy Atlas on Docker. 
+#. Select the appropriate language in the tabs under :ref:`Getting Started <pyspark-shell>` and follow the steps provided. 
 
 Kubernetes
 ~~~~~~~~~~
