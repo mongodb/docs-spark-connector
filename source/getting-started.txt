@@ -69,7 +69,7 @@ Docker
 Docker is an open-source platform that helps developers build, share, and run applications in containers. 
 
 - To start Spark in a Docker container, see `Apache Spark <https://hub.docker.com/r/apache/spark#!>`__ in the Docker documentation and follow the steps provided. 
-- See `Create a Local Atlas Deployment with Docker <https://www.mongodb.com/docs/atlas/cli/current/atlas-cli-deploy-docker/>`__ to deploy Atlas on Docker. 
+- To learn how to deploy Atlas on Docker, see `Create a Local Atlas Deployment with Docker <https://www.mongodb.com/docs/atlas/cli/current/atlas-cli-deploy-docker/>`__.
 
 Kubernetes
 ~~~~~~~~~~
