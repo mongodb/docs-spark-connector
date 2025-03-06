@@ -1,5 +1,6 @@
 name = "spark-connector"
 title = "MongoDB Spark Connector"
+eol = true
 
 intersphinx = ["https://www.mongodb.com/docs/manual/objects.inv"]
 
@@ -27,3 +28,10 @@ scala-version-full = "2.12.13"
 [substitutions]
 copy = "unicode:: U+000A9"
 ent-build = "MongoDB Enterprise"
+
+[[banners]]
+targets = ["*"]
+variant = "info"
+value = """\
+    This version of the documentation is archived and no longer supported. View the `current documentation <https://www.mongodb.com/docs/spark-connector/current/>`__ to learn how to upgrade your version of the {+connector-short+}.\
+    """
