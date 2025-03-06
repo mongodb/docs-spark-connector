@@ -48,7 +48,7 @@ Getting Started
 Integrations
 ------------
 
-The following sections describe some of the popular third-party platforms that you can
+The following sections describe some popular third-party platforms that you can
 integrate Spark and the {+connector-long+} with.
 
 Amazon EMR
