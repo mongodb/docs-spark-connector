@@ -249,9 +249,9 @@ To use this configuration, set the ``partitioner`` configuration option to
 SamplePartitioner Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``SamplePartitioner`` configuration configuration is similar to the
-:ref:`AutoBucketPartitioner <conf-autobucketpartitioner>`
-configuration, but does not use the ``$bucketAuto`` aggregation stage. This
+The ``SamplePartitioner`` configuration is similar to the
+:ref:`AutoBucketPartitioner <conf-autobucketpartitioner>` configuration, but
+does not use the ``$bucketAuto`` aggregation stage. This
 configuration lets you specify a partition field, partition size, and number of
 samples per partition. 
 
