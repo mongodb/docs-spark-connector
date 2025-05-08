@@ -192,14 +192,15 @@ partitioner:
 
 .. _conf-autobucketpartitioner:
 
-``AutoBucketPartitioner`` Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+AutoBucketPartitioner Configuration (default)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``AutoBucketPartitioner`` is the default partitioner configuration and uses
+The ``AutoBucketPartitioner`` is the default partitioner configuration. It
+samples the data to generate partitions and uses
 the :manual:`$bucketAuto </reference/operator/aggregation/bucketAuto/>`
-aggregation stage to paginate the data. By using this configuration, 
-you can partition the data across single or multiple fields, including nested
-fields.
+aggregation stage to paginate data based on the the specified parameters. By
+using this configuration,  you can partition the data across single or multiple
+fields, including nested fields.
 
 .. note:: Compound Keys
 
@@ -246,13 +247,14 @@ To use this configuration, set the ``partitioner`` configuration option to
 .. _conf-mongosamplepartitioner:
 .. _conf-samplepartitioner:
 
-``SamplePartitioner`` Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SamplePartitioner Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``SamplePartitioner`` configuration configuration is similar to the
 :ref:`AutoBucketPartitioner <conf-autobucketpartitioner>`
-configuration, but does not use the ``$bucketAuto`` aggregation stage. This configuration lets you specify a partition field,
-partition size, and number of samples per partition. 
+configuration, but does not use the ``$bucketAuto`` aggregation stage. This
+configuration lets you specify a partition field, partition size, and number of
+samples per partition. 
 
 To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.SamplePartitioner``.
@@ -285,21 +287,11 @@ To use this configuration, set the ``partitioner`` configuration option to
 
        **Default:** ``10``
 
-.. example::
-
-   For a collection with 640 documents with an average document
-   size of 0.5 MB, the default ``SamplePartitioner`` configuration creates
-   5 partitions with 128 documents per partition.
-
-   The {+connector-short+} samples 50 documents (the default 10
-   per intended partition) and defines 5 partitions by selecting
-   partition field ranges from the sampled documents.
-
 .. _conf-mongoshardedpartitioner:
 .. _conf-shardedpartitioner:
 
-``ShardedPartitioner`` Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ShardedPartitioner Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``ShardedPartitioner`` configuration automatically partitions the data
 based on your shard configuration.
@@ -314,11 +306,21 @@ To use this configuration, set the ``partitioner`` configuration option to
       We do not recommend using the sharded partitioner when connected to MongoDB v6.0 and later.
    2. The sharded partitioner is not compatible with hashed shard keys.
 
+.. example::
+
+   For a collection with 640 documents with an average document
+   size of 0.5 MB, the default ``SamplePartitioner`` configuration creates
+   5 partitions with 128 documents per partition.
+
+   The {+connector-short+} samples 50 documents (the default 10
+   per intended partition) and defines 5 partitions by selecting
+   partition field ranges from the sampled documents.
+
 .. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
 
-``PaginateBySizePartitioner`` Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PaginateBySizePartitioner Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``PaginateBySizePartitioner`` configuration paginates the data by using the
 average document size to split the collection into average-sized chunks.
@@ -347,8 +349,8 @@ To use this configuration, set the ``partitioner`` configuration option to
 
 .. _conf-paginateintopartitionspartitioner:
 
-``PaginateIntoPartitionsPartitioner`` Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PaginateIntoPartitionsPartitioner Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``PaginateIntoPartitionsPartitioner`` configuration paginates the data by dividing
 the count of documents in the collection by the maximum number of allowable partitions.
@@ -375,15 +377,15 @@ To use this configuration, set the ``partitioner`` configuration option to
 
 .. _conf-singlepartitionpartitioner:
 
-``SinglePartitionPartitioner`` Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SinglePartitionPartitioner Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``SinglePartitionPartitioner`` configuration creates a single partition.
 
 To use this configuration, set the ``partitioner`` configuration option to
 ``com.mongodb.spark.sql.connector.read.partitioner.SinglePartitionPartitioner``.
 
-Specifying Properties in ``connection.uri``
--------------------------------------------
+Specifying Properties in connection.uri
+---------------------------------------
 
 .. include:: /includes/connection-read-config.rst
