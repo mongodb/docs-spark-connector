@@ -33,7 +33,7 @@ Learn what's new in:
 MongoDB Connector for Spark 10.5
 --------------------------------
 
-The 10.4 connector release includes the following changes and new features:
+The 10.5 connector release includes the following changes and new features:
 
 - Adds support for using :products:`Atlas Data Federation
   </platform/atlas-data-federation>` with the {+connector-short+} in the ``SamplePartitioner``,
