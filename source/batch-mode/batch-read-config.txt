@@ -286,6 +286,16 @@ To use this configuration, set the ``partitioner`` configuration option to
 
        **Default:** ``10``
 
+.. example::
+
+   For a collection with 640 documents with an average document
+   size of 0.5 MB, the default ``SamplePartitioner`` configuration creates
+   5 partitions with 128 documents per partition.
+
+   The {+connector-short+} samples 50 documents (the default 10
+   per intended partition) and defines 5 partitions by selecting
+   partition field ranges from the sampled documents.
+
 .. _conf-mongoshardedpartitioner:
 .. _conf-shardedpartitioner:
 
@@ -304,16 +314,6 @@ To use this configuration, set the ``partitioner`` configuration option to
       chunk to cover all shard key values, making the sharded partitioner inefficient.
       We do not recommend using the sharded partitioner when connected to MongoDB v6.0 and later.
    2. The sharded partitioner is not compatible with hashed shard keys.
-
-.. example::
-
-   For a collection with 640 documents with an average document
-   size of 0.5 MB, the default ``SamplePartitioner`` configuration creates
-   5 partitions with 128 documents per partition.
-
-   The {+connector-short+} samples 50 documents (the default 10
-   per intended partition) and defines 5 partitions by selecting
-   partition field ranges from the sampled documents.
 
 .. _conf-mongopaginatebysizepartitioner:
 .. _conf-paginatebysizepartitioner:
