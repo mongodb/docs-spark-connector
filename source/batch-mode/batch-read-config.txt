@@ -198,9 +198,8 @@ AutoBucketPartitioner Configuration (default)
 The ``AutoBucketPartitioner`` is the default partitioner configuration. It
 samples the data to generate partitions and uses
 the :manual:`$bucketAuto </reference/operator/aggregation/bucketAuto/>`
-aggregation stage to paginate data based on the the specified parameters. By
-using this configuration,  you can partition the data across single or multiple
-fields, including nested fields.
+aggregation stage to paginate. By using this configuration, you can partition
+the data across single or multiple fields, including nested fields.
 
 .. note:: Compound Keys
 
