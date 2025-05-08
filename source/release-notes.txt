@@ -39,6 +39,7 @@ The 10.4 connector release includes the following changes and new features:
   </platform/atlas-data-federation>` with the {+connector-short+} in the ``SamplePartitioner``,
   ``PaginateBySizePartitioner`` and ``AutoBucketPartitioner`` batch reading
   configurations.
+  
   For more information about batch configuration, see the :ref:`Batch Read
   Configuration Options <spark-batch-read-conf>` page.
 
