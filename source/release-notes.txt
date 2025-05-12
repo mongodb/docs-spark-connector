@@ -43,6 +43,8 @@ The 10.5 connector release includes the following changes and new features:
   For more information about batch configuration, see the :ref:`Batch Read
   Configuration Options <spark-batch-read-conf>` page.
 
+- Changes the default batch read partitioner configuration to be ``AutoBucketPartitioner``
+
 .. _version-10.4:
 
 MongoDB Connector for Spark 10.4
