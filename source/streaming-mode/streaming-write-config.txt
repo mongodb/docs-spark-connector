@@ -58,7 +58,7 @@ You can configure the following properties when writing data to MongoDB in strea
        | **Default:** ``com.mongodb.spark.sql.connector.connection.DefaultMongoClientFactory``
 
    * - ``convertJson``
-     - | Specifies whether the connector parses the string and converts extended JSON
+     - | Specifies if the connector parses string values and converts extended JSON
          into BSON.
        |
        | This setting accepts the following values:
@@ -85,7 +85,7 @@ You can configure the following properties when writing data to MongoDB in strea
        | **Default:** ``false``
    
    * - ``idFieldList``
-     - | Field or list of fields by which to split the collection data. To
+     - | Specifies a field or list of fields by which to split the collection data. To
          specify more than one field, separate them using a comma as shown
          in the following example:
 
@@ -131,7 +131,7 @@ You can configure the following properties when writing data to MongoDB in strea
        | **Default:** ``true``
 
    * - ``upsertDocument``
-     - | When ``true``, replace and update operations will insert the data
+     - | When ``true``, replace and update operations insert the data
          if no match exists.
        |
        | For time series collections, you must set ``upsertDocument`` to
@@ -140,7 +140,7 @@ You can configure the following properties when writing data to MongoDB in strea
        | **Default:** ``true``
 
    * - ``writeConcern.w``
-     - | Specifies ``w``, a write-concern option to request acknowledgment that
+     - | Specifies ``w``, a write-concern option requesting acknowledgment that
          the write operation has propagated to a specified number of MongoDB
          nodes. 
        | 
@@ -148,13 +148,13 @@ You can configure the following properties when writing data to MongoDB in strea
          w Option </reference/write-concern/#w-option>` in the {+mdb-server+}
          manual. 
        | 
-       | **Default:** ``1``
+       | **Default:** ``majority`` *or* ``1``
 
    * - ``writeConcern.journal``
-     - | Specifies ``j``, a write-concern option to enable request for
-         acknowledgment that the data is confirmed on on-disk journal for
-         the criteria specified in the ``w`` option. You can specify
-         either ``true`` or ``false``.
+     - | Specifies ``j``, a write-concern option requesting acknowledgment that
+         the data has been written to the on-disk journal for the criteria
+         specified in the ``w`` option. You can specify either ``true`` or
+         ``false``.
        |
        | For more information on ``j`` values, see :manual:`WriteConcern j
          Option </reference/write-concern/#j-option>` in the {+mdb-server+}
@@ -162,7 +162,7 @@ You can configure the following properties when writing data to MongoDB in strea
 
    * - ``writeConcern.wTimeoutMS``
      - | Specifies ``wTimeoutMS``, a write-concern option to return an error
-         when a write operation exceeds the number of milliseconds. If you
+         when a write operation exceeds the specified number of milliseconds. If you
          use this optional setting, you must specify a nonnegative integer.
        |
        | For more information on ``wTimeoutMS`` values, see
@@ -170,7 +170,7 @@ You can configure the following properties when writing data to MongoDB in strea
          the {+mdb-server+} manual.
     
    * - ``checkpointLocation``
-     - | The absolute file path of the directory to which the connector writes checkpoint
+     - | The absolute file path of the directory where the connector writes checkpoint
          information.
        |
        | For more information about checkpoints, see the `Spark Structured
