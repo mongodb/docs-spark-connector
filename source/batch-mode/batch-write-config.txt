@@ -144,9 +144,9 @@ You can configure the following properties when writing data to MongoDB in batch
          the write operation has propagated to a specified number of MongoDB
          nodes. 
        | 
-       | For a list of allowed values for this option, see 
-         :manual:`WriteConcern w Option </reference/write-concern/#w-option>` in the 
-         MongoDB manual. 
+       | For a list of allowed values for this option, see :manual:`WriteConcern
+         w Option </reference/write-concern/#w-option>` in the {+mdb-server+}
+         manual. 
        | 
        | **Default:** ``1``
 
@@ -156,18 +156,18 @@ You can configure the following properties when writing data to MongoDB in batch
          the criteria specified in the ``w`` option. You can specify
          either ``true`` or ``false``.
        |
-       | For more information on ``j`` values, see the {+mdb-server+}
-         guide on the
-         :manual:`WriteConcern j Option </reference/write-concern/#j-option>`.
+       | For more information on ``j`` values, see :manual:`WriteConcern j
+         Option </reference/write-concern/#j-option>` in the {+mdb-server+}
+         manual.
 
    * - ``writeConcern.wTimeoutMS``
      - | Specifies ``wTimeoutMS``, a write-concern option to return an error
          when a write operation exceeds the number of milliseconds. If you
          use this optional setting, you must specify a nonnegative integer.
        |
-       | For more information on ``wTimeoutMS`` values, see the MongoDB server
-         guide on the
-         :manual:`WriteConcern wtimeout </reference/write-concern/#wtimeout>`.
+       | For more information on ``wTimeoutMS`` values, see
+         :manual:`WriteConcern wtimeout </reference/write-concern/#wtimeout>` in
+         the {+mdb-server+} manual.
 
 Specifying Properties in ``connection.uri``
 -------------------------------------------

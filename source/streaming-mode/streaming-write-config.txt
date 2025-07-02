@@ -139,6 +139,16 @@ You can configure the following properties when writing data to MongoDB in strea
        |
        | **Default:** ``true``
 
+   * - ``writeConcern.w``
+     - | Specifies ``w``, a write-concern option to request acknowledgment that
+         the write operation has propagated to a specified number of MongoDB
+         nodes. 
+       | 
+       | For a list of allowed values for this option, see :manual:`WriteConcern
+         w Option </reference/write-concern/#w-option>` in the {+mdb-server+}
+         manual. 
+       | 
+       | **Default:** ``1``
 
    * - ``writeConcern.journal``
      - | Specifies ``j``, a write-concern option to enable request for
@@ -146,18 +156,18 @@ You can configure the following properties when writing data to MongoDB in strea
          the criteria specified in the ``w`` option. You can specify
          either ``true`` or ``false``.
        |
-       | For more information on ``j`` values, see 
-         :manual:`WriteConcern j Option </reference/write-concern/#j-option>` in the 
-         {+mdb-server+} manual.
+       | For more information on ``j`` values, see :manual:`WriteConcern j
+         Option </reference/write-concern/#j-option>` in the {+mdb-server+}
+         manual.
 
    * - ``writeConcern.wTimeoutMS``
      - | Specifies ``wTimeoutMS``, a write-concern option to return an error
          when a write operation exceeds the number of milliseconds. If you
          use this optional setting, you must specify a nonnegative integer.
        |
-       | For more information on ``wTimeoutMS`` values, see 
-         :manual:`WriteConcern wtimeout </reference/write-concern/#wtimeout>` in the 
-         {+mdb-server+} manual.
+       | For more information on ``wTimeoutMS`` values, see
+         :manual:`WriteConcern wtimeout </reference/write-concern/#wtimeout>` in
+         the {+mdb-server+} manual.
     
    * - ``checkpointLocation``
      - | The absolute file path of the directory to which the connector writes checkpoint
@@ -165,7 +175,7 @@ You can configure the following properties when writing data to MongoDB in strea
        |
        | For more information about checkpoints, see the `Spark Structured
          Streaming Programming Guide
-         <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html#recovering-from-failures-with-checkpointing>`__
+         <https://spark.apache.org/docs/latest/streaming/index.html>`__
        | 
        | **Default:** None 
    
