@@ -139,24 +139,26 @@ You can configure the following properties when writing data to MongoDB in batch
        |
        | **Default:** ``true``
 
+   * - ``writeConcern.w``
+     - | Specifies ``w``, a write-concern option to request acknowledgment that
+         the write operation has propagated to a specified number of MongoDB
+         nodes. 
+       | 
+       | For a list of allowed values for this option, see 
+         :manual:`WriteConcern w Option </reference/write-concern/#w-option>` in the 
+         MongoDB manual. 
+       | 
+       | **Default:** ``1``
+
    * - ``writeConcern.journal``
      - | Specifies ``j``, a write-concern option to enable request for
          acknowledgment that the data is confirmed on on-disk journal for
          the criteria specified in the ``w`` option. You can specify
          either ``true`` or ``false``.
        |
-       | For more information on ``j`` values, see the MongoDB server
+       | For more information on ``j`` values, see the {+mdb-server+}
          guide on the
-         :manual:`WriteConcern j option </reference/write-concern/#j-option>`.
-
-   * - ``writeConcern.w``
-     - | Specifies ``w``, a write-concern option to request acknowledgment
-         that the write operation has propagated to a specified number of
-         MongoDB nodes. For a list
-         of allowed values for this option, see :manual:`WriteConcern
-         </reference/write-concern/#w-option>` in the MongoDB manual.
-       |
-       | **Default:** ``1``
+         :manual:`WriteConcern j Option </reference/write-concern/#j-option>`.
 
    * - ``writeConcern.wTimeoutMS``
      - | Specifies ``wTimeoutMS``, a write-concern option to return an error
@@ -165,7 +167,7 @@ You can configure the following properties when writing data to MongoDB in batch
        |
        | For more information on ``wTimeoutMS`` values, see the MongoDB server
          guide on the
-         :manual:`WriteConcern wtimeout option </reference/write-concern/#wtimeout>`.
+         :manual:`WriteConcern wtimeout </reference/write-concern/#wtimeout>`.
 
 Specifying Properties in ``connection.uri``
 -------------------------------------------
