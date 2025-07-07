@@ -148,7 +148,7 @@ You can configure the following properties when writing data to MongoDB in batch
          w Option </reference/write-concern/#w-option>` in the {+mdb-server+}
          manual. 
        | 
-       | **Default:** ``majority`` or ``1``
+       | **Default:** ``Acknowledged``
 
    * - ``writeConcern.journal``
      - | Specifies ``j``, a write-concern option requesting acknowledgment that
