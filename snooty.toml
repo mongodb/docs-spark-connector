@@ -33,5 +33,5 @@ variant = "info"
 value = """\
     This version of the documentation is archived and no longer supported. View the \
     `current documentation <https://www.mongodb.com/docs/spark-connector/current/>`__ to \
-    learn how to `install supported versions of the {+product+} <https://www.mongodb.com/docs/spark-connector/current/get-started/>`__.\
+    learn how to `install supported versions of the {+connector-short+} <https://www.mongodb.com/docs/spark-connector/current/getting-started/>`__.\
     """
